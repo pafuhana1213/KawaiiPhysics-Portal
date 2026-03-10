@@ -13,11 +13,11 @@ const config: Config = {
 
   // GitHub Pages URL
   url: 'https://pafuhana1213.github.io',
-  baseUrl: '/KawaiiPhysicsDocs/',
+  baseUrl: '/KawaiiPhysics-Portal/',
 
   // GitHub pages deployment config
   organizationName: 'pafuhana1213',
-  projectName: 'KawaiiPhysicsDocs',
+  projectName: 'KawaiiPhysics-Portal',
   trailingSlash: false,
 
   onBrokenLinks: 'throw',
@@ -49,7 +49,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/pafuhana1213/KawaiiPhysicsDocs/tree/main/',
+          editUrl: 'https://github.com/pafuhana1213/KawaiiPhysics-Portal/tree/main/',
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
         },
@@ -59,7 +59,7 @@ const config: Config = {
             type: ['rss', 'atom'],
             xslt: true,
           },
-          editUrl: 'https://github.com/pafuhana1213/KawaiiPhysicsDocs/tree/main/',
+          editUrl: 'https://github.com/pafuhana1213/KawaiiPhysics-Portal/tree/main/',
           blogTitle: 'KawaiiPhysics Updates',
           blogDescription: 'KawaiiPhysicsの更新情報とTips',
         },
