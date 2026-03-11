@@ -53,38 +53,6 @@ function PlayIcon() {
   );
 }
 
-// Feature card icons (outline style, 48px)
-function ClickIcon() {
-  return (
-    <svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="#4ecdc4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M20 8a10 10 0 1 1-4 19.2" />
-      <path d="M16 20v16l4-4 4 4 4-4 4 4V20" />
-      <circle cx="16" cy="14" r="2" fill="#4ecdc4" stroke="none" />
-    </svg>
-  );
-}
-
-function BoltIcon() {
-  return (
-    <svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="#4ecdc4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M26 6L12 28h10l-2 14L34 20H24l2-14z" />
-    </svg>
-  );
-}
-
-function SliderIcon() {
-  return (
-    <svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="#4ecdc4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <line x1="8" y1="14" x2="40" y2="14" />
-      <line x1="8" y1="24" x2="40" y2="24" />
-      <line x1="8" y1="34" x2="40" y2="34" />
-      <circle cx="16" cy="14" r="3" fill="#1a1a2e" />
-      <circle cx="30" cy="24" r="3" fill="#1a1a2e" />
-      <circle cx="22" cy="34" r="3" fill="#1a1a2e" />
-    </svg>
-  );
-}
-
 function VideoModal({isOpen, onClose, videoId}: {isOpen: boolean; onClose: () => void; videoId: string}) {
   useEffect(() => {
     if (!isOpen) return;
@@ -169,14 +137,12 @@ function HomepageHeader() {
 }
 
 interface FeatureItem {
-  icon: ReactNode;
   title: string;
   description: string;
 }
 
 const featureList: FeatureItem[] = [
   {
-    icon: <ClickIcon />,
     title: translate({id: 'homepage.feature1.title', message: 'シンプルなセットアップ'}),
     description: translate({
       id: 'homepage.feature1.description',
@@ -184,7 +150,6 @@ const featureList: FeatureItem[] = [
     }),
   },
   {
-    icon: <BoltIcon />,
     title: translate({id: 'homepage.feature2.title', message: '軽量な処理'}),
     description: translate({
       id: 'homepage.feature2.description',
@@ -192,7 +157,6 @@ const featureList: FeatureItem[] = [
     }),
   },
   {
-    icon: <SliderIcon />,
     title: translate({id: 'homepage.feature3.title', message: '柔軟なカスタマイズ'}),
     description: translate({
       id: 'homepage.feature3.description',
@@ -211,7 +175,6 @@ function HomepageFeatures() {
         <div className={styles.featureGrid}>
           {featureList.map((feature, idx) => (
             <div key={idx} className={styles.featureCard}>
-              <div className={styles.featureIcon}>{feature.icon}</div>
               <Heading as="h3" className={styles.featureTitle}>{feature.title}</Heading>
               <p className={styles.featureDescription}>{feature.description}</p>
             </div>
