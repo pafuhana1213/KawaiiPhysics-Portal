@@ -94,5 +94,169 @@
   "contact.x.linkText": {
     "message": "Open X",
     "description": "X link text"
+  },
+  "homepage.features.title": {
+    "message": "Key Features",
+    "description": "Features section title on homepage"
+  },
+  "homepage.adoption.title": {
+    "message": "Adopted By",
+    "description": "Adoption section title on homepage"
+  },
+  "homepage.adoption.more": {
+    "message": "See More",
+    "description": "Link text to see more adoption examples"
+  },
+  "homepage.version.title": {
+    "message": "Version Info",
+    "description": "Version info section title on homepage"
+  },
+  "homepage.version.latest": {
+    "message": "Latest Version",
+    "description": "Latest version label"
+  },
+  "homepage.version.ue": {
+    "message": "Supported UE Versions",
+    "description": "Supported UE versions label"
+  },
+  "homepage.version.download": {
+    "message": "Download",
+    "description": "Download button text"
+  },
+  "adoption.game.dq7": {
+    "message": "DRAGON QUEST VII Reimagined",
+    "description": "Game title"
+  },
+  "adoption.game.zenshinMachineGirl": {
+    "message": "Full Throttle Machine Girl",
+    "description": "Game title"
+  },
+  "adoption.game.sonicRacing": {
+    "message": "Sonic Racing: Crossworlds",
+    "description": "Game title"
+  },
+  "adoption.game.fatalFury": {
+    "message": "Fatal Fury: City of the Wolves",
+    "description": "Game title"
+  },
+  "adoption.company.nitroplus": {
+    "message": "Nitroplus",
+    "description": "Company name"
+  },
+  "adoption.game.rs2": {
+    "message": "Romancing SaGa 2: Revenge of the Seven",
+    "description": "Game title"
+  },
+  "adoption.game.lollipopChainsaw": {
+    "message": "Lollipop Chainsaw RePOP",
+    "description": "Game title"
+  },
+  "adoption.game.visionsOfMana": {
+    "message": "VISIONS of MANA",
+    "description": "Game title"
+  },
+  "adoption.game.smt5v": {
+    "message": "Shin Megami Tensei V: Vengeance",
+    "description": "Game title"
+  },
+  "adoption.game.wutheringWaves": {
+    "message": "Wuthering Waves",
+    "description": "Game title"
+  },
+  "adoption.game.toraera": {
+    "message": "Toraera / Albee",
+    "description": "Game title"
+  },
+  "adoption.game.princessPeach": {
+    "message": "Princess Peach: Showtime!",
+    "description": "Game title"
+  },
+  "adoption.game.persona3r": {
+    "message": "Persona 3 Reload",
+    "description": "Game title"
+  },
+  "adoption.game.jjk": {
+    "message": "Jujutsu Kaisen: Cursed Clash",
+    "description": "Game title"
+  },
+  "adoption.game.gbvsr": {
+    "message": "Granblue Fantasy Versus: Rising",
+    "description": "Game title"
+  },
+  "adoption.game.natsumon": {
+    "message": "Natsumon! 20th Century Summer Vacation",
+    "description": "Game title"
+  },
+  "adoption.game.rainCode": {
+    "message": "Master Detective Archives: RAIN CODE",
+    "description": "Game title"
+  },
+  "adoption.game.dqTreasures": {
+    "message": "DRAGON QUEST TREASURES",
+    "description": "Game title"
+  },
+  "adoption.game.diofield": {
+    "message": "The DioField Chronicle",
+    "description": "Game title"
+  },
+  "adoption.game.gundamEvo": {
+    "message": "GUNDAM EVOLUTION",
+    "description": "Game title"
+  },
+  "adoption.company.bnOnline": {
+    "message": "Bandai Namco Online",
+    "description": "Company name"
+  },
+  "adoption.game.towerOfFantasy": {
+    "message": "Tower of Fantasy",
+    "description": "Game title"
+  },
+  "adoption.game.bdBrilliantLights": {
+    "message": "BRAVELY DEFAULT BRILLIANT LIGHTS",
+    "description": "Game title"
+  },
+  "adoption.game.smt5": {
+    "message": "Shin Megami Tensei V",
+    "description": "Game title"
+  },
+  "adoption.game.trialsOfMana": {
+    "message": "Trials of Mana",
+    "description": "Game title"
+  },
+  "adoption.title": {
+    "message": "Adopted By",
+    "description": "Adoption page title"
+  },
+  "adoption.heroText": {
+    "message": "Adopted by many amazing projects!",
+    "description": "Adoption page hero text"
+  },
+  "adoption.description": {
+    "message": "List of commercial titles that have adopted KawaiiPhysics",
+    "description": "Adoption page meta description"
+  },
+  "adoption.callout.line1": {
+    "message": "We may not be aware of all titles using KawaiiPhysics. If you have adopted it, please let us know!",
+    "description": "Adoption page callout line 1"
+  },
+  "adoption.callout.line2": {
+    "message": "Even if you are not a developer, we would appreciate it if you let us know when you spot KawaiiPhysics in a game's license notice.",
+    "description": "Adoption page callout line 2"
+  },
+  "adoption.callout.reportGithub": {
+    "message": "Report on GitHub",
+    "description": "GitHub report button"
+  },
+  "adoption.callout.reportForm": {
+    "message": "Report via Form",
+    "description": "Form report button"
+  },
+  "adoption.note": {
+    "message": "* This list is based on publicly available information. Please let us know if there are any issues with the content.",
+    "description": "Adoption page note"
+  },
+  "adoption.copyrights": {
+    "message": "Copyright Notices",
+    "description": "Copyright section title"
   }
 }
