@@ -1,6 +1,6 @@
 /* Hero Section */
 .hero {
-  background: linear-gradient(-45deg, #1a8870, #2e8555, #25c2a0, #3cad6e);
+  background: linear-gradient(-45deg, #0f5c4a, #1a6b3d, #177a5a, #256b45);
   background-size: 400% 400%;
   animation: gradientShift 12s ease infinite;
   padding: 4rem 2rem;
@@ -14,11 +14,6 @@
   100% { background-position: 0% 50%; }
 }
 
-[data-theme='dark'] .hero {
-  background: linear-gradient(-45deg, #0f5c4a, #1a6b3d, #177a5a, #256b45);
-  background-size: 400% 400%;
-  animation: gradientShift 12s ease infinite;
-}
 
 .heroTitle {
   font-size: 3rem;
@@ -63,10 +58,6 @@
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-}
-
-[data-theme='dark'] .card:hover {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 

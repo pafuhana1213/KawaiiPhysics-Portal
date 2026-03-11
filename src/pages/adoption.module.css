@@ -75,7 +75,7 @@
 
 /* Callout */
 .callout {
-  background: #fff8f0;
+  background: rgba(255, 138, 101, 0.1);
   border: 2px solid #ff8a65;
   border-radius: 12px;
   padding: 1.5rem 2rem;
@@ -83,18 +83,9 @@
   text-align: center;
 }
 
-[data-theme='dark'] .callout {
-  background: rgba(255, 138, 101, 0.1);
-  border: 2px solid #ff8a65;
-}
-
 .calloutText {
   font-size: 1.1rem;
   margin-bottom: 1rem;
-  color: #5d4037;
-}
-
-[data-theme='dark'] .calloutText {
   color: var(--ifm-font-color-base);
 }
 
@@ -161,10 +152,6 @@
 
 .videoCard:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-
-[data-theme='dark'] .videoCard:hover {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 

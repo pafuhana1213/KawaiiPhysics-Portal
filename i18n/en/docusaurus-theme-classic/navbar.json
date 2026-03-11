@@ -7,10 +7,6 @@
     "message": "Docs",
     "description": "Navbar item with label ドキュメント"
   },
-  "item.label.更新情報": {
-    "message": "Updates",
-    "description": "Navbar item with label 更新情報"
-  },
   "item.label.採用実績": {
     "message": "Showcase",
     "description": "Navbar item with label 採用実績"

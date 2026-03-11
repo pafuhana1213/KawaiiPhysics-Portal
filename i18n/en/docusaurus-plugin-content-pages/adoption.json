@@ -11,9 +11,21 @@
     "message": "Used in many amazing projects!",
     "description": "Hero section subtitle"
   },
-  "adoption.callout": {
-    "message": "We can't keep track of all projects, so please let us know if you've adopted KawaiiPhysics! Even if you're not a developer, please tell us if you spot it in a game's license credits.",
-    "description": "Callout text for requesting adoption info"
+  "adoption.callout.line1": {
+    "message": "We can't keep track of all projects, so please let us know if you've adopted KawaiiPhysics.",
+    "description": "First line of callout text"
+  },
+  "adoption.callout.line2": {
+    "message": "Even if you're not a developer, please tell us if you spot it in a game's license credits.",
+    "description": "Second line of callout text"
+  },
+  "adoption.callout.reportGithub": {
+    "message": "Report on GitHub",
+    "description": "Button text for GitHub reporting"
+  },
+  "adoption.callout.reportForm": {
+    "message": "Report via Form",
+    "description": "Button text for form reporting"
   },
   "adoption.note": {
     "message": "* Based on publicly available information. Please let us know if there are any issues with the listing.",

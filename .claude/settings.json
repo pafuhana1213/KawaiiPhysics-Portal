@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "echo '[Hook] File modified: checking syntax...'"
+            "command": "bash -c \"if ! netstat -ano 2>/dev/null | grep -q ':3000.*LISTENING'; then echo '[Preview] Starting dev server...'; cd F:/Github/KawaiiPhysicsDocs && start cmd /c 'npm start'; else echo '[Preview] Dev server already running - hot reload will update.'; fi\""
           }
         ]
       }

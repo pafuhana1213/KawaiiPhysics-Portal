@@ -255,7 +255,7 @@ export default function AdoptionPage(): ReactNode {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                GitHub で報告
+                {translate({id: 'adoption.callout.reportGithub', message: 'GitHub で報告'})}
               </a>
               <a
                 href="https://docs.google.com/forms/d/e/1FAIpQLSch6P1V9F0g2Ff_mD-NliharAEy_1emFGMkKZAXytFaLsQKJg/viewform?usp=send_form"
@@ -263,7 +263,7 @@ export default function AdoptionPage(): ReactNode {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                フォームで報告
+                {translate({id: 'adoption.callout.reportForm', message: 'フォームで報告'})}
               </a>
             </div>
           </div>
