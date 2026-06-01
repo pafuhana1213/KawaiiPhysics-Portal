@@ -15,6 +15,9 @@ export const adoptionData: YearData[] = [
     {
       year: 2026,
       titles: [
+        {name: translate({id: 'adoption.game.yoshi', message: 'ヨッシーとフカシギの図鑑'}), company: 'Good-Feel / Nintendo', videoId: 'Ous3BQj3kRk'},
+        {name: 'NTE: Neverness to Everness', company: 'Hotta Studio / Perfect World Games', videoId: 'GlPM4ip7JZU'},
+        {name: translate({id: 'adoption.game.mongil', message: 'モンギル：STAR DIVE'}), company: 'Netmarble', videoId: 'XP5ox8qitl0'},
         {name: translate({id: 'adoption.game.dq7', message: 'ドラゴンクエストVII Reimagined'}), company: 'SQUARE ENIX', videoId: 'pJJdXusrAzg'},
       ],
     },
@@ -39,7 +42,7 @@ export const adoptionData: YearData[] = [
         {name: translate({id: 'adoption.game.visionsOfMana', message: '聖剣伝説 VISIONS of MANA'}), company: 'SQUARE ENIX', videoId: 'k7MGvDzHJ00'},
         {name: translate({id: 'adoption.game.smt5v', message: '真・女神転生V Vengeance'}), company: 'ATLUS / SEGA', videoId: 'TZaGO8Os_fw'},
         {name: translate({id: 'adoption.game.wutheringWaves', message: '鳴潮 (Wuthering Waves)'}), company: 'KURO GAMES', videoId: 'jeIouRAxR1E'},
-        {name: 'Stellar Blade', company: 'SHIFT UP', videoId: 'SdfD9pDXvow'},
+        {name: 'Stellar Blade', company: 'SHIFT UP / SIE', videoId: 'SdfD9pDXvow'},
         {name: 'SAND LAND', company: 'Bandai Namco Entertainment', videoId: 'mOkfVX-eHIQ'},
         {name: translate({id: 'adoption.game.toraera', message: 'とらえら / あるびぃ'}), company: 'MIXI', videoId: 'GIbbEzX96NQ'},
         {name: translate({id: 'adoption.game.princessPeach', message: 'プリンセスピーチ Showtime!'}), company: 'Nintendo', videoId: 'ZPVuFRzHsFU'},

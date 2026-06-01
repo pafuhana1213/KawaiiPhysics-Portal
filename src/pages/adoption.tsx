@@ -176,6 +176,8 @@ export default function AdoptionPage(): ReactNode {
             </Heading>
             <div className={styles.copyrightsList}>
               <p>© SQUARE ENIX</p>
+              <p>© Netmarble Corp. All Rights Reserved.</p>
+              <p>© Hotta Studio, a Perfect World company. All Rights Reserved.</p>
               <p>©SEGA. All rights reserved.</p>
               <p>©Konami Digital Entertainment</p>
               <p>© SNK CORPORATION ALL RIGHTS RESERVED.</p>
