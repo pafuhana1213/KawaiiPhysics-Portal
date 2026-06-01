@@ -21,3 +21,7 @@ yarn-error.log*
 
 # Claude Code local settings
 .claude/settings.local.json
+
+# Miscellaneous
+misc/
+nul

@@ -108,7 +108,7 @@
     "description": "Link text to see more adoption examples"
   },
   "homepage.version.title": {
-    "message": "Version Info",
+    "message": "Release Info",
     "description": "Version info section title on homepage"
   },
   "homepage.version.latest": {
@@ -258,5 +258,25 @@
   "adoption.copyrights": {
     "message": "Copyright Notices",
     "description": "Copyright section title"
+  },
+  "notFound.title": {
+    "message": "404",
+    "description": "404 page title"
+  },
+  "notFound.subtitle": {
+    "message": "This page ran away!",
+    "description": "404 page subtitle"
+  },
+  "notFound.description": {
+    "message": "The page you're looking for could not be found.",
+    "description": "404 page description"
+  },
+  "notFound.home": {
+    "message": "Back to Home",
+    "description": "404 page home button"
+  },
+  "notFound.docs": {
+    "message": "View Docs",
+    "description": "404 page docs button"
   }
 }

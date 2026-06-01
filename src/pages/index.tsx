@@ -219,7 +219,7 @@ function VersionInfoSection() {
     <section className={styles.versionSection}>
       <div className="container">
         <Heading as="h2" className={styles.sectionTitle}>
-          {translate({id: 'homepage.version.title', message: 'バージョン情報'})}
+          {translate({id: 'homepage.version.title', message: 'リリース情報'})}
         </Heading>
         <div className={styles.versionGrid}>
           <div className={styles.versionCard}>

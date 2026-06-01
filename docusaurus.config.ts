@@ -43,6 +43,24 @@ const config: Config = {
     },
   },
 
+  themes: [
+    [
+      '@easyops-cn/docusaurus-search-local',
+      {
+        hashed: true,
+        language: ['ja', 'en'],
+        indexBlog: true,
+        indexDocs: true,
+        docsRouteBasePath: '/docs',
+        highlightSearchTermsOnTargetPage: true,
+        ignoreFiles: [
+          /\/docs\/source-mapping/,
+          /\/docs\/assets\//,
+        ],
+      },
+    ],
+  ],
+
   presets: [
     [
       'classic',
@@ -76,6 +94,27 @@ const config: Config = {
       attributes: {
         name: 'description',
         content: 'KawaiiPhysics - Unreal Engine向け軽量ボーン物理プラグインのドキュメント。髪・服・アクセサリーに簡単に物理挙動を適用。',
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        property: 'og:type',
+        content: 'website',
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'twitter:card',
+        content: 'summary_large_image',
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'twitter:site',
+        content: '@pafuhana1213',
       },
     },
   ],
@@ -114,11 +153,6 @@ const config: Config = {
           type: 'localeDropdown',
           position: 'right',
         },
-        {
-          href: 'https://github.com/pafuhana1213/KawaiiPhysics',
-          label: 'GitHub',
-          position: 'right',
-        },
       ],
     },
     footer: {
@@ -141,14 +175,6 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
       additionalLanguages: ['cpp', 'json', 'bash'],
     },
-    // Algolia検索は後で設定（デプロイ後に設定）
-    // algolia: {
-    //   appId: 'YOUR_APP_ID',
-    //   apiKey: 'YOUR_SEARCH_API_KEY',
-    //   indexName: 'kawaiiphysics',
-    //   contextualSearch: true,
-    //   searchPagePath: 'search',
-    // },
   } satisfies Preset.ThemeConfig,
 };
 
