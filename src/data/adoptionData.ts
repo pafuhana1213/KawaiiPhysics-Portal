@@ -15,6 +15,7 @@ export const adoptionData: YearData[] = [
     {
       year: 2026,
       titles: [
+        {name: translate({id: 'adoption.game.dqm4', message: 'ドラゴンクエストモンスターズ4 枯れ木の国のビアンカ・フローラ'}), company: 'SQUARE ENIX', videoId: 'd3pGz7nXMxo'},
         {name: translate({id: 'adoption.game.yoshi', message: 'ヨッシーとフカシギの図鑑'}), company: 'Good-Feel / Nintendo', videoId: 'Ous3BQj3kRk'},
         {name: 'NTE: Neverness to Everness', company: 'Hotta Studio / Perfect World Games', videoId: 'GlPM4ip7JZU'},
         {name: translate({id: 'adoption.game.mongil', message: 'モンギル：STAR DIVE'}), company: 'Netmarble', videoId: 'XP5ox8qitl0'},
@@ -24,6 +25,7 @@ export const adoptionData: YearData[] = [
     {
       year: 2025,
       titles: [
+        {name: 'VRホタルイカ DIVE', company: translate({id: 'adoption.company.tarkHotaruika', message: 'TARK / ほたるいかミュージアム'}), videoId: 'SiXpbqfIa6Q'},
         {name: translate({id: 'adoption.game.zenshinMachineGirl', message: 'ゼンシンマシンガール'}), company: "YUKE'S / D3 PUBLISHER", videoId: 'x4BewvaBCmI'},
         {name: 'SILENT HILL f', company: 'KONAMI', videoId: '0OqTeE3y1x0'},
         {name: translate({id: 'adoption.game.sonicRacing', message: 'ソニックレーシング クロスワールド'}), company: 'SEGA', videoId: 'Ks_Uxuhz6nc'},

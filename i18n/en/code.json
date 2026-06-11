@@ -127,6 +127,14 @@
     "message": "DRAGON QUEST VII Reimagined",
     "description": "Game title"
   },
+  "adoption.game.dqm4": {
+    "message": "DRAGON QUEST MONSTERS 4",
+    "description": "Game title"
+  },
+  "adoption.company.tarkHotaruika": {
+    "message": "TARK / Hotaruika Museum",
+    "description": "Company name"
+  },
   "adoption.game.zenshinMachineGirl": {
     "message": "Full Throttle Machine Girl",
     "description": "Game title"
