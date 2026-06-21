@@ -15,10 +15,11 @@ description: "KawaiiPhysics - Unreal Engine向け軽量ボーン物理プラグ�
   <iframe
     width="560"
     height="315"
-    src="https://www.youtube.com/embed/0f-l-SP07Mo"
+    src="https://www.youtube.com/embed/0f-l-SP07Mo?origin=https://pafuhana1213.github.io"
     title="KawaiiPhysics Demo Video"
     frameBorder="0"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    referrerPolicy="strict-origin-when-cross-origin"
     allowFullScreen>
   </iframe>
 </div>

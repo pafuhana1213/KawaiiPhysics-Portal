@@ -1,0 +1,95 @@
+.container {
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+.imageWrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  user-select: none;
+  line-height: 0;
+}
+
+.imageAfter,
+.imageBefore {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+.imageBefore {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Divider line */
+.divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.dividerLine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #25c2a0;
+  transform: translateX(-50%);
+}
+
+.dividerHandle {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  background: #25c2a0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transform: translateX(-50%);
+}
+
+/* Labels */
+.labelBefore,
+.labelAfter {
+  position: absolute;
+  bottom: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.labelBefore {
+  left: 12px;
+}
+
+.labelAfter {
+  right: 12px;
+}
+
+/* Range slider */
+.slider {
+  display: block;
+  width: 100%;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  accent-color: #25c2a0;
+}

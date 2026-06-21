@@ -64,9 +64,10 @@ function HomepageHeader() {
     <header className={clsx('hero', styles.heroBanner)}>
       <div className={styles.videoBackground}>
         <iframe
-          src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1`}
+          src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&origin=${encodeURIComponent(siteConfig.url)}`}
           title="KawaiiPhysics Demo"
           allow="autoplay; encrypted-media"
+          referrerPolicy="strict-origin-when-cross-origin"
           allowFullScreen
           className={styles.videoIframe}
         />

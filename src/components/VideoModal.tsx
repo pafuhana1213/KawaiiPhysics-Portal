@@ -1,4 +1,5 @@
 import {useEffect} from 'react';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './VideoModal.module.css';
 
 interface VideoModalProps {
@@ -9,6 +10,7 @@ interface VideoModalProps {
 }
 
 export default function VideoModal({isOpen, onClose, videoId, title = 'YouTube video'}: VideoModalProps) {
+  const {siteConfig} = useDocusaurusContext();
   useEffect(() => {
     if (!isOpen) return;
     const handleEsc = (e: KeyboardEvent) => {
@@ -30,9 +32,10 @@ export default function VideoModal({isOpen, onClose, videoId, title = 'YouTube v
         <button className={styles.modalClose} onClick={onClose} aria-label="Close">✕</button>
         <div className={styles.modalVideo}>
           <iframe
-            src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&origin=${encodeURIComponent(siteConfig.url)}`}
             title={title}
             allow="autoplay; encrypted-media"
+            referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
           />
         </div>
