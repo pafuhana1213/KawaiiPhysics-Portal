@@ -51,11 +51,23 @@ static void ConvertToKawaiiPhysicsPure(
 
 Collects KawaiiPhysics node references in bulk from an AnimInstance (ABP) or a SkeletalMeshComponent. Can be filtered by GameplayTag.
 
+:::note
+This is a **C++-only helper** — it is not a `UFUNCTION`, so it cannot be called directly from Blueprint (two overloads are provided: an AnimInstance version and a SkeletalMeshComponent version). To access nodes in bulk from Blueprint, use the Component-based functions such as `AddExternalForcesToComponent` / `SetAlphaToComponent`.
+:::
+
 ```cpp
-UFUNCTION(BlueprintCallable, Category = "Kawaii Physics", meta=(BlueprintThreadSafe))
+// Collect from AnimInstance (ABP)
 static bool CollectKawaiiPhysicsNodes(
     TArray<FKawaiiPhysicsReference>& Nodes,
     UAnimInstance* AnimInstance,
+    const FGameplayTagContainer& FilterTags,
+    bool bFilterExactMatch
+);
+
+// Collect from SkeletalMeshComponent
+static bool CollectKawaiiPhysicsNodes(
+    TArray<FKawaiiPhysicsReference>& Nodes,
+    USkeletalMeshComponent* MeshComp,
     const FGameplayTagContainer& FilterTags,
     bool bFilterExactMatch
 );
@@ -318,7 +330,7 @@ static UKawaiiPhysicsLimitsDataAsset* GetLimitsDataAsset(const FKawaiiPhysicsRef
 
 ## Shared Collision
 
-Switches the Source/Target/group tag for shared collision (see [Shared Collision](/docs/features/shared-collision)). Changes are safely re-initialized on the next frame's PreUpdate. Category is `Kawaii Physics|Shared Collision`.
+Switches the Source/Target/group tag for shared collision (see [Shared Collision](/docs/features/shared-collision)). Each setter internally calls `RequestSharedCollisionReinit()`, and changes are re-initialized thread-safely on the next Evaluate (on the worker thread, not via PreUpdate). Category is `Kawaii Physics|Shared Collision`.
 
 ### SetSharedCollisionSource / GetSharedCollisionSource
 

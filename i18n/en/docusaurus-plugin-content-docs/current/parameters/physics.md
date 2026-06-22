@@ -13,11 +13,24 @@ Parameters that control the basic behavior of physics simulation.
 
 ## FKawaiiPhysicsSettings
 
-A struct that defines the basic physics control settings.
+A struct that defines the basic physics control settings. It is assigned to the node via the `PhysicsSettings` property. `Damping` (how easily it sways) and `Stiffness` (how strongly it returns) are the core of the physics behavior — the balance between the two determines the overall "softness." Each member can be modulated by bone-length ratio using the [curves](#curve-control) described later.
+
+```cpp
+USTRUCT(BlueprintType)
+struct KAWAIIPHYSICS_API FKawaiiPhysicsSettings
+{
+    float Damping = 0.1f;               // Damping
+    float Stiffness = 0.05f;            // Stiffness
+    float WorldDampingLocation = 0.8f;  // Suppression of movement reflection
+    float WorldDampingRotation = 0.8f;  // Suppression of rotation reflection
+    float Radius = 3.0f;                // Collision radius
+    float LimitAngle = 0.0f;            // Rotation limit angle
+};
+```
 
 ### Damping
 
-**Damping Coefficient** - Controls the intensity of swaying. Smaller values reflect more acceleration in physics behavior.
+**Damping Coefficient** - Controls the intensity of swaying. **Smaller** values reflect more acceleration in the physics behavior, so it sways more. Larger values make the motion duller and heavier.
 
 | Property | Value |
 |----------|-------|
@@ -28,7 +41,7 @@ A struct that defines the basic physics control settings.
 
 ### Stiffness
 
-**Stiffness** - Higher values maintain the original shape more.
+**Stiffness** - **Higher** values maintain the original shape (the animated pose) more strongly and return to it quickly. Lower values let it sway more freely.
 
 | Property | Value |
 |----------|-------|
@@ -39,7 +52,11 @@ A struct that defines the basic physics control settings.
 
 ### WorldDampingLocation
 
-**Reflection rate of Skeletal Mesh Component movement in world coordinates**
+**Suppression of component movement reflection** - Controls how much of the Skeletal Mesh Component's world-space **movement** is reflected into the sway.
+
+- `0` = movement fully reflected (maximum sway)
+- `1` = follows the component exactly (not reflected into sway)
+- Actual reflection factor = `1 - WorldDampingLocation`
 
 | Property | Value |
 |----------|-------|
@@ -50,7 +67,7 @@ A struct that defines the basic physics control settings.
 
 ### WorldDampingRotation
 
-**Reflection rate of Skeletal Mesh Component rotation in world coordinates**
+**Suppression of component rotation reflection** - The rotation counterpart of the above. Controls the Skeletal Mesh Component's world-space **rotation** in the same way (actual reflection factor = `1 - WorldDampingRotation`).
 
 | Property | Value |
 |----------|-------|
@@ -59,25 +76,30 @@ A struct that defines the basic physics control settings.
 | Range | 0.0 or higher |
 | Category | KawaiiPhysics |
 
+:::note
+Because they are named "Damping (suppression)," `WorldDampingLocation` / `WorldDampingRotation` are counter-intuitive: **higher values mean less sway** (`1` follows the component exactly = no sway). Set them lower when you want the hair/cloth to trail behind character movement and rotation.
+:::
+
 ### Radius
 
-**Collision radius for each bone**
+**Collision radius for each bone** - The radius of the collision sphere each bone carries. Used in the push-out calculation against colliders (SphericalLimit, etc.). Its editor display name is **Collision Radius**.
 
 | Property | Value |
 |----------|-------|
 | Type | float |
 | Default | 3.0 |
 | Range | 0.0 or higher |
+| Display Name | Collision Radius |
 | Category | KawaiiPhysics |
 
 ### LimitAngle
 
-**Rotation limit by physics behavior** - Properly setting this can suppress erratic behavior.
+**Rotation limit angle** - The maximum rotation angle (in degrees) per step caused by the physics behavior. `0` means unlimited. Setting it appropriately suppresses erratic, jittery behavior.
 
 | Property | Value |
 |----------|-------|
 | Type | float |
-| Default | 0.0 |
+| Default | 0.0 (unlimited) |
 | Range | 0.0 or higher |
 | Category | KawaiiPhysics |
 

@@ -13,11 +13,24 @@ title: "物理パラメータ"
 
 ## FKawaiiPhysicsSettings
 
-物理制御の基本設定を定義する構造体です。
+物理制御の基本設定を定義する構造体です。`PhysicsSettings` プロパティとしてノードに設定します。`Damping`（揺れやすさ）と `Stiffness`（戻りやすさ）が物理挙動の中心で、この2つのバランスで全体の「柔らかさ」が決まります。各メンバーは後述の[カーブ](#カーブによる制御)でボーン長比に応じて補正できます。
+
+```cpp
+USTRUCT(BlueprintType)
+struct KAWAIIPHYSICS_API FKawaiiPhysicsSettings
+{
+    float Damping = 0.1f;               // 減衰度
+    float Stiffness = 0.05f;            // 剛性度
+    float WorldDampingLocation = 0.8f;  // 移動の反映抑制
+    float WorldDampingRotation = 0.8f;  // 回転の反映抑制
+    float Radius = 3.0f;                // コリジョン半径
+    float LimitAngle = 0.0f;            // 回転制限角度
+};
+```
 
 ### Damping
 
-**減衰係数** - 揺れの強さを制御します。値が小さいほど、加速度を物理挙動に反映します。
+**減衰度** - 揺れの強さを制御します。値が**小さいほど**加速度が物理挙動に強く反映され、よく揺れます。大きくすると動きが鈍く・重くなります。
 
 | プロパティ | 値 |
 |-----------|-----|
@@ -28,7 +41,7 @@ title: "物理パラメータ"
 
 ### Stiffness
 
-**剛性** - 値が大きいほど、元の形状を維持します。
+**剛性度** - 値が**大きいほど**元の形状（アニメーションのポーズ）を強く維持し、すぐ元に戻ろうとします。小さくするとより自由に揺れます。
 
 | プロパティ | 値 |
 |-----------|-----|
@@ -39,7 +52,11 @@ title: "物理パラメータ"
 
 ### WorldDampingLocation
 
-**ワールド座標系におけるSkeletal Mesh Componentの移動量の反映度**
+**コンポーネント移動の反映抑制** - ワールド座標系における Skeletal Mesh Component の**移動量**を、どれだけ揺れに反映するかを制御します。
+
+- `0` = 移動量をフル反映（最大に揺れる）
+- `1` = コンポーネントに完全追従（揺れに反映しない）
+- 実際の反映率 = `1 - WorldDampingLocation`
 
 | プロパティ | 値 |
 |-----------|-----|
@@ -50,7 +67,7 @@ title: "物理パラメータ"
 
 ### WorldDampingRotation
 
-**ワールド座標系におけるSkeletal Mesh Componentの回転量の反映度**
+**コンポーネント回転の反映抑制** - 上記の回転版です。Skeletal Mesh Component の**回転量**について同様に制御します（実際の反映率 = `1 - WorldDampingRotation`）。
 
 | プロパティ | 値 |
 |-----------|-----|
@@ -59,25 +76,30 @@ title: "物理パラメータ"
 | 範囲 | 0.0 以上 |
 | カテゴリ | KawaiiPhysics |
 
+:::note
+`WorldDampingLocation` / `WorldDampingRotation` は名前が "Damping（抑制）" のため直感に反しますが、**値が大きいほど揺れは小さく**なります（`1` でコンポーネントに完全追従＝揺れなし）。キャラクターの移動・回転でなびかせたい場合は小さめの値に設定してください。
+:::
+
 ### Radius
 
-**各ボーンのコリジョン半径**
+**各ボーンのコリジョン半径** - 各ボーンが持つ衝突判定用の球の半径です。各種コリジョン（SphericalLimit など）との押し出し計算に使われます。エディタ上の表示名は **Collision Radius** です。
 
 | プロパティ | 値 |
 |-----------|-----|
 | 型 | float |
 | デフォルト | 3.0 |
 | 範囲 | 0.0 以上 |
+| 表示名 | Collision Radius |
 | カテゴリ | KawaiiPhysics |
 
 ### LimitAngle
 
-**物理挙動による回転制限** - 適切に設定することで荒ぶりを抑制できます。
+**回転制限角度** - 物理挙動による1ステップあたりの回転角度の上限（度）。`0` で無制限です。適切に設定することで荒ぶり（過度な振動）を抑制できます。
 
 | プロパティ | 値 |
 |-----------|-----|
 | 型 | float |
-| デフォルト | 0.0 |
+| デフォルト | 0.0（無制限） |
 | 範囲 | 0.0 以上 |
 | カテゴリ | KawaiiPhysics |
 
@@ -127,16 +149,6 @@ SimulationSpaceがBaseBoneSpaceの場合のみ有効です。
 |-----------|-----|
 | 型 | int32 |
 | デフォルト | 60 |
-| カテゴリ | Physics Settings |
-
-### OverrideTargetFramerate
-
-**フレームレートオーバーライド** - TargetFramerateを使用するかどうかのフラグ。
-
-| プロパティ | 値 |
-|-----------|-----|
-| 型 | bool |
-| デフォルト | false |
 | カテゴリ | Physics Settings |
 
 ### TeleportDistanceThreshold

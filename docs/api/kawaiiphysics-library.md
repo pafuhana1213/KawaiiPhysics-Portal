@@ -51,11 +51,23 @@ static void ConvertToKawaiiPhysicsPure(
 
 AnimInstance（ABP）または SkeletalMeshComponent から、KawaiiPhysics ノード参照をまとめて取得します。GameplayTag でフィルタリングできます。
 
+:::note
+この関数は **C++専用ヘルパー** であり、`UFUNCTION` ではないため Blueprint からは直接呼び出せません（AnimInstance 版と SkeletalMeshComponent 版の2オーバーロードを提供）。Blueprint からノードへ一括アクセスする場合は、`AddExternalForcesToComponent` / `SetAlphaToComponent` など Component を受け取る関数を使用してください。
+:::
+
 ```cpp
-UFUNCTION(BlueprintCallable, Category = "Kawaii Physics", meta=(BlueprintThreadSafe))
+// AnimInstance(ABP) から収集
 static bool CollectKawaiiPhysicsNodes(
     TArray<FKawaiiPhysicsReference>& Nodes,
     UAnimInstance* AnimInstance,
+    const FGameplayTagContainer& FilterTags,
+    bool bFilterExactMatch
+);
+
+// SkeletalMeshComponent から収集
+static bool CollectKawaiiPhysicsNodes(
+    TArray<FKawaiiPhysicsReference>& Nodes,
+    USkeletalMeshComponent* MeshComp,
     const FGameplayTagContainer& FilterTags,
     bool bFilterExactMatch
 );
@@ -318,7 +330,7 @@ static UKawaiiPhysicsLimitsDataAsset* GetLimitsDataAsset(const FKawaiiPhysicsRef
 
 ## Shared Collision
 
-共有コリジョン（[Shared Collision](/docs/features/shared-collision)）の Source/Target/グループタグを切り替えます。変更は次フレームの PreUpdate で安全に再初期化されます。カテゴリは `Kawaii Physics|Shared Collision`。
+共有コリジョン（[Shared Collision](/docs/features/shared-collision)）の Source/Target/グループタグを切り替えます。各 Setter は内部で `RequestSharedCollisionReinit()` を呼び、変更は次回の Evaluate（ワーカースレッド）でスレッドセーフに再初期化されます（PreUpdate を介しません）。カテゴリは `Kawaii Physics|Shared Collision`。
 
 ### SetSharedCollisionSource / GetSharedCollisionSource
 

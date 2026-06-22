@@ -18,44 +18,46 @@ USTRUCT(BlueprintType)
 struct KAWAIIPHYSICS_API FAnimNode_KawaiiPhysics : public FAnimNode_SkeletalControlBase
 ```
 
-## Bone Settings
+## Bones (Bone Settings)
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
-| RootBone | FBoneReference | - | Root bone for control target |
-| ExcludeBones | TArray\<FBoneReference\> | - | Bones to exclude from control |
+| RootBone | FBoneReference | - | Root bone to control (descendant bones are included) |
+| ExcludeBones | TArray\<FBoneReference\> | - | Bones to exclude from control (the bone and its descendants) |
 | AdditionalRootBones | TArray\<FKawaiiPhysicsRootBoneSetting\> | - | Additional root bone settings |
-| DummyBoneLength | float | 0.0 | Dummy bone length |
-| BoneSubdivisionCount | int32 | 0 | Inter-bone dummy count (0-10, 0 to disable) |
-| bBoneSubdivisionCollisionOnly | bool | true | Use inter-bone dummies for collision only |
-| bBoneSubdivisionDensifyByRadius | bool | false | Add dummies based on radius |
-| BoneConstraintSubdivisionCount | int32 | 0 | Horizontal bridge dummy count (0-10, 0 to disable) |
-| BoneConstraintSubdivisionFeedbackScale | float | 1.0 | Bridge feedback strength (0-2) |
-| BoneForwardAxis | EBoneForwardAxis | X_Positive | Bone forward axis |
+| DummyBoneLength | float | 0.0 | Length of the tip dummy bone that improves end-bone rotation (0 to disable, ClampMin=0) |
+| BoneForwardAxis | [EBoneForwardAxis](#eboneforwardaxis) | X_Positive | Bone forward axis (affects dummy bone placement) |
+| ModifyBones | TArray\<FKawaiiPhysicsModifyBone\> | - | (Runtime / Transient) cache of the physics-controlled bones |
+
+### Bones \| Bone Subdivision
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| BoneSubdivisionCount | int32 | 0 | Inter-bone dummy count (ClampMin=0, ClampMax=10, 0 to disable) |
+| bBoneSubdivisionCollisionOnly | bool | true | Exclude inter-bone dummies from velocity integration (collision/constraint only) |
+| bBoneSubdivisionDensifyByRadius | bool | false | Add extra dummies based on radius to fill collision-sphere gaps |
+| BoneConstraintSubdivisionCount | int32 | 0 | Collision-proxy dummy count along horizontal BoneConstraints (ClampMin=0, ClampMax=10, 0 to disable) |
+| BoneConstraintSubdivisionFeedbackScale | float | 1.0 | Strength of transferring bridge-dummy collision displacement to endpoint bones (ClampMin=0.0, ClampMax=2.0) |
 
 ## Physics Settings
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
-| PhysicsSettings | FKawaiiPhysicsSettings | - | Basic physics control settings |
-| SimulationSpace | EKawaiiPhysicsSimulationSpace | ComponentSpace | Simulation space |
-| SimulationBaseBone | FBoneReference | - | Base bone for BaseBone space |
-| TargetFramerate | int32 | 60 | Target framerate |
-| OverrideTargetFramerate | bool | false | Override framerate |
-| TeleportDistanceThreshold | float | 300.0 | Teleport distance threshold |
-| TeleportRotationThreshold | float | 10.0 | Teleport rotation threshold |
-| PlanarConstraint | EPlanarConstraint | None | Planar constraint |
-| SkelCompMoveScale | FVector | (1, 1, 1) | Component move scale |
-
-## Warm-up Settings
-
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| WarmUpFrames | int32 | 0 | Warm-up frame count |
+| PhysicsSettings | [FKawaiiPhysicsSettings](#fkawaiiphysicssettings) | - | Basic physics control settings (Damping / Stiffness / Radius, etc.) |
+| SimulationSpace | [EKawaiiPhysicsSimulationSpace](#ekawaiiphysicssimulationspace) | ComponentSpace | Simulation space |
+| SimulationBaseBone | FBoneReference | - | Reference bone when `BaseBoneSpace` is selected |
+| TargetFramerate | int32 | 60 | Target framerate for physics stepping (ClampMin=1) |
+| TeleportDistanceThreshold | float | 300.0 | Movement beyond this distance is treated as a teleport |
+| TeleportRotationThreshold | float | 10.0 | Rotation beyond this angle is treated as a teleport |
+| PlanarConstraint | [EPlanarConstraint](#eplanarconstraint) | None | Constrains each bone onto a plane |
+| SkelCompMoveScale | FVector | (1, 1, 1) | Scale applied to component movement before reflecting in physics |
+| WarmUpFrames | int32 | 0 | Warm-up frame count (when bNeedWarmUp is enabled) |
 | bNeedWarmUp | bool | false | Enable warm-up |
-| bUseWarmUpWhenResetDynamics | bool | true | Warm-up on reset |
+| bUseWarmUpWhenResetDynamics | bool | true | Perform warm-up on ResetDynamics |
+| bUpdatePhysicsSettingsInGame | bool | true | Update per-bone physics params each frame (AdvancedDisplay; disable for minor perf gain) |
+| ResetBoneTransformWhenBoneNotFound | bool | false | Reset transform when a controlled bone is not found (AdvancedDisplay) |
 
-## Curves
+### Physics Settings \| Curves
 
 | Property | Type | Description |
 |----------|------|-------------|
@@ -66,7 +68,9 @@ struct KAWAIIPHYSICS_API FAnimNode_KawaiiPhysics : public FAnimNode_SkeletalCont
 | RadiusCurveData | FRuntimeFloatCurve | Radius curve |
 | LimitAngleCurveData | FRuntimeFloatCurve | Angle limit curve |
 
-## Collision (Limits)
+All are multiplied into their parameter by the bone-length ratio (0.0–1.0) from the RootBone (AdvancedDisplay).
+
+## Limits (Collision)
 
 | Property | Type | Description |
 |----------|------|-------------|
@@ -74,10 +78,14 @@ struct KAWAIIPHYSICS_API FAnimNode_KawaiiPhysics : public FAnimNode_SkeletalCont
 | CapsuleLimits | TArray\<FCapsuleLimit\> | Capsule collision |
 | BoxLimits | TArray\<FBoxLimit\> | Box collision |
 | PlanarLimits | TArray\<FPlanarLimit\> | Plane collision |
-| LimitsDataAsset | UKawaiiPhysicsLimitsDataAsset* | Collision Data Asset |
-| PhysicsAssetForLimits | UPhysicsAsset* | Physics Asset for collision |
+| LimitsDataAsset | UKawaiiPhysicsLimitsDataAsset* | Collision Data Asset (shareable) |
+| PhysicsAssetForLimits | UPhysicsAsset* | Physics Asset used as a collision source |
 
-## Shared Collision
+:::note
+`SphericalLimitsData` / `CapsuleLimitsData` / `BoxLimitsData` / `PlanarLimitsData` are **read-only (Transient / VisibleAnywhere)** arrays that preview the collisions imported from `LimitsDataAsset` or `PhysicsAssetForLimits`. They cannot be edited directly.
+:::
+
+### Limits \| Shared Collision
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
@@ -85,40 +93,18 @@ struct KAWAIIPHYSICS_API FAnimNode_KawaiiPhysics : public FAnimNode_SkeletalCont
 | bUseSharedCollision | bool | false | Use shared collision (Target) |
 | SharedCollisionGroupTag | FGameplayTag | - | Group tag identifying the shared set |
 
-## Bone Constraint
+### Limits \| Bone Constraint
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
-| BoneConstraintGlobalComplianceType | EXPBDComplianceType | Leather | Compliance type |
+| BoneConstraintGlobalComplianceType | [EXPBDComplianceType](#expbdcompliancetype) | Leather | Compliance type |
 | BoneConstraintIterationCountBeforeCollision | int32 | 1 | Pre-collision iteration count |
 | BoneConstraintIterationCountAfterCollision | int32 | 1 | Post-collision iteration count |
 | bAutoAddChildDummyBoneConstraint | bool | true | Auto-add dummy bone |
 | BoneConstraints | TArray\<FModifyBoneConstraint\> | - | Bone constraint list |
 | BoneConstraintsDataAsset | UKawaiiPhysicsBoneConstraintsDataAsset* | - | Constraints Data Asset |
 
-## Sync Bone
-
-| Property | Type | Description |
-|----------|------|-------------|
-| SyncBones | TArray\<FKawaiiPhysicsSyncBone\> | Sync bone list |
-
-## External Forces
-
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| Gravity | FVector | ZeroVector | Gravity vector |
-| bUseLegacyGravity | bool | false | Legacy gravity method |
-| bUseDefaultGravityZProjectSetting | bool | false | Use project setting gravity |
-| bUseWorldSpaceGravity | bool | true | World space gravity |
-| bEnableWind | bool | false | Enable wind |
-| WindScale | float | 1.0 | Wind scale |
-| WindDirectionNoiseAngle | float | 0.0 | Wind direction noise (degrees) |
-| SimpleExternalForce | FVector | ZeroVector | Simple external force |
-| bUseWorldSpaceSimpleExternalForce | bool | true | World space external force |
-| ExternalForces | TArray\<FInstancedStruct\> | - | External force presets |
-| CustomExternalForces | TArray\<UKawaiiPhysics_CustomExternalForce*\> | - | Custom external forces |
-
-## World Collision
+### Limits \| World Collision
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
@@ -129,18 +115,44 @@ struct KAWAIIPHYSICS_API FAnimNode_KawaiiPhysics : public FAnimNode_SkeletalCont
 | IgnoreBones | TArray\<FBoneReference\> | - | Ignore bones list |
 | IgnoreBoneNamePrefix | TArray\<FName\> | - | Ignore bone name prefix |
 
+## Force (External Forces)
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| Gravity | FVector | ZeroVector | Gravity vector |
+| bUseLegacyGravity | bool | false | Legacy gravity method |
+| bUseDefaultGravityZProjectSetting | bool | false | Use project setting gravity |
+| bUseWorldSpaceGravity | bool | true | World space gravity |
+| bEnableWind | bool | false | Enable wind |
+| WindScale | float | 1.0 | Wind scale |
+| WindDirectionNoiseAngle | float | 0.0 | Wind direction noise (degrees) |
+
+### Force \| External Force
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| SimpleExternalForce | FVector | ZeroVector | Simple external force |
+| bUseWorldSpaceSimpleExternalForce | bool | true | World space external force |
+| ExternalForces | TArray\<FInstancedStruct\> | - | External force presets (Instanced Struct, extensible in C++) |
+| CustomExternalForces | TArray\<UKawaiiPhysics_CustomExternalForce*\> | - | BP/C++ object-based external force presets (**experimental**) |
+
+### Force \| Sync Bone
+
+| Property | Type | Description |
+|----------|------|-------------|
+| SyncBones | TArray\<FKawaiiPhysicsSyncBone\> | Sync bone list |
+
 ## Tag
 
 | Property | Type | Description |
 |----------|------|-------------|
 | KawaiiPhysicsTag | FGameplayTag | Filtering tag |
 
-## Runtime Data
+## KawaiiPhysics (Runtime)
 
 | Property | Type | Description |
 |----------|------|-------------|
-| ModifyBones | TArray\<FKawaiiPhysicsModifyBone\> | Physics-controlled bones |
-| DeltaTime | float | Frame delta time |
+| DeltaTime | float | Frame delta time (BlueprintReadOnly) |
 
 ## Key Methods
 
@@ -187,13 +199,59 @@ virtual void ResetDynamics(ETeleportType InTeleportType) override;
 
 Physics state reset. Used for teleportation, etc.
 
-### PreUpdate
+### OnInitializeAnimInstance
 
 ```cpp
-virtual void PreUpdate(const UAnimInstance* InAnimInstance) override;
+virtual bool NeedsOnInitializeAnimInstance() const override { return true; }
+virtual void OnInitializeAnimInstance(
+    const FAnimInstanceProxy* InProxy,
+    const UAnimInstance* InAnimInstance
+) override;
 ```
 
-Pre-update processing. Retrieves scene information, etc.
+Called once on the GameThread. Collects warning-log identifier names and resolves the editing state.
+
+:::note
+The `PreUpdate` override present in older versions has been removed. To avoid per-frame GameThread work, initialization logic was consolidated into `OnInitializeAnimInstance` (called once), and shared-collision re-initialization now happens inside `EvaluateSkeletalControl_AnyThread` on the worker thread.
+:::
+
+### IsValidToEvaluate
+
+```cpp
+virtual bool IsValidToEvaluate(
+    const USkeleton* Skeleton,
+    const FBoneContainer& RequiredBones
+) override;
+```
+
+Determines whether the node can be evaluated.
+
+### GatherDebugData
+
+```cpp
+virtual void GatherDebugData(FNodeDebugData& DebugData) override;
+```
+
+Collects debug information.
+
+### NeedsDynamicReset
+
+```cpp
+virtual bool NeedsDynamicReset() const override { return true; }
+```
+
+Always returns `true` so that `ResetDynamics` (teleport handling) is called.
+
+## Runtime Re-initialization
+
+### RequestModifyBonesReinit / RequestSharedCollisionReinit
+
+```cpp
+void RequestModifyBonesReinit();      // Rebuild the bone chain on the next Evaluate
+void RequestSharedCollisionReinit();  // Re-initialize shared collision on the next Evaluate
+```
+
+Schedules a safe re-initialization when you change settings at runtime that affect topology or collision configuration (sets a flag, runs on the next Evaluate). Called internally by the setters of [UKawaiiPhysicsLibrary](/docs/api/kawaiiphysics-library).
 
 ## Coordinate Transform Helpers
 
@@ -219,7 +277,69 @@ FTransform ConvertSimulationSpaceTransform(
 ) const;
 ```
 
-Converts Transform between simulation spaces.
+Converts Transform between simulation spaces. Per-type variants are available:
+
+```cpp
+FVector ConvertSimulationSpaceVector(...) const;     // Convert a direction vector
+FVector ConvertSimulationSpaceLocation(...) const;   // Convert a position
+FQuat   ConvertSimulationSpaceRotation(...) const;   // Convert a rotation
+void    ConvertSimulationSpace(FComponentSpacePoseContext& Output,
+            EKawaiiPhysicsSimulationSpace From, EKawaiiPhysicsSimulationSpace To); // Convert all bones at once
+```
+
+## Type Reference (Enum / Struct)
+
+Definitions of the key enums and structs referenced by the properties.
+
+### FKawaiiPhysicsSettings
+
+The core physics settings struct (`PhysicsSettings` property). The balance between `Damping` (how easily it sways) and `Stiffness` (how strongly it returns) determines the overall softness. Each member can be modulated by bone-length ratio via curves (`DampingCurveData`, etc.).
+
+| Member | Type | Default | Range | Description |
+|--------|------|---------|-------|-------------|
+| Damping | float | 0.1 | ≥ 0 | Damping; **smaller** values reflect more acceleration, so it sways more |
+| Stiffness | float | 0.05 | ≥ 0 | Stiffness; **larger** values maintain the original (animated) pose more strongly |
+| WorldDampingLocation | float | 0.8 | ≥ 0 | Suppresses reflection of component **movement**. `0` = full reflection (max sway) / `1` = follow (no sway). Reflection = `1 - value` |
+| WorldDampingRotation | float | 0.8 | ≥ 0 | Suppresses reflection of component **rotation** (same as above; reflection = `1 - value`) |
+| Radius | float | 3.0 | ≥ 0 | Collision radius of each bone (editor display name: Collision Radius) |
+| LimitAngle | float | 0.0 | ≥ 0 | Max rotation angle (degrees) per step from physics. `0` = unlimited; helps suppress jitter |
+
+:::note
+Contrary to their names, **higher** `WorldDampingLocation` / `WorldDampingRotation` values mean **less** sway (`1` follows the component exactly = no sway).
+:::
+
+For detailed explanations and diagrams of each member, see [Physics Parameters](/docs/parameters/physics).
+
+### EKawaiiPhysicsSimulationSpace
+
+| Value | Description |
+|-------|-------------|
+| ComponentSpace | Relative to the skeletal mesh component (default) |
+| WorldSpace | World-based; avoids issues from sudden root-bone movement |
+| BaseBoneSpace | Relative to a reference bone (`SimulationBaseBone`) |
+
+### EPlanarConstraint
+
+| Value | Description |
+|-------|-------------|
+| None | No constraint (default) |
+| X | Constrain to the X-axis plane |
+| Y | Constrain to the Y-axis plane |
+| Z | Constrain to the Z-axis plane |
+
+### EBoneForwardAxis
+
+`X_Positive` (default) / `X_Negative` / `Y_Positive` / `Y_Negative` / `Z_Positive` / `Z_Negative`
+
+### EXPBDComplianceType
+
+Stiffness material type for Bone Constraints (`BoneConstraintGlobalComplianceType`).
+
+`Concrete` / `Wood` / `Leather` (default) / `Tendon` / `Rubber` / `Muscle` / `Fat`
+
+:::tip
+For member details of collision shapes (`FSphericalLimit`, etc.), Sync Bone (`FKawaiiPhysicsSyncBone`), and Bone Constraint (`FModifyBoneConstraint`), see the feature-specific pages.
+:::
 
 ## Usage Example
 
