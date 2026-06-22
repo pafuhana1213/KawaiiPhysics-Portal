@@ -2,8 +2,17 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
+// サイトURL（OG画像・構造化データの絶対URL生成に使用）
+const SITE_URL = 'https://pafuhana1213.github.io';
+const BASE_URL = '/KawaiiPhysics-Portal/';
+const SITE_TITLE = 'KawaiiPhysics ポータルサイト';
+const SITE_DESCRIPTION =
+  'KawaiiPhysics - Unreal Engine向け軽量ボーン物理プラグインのドキュメント。髪・服・アクセサリーに簡単に物理挙動を適用。';
+const SOCIAL_CARD = `${SITE_URL}${BASE_URL}img/social-card.jpg`;
+const SITE_LOGO = `${SITE_URL}${BASE_URL}img/logo.png`;
+
 const config: Config = {
-  title: 'KawaiiPhysics',
+  title: SITE_TITLE,
   tagline: 'Simple bone physics for Unreal Engine',
   favicon: 'img/logo.png',
 
@@ -12,8 +21,8 @@ const config: Config = {
   },
 
   // GitHub Pages URL
-  url: 'https://pafuhana1213.github.io',
-  baseUrl: '/KawaiiPhysics-Portal/',
+  url: SITE_URL,
+  baseUrl: BASE_URL,
 
   // GitHub pages deployment config
   organizationName: 'pafuhana1213',
@@ -93,7 +102,7 @@ const config: Config = {
       tagName: 'meta',
       attributes: {
         name: 'description',
-        content: 'KawaiiPhysics - Unreal Engine向け軽量ボーン物理プラグインのドキュメント。髪・服・アクセサリーに簡単に物理挙動を適用。',
+        content: SITE_DESCRIPTION,
       },
     },
     {
@@ -101,6 +110,43 @@ const config: Config = {
       attributes: {
         property: 'og:type',
         content: 'website',
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        property: 'og:site_name',
+        content: SITE_TITLE,
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        property: 'og:url',
+        content: `${SITE_URL}${BASE_URL}`,
+      },
+    },
+    // OG画像の寸法・alt（og:image 本体は themeConfig.image が自動生成）
+    // 寸法を明示するとGoogle/SNSがサムネイルを認識しやすくなる
+    {
+      tagName: 'meta',
+      attributes: {
+        property: 'og:image:width',
+        content: '1200',
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        property: 'og:image:height',
+        content: '630',
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        property: 'og:image:alt',
+        content: SITE_TITLE,
       },
     },
     {
@@ -116,6 +162,38 @@ const config: Config = {
         name: 'twitter:site',
         content: '@pafuhana1213',
       },
+    },
+    // 構造化データ（Google検索のサムネイル・リッチリザルト用）
+    {
+      tagName: 'script',
+      attributes: {
+        type: 'application/ld+json',
+      },
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: SITE_TITLE,
+        alternateName: 'KawaiiPhysics',
+        url: `${SITE_URL}${BASE_URL}`,
+        description: SITE_DESCRIPTION,
+        inLanguage: 'ja',
+        image: {
+          '@type': 'ImageObject',
+          url: SOCIAL_CARD,
+          width: 1200,
+          height: 630,
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'pafuhana1213',
+          logo: {
+            '@type': 'ImageObject',
+            url: SITE_LOGO,
+            width: 256,
+            height: 256,
+          },
+        },
+      }),
     },
   ],
 

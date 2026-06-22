@@ -296,7 +296,6 @@ function VersionInfoSection() {
 export default function Home(): ReactNode {
   return (
     <Layout
-      title="KawaiiPhysics Portal"
       description={translate({id: 'homepage.description', message: 'Unreal Engine向け軽量ボーン物理プラグイン KawaiiPhysics のドキュメント'})}>
       <HomepageHeader />
       <main>
