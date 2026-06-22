@@ -136,12 +136,40 @@ const featureList: FeatureItem[] = [
 ];
 
 function HomepageFeatures() {
+  const introVideoId = 't6ihqMIdWWg';
+  const introTitle = translate({id: 'homepage.introVideo.title', message: 'KawaiiPhysics 紹介動画'});
+  const [showIntro, setShowIntro] = useState(false);
+
   return (
     <section className={styles.features}>
       <div className="container">
         <Heading as="h2" className={styles.sectionTitle}>
           {translate({id: 'homepage.features.title', message: '主な特徴'})}
         </Heading>
+        <div
+          className={styles.introVideo}
+          role="button"
+          tabIndex={0}
+          aria-label={introTitle}
+          onClick={() => setShowIntro(true)}
+          onKeyDown={e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              setShowIntro(true);
+            }
+          }}
+        >
+          <div className={styles.introVideoThumbnail}>
+            <img
+              src={`https://img.youtube.com/vi/${introVideoId}/maxresdefault.jpg`}
+              alt={introTitle}
+              loading="lazy"
+            />
+            <div className={styles.introVideoPlayButton}>
+              <YouTubePlayButton />
+            </div>
+          </div>
+        </div>
         <div className={styles.featureGrid}>
           {featureList.map((feature, idx) => (
             <div key={idx} className={styles.featureCard}>
@@ -151,6 +179,7 @@ function HomepageFeatures() {
           ))}
         </div>
       </div>
+      <VideoModal isOpen={showIntro} onClose={() => setShowIntro(false)} videoId={introVideoId} title={introTitle} />
     </section>
   );
 }

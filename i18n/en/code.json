@@ -99,6 +99,10 @@
     "message": "Key Features",
     "description": "Features section title on homepage"
   },
+  "homepage.introVideo.title": {
+    "message": "KawaiiPhysics Introduction Video",
+    "description": "Title attribute for the intro video iframe on homepage"
+  },
   "homepage.adoption.title": {
     "message": "Adopted By",
     "description": "Adoption section title on homepage"
