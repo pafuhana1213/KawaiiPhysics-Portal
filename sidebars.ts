@@ -49,6 +49,7 @@ const sidebars: SidebarsConfig = {
         'advanced/custom-gravity',
         'advanced/runtime-control',
         'advanced/console-variables',
+        'advanced/project-settings',
       ],
     },
     {

@@ -19,7 +19,7 @@ Integration error from gravity in particular is strongly affected by the frame r
 
 ## Setup
 
-This is a project-wide setting that you can change under **Project Settings > Plugins > Kawaii Physics**.
+This is a project-wide setting that you can change under **Project Settings > Plugins > Kawaii Physics** (see also [Project Settings](/docs/advanced/project-settings)).
 
 <!-- IMAGE_NEEDED: The Project Settings > Plugins > Kawaii Physics settings screen -->
 
@@ -91,6 +91,7 @@ Setting `Target Framerate` higher than necessary increases the substep count and
 
 ## Related Pages
 
+- [Project Settings](/docs/advanced/project-settings)
 - [Performance Optimization](/docs/advanced/performance)
 - [Physics Parameters](/docs/parameters/physics)
 - [Debugging](/docs/advanced/debugging)

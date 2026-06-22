@@ -115,7 +115,7 @@ In the editor's debug drawing, bone types are color-coded.
 ## Performance Notes
 
 :::warning
-The more dummy bones there are, the higher the cost of collision and constraints. If too many are generated, a warning log is output (the thresholds can be adjusted under **Project Settings > Plugins > Kawaii Physics** with `Inter-Bone Dummy Warning Threshold` (default 100) / `Bridge Dummy Warning Threshold` (default 200); 0 disables them).
+The more dummy bones there are, the higher the cost of collision and constraints. If too many are generated, a warning log is output (the thresholds can be adjusted under **Project Settings > Plugins > Kawaii Physics** with `Inter-Bone Dummy Warning Threshold` (default 100) / `Bridge Dummy Warning Threshold` (default 200); 0 disables them. See [Project Settings](/docs/advanced/project-settings#performance-warnings) for details).
 
 First try `BoneSubdivisionCount` from a small value (1 to 2), and enable `bBoneSubdivisionDensifyByRadius` as needed.
 :::
@@ -139,3 +139,4 @@ For details, see [KawaiiPhysics Library](/docs/api/kawaiiphysics-library).
 - [Sync Bone](/docs/features/sync-bone)
 - [Limit Parameters](/docs/parameters/limits)
 - [Performance Optimization](/docs/advanced/performance)
+- [Project Settings](/docs/advanced/project-settings)

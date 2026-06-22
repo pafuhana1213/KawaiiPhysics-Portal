@@ -19,7 +19,7 @@ v1.21.0で追加。**デフォルトで有効（ON）**です。
 
 ## 設定方法
 
-プロジェクト全体の設定として、**Project Settings > Plugins > Kawaii Physics** から変更できます。
+プロジェクト全体の設定として、**Project Settings > Plugins > Kawaii Physics** から変更できます（[プロジェクト設定](/docs/advanced/project-settings) も参照）。
 
 <!-- IMAGE_NEEDED: Project Settings > Plugins > Kawaii Physics の設定画面 -->
 
@@ -91,6 +91,7 @@ stat Anim
 
 ## 関連ページ
 
+- [プロジェクト設定](/docs/advanced/project-settings)
 - [パフォーマンス最適化](/docs/advanced/performance)
 - [物理パラメータ](/docs/parameters/physics)
 - [デバッグ](/docs/advanced/debugging)

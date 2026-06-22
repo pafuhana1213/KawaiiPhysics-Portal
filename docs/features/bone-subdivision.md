@@ -115,7 +115,7 @@ Bone Subdivision は実ボーンの間にダミーボーンを挿入すること
 ## パフォーマンス上の注意
 
 :::warning
-ダミーボーンは増えるほどコリジョン・拘束のコストが上がります。生成数が多すぎる場合は警告ログが出力されます（しきい値は **Project Settings > Plugins > Kawaii Physics** の `Inter-Bone Dummy Warning Threshold`（既定100）/ `Bridge Dummy Warning Threshold`（既定200）で調整可能、0で無効化）。
+ダミーボーンは増えるほどコリジョン・拘束のコストが上がります。生成数が多すぎる場合は警告ログが出力されます（しきい値は **Project Settings > Plugins > Kawaii Physics** の `Inter-Bone Dummy Warning Threshold`（既定100）/ `Bridge Dummy Warning Threshold`（既定200）で調整可能、0で無効化。詳細は [プロジェクト設定](/docs/advanced/project-settings#performance-warnings) を参照）。
 
 まずは `BoneSubdivisionCount` を小さい値（1〜2）から試し、必要に応じて `bBoneSubdivisionDensifyByRadius` を有効化してください。
 :::
@@ -139,3 +139,4 @@ Bone Subdivision は実ボーンの間にダミーボーンを挿入すること
 - [Sync Bone](/docs/features/sync-bone)
 - [リミットパラメータ](/docs/parameters/limits)
 - [パフォーマンス最適化](/docs/advanced/performance)
+- [プロジェクト設定](/docs/advanced/project-settings)
