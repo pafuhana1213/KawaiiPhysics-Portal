@@ -17,7 +17,9 @@ v1.21.0で追加
 
 Shared Collision を使うと、複数メッシュ間でコリジョンを一元化でき、設定の重複や手作業の同期を減らせます。
 
-<!-- IMAGE_NEEDED: 本体メッシュのコリジョンを衣装メッシュが共有するイメージ -->
+![Shared Collisionの共有イメージ](/img/generated/shared-collision-concept.svg)
+
+*本体メッシュ（Source）が計算したコリジョンを共有サブシステム経由で公開し、衣装メッシュ（Target）が同じGroupTagで読み取って使用する。*
 
 ## 仕組み（Source / Target）
 

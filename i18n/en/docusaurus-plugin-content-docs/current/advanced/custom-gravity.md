@@ -7,6 +7,10 @@ title: "Custom Gravity"
 
 This guide explains how to customize gravity direction.
 
+![Custom gravity directions](/img/generated/custom-gravity-directions.svg)
+
+*Changing the Gravity vector changes how bones swing: default (down), wall-walking (sideways), zero-G (0), and underwater/buoyancy (up). (Diagram labels are in Japanese.)*
+
 ## Basic Gravity Settings
 
 ```cpp

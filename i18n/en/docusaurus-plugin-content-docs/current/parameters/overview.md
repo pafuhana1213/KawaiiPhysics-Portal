@@ -10,6 +10,10 @@ description: "Complete parameter reference for KawaiiPhysics. Physics, collision
 
 Overview of configurable parameters in the KawaiiPhysics node.
 
+![Parameter category map](/img/generated/parameter-categories-map.svg)
+
+*An overview of the main parameters organized into four categories: Physics / Collision / Limits / External Forces. (Diagram labels are in Japanese.)*
+
 ## Parameter Categories
 
 | Category | Description |

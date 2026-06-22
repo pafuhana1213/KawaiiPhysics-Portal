@@ -58,6 +58,10 @@ Step the solver that many times (including collision, constraints, external forc
 Carry the leftover time over to the next frame
 ```
 
+![Fixed Substepping concept](/img/generated/fixed-substepping-concept.svg)
+
+*Real frame time is split into fixed-dt substeps. At 60fps and 30fps the same total simulated time is reached, so the swing looks consistent. (Diagram labels are in Japanese.)*
+
 - `FixedDt` is derived from each node's **`Target Framerate`** (default 60, `KawaiiPhysics` category).
 - At low fps the substep count grows, so the **CPU cost increases** (up to `Max Substeps` times). Time beyond `Max Substeps` is discarded to prevent runaway after a hitch.
 - At high fps (`DeltaTime < FixedDt`), a frame may run zero substeps and hold the previous state.

@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#60a5fa"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#4ade80"/>
+    </marker>
+  </defs>
+
+  <rect width="760" height="400" fill="#2a2a2a"/>
+
+  <text x="380" y="30" font-size="16" fill="#ffffff" text-anchor="middle" font-weight="bold">Shared Collision（共有コリジョン）</text>
+  <text x="380" y="50" font-size="11" fill="#888" text-anchor="middle">本体メッシュが計算したコリジョンを、衣装メッシュの物理ノードが共有</text>
+
+  <g transform="translate(30, 70)">
+    <rect width="210" height="230" fill="#1e1e1e" stroke="#fbbf24" stroke-width="2" rx="5"/>
+    <text x="105" y="24" font-size="12" fill="#fbbf24" text-anchor="middle" font-weight="bold">Source ノード（本体メッシュ）</text>
+
+    <g transform="translate(105, 76)">
+      <circle cx="0" cy="-26" r="18" fill="none" stroke="#555" stroke-width="2"/>
+      <rect x="-24" y="-6" width="48" height="58" fill="none" stroke="#555" stroke-width="2" rx="5"/>
+      <line x1="-24" y1="8" x2="-54" y2="38" stroke="#555" stroke-width="7" stroke-linecap="round"/>
+      <line x1="24" y1="8" x2="54" y2="38" stroke="#555" stroke-width="7" stroke-linecap="round"/>
+      <line x1="-12" y1="52" x2="-24" y2="95" stroke="#555" stroke-width="8" stroke-linecap="round"/>
+      <line x1="12" y1="52" x2="24" y2="95" stroke="#555" stroke-width="8" stroke-linecap="round"/>
+      <text x="0" y="25" font-size="8" fill="#666" text-anchor="middle">本体</text>
+
+      <circle cx="0" cy="-26" r="25" fill="#60a5fa" fill-opacity="0.18" stroke="#60a5fa" stroke-width="2" stroke-dasharray="4,3"/>
+      <ellipse cx="-32" cy="18" rx="13" ry="28" fill="#0080ff" fill-opacity="0.16" stroke="#60a5fa" stroke-width="2" stroke-dasharray="4,3" transform="rotate(25 -32 18)"/>
+      <ellipse cx="32" cy="18" rx="13" ry="28" fill="#0080ff" fill-opacity="0.16" stroke="#60a5fa" stroke-width="2" stroke-dasharray="4,3" transform="rotate(-25 32 18)"/>
+      <circle cx="0" cy="24" r="22" fill="#0080ff" fill-opacity="0.14" stroke="#60a5fa" stroke-width="2" stroke-dasharray="4,3"/>
+      <text x="0" y="-58" font-size="9" fill="#60a5fa" text-anchor="middle">計算済みコリジョン</text>
+    </g>
+
+    <rect x="18" y="162" width="174" height="22" fill="#2a2a2a" stroke="#4ade80" stroke-width="1" rx="11"/>
+    <text x="105" y="177" font-size="10" fill="#4ade80" text-anchor="middle">タグ "Body.Collision"</text>
+    <text x="20" y="202" font-size="10" fill="#ffffff">bSharedCollisionSource = true</text>
+    <text x="20" y="218" font-size="9" fill="#888">計算済みコリジョンを</text>
+    <text x="20" y="231" font-size="9" fill="#888">ワールド空間で公開(publish)</text>
+  </g>
+
+  <g transform="translate(275, 70)">
+    <rect width="210" height="230" fill="#1e1e1e" stroke="#60a5fa" stroke-width="2" rx="5"/>
+    <text x="105" y="24" font-size="12" fill="#60a5fa" text-anchor="middle" font-weight="bold">共有サブシステム</text>
+    <text x="105" y="48" font-size="10" fill="#ffffff" text-anchor="middle">UKawaiiPhysicsSharedCollisionSubsystem</text>
+    <text x="105" y="63" font-size="9" fill="#888" text-anchor="middle">（World単位）</text>
+
+    <g transform="translate(40, 86)">
+      <rect x="10" y="10" width="70" height="48" fill="#2a2a2a" stroke="#0080ff" stroke-width="2" rx="5"/>
+      <rect x="0" y="0" width="70" height="48" fill="#1e1e1e" stroke="#60a5fa" stroke-width="2" rx="5"/>
+      <text x="35" y="22" font-size="9" fill="#60a5fa" text-anchor="middle">Buffer A</text>
+      <text x="45" y="48" font-size="8" fill="#888" text-anchor="middle">Buffer B</text>
+    </g>
+
+    <g transform="translate(128, 96)">
+      <circle cx="15" cy="14" r="11" fill="#60a5fa" fill-opacity="0.18" stroke="#60a5fa" stroke-width="2"/>
+      <ellipse cx="44" cy="14" rx="10" ry="18" fill="#0080ff" fill-opacity="0.16" stroke="#60a5fa" stroke-width="2"/>
+      <circle cx="72" cy="14" r="9" fill="#60a5fa" fill-opacity="0.18" stroke="#60a5fa" stroke-width="2"/>
+      <text x="44" y="45" font-size="8" fill="#888" text-anchor="middle">共有形状</text>
+    </g>
+
+    <rect x="22" y="156" width="166" height="26" fill="#2a2a2a" rx="5"/>
+    <text x="105" y="172" font-size="9" fill="#888" text-anchor="middle">キー: (Actorファミリーroot, GroupTag)</text>
+
+    <rect x="38" y="195" width="134" height="24" fill="#12351f" stroke="#4ade80" stroke-width="1" rx="12"/>
+    <text x="105" y="211" font-size="10" fill="#4ade80" text-anchor="middle">SharedCollisionGroupTag</text>
+  </g>
+
+  <g transform="translate(520, 70)">
+    <rect width="210" height="230" fill="#1e1e1e" stroke="#4ade80" stroke-width="2" rx="5"/>
+    <text x="105" y="24" font-size="12" fill="#4ade80" text-anchor="middle" font-weight="bold">Target ノード（衣装スカート）</text>
+
+    <g transform="translate(105, 78)">
+      <circle cx="0" cy="-24" r="12" fill="#4a3c00" stroke="#fbbf24" stroke-width="2"/>
+      <text x="0" y="-41" font-size="8" fill="#fbbf24" text-anchor="middle">Root</text>
+      <line x1="0" y1="-12" x2="-42" y2="42" stroke="#0080ff" stroke-width="4" stroke-linecap="round"/>
+      <line x1="0" y1="-12" x2="-14" y2="52" stroke="#0080ff" stroke-width="4" stroke-linecap="round"/>
+      <line x1="0" y1="-12" x2="14" y2="52" stroke="#0080ff" stroke-width="4" stroke-linecap="round"/>
+      <line x1="0" y1="-12" x2="42" y2="42" stroke="#0080ff" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="-42" cy="42" r="6" fill="#0080ff"/>
+      <circle cx="-14" cy="52" r="6" fill="#0080ff"/>
+      <circle cx="14" cy="52" r="6" fill="#0080ff"/>
+      <circle cx="42" cy="42" r="6" fill="#0080ff"/>
+      <path d="M -58 -8 Q 0 -42 58 -8 L 44 66 Q 0 82 -44 66 Z" fill="none" stroke="#4ade80" stroke-width="2" stroke-dasharray="5,3"/>
+      <text x="0" y="90" font-size="8" fill="#888" text-anchor="middle">衣装スカート物理</text>
+
+      <circle cx="0" cy="6" r="25" fill="#60a5fa" fill-opacity="0.16" stroke="#60a5fa" stroke-width="2" stroke-dasharray="4,3"/>
+      <ellipse cx="-36" cy="30" rx="12" ry="25" fill="#0080ff" fill-opacity="0.13" stroke="#60a5fa" stroke-width="2" stroke-dasharray="4,3" transform="rotate(24 -36 30)"/>
+      <ellipse cx="36" cy="30" rx="12" ry="25" fill="#0080ff" fill-opacity="0.13" stroke="#60a5fa" stroke-width="2" stroke-dasharray="4,3" transform="rotate(-24 36 30)"/>
+      <text x="0" y="-60" font-size="9" fill="#60a5fa" text-anchor="middle">Source由来の判定形状</text>
+    </g>
+
+    <rect x="18" y="162" width="174" height="22" fill="#2a2a2a" stroke="#4ade80" stroke-width="1" rx="11"/>
+    <text x="105" y="177" font-size="10" fill="#4ade80" text-anchor="middle">タグ "Body.Collision"</text>
+    <text x="20" y="202" font-size="10" fill="#ffffff">bUseSharedCollision = true</text>
+    <text x="20" y="218" font-size="9" fill="#888">公開コリジョンを読み取り</text>
+    <text x="20" y="231" font-size="9" fill="#888">自分のシミュ空間で判定</text>
+  </g>
+
+  <g>
+    <line x1="245" y1="165" x2="270" y2="165" stroke="#60a5fa" stroke-width="2" marker-end="url(#arrowBlue)"/>
+    <text x="257" y="148" font-size="9" fill="#60a5fa" text-anchor="middle">publish</text>
+    <text x="257" y="181" font-size="8" fill="#888" text-anchor="middle">ワールド空間</text>
+
+    <line x1="490" y1="165" x2="515" y2="165" stroke="#60a5fa" stroke-width="2" marker-end="url(#arrowBlue)"/>
+    <text x="503" y="148" font-size="9" fill="#60a5fa" text-anchor="middle">read &amp; 変換</text>
+    <text x="503" y="181" font-size="8" fill="#888" text-anchor="middle">シミュ空間</text>
+  </g>
+
+  <path d="M 135 246 C 250 315, 510 315, 625 246" fill="none" stroke="#4ade80" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#arrowGreen)"/>
+  <text x="380" y="310" font-size="10" fill="#4ade80" text-anchor="middle">同じ SharedCollisionGroupTag</text>
+
+  <g transform="translate(95, 326)">
+    <rect width="570" height="42" fill="#1e1e1e" rx="5"/>
+    <text x="28" y="25" font-size="10" fill="#ffffff" font-weight="bold">凡例</text>
+    <circle cx="85" cy="22" r="6" fill="#4a3c00" stroke="#fbbf24" stroke-width="2"/>
+    <text x="98" y="25" font-size="9" fill="#888">Root/本体</text>
+    <circle cx="178" cy="22" r="6" fill="#0080ff"/>
+    <text x="191" y="25" font-size="9" fill="#888">物理ボーン</text>
+    <circle cx="288" cy="22" r="9" fill="#60a5fa" fill-opacity="0.18" stroke="#60a5fa" stroke-width="2" stroke-dasharray="3,2"/>
+    <text x="304" y="25" font-size="9" fill="#888">共有コリジョン</text>
+    <rect x="405" y="12" width="38" height="18" fill="#12351f" stroke="#4ade80" stroke-width="1" rx="9"/>
+    <text x="454" y="25" font-size="9" fill="#888">GroupTag</text>
+    <line x1="520" y1="22" x2="548" y2="22" stroke="#4ade80" stroke-width="2" stroke-dasharray="5,4"/>
+  </g>
+
+  <text x="380" y="390" font-size="10" fill="#888" text-anchor="middle">同じ GroupTag でグループ化。Source は Target より先に評価すると同一フレームの結果を共有できます。</text>
+</svg>

@@ -58,6 +58,10 @@ FixedDt（= 1 / TargetFramerate）ごとに分割
 余った時間は次フレームに繰り越し
 ```
 
+![Fixed Substeppingの概念図](/img/generated/fixed-substepping-concept.svg)
+
+*実フレーム時間を固定dtのサブステップに分割。60fpsと30fpsで同じ総シミュレート時間に到達し、揺れ方が一致する。*
+
 - `FixedDt` は各ノードの **`Target Framerate`**（既定60、`KawaiiPhysics` カテゴリ）から算出されます。
 - 低fps時はサブステップ数が増えるため、**CPU負荷が上がります**（最大で `Max Substeps` 倍）。`Max Substeps` を超える時間は破棄され、ヒッチ後の暴走を防ぎます。
 - 高fps時（`DeltaTime < FixedDt`）は、そのフレームのサブステップ数が0になることがあり、前回の状態を維持します。

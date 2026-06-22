@@ -17,7 +17,9 @@ Previously, each node had to own its own `SphericalLimit` / `CapsuleLimit` / `Bo
 
 With Shared Collision, you can centralize collision across multiple meshes, reducing duplicated setup and manual synchronization.
 
-<!-- IMAGE_NEEDED: Diagram of a costume mesh sharing the body mesh's collision -->
+![Shared Collision sharing concept](/img/generated/shared-collision-concept.svg)
+
+*The body mesh (Source) publishes its computed collision through the shared subsystem, and the costume mesh (Target) reads it using the same GroupTag. (Diagram labels are in Japanese.)*
 
 ## How It Works (Source / Target)
 

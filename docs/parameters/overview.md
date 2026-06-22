@@ -10,6 +10,10 @@ description: "KawaiiPhysicsの全パラメータ一覧。物理、コリジョ�
 
 KawaiiPhysicsノードで設定可能なパラメータの概要です。
 
+![パラメータカテゴリ全体像](/img/generated/parameter-categories-map.svg)
+
+*主要パラメータを Physics / Collision / Limits / External Forces の4カテゴリで整理した全体像。*
+
 ## パラメータカテゴリ
 
 | カテゴリ | 説明 |
