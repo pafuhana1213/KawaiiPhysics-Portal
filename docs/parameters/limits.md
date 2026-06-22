@@ -98,6 +98,7 @@ TArray<FModifyBoneConstraint> BoneConstraints;
 | Bone2 | FBoneReference | 制約の2つ目のボーン |
 | bOverrideCompliance | bool | 剛性タイプをオーバーライドするか |
 | ComplianceType | EXPBDComplianceType | オーバーライド時の剛性タイプ |
+| bExcludeFromSubdivision | bool | この制約を BoneConstraint Subdivision（bridge dummy）の対象から除外するか |
 
 ### BoneConstraintsDataAsset
 
@@ -110,16 +111,31 @@ TObjectPtr<UKawaiiPhysicsBoneConstraintsDataAsset> BoneConstraintsDataAsset;
 
 ## Sync Bone
 
-同期元のボーンの移動・回転を物理制御下のボーンに適用します。スカートが足などを貫通するのを防ぐのに役立ちます。
+同期元のボーンの移動・回転を物理制御下のボーンに適用します。スカートが足などを貫通するのを防ぐのに役立ちます。v1.21.0で適用方向・距離減衰・スケールカーブが追加されました。
 
 ### SyncBones
 
-**同期ボーンリスト** - 同期元のボーンと物理制御下のボーンのペアを設定します。
+**同期ボーンリスト** - 同期元のボーン（`Bone`）と同期先（`TargetRoots`）を設定します。
 
 ```cpp
-UPROPERTY(EditAnywhere, Category = "Sync Bone")
+UPROPERTY(EditAnywhere, Category = "Force|Sync Bone")
 TArray<FKawaiiPhysicsSyncBone> SyncBones;
 ```
+
+#### FKawaiiPhysicsSyncBone の主なプロパティ
+
+| プロパティ | 型 | 説明 |
+|-----------|-----|------|
+| Bone | FBoneReference | 同期元のボーン |
+| TargetRoots | TArray\<FKawaiiPhysicsSyncTargetRoot\> | 同期先のボーン/チェーン（`bIncludeChildBones` で子も対象化） |
+| GlobalScale | FVector | 全体の適用度（0.0〜1.0、既定 (1,1,1)） |
+| ScaleCurveByDeltaDistance | FRuntimeFloatCurve | 同期元の移動距離に応じた補正スケール |
+| ApplyDirectionX / Y / Z | ESyncBoneDirection | 各軸の適用方向（Both/Positive/Negative/None） |
+| bEnableDistanceAttenuation | bool | 距離に応じた適用量の減衰 |
+| AttenuationInnerRadius / OuterRadius | float | 減衰の内半径 / 外半径（cm） |
+| MaxAttenuationRate | float | 最大減衰量（0〜1） |
+
+詳しくは [Sync Bone](/docs/features/sync-bone) を参照してください。
 
 ## 角度制限
 

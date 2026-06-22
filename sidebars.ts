@@ -29,6 +29,8 @@ const sidebars: SidebarsConfig = {
       items: [
         'features/bone-chain',
         'features/collision-setup',
+        'features/shared-collision',
+        'features/bone-subdivision',
         'features/wind-and-forces',
         'features/curve-editor',
         'features/data-assets',
@@ -42,6 +44,7 @@ const sidebars: SidebarsConfig = {
       label: '応用・Tips',
       items: [
         'advanced/performance',
+        'advanced/fixed-substepping',
         'advanced/debugging',
         'advanced/custom-gravity',
         'advanced/runtime-control',

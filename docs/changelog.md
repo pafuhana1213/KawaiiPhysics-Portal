@@ -11,6 +11,54 @@ KawaiiPhysicsの更新履歴です。
 
 最新のリリース情報は [GitHub Releases](https://github.com/pafuhana1213/KawaiiPhysics/releases) を参照してください。
 
+## v1.21.x (UE 5.3 - 5.7対応)
+
+### v1.21.0
+
+**Fixed Substepping（フレームレート非依存化）**
+
+シミュレーション全体を固定タイムステップ（`FixedDt = 1 / TargetFramerate`）でサブステップ実行し、フレームレートに依存しない安定した物理挙動を実現する機能が追加されました。**デフォルトで有効（ON）** です。
+
+- **Project Settings > Plugins > Kawaii Physics** の `Use Fixed Substepping` / `Max Substeps` で制御
+- **【挙動変更】デフォルトON化により、以前のバージョンと比べて揺れ方がわずかに変化する場合があります。従来挙動が必要な場合はOFFにしてください。**
+
+詳細は [Fixed Substepping](/docs/advanced/fixed-substepping) を参照してください。
+
+**Bone Subdivision（ボーン細分化）**
+
+実スケルトンを変更せずに、実ボーンの間に仮想的なダミーを挿入してコリジョン判定の解像度を上げる機能が追加されました。
+
+- `BoneSubdivisionCount` / `bBoneSubdivisionCollisionOnly` / `bBoneSubdivisionDensifyByRadius`（半径による密度補正）
+- 横方向の **BoneConstraint Subdivision (bridge dummy)**: `BoneConstraintSubdivisionCount` / `BoneConstraintSubdivisionFeedbackScale` で列間の貫通を防止
+- `BoneSubdivisionCount` と組み合わせると布面に2Dグリッド状のコリジョン点が並ぶ
+
+詳細は [Bone Subdivision](/docs/features/bone-subdivision) を参照してください。
+
+**Shared Collision（共有コリジョン）**
+
+複数の KawaiiPhysics ノード（別々の SkeletalMeshComponent や ChildActor を含む）が、1つのコリジョン形状セットを共有できる機能が追加されました。
+
+- Source / Target ロール + `SharedCollisionGroupTag` でグルーピング
+- 同一 Actor/ChildActor ファミリー内で共有
+- Blueprint API で Source/Target/タグをランタイム切り替え可能
+
+詳細は [Shared Collision](/docs/features/shared-collision) を参照してください。
+
+**Sync Bone の強化**
+
+- 軸ごとの適用方向（`ApplyDirectionX/Y/Z`: Both/Positive/Negative/None）
+- 距離減衰（`bEnableDistanceAttenuation` ほか）
+- 子ボーンの自動展開（`bIncludeChildBones`）と長さ割合・移動距離によるスケールカーブ
+
+**その他の改善**
+
+- Wind に方向ノイズ `WindDirectionNoiseAngle` を追加
+- プロジェクト全体設定 `KawaiiPhysicsDeveloperSettings`（固定サブステップ / ダミー生成数の警告しきい値）を新設
+- 物理コアの自動テスト（UE Automation）基盤を追加し、回帰検出を強化
+- UE5.8 のビルドエラー修正、各種パフォーマンス最適化
+
+最新のリリース情報は [GitHub Releases](https://github.com/pafuhana1213/KawaiiPhysics/releases) を参照してください。
+
 ## v1.20.x (UE 5.7対応)
 
 ### v1.20.0

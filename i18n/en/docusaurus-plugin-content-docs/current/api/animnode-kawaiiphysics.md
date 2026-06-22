@@ -26,6 +26,11 @@ struct KAWAIIPHYSICS_API FAnimNode_KawaiiPhysics : public FAnimNode_SkeletalCont
 | ExcludeBones | TArray\<FBoneReference\> | - | Bones to exclude from control |
 | AdditionalRootBones | TArray\<FKawaiiPhysicsRootBoneSetting\> | - | Additional root bone settings |
 | DummyBoneLength | float | 0.0 | Dummy bone length |
+| BoneSubdivisionCount | int32 | 0 | Inter-bone dummy count (0-10, 0 to disable) |
+| bBoneSubdivisionCollisionOnly | bool | true | Use inter-bone dummies for collision only |
+| bBoneSubdivisionDensifyByRadius | bool | false | Add dummies based on radius |
+| BoneConstraintSubdivisionCount | int32 | 0 | Horizontal bridge dummy count (0-10, 0 to disable) |
+| BoneConstraintSubdivisionFeedbackScale | float | 1.0 | Bridge feedback strength (0-2) |
 | BoneForwardAxis | EBoneForwardAxis | X_Positive | Bone forward axis |
 
 ## Physics Settings
@@ -71,6 +76,14 @@ struct KAWAIIPHYSICS_API FAnimNode_KawaiiPhysics : public FAnimNode_SkeletalCont
 | PlanarLimits | TArray\<FPlanarLimit\> | Plane collision |
 | LimitsDataAsset | UKawaiiPhysicsLimitsDataAsset* | Collision Data Asset |
 | PhysicsAssetForLimits | UPhysicsAsset* | Physics Asset for collision |
+
+## Shared Collision
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| bSharedCollisionSource | bool | false | Publish collision (Source) |
+| bUseSharedCollision | bool | false | Use shared collision (Target) |
+| SharedCollisionGroupTag | FGameplayTag | - | Group tag identifying the shared set |
 
 ## Bone Constraint
 

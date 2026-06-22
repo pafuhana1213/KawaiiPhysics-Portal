@@ -193,6 +193,66 @@ Using anything other than ComponentSpace causes minor performance degradation, b
 | Z_Positive | +Z direction |
 | Z_Negative | -Z direction |
 
+## Bone Subdivision
+
+Inserts virtual dummies between real bones inside the simulation (without modifying the real skeleton) to raise collision resolution. See [Bone Subdivision](/docs/features/bone-subdivision) for details.
+
+### BoneSubdivisionCount
+
+**Dummy Subdivision Count** - Minimum number of dummy bones to insert between adjacent bones. Improves collision detection (e.g. prevents skirts from penetrating legs). 0 to disable.
+
+| Property | Value |
+|----------|-------|
+| Type | int32 |
+| Default | 0 |
+| Range | 0 - 10 |
+| Category | Bones&#124;Bone Subdivision |
+
+### bBoneSubdivisionCollisionOnly
+
+**Collision Only** - Skips velocity integration (gravity/wind/etc.) for inter-bone dummies and lets them participate only in collision/constraints from interpolated positions (lightweight). Does not affect the dummy count.
+
+| Property | Value |
+|----------|-------|
+| Type | bool |
+| Default | true |
+| Edit Condition | `BoneSubdivisionCount > 0` |
+| Category | Bones&#124;Bone Subdivision |
+
+### bBoneSubdivisionDensifyByRadius
+
+**Densify By Radius** - Adds dummies based on radius so collision spheres roughly cover the gap between bones. Uses `BoneSubdivisionCount` as a minimum and places more where bones are far apart (up to 50 per segment).
+
+| Property | Value |
+|----------|-------|
+| Type | bool |
+| Default | false |
+| Edit Condition | `BoneSubdivisionCount > 0` |
+| Category | Bones&#124;Bone Subdivision |
+
+### BoneConstraintSubdivisionCount
+
+**Horizontal Subdivision Count** - Number of collision-proxy dummies (bridge dummies) inserted along each horizontal BoneConstraint. Fills gaps between adjacent chains (columns) to prevent penetration. 0 to disable. Independent of `BoneSubdivisionCount`.
+
+| Property | Value |
+|----------|-------|
+| Type | int32 |
+| Default | 0 |
+| Range | 0 - 10 |
+| Category | Bones&#124;Bone Subdivision |
+
+### BoneConstraintSubdivisionFeedbackScale
+
+**Feedback Scale** - Strength of transferring a bridge dummy's collision displacement to its endpoint bones (0 = none, 1 = standard). Lower it if the result is too stiff.
+
+| Property | Value |
+|----------|-------|
+| Type | float |
+| Default | 1.0 |
+| Range | 0.0 - 2.0 |
+| Edit Condition | `BoneConstraintSubdivisionCount > 0` |
+| Category | Bones&#124;Bone Subdivision |
+
 ## Warm-up Settings
 
 ### WarmUpFrames

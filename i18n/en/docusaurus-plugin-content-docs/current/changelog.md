@@ -11,6 +11,54 @@ Changelog for KawaiiPhysics.
 
 For the latest release information, see [GitHub Releases](https://github.com/pafuhana1213/KawaiiPhysics/releases).
 
+## v1.21.x (UE 5.3 - 5.7 Support)
+
+### v1.21.0
+
+**Fixed Substepping (Frame-rate Independence)**
+
+Added a feature that runs the whole simulation with fixed-timestep substepping (`FixedDt = 1 / TargetFramerate`) for stable, frame-rate-independent physics. It is **enabled (ON) by default**.
+
+- Controlled via `Use Fixed Substepping` / `Max Substeps` under **Project Settings > Plugins > Kawaii Physics**
+- **[Behavior change] Because it defaults to ON, the way bones sway may change slightly compared to previous versions. Turn it OFF if you need the legacy behavior.**
+
+See [Fixed Substepping](/docs/advanced/fixed-substepping) for details.
+
+**Bone Subdivision**
+
+Added a feature that inserts virtual dummies between real bones — without modifying the real skeleton — to raise collision resolution.
+
+- `BoneSubdivisionCount` / `bBoneSubdivisionCollisionOnly` / `bBoneSubdivisionDensifyByRadius` (densify by radius)
+- Horizontal **BoneConstraint Subdivision (bridge dummies)**: `BoneConstraintSubdivisionCount` / `BoneConstraintSubdivisionFeedbackScale` prevent penetration between columns
+- Combined with `BoneSubdivisionCount`, collision points form a 2D grid across the cloth surface
+
+See [Bone Subdivision](/docs/features/bone-subdivision) for details.
+
+**Shared Collision**
+
+Added a feature that lets multiple KawaiiPhysics nodes (including separate SkeletalMeshComponents and ChildActors) share a single set of collision shapes.
+
+- Source / Target roles grouped by `SharedCollisionGroupTag`
+- Shared within the same Actor/ChildActor family
+- Source/Target/tag can be switched at runtime via the Blueprint API
+
+See [Shared Collision](/docs/features/shared-collision) for details.
+
+**Sync Bone Enhancements**
+
+- Per-axis apply direction (`ApplyDirectionX/Y/Z`: Both/Positive/Negative/None)
+- Distance attenuation (`bEnableDistanceAttenuation`, etc.)
+- Automatic child expansion (`bIncludeChildBones`) and scale curves by length rate / movement distance
+
+**Other Improvements**
+
+- Added `WindDirectionNoiseAngle` (wind direction noise) to Wind
+- Added the project-wide `KawaiiPhysicsDeveloperSettings` (fixed substepping / dummy-generation warning thresholds)
+- Added an automated physics-core test suite (UE Automation) to strengthen regression detection
+- UE5.8 build error fixes and various performance optimizations
+
+For the latest release information, see [GitHub Releases](https://github.com/pafuhana1213/KawaiiPhysics/releases).
+
 ## v1.20.x (UE 5.7 Support)
 
 ### v1.20.0

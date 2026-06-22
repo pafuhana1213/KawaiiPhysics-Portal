@@ -26,6 +26,11 @@ struct KAWAIIPHYSICS_API FAnimNode_KawaiiPhysics : public FAnimNode_SkeletalCont
 | ExcludeBones | TArray\<FBoneReference\> | - | 制御から除外するボーン |
 | AdditionalRootBones | TArray\<FKawaiiPhysicsRootBoneSetting\> | - | 追加のルートボーン設定 |
 | DummyBoneLength | float | 0.0 | ダミーボーンの長さ |
+| BoneSubdivisionCount | int32 | 0 | ボーン間ダミー分割数（0-10、0で無効） |
+| bBoneSubdivisionCollisionOnly | bool | true | ボーン間ダミーをコリジョン専用にする |
+| bBoneSubdivisionDensifyByRadius | bool | false | 半径に応じてダミーを追加配置 |
+| BoneConstraintSubdivisionCount | int32 | 0 | 横方向bridgeダミー分割数（0-10、0で無効） |
+| BoneConstraintSubdivisionFeedbackScale | float | 1.0 | bridgeフィードバック強度（0-2） |
 | BoneForwardAxis | EBoneForwardAxis | X_Positive | ボーンの前方向軸 |
 
 ## Physics Settings
@@ -71,6 +76,14 @@ struct KAWAIIPHYSICS_API FAnimNode_KawaiiPhysics : public FAnimNode_SkeletalCont
 | PlanarLimits | TArray\<FPlanarLimit\> | 平面コリジョン |
 | LimitsDataAsset | UKawaiiPhysicsLimitsDataAsset* | コリジョンData Asset |
 | PhysicsAssetForLimits | UPhysicsAsset* | コリジョン用Physics Asset |
+
+## Shared Collision
+
+| プロパティ | 型 | デフォルト | 説明 |
+|-----------|-----|-----------|------|
+| bSharedCollisionSource | bool | false | コリジョンを公開する（Source） |
+| bUseSharedCollision | bool | false | 共有コリジョンを使用する（Target） |
+| SharedCollisionGroupTag | FGameplayTag | - | 共有グループの識別タグ |
 
 ## Bone Constraint
 

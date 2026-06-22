@@ -178,6 +178,45 @@ TObjectPtr<UPhysicsAsset> PhysicsAssetForLimits;
 | 型 | bool |
 | デフォルト | false |
 
+## Shared Collision（共有コリジョン）
+
+複数の KawaiiPhysics ノードが、1つのコリジョン形状セットを共有するための設定です。同一 Actor/ChildActor ファミリー内の別メッシュ間でコリジョンを共有できます。詳しくは [Shared Collision](/docs/features/shared-collision) を参照してください。
+
+### bSharedCollisionSource
+
+**コリジョンの公開** - このノードのコリジョンを同じActor/ChildActorファミリー内の KawaiiPhysics に共有します（Source として動作）。
+
+| プロパティ | 値 |
+|-----------|-----|
+| 型 | bool |
+| デフォルト | false |
+| カテゴリ | Limits&#124;Shared Collision |
+
+### bUseSharedCollision
+
+**共有コリジョンの使用** - 同じファミリー内の Source ノードが公開したコリジョンを使用します（Target として動作）。Source とは排他です。
+
+| プロパティ | 値 |
+|-----------|-----|
+| 型 | bool |
+| デフォルト | false |
+| 編集条件 | `!bSharedCollisionSource` |
+| カテゴリ | Limits&#124;Shared Collision |
+
+### SharedCollisionGroupTag
+
+**グループタグ** - 共有コリジョンのグループを識別する GameplayTag。Source / Target 両方で同じタグを使用します。
+
+| プロパティ | 値 |
+|-----------|-----|
+| 型 | FGameplayTag |
+| 編集条件 | `bSharedCollisionSource &#124;&#124; bUseSharedCollision` |
+| カテゴリ | Limits&#124;Shared Collision |
+
+:::tip
+同じAnimGraph内で同一フレームのコリジョンを使うには、Source ノードを Target ノードより先に評価される位置へ配置してください。
+:::
+
 ## コリジョンソースタイプ
 
 コリジョンの設定元を示す列挙型です。

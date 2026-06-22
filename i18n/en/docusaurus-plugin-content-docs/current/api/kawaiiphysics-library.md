@@ -47,6 +47,20 @@ static void ConvertToKawaiiPhysicsPure(
 );
 ```
 
+### CollectKawaiiPhysicsNodes
+
+Collects KawaiiPhysics node references in bulk from an AnimInstance (ABP) or a SkeletalMeshComponent. Can be filtered by GameplayTag.
+
+```cpp
+UFUNCTION(BlueprintCallable, Category = "Kawaii Physics", meta=(BlueprintThreadSafe))
+static bool CollectKawaiiPhysicsNodes(
+    TArray<FKawaiiPhysicsReference>& Nodes,
+    UAnimInstance* AnimInstance,
+    const FGameplayTagContainer& FilterTags,
+    bool bFilterExactMatch
+);
+```
+
 ## Physics Reset
 
 ### ResetDynamics
@@ -93,6 +107,70 @@ static FKawaiiPhysicsReference SetExcludeBoneNames(
 
 UFUNCTION(BlueprintPure, Category = "Kawaii Physics", meta=(BlueprintThreadSafe))
 static TArray<FName> GetExcludeBoneNames(const FKawaiiPhysicsReference& KawaiiPhysics);
+```
+
+## Bone Subdivision
+
+Runtime control for bone subdivision (see [Bone Subdivision](/docs/features/bone-subdivision)). Changing the Count values triggers re-initialization on the next Evaluate.
+
+### SetBoneSubdivisionCount / GetBoneSubdivisionCount
+
+Set/get the vertical dummy subdivision count (clamped to 0-10).
+
+```cpp
+UFUNCTION(BlueprintCallable, Category = "Kawaii Physics", meta=(BlueprintThreadSafe))
+static FKawaiiPhysicsReference SetBoneSubdivisionCount(
+    const FKawaiiPhysicsReference& KawaiiPhysics,
+    int32 BoneSubdivisionCount
+);
+
+UFUNCTION(BlueprintPure, Category = "Kawaii Physics", meta=(BlueprintThreadSafe))
+static int32 GetBoneSubdivisionCount(const FKawaiiPhysicsReference& KawaiiPhysics);
+```
+
+### SetBoneSubdivisionCollisionOnly / GetBoneSubdivisionCollisionOnly
+
+Set/get the collision-only mode.
+
+```cpp
+UFUNCTION(BlueprintCallable, Category = "Kawaii Physics", meta=(BlueprintThreadSafe))
+static FKawaiiPhysicsReference SetBoneSubdivisionCollisionOnly(
+    const FKawaiiPhysicsReference& KawaiiPhysics,
+    bool bBoneSubdivisionCollisionOnly
+);
+
+UFUNCTION(BlueprintPure, Category = "Kawaii Physics", meta=(BlueprintThreadSafe))
+static bool GetBoneSubdivisionCollisionOnly(const FKawaiiPhysicsReference& KawaiiPhysics);
+```
+
+### SetBoneConstraintSubdivisionCount / GetBoneConstraintSubdivisionCount
+
+Set/get the horizontal (bridge dummy) subdivision count (clamped to 0-10).
+
+```cpp
+UFUNCTION(BlueprintCallable, Category = "Kawaii Physics", meta=(BlueprintThreadSafe))
+static FKawaiiPhysicsReference SetBoneConstraintSubdivisionCount(
+    const FKawaiiPhysicsReference& KawaiiPhysics,
+    int32 BoneConstraintSubdivisionCount
+);
+
+UFUNCTION(BlueprintPure, Category = "Kawaii Physics", meta=(BlueprintThreadSafe))
+static int32 GetBoneConstraintSubdivisionCount(const FKawaiiPhysicsReference& KawaiiPhysics);
+```
+
+### SetBoneConstraintSubdivisionFeedbackScale / GetBoneConstraintSubdivisionFeedbackScale
+
+Set/get the feedback strength (a runtime scalar; no re-initialization required).
+
+```cpp
+UFUNCTION(BlueprintCallable, Category = "Kawaii Physics", meta=(BlueprintThreadSafe))
+static FKawaiiPhysicsReference SetBoneConstraintSubdivisionFeedbackScale(
+    const FKawaiiPhysicsReference& KawaiiPhysics,
+    float BoneConstraintSubdivisionFeedbackScale
+);
+
+UFUNCTION(BlueprintPure, Category = "Kawaii Physics", meta=(BlueprintThreadSafe))
+static float GetBoneConstraintSubdivisionFeedbackScale(const FKawaiiPhysicsReference& KawaiiPhysics);
 ```
 
 ## Physics Settings
@@ -236,6 +314,55 @@ static FKawaiiPhysicsReference SetLimitsDataAsset(
 
 UFUNCTION(BlueprintPure, Category = "Kawaii Physics", meta=(BlueprintThreadSafe))
 static UKawaiiPhysicsLimitsDataAsset* GetLimitsDataAsset(const FKawaiiPhysicsReference& KawaiiPhysics);
+```
+
+## Shared Collision
+
+Switches the Source/Target/group tag for shared collision (see [Shared Collision](/docs/features/shared-collision)). Changes are safely re-initialized on the next frame's PreUpdate. Category is `Kawaii Physics|Shared Collision`.
+
+### SetSharedCollisionSource / GetSharedCollisionSource
+
+Set/get whether this node acts as a shared collision Source.
+
+```cpp
+UFUNCTION(BlueprintCallable, Category = "Kawaii Physics|Shared Collision", meta=(BlueprintThreadSafe))
+static FKawaiiPhysicsReference SetSharedCollisionSource(
+    const FKawaiiPhysicsReference& KawaiiPhysics,
+    bool bSharedCollisionSource
+);
+
+UFUNCTION(BlueprintPure, Category = "Kawaii Physics|Shared Collision", meta=(BlueprintThreadSafe))
+static bool GetSharedCollisionSource(const FKawaiiPhysicsReference& KawaiiPhysics);
+```
+
+### SetUseSharedCollision / GetUseSharedCollision
+
+Set/get whether this node acts as a shared collision Target.
+
+```cpp
+UFUNCTION(BlueprintCallable, Category = "Kawaii Physics|Shared Collision", meta=(BlueprintThreadSafe))
+static FKawaiiPhysicsReference SetUseSharedCollision(
+    const FKawaiiPhysicsReference& KawaiiPhysics,
+    bool bUseSharedCollision
+);
+
+UFUNCTION(BlueprintPure, Category = "Kawaii Physics|Shared Collision", meta=(BlueprintThreadSafe))
+static bool GetUseSharedCollision(const FKawaiiPhysicsReference& KawaiiPhysics);
+```
+
+### SetSharedCollisionGroupTag / GetSharedCollisionGroupTag
+
+Set/get the shared collision group tag.
+
+```cpp
+UFUNCTION(BlueprintCallable, Category = "Kawaii Physics|Shared Collision", meta=(BlueprintThreadSafe))
+static FKawaiiPhysicsReference SetSharedCollisionGroupTag(
+    const FKawaiiPhysicsReference& KawaiiPhysics,
+    FGameplayTag SharedCollisionGroupTag
+);
+
+UFUNCTION(BlueprintPure, Category = "Kawaii Physics|Shared Collision", meta=(BlueprintThreadSafe))
+static FGameplayTag GetSharedCollisionGroupTag(const FKawaiiPhysicsReference& KawaiiPhysics);
 ```
 
 ## Warm-up

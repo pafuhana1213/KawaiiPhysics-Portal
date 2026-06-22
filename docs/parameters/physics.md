@@ -256,6 +256,66 @@ SimulationSpaceがBaseBoneSpaceの場合のみ有効です。
 | Z_Positive | +Z方向 |
 | Z_Negative | -Z方向 |
 
+## ボーン細分化（Bone Subdivision）
+
+実スケルトンを変更せずに、シミュレーション内部で実ボーンの間に仮想ダミーを挿入し、コリジョン判定の解像度を上げる設定です。詳しくは [Bone Subdivision](/docs/features/bone-subdivision) を参照してください。
+
+### BoneSubdivisionCount
+
+**ダミー分割数** - 隣接するボーン間に挿入するダミーボーンの最小分割数。コリジョン検出の精度を向上させます（例: スカートの足貫通防止）。0で無効。
+
+| プロパティ | 値 |
+|-----------|-----|
+| 型 | int32 |
+| デフォルト | 0 |
+| 範囲 | 0 - 10 |
+| カテゴリ | Bones&#124;Bone Subdivision |
+
+### bBoneSubdivisionCollisionOnly
+
+**コリジョン専用** - ボーン間ダミーの速度積分（重力・風など）をスキップし、実ボーン間の補間位置からコリジョン・制約にのみ参加させます（軽量）。配置数には影響しません。
+
+| プロパティ | 値 |
+|-----------|-----|
+| 型 | bool |
+| デフォルト | true |
+| 編集条件 | `BoneSubdivisionCount > 0` |
+| カテゴリ | Bones&#124;Bone Subdivision |
+
+### bBoneSubdivisionDensifyByRadius
+
+**半径による密度補正** - 半径に応じてダミーを追加配置し、コリジョン球でボーン間を概ね隙間なく被覆します。`BoneSubdivisionCount` を最小として、離れた区間ほど多く配置します（1区間あたり最大50本）。
+
+| プロパティ | 値 |
+|-----------|-----|
+| 型 | bool |
+| デフォルト | false |
+| 編集条件 | `BoneSubdivisionCount > 0` |
+| カテゴリ | Bones&#124;Bone Subdivision |
+
+### BoneConstraintSubdivisionCount
+
+**横方向分割数** - 横方向のBoneConstraintに沿って挿入するコリジョン代理ダミー（bridge dummy）の分割数。隣接チェーン（列）間の隙間を埋めて貫通を防ぎます。0で無効。`BoneSubdivisionCount` とは独立。
+
+| プロパティ | 値 |
+|-----------|-----|
+| 型 | int32 |
+| デフォルト | 0 |
+| 範囲 | 0 - 10 |
+| カテゴリ | Bones&#124;Bone Subdivision |
+
+### BoneConstraintSubdivisionFeedbackScale
+
+**フィードバック強度** - bridge dummy が受けたコリジョンの押し出しを端点ボーンに伝える強さ（0=伝えない、1=標準）。剛性が強すぎる場合は下げます。
+
+| プロパティ | 値 |
+|-----------|-----|
+| 型 | float |
+| デフォルト | 1.0 |
+| 範囲 | 0.0 - 2.0 |
+| 編集条件 | `BoneConstraintSubdivisionCount > 0` |
+| カテゴリ | Bones&#124;Bone Subdivision |
+
 ## ウォームアップ設定
 
 ### WarmUpFrames

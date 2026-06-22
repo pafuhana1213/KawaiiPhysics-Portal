@@ -86,6 +86,7 @@ TArray<FModifyBoneConstraint> BoneConstraints;
 | Bone2 | FBoneReference | Second bone of the constraint |
 | bOverrideCompliance | bool | Whether to override compliance type |
 | ComplianceType | EXPBDComplianceType | Compliance type when overriding |
+| bExcludeFromSubdivision | bool | Exclude this constraint from BoneConstraint Subdivision (bridge dummies) |
 
 ### BoneConstraintsDataAsset
 
@@ -98,16 +99,31 @@ TObjectPtr<UKawaiiPhysicsBoneConstraintsDataAsset> BoneConstraintsDataAsset;
 
 ## Sync Bone
 
-Applies the movement/rotation of source bones to physics-controlled bones. Useful for preventing skirts from penetrating through legs.
+Applies the movement/rotation of source bones to physics-controlled bones. Useful for preventing skirts from penetrating through legs. v1.21.0 added per-axis apply direction, distance attenuation, and scale curves.
 
 ### SyncBones
 
-**Sync Bone List** - Sets pairs of source bones and physics-controlled bones.
+**Sync Bone List** - Sets the source bone (`Bone`) and the targets (`TargetRoots`).
 
 ```cpp
-UPROPERTY(EditAnywhere, Category = "Sync Bone")
+UPROPERTY(EditAnywhere, Category = "Force|Sync Bone")
 TArray<FKawaiiPhysicsSyncBone> SyncBones;
 ```
+
+#### Main properties of FKawaiiPhysicsSyncBone
+
+| Property | Type | Description |
+|----------|------|-------------|
+| Bone | FBoneReference | Source bone to sync from |
+| TargetRoots | TArray\<FKawaiiPhysicsSyncTargetRoot\> | Target bones/chains (`bIncludeChildBones` also targets children) |
+| GlobalScale | FVector | Overall application amount (0.0–1.0, default (1,1,1)) |
+| ScaleCurveByDeltaDistance | FRuntimeFloatCurve | Scales the correction by the source's movement distance |
+| ApplyDirectionX / Y / Z | ESyncBoneDirection | Apply direction per axis (Both/Positive/Negative/None) |
+| bEnableDistanceAttenuation | bool | Attenuate the application amount by distance |
+| AttenuationInnerRadius / OuterRadius | float | Inner / outer radius of attenuation (cm) |
+| MaxAttenuationRate | float | Maximum attenuation (0–1) |
+
+See [Sync Bone](/docs/features/sync-bone) for details.
 
 ## Angle Limit
 

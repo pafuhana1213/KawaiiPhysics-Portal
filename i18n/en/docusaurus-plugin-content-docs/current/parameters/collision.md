@@ -170,6 +170,45 @@ Enabling this significantly increases physics processing load.
 | Type | bool |
 | Default | false |
 
+## Shared Collision
+
+Settings that let multiple KawaiiPhysics nodes share a single set of collision shapes. Collision can be shared across different meshes within the same Actor/ChildActor family. See [Shared Collision](/docs/features/shared-collision) for details.
+
+### bSharedCollisionSource
+
+**Publish Collision** - Provides this node's collision to KawaiiPhysics nodes in the same attached Actor/ChildActor family (acts as a Source).
+
+| Property | Value |
+|----------|-------|
+| Type | bool |
+| Default | false |
+| Category | Limits&#124;Shared Collision |
+
+### bUseSharedCollision
+
+**Use Shared Collision** - Uses collision published by Source nodes in the same family (acts as a Target). Mutually exclusive with Source.
+
+| Property | Value |
+|----------|-------|
+| Type | bool |
+| Default | false |
+| Edit Condition | `!bSharedCollisionSource` |
+| Category | Limits&#124;Shared Collision |
+
+### SharedCollisionGroupTag
+
+**Group Tag** - A GameplayTag identifying the shared collision group. Both Source and Target use the same tag.
+
+| Property | Value |
+|----------|-------|
+| Type | FGameplayTag |
+| Edit Condition | `bSharedCollisionSource &#124;&#124; bUseSharedCollision` |
+| Category | Limits&#124;Shared Collision |
+
+:::tip
+To use same-frame collision within one AnimGraph, place the Source node so it evaluates before the Target node.
+:::
+
 ## Collision Source Type
 
 Enum indicating the source of collision settings.
