@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 title: "Basic Concepts"
 description: "How KawaiiPhysics works. Learn about bone chains, Damping, Stiffness, collision, and other core concepts."
 ---

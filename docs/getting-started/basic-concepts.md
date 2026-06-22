@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 title: "基本概念"
 description: "KawaiiPhysicsの仕組み。ボーンチェーン、Damping、Stiffness、コリジョンなどの基本概念を解説。"
 ---

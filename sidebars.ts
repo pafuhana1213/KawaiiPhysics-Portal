@@ -8,6 +8,7 @@ const sidebars: SidebarsConfig = {
       link: { type: 'doc', id: 'intro' },
       items: [
         'getting-started/installation',
+        'getting-started/sample-project',
         'getting-started/quick-start',
         'getting-started/basic-concepts',
       ],

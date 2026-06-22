@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 title: "Quick Start"
 description: "Get started with KawaiiPhysics in 5 minutes. Basic setup from adding an AnimGraph node to previewing physics."
 ---

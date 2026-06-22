@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 title: "クイックスタート"
 description: "KawaiiPhysicsを5分で始める。AnimGraphノードの追加からプレビューまでの基本セットアップ。"
 ---

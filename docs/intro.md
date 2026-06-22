@@ -36,7 +36,7 @@ description: "KawaiiPhysics - Unreal Engine向け軽量ボーン物理プラグ�
 - **スケルトン保護**: ボーンの伸縮を防ぐ安定した物理演算
 - **外部力の適用**: 風、重力、カスタムフォースに対応
 
-## 対応バージョン
+## 対応バージョン {#supported-versions}
 
 | KawaiiPhysics | 対応UEバージョン |
 |---------------|-----------------|
