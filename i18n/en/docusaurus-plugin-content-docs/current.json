@@ -11,6 +11,22 @@
     "message": "Feature Guide",
     "description": "The label for category 機能ガイド in sidebar docsSidebar"
   },
+  "sidebar.docsSidebar.category.ボーン": {
+    "message": "Bones",
+    "description": "The label for category ボーン in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.物理・カーブ": {
+    "message": "Physics & Curves",
+    "description": "The label for category 物理・カーブ in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.コリジョン": {
+    "message": "Collision",
+    "description": "The label for category コリジョン in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.外部力": {
+    "message": "Force",
+    "description": "The label for category 外部力 in sidebar docsSidebar"
+  },
   "sidebar.docsSidebar.category.応用・Tips": {
     "message": "Advanced & Tips",
     "description": "The label for category 応用・Tips in sidebar docsSidebar"

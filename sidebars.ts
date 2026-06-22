@@ -28,15 +28,39 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: '機能ガイド',
       items: [
-        'features/bone-chain',
-        'features/collision-setup',
-        'features/shared-collision',
-        'features/bone-subdivision',
-        'features/wind-and-forces',
-        'features/curve-editor',
-        'features/data-assets',
-        'features/sync-bone',
-        'features/external-force-presets',
+        {
+          type: 'category',
+          label: 'ボーン',
+          items: [
+            'features/bone-chain',
+            'features/bone-subdivision',
+          ],
+        },
+        {
+          type: 'category',
+          label: '物理・カーブ',
+          items: [
+            'features/curve-editor',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'コリジョン',
+          items: [
+            'features/collision-setup',
+            'features/shared-collision',
+            'features/data-assets',
+          ],
+        },
+        {
+          type: 'category',
+          label: '外部力',
+          items: [
+            'features/wind-and-forces',
+            'features/external-force-presets',
+            'features/sync-bone',
+          ],
+        },
         'features/animnotify',
       ],
     },
