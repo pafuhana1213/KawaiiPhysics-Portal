@@ -1,0 +1,49 @@
+/* ===== YouTube Thumbnail (click to open modal) ===== */
+.thumbnail {
+  display: block;
+  width: 100%;
+  max-width: 600px; /* dance GIF の表示幅 (600px) に合わせる */
+  margin: 1.5rem 0;
+  cursor: pointer;
+}
+
+.thumbnail:focus-visible {
+  outline: 2px solid #4ecdc4;
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+.thumbnailInner {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.thumbnail:hover .thumbnailInner {
+  border-color: #4ecdc4;
+  transform: translateY(-2px);
+}
+
+.thumbnailInner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.playButton {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.2s ease;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+}
+
+.thumbnail:hover .playButton {
+  transform: translate(-50%, -50%) scale(1.1);
+}

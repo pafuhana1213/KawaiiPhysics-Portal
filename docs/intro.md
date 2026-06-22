@@ -5,28 +5,17 @@ title: "はじめに"
 description: "KawaiiPhysics - Unreal Engine向け軽量ボーン物理プラグイン。髪・服・アクセサリーに物理挙動を簡単に適用できます。"
 ---
 
+import YouTubeThumbnail from '@site/src/components/YouTubeThumbnail';
+
 # はじめに
 
 **KawaiiPhysics** は、Unreal Engine向けの軽量なボーン物理シミュレーションプラグインです。
 
-![KawaiiPhysics Demo](/img/intro-demo.webp)
+<YouTubeThumbnail videoId="t6ihqMIdWWg" title="KawaiiPhysics デモ" />
 
-<div style={{textAlign: 'left', margin: '20px 0'}}>
-  <iframe
-    width="560"
-    height="315"
-    src="https://www.youtube.com/embed/0f-l-SP07Mo?origin=https://pafuhana1213.github.io"
-    title="KawaiiPhysics Demo Video"
-    frameBorder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    referrerPolicy="strict-origin-when-cross-origin"
-    allowFullScreen>
-  </iframe>
-</div>
+<YouTubeThumbnail videoId="0f-l-SP07Mo" title="KawaiiPhysics デモ" />
 
 ![Comparison Demo](/img/comparison-demo.png)
-
-*物理シミュレーションあり/なしの比較*
 
 ## 特徴
 
@@ -65,18 +54,7 @@ description: "KawaiiPhysics - Unreal Engine向け軽量ボーン物理プラグ�
 
 ## 採用実績
 
-KawaiiPhysicsは以下のタイトルで採用されています：
-
-- **Granblue Fantasy Versus Rising** - 格闘ゲーム
-- **Stellar Blade** - アクションゲーム
-
-![Dance Demo 1](https://github.com/user-attachments/assets/28d72d0c-4423-41c7-bc52-c5c7c3886e02)
-
-*ダンスアニメーションでの髪・服の物理表現 (Lzebul)*
-
-![Dance Demo 2](https://github.com/user-attachments/assets/63faed3c-8aaa-4d4d-ae33-e98f9c8c15fd)
-
-*ダンスアニメーションでの髪・服の物理表現 (TA式 鷺宮カノ)*
+KawaiiPhysicsは数多くのタイトルで採用されています。詳しくは [採用実績](/adoption) をご覧ください。
 
 ## リンク
 
