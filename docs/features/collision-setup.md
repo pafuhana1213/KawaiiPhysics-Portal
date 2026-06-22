@@ -42,12 +42,16 @@ TArray<FBoxLimit> BoxLimits;
 
 **FBoxLimitの設定項目:**
 
-| プロパティ | 型 | 説明 |
-|-----------|-----|------|
-| DrivingBone | FBoneReference | コリジョンが追従するボーン |
-| Offset | FVector | ボーンからのオフセット |
-| Rotation | FRotator | ボックスの回転 |
-| Extent | FVector | ボックスの半径（各軸方向のサイズ） |
+| プロパティ | 型 | デフォルト | 説明 |
+|-----------|-----|-----------|------|
+| DrivingBone | FBoneReference | - | コリジョンが追従するボーン |
+| OffsetLocation | FVector | (0, 0, 0) | Driving Boneからの位置オフセット |
+| OffsetRotation | FRotator | (0, 0, 0) | Driving Boneからの回転オフセット（範囲 -360〜360） |
+| Extent | FVector | (5, 5, 5) | ボックスの半径（各軸方向の半サイズ） |
+
+:::note
+`DrivingBone` / `OffsetLocation` / `OffsetRotation` は全コリジョン形状共通（`FCollisionLimitBase`）のプロパティです。`FSphericalLimit` は `Radius`（既定 5）と `LimitType`（Inner/Outer）、`FCapsuleLimit` は `Radius`（既定 5）と `Length`（既定 10）を追加で持ちます。
+:::
 
 ## PhysicsAssetからのコリジョン生成 {#physicsasset}
 

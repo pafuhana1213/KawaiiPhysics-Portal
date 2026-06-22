@@ -514,7 +514,7 @@ static bool GetExternalForceBoolProperty(
 
 ### 他の型のプロパティアクセス
 
-同様のパターンで以下の型もサポートしています：
+同様のパターンで以下の型もサポートしています。`Set～` は `FKawaiiPhysicsReference` を返し（チェーン可能）、`Get～` は対応する型の値を返します。いずれも `ExecResult`（`EKawaiiPhysicsAccessExternalForceResult`）を `ExpandEnumAsExecs` で出力します。
 
 - `int32`: SetExternalForceIntProperty / GetExternalForceIntProperty
 - `float`: SetExternalForceFloatProperty / GetExternalForceFloatProperty
@@ -522,6 +522,10 @@ static bool GetExternalForceBoolProperty(
 - `FRotator`: SetExternalForceRotatorProperty / GetExternalForceRotatorProperty
 - `FTransform`: SetExternalForceTransformProperty / GetExternalForceTransformProperty
 - Wildcard: SetExternalForceWildcardProperty / GetExternalForceWildcardProperty
+
+:::note
+Wildcard 版は任意の型を扱う `CustomThunk` 実装で、戻り値は `void`（値は参照引数で受け渡し）です。他の型付き版とは異なり `FKawaiiPhysicsReference` を返しません。型が事前に分かっている場合は専用版（Int / Float / Vector など）の使用を推奨します。
+:::
 
 ## Blueprint使用例
 

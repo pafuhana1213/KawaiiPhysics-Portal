@@ -40,12 +40,16 @@ TArray<FBoxLimit> BoxLimits;
 
 **FBoxLimit Properties:**
 
-| Property | Type | Description |
-|----------|------|-------------|
-| DrivingBone | FBoneReference | Bone that collision follows |
-| Offset | FVector | Offset from bone |
-| Rotation | FRotator | Box rotation |
-| Extent | FVector | Box half-extents (size in each axis direction) |
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| DrivingBone | FBoneReference | - | Bone that collision follows |
+| OffsetLocation | FVector | (0, 0, 0) | Location offset from the Driving Bone |
+| OffsetRotation | FRotator | (0, 0, 0) | Rotation offset from the Driving Bone (range -360 to 360) |
+| Extent | FVector | (5, 5, 5) | Box half-extents (size in each axis direction) |
+
+:::note
+`DrivingBone` / `OffsetLocation` / `OffsetRotation` are common to all collision shapes (`FCollisionLimitBase`). `FSphericalLimit` adds `Radius` (default 5) and `LimitType` (Inner/Outer); `FCapsuleLimit` adds `Radius` (default 5) and `Length` (default 10).
+:::
 
 ## Collision Generation from PhysicsAsset {#physicsasset}
 

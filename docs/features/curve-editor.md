@@ -18,11 +18,14 @@ title: "カーブエディタ"
 
 ## 対応パラメータ
 
-以下のパラメータがカーブに対応しています：
+以下のパラメータがカーブに対応しています（`Physics Settings | Curves` カテゴリ、AdvancedDisplay）。いずれも RootBone からのボーン長比（0.0〜1.0）に応じて各パラメータへ乗算されます。
 
-- **Damping Curve** - 減衰
-- **Stiffness Curve** - 剛性
-- **Radius Curve** - 半径
+- **Damping Curve** - 減衰（エディタ表示名: Damping Rate by Bone Length Rate）
+- **Stiffness Curve** - 剛性（Stiffness Rate by Bone Length Rate）
+- **World Damping Location Curve** - ワールド位置減衰（World Damping Location Rate by Bone Length Rate）
+- **World Damping Rotation Curve** - ワールド回転減衰（World Damping Rotation Rate by Bone Length Rate）
+- **Radius Curve** - 半径（Radius Rate by Bone Length Rate）
+- **LimitAngle Curve** - 角度制限（LimitAngle Rate by Bone Length Rate）
 
 ## カーブの設定
 

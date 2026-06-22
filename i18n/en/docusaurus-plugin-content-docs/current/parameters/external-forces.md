@@ -21,7 +21,7 @@ Parameters related to externally applied forces.
 |----------|-------|
 | Type | FVector |
 | Default | (0, 0, 0) |
-| Category | ExternalForce |
+| Category | Force |
 
 ```cpp
 // Apply downward gravity
@@ -36,7 +36,7 @@ Gravity = FVector(0, 0, -1.0f);
 |----------|-------|
 | Type | bool |
 | Default | false |
-| Category | ExternalForce |
+| Category | Force |
 
 | Value | Description |
 |-------|-------------|
@@ -51,7 +51,7 @@ Gravity = FVector(0, 0, -1.0f);
 |----------|-------|
 | Type | bool |
 | Default | false |
-| Category | ExternalForce |
+| Category | Force |
 
 ### bUseWorldSpaceGravity
 
@@ -61,7 +61,7 @@ Gravity = FVector(0, 0, -1.0f);
 |----------|-------|
 | Type | bool |
 | Default | true |
-| Category | ExternalForce |
+| Category | Force |
 
 ## Wind
 
@@ -73,7 +73,7 @@ Gravity = FVector(0, 0, -1.0f);
 |----------|-------|
 | Type | bool |
 | Default | false |
-| Category | ExternalForce |
+| Category | Force |
 
 ### WindScale
 
@@ -83,7 +83,8 @@ Gravity = FVector(0, 0, -1.0f);
 |----------|-------|
 | Type | float |
 | Default | 1.0 |
-| Category | ExternalForce |
+| Edit Condition | `bEnableWind == true` |
+| Category | Force |
 
 :::note
 WindScale is only effective when bEnableWind is true.
@@ -91,7 +92,7 @@ WindScale is only effective when bEnableWind is true.
 
 ### WindDirectionNoiseAngle
 
-**Wind Direction Noise** - Noise (angle) applied to wind direction from WindDirectionalSource.
+**Wind Direction Noise** - Noise (angle) applied to wind direction from WindDirectionalSource. Adds randomness to the wind direction to soften mechanical-looking sway.
 
 | Property | Value |
 |----------|-------|
@@ -99,7 +100,8 @@ WindScale is only effective when bEnableWind is true.
 | Default | 0.0 |
 | Unit | Degrees |
 | Range | 0 or higher |
-| Category | ExternalForce |
+| Edit Condition | `bEnableWind == true` |
+| Category | Force |
 
 ## Simple External Force
 
@@ -111,7 +113,7 @@ WindScale is only effective when bEnableWind is true.
 |----------|-------|
 | Type | FVector |
 | Default | (0, 0, 0) |
-| Category | ExternalForce |
+| Category | Force\|External Force |
 
 ### bUseWorldSpaceSimpleExternalForce
 
@@ -121,7 +123,7 @@ WindScale is only effective when bEnableWind is true.
 |----------|-------|
 | Type | bool |
 | Default | true |
-| Category | ExternalForce |
+| Category | Force\|External Force |
 
 ## External Force Presets
 
@@ -130,7 +132,7 @@ WindScale is only effective when bEnableWind is true.
 **External Force Presets (Instanced Struct)** - External force presets. Custom presets can be added in C++.
 
 ```cpp
-UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ExternalForce",
+UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Force|External Force",
     meta = (BaseStruct = "/Script/KawaiiPhysics.KawaiiPhysics_ExternalForce", ExcludeBaseStruct))
 TArray<FInstancedStruct> ExternalForces;
 ```
@@ -140,7 +142,8 @@ TArray<FInstancedStruct> ExternalForces;
 **Custom External Forces (Instanced Property)** - Custom presets can be added in BP/C++.
 
 ```cpp
-UPROPERTY(EditAnywhere, BlueprintReadWrite, Instanced, Category = "ExternalForce")
+UPROPERTY(EditAnywhere, BlueprintReadWrite, Instanced, Category = "Force|External Force",
+    meta=(DisplayName="CustomExternalForces(EXPERIMENTAL)"))
 TArray<TObjectPtr<UKawaiiPhysics_CustomExternalForce>> CustomExternalForces;
 ```
 

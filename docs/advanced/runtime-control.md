@@ -7,105 +7,179 @@ title: "ランタイム制御"
 
 ゲーム実行中にKawaiiPhysicsを動的に制御する方法を説明します。
 
+ランタイム制御は **[UKawaiiPhysicsLibrary](/docs/api/kawaiiphysics-library)** が提供する Blueprint 関数を通じて行います。これらは `BlueprintThreadSafe` 指定のため、Animation Blueprint のワーカースレッド（AnimGraph のノード関数や `On Update Animation`）からも安全に呼べます。
+
+## ノード参照の取得
+
+パラメータ系の関数はすべて `FKawaiiPhysicsReference`（ノード参照）を受け取ります。AnimGraph のノードハンドルから `Convert to Kawaii Physics` で取得します。
+
+```cpp
+// FAnimNodeReference から KawaiiPhysics ノード参照へ変換
+UFUNCTION(BlueprintCallable, Category = "Kawaii Physics",
+    meta = (BlueprintThreadSafe, ExpandEnumAsExecs = "Result"))
+static FKawaiiPhysicsReference ConvertToKawaiiPhysics(const FAnimNodeReference& Node,
+                                                      EAnimNodeReferenceConversionResult& Result);
+
+// Pure 版（成功/失敗を bool で受け取る）
+static void ConvertToKawaiiPhysicsPure(const FAnimNodeReference& Node,
+                                       FKawaiiPhysicsReference& KawaiiPhysics, bool& Result);
+```
+
+:::tip
+Blueprint では、AnimGraph の KawaiiPhysics ノードに **Anim Node Function**（バインドした関数）を割り当て、その中で `Convert to Kawaii Physics` → 各 Setter を呼ぶのが基本パターンです。
+:::
+
 ## パラメータの動的変更
 
-### Blueprintから
-
-Animation Blueprintの変数を通じてパラメータを変更できます。
+各 Setter は `FKawaiiPhysicsReference` を返すため、チェーンして複数のパラメータを連続設定できます。
 
 ```cpp
-// Animation Blueprint内
-UPROPERTY(BlueprintReadWrite)
-float DynamicDamping = 0.1f;
+// 重力・風・物理設定を動的に変更
+KawaiiPhysics = UKawaiiPhysicsLibrary::SetGravity(KawaiiPhysics, FVector(0, 0, -980.0f));
+KawaiiPhysics = UKawaiiPhysicsLibrary::SetWindScale(KawaiiPhysics, 2.0f);
+KawaiiPhysics = UKawaiiPhysicsLibrary::SetEnableWind(KawaiiPhysics, true);
 ```
 
-### C++から
+物理パラメータ（Damping / Stiffness など）はまとめて差し替えます。
 
 ```cpp
-// AnimInstanceを取得してパラメータを変更
-UAnimInstance* AnimInstance = Mesh->GetAnimInstance();
-// カスタムAnimInstanceクラスでパラメータを公開
+FKawaiiPhysicsSettings Settings = UKawaiiPhysicsLibrary::GetPhysicsSettings(KawaiiPhysics);
+Settings.Damping = 0.2f;
+Settings.Stiffness = 0.1f;
+KawaiiPhysics = UKawaiiPhysicsLibrary::SetPhysicsSettings(KawaiiPhysics, Settings);
 ```
+
+:::note
+`SetPhysicsSettings` などのパラメータ反映は、ノードの `bUpdatePhysicsSettingsInGame`（既定 `true`）が有効な場合に毎フレーム反映されます。無効化すると軽量化しますが、実行中のパラメータ変更が反映されなくなります。
+:::
+
+主なパラメータ系関数（一部）:
+
+| 関数 | 内容 |
+|------|------|
+| `SetGravity` / `GetGravity` | 重力ベクトル |
+| `SetEnableWind` / `SetWindScale` | 風の有効化・スケール |
+| `SetPhysicsSettings` / `GetPhysicsSettings` | Damping / Stiffness / Radius などの一括設定 |
+| `SetDummyBoneLength` | 末端ダミーボーン長（再初期化を自動予約） |
+| `SetBoneSubdivisionCount` | ボーン分割数（再初期化を自動予約） |
+| `SetTeleportDistanceThreshold` / `SetTeleportRotationThreshold` | テレポート判定しきい値 |
+| `SetAllowWorldCollision` | ワールドコリジョンの有効化 |
+| `SetLimitsDataAsset` | コリジョン Data Asset の差し替え |
+
+全関数は [UKawaiiPhysicsLibrary](/docs/api/kawaiiphysics-library) を参照してください。
 
 ## 有効/無効の切り替え
 
-### 一時停止
+ノード単位の enable/disable プロパティはありません。次のいずれかで制御します。
+
+### Alpha による制御（推奨）
+
+`SetAlphaToComponent` でコンポーネント内の KawaiiPhysics ノードのブレンド率（入力 Alpha）をまとめて設定します。`0.0` で物理 OFF（元アニメーション）、`1.0` で物理 ON です。
 
 ```cpp
-UPROPERTY()
-bool bEnabled = true;
+UFUNCTION(BlueprintCallable, Category = "Kawaii Physics", meta=(BlueprintThreadSafe))
+static bool SetAlphaToComponent(USkeletalMeshComponent* MeshComp, float Alpha,
+                                UPARAM(ref) FGameplayTagContainer& FilterTags,
+                                bool bFilterExactMatch = false);
 ```
 
-### 使用例
+`FilterTags` に [KawaiiPhysicsTag](/docs/parameters/external-forces) を渡すと、対象ノードを絞り込めます。アニメーション中の自動制御には [AnimNotifyState: Set Alpha](#animnotifystate-setalpha) も利用できます。
 
-- カットシーン中は無効化
-- ポーズメニュー中は無効化
-- LODに応じて無効化
+### コンソール変数による一括停止
+
+デバッグ用途では `a.AnimNode.KawaiiPhysics.Enable 0` で全 KawaiiPhysics ノードのシミュレーションを停止できます（[コンソール変数](/docs/advanced/console-variables)）。
+
+**使用例:**
+
+- カットシーン中は Alpha を 0 に
+- ポーズメニュー中は停止
+- LOD に応じて Alpha を下げる
 
 ## 外部力の動的適用
 
-### SetExternalForce
+外部力は `FInstancedStruct`（外力プリセット）として追加します。単純なベクトルを直接渡す API はありません。プリセットの詳細は [外部力プリセット](/docs/features/external-force-presets) を参照してください。
+
+### ノード参照に追加
 
 ```cpp
-// 爆発の衝撃
-void ApplyExplosionForce(FVector ExplosionLocation, float Force)
-{
-    FVector Direction = (BoneLocation - ExplosionLocation).GetSafeNormal();
-    SetExternalForce(Direction * Force);
-}
+UFUNCTION(BlueprintCallable, Category = "Kawaii Physics", meta=(BlueprintThreadSafe))
+static bool AddExternalForce(const FKawaiiPhysicsReference& KawaiiPhysics,
+                             FInstancedStruct& ExternalForce, UObject* Owner, bool bIsOneShot = false);
 ```
 
-### 時間経過で減衰
+`bIsOneShot = true` にすると、その力は一度だけ適用されます（衝撃表現に便利）。
+
+### コンポーネントへ一括追加
+
+AnimGraph 外（ゲームスレッド）からは、コンポーネント単位で外力を追加するのが簡単です。`FilterTags` で対象ノードを絞り込めます。
 
 ```cpp
-void Tick(float DeltaTime)
-{
-    // 外部力を徐々に減衰
-    CurrentExternalForce *= FMath::Exp(-DecayRate * DeltaTime);
-    SetExternalForce(CurrentExternalForce);
-}
+UFUNCTION(BlueprintCallable, Category = "Kawaii Physics", meta=(BlueprintThreadSafe))
+static bool AddExternalForcesToComponent(USkeletalMeshComponent* MeshComp,
+                                         UPARAM(ref) TArray<FInstancedStruct>& ExternalForces, UObject* Owner,
+                                         UPARAM(ref) FGameplayTagContainer& FilterTags,
+                                         bool bFilterExactMatch = false,
+                                         bool bIsOneShot = false);
+
+// 追加した外力の除去（Owner 単位）
+static bool RemoveExternalForcesFromComponent(USkeletalMeshComponent* MeshComp, UObject* Owner,
+                                              UPARAM(ref) FGameplayTagContainer& FilterTags,
+                                              bool bFilterExactMatch = false);
 ```
+
+:::tip
+爆発やダメージの衝撃は、`FKawaiiPhysics_ExternalForce_Basic` プリセット（力の向き・大きさを持つ）を `bIsOneShot = true` で追加すると表現できます。継続的な力は OneShot にせず、不要になったら `RemoveExternalForcesFromComponent` で除去します。
+:::
 
 ## リセット
 
-物理状態を初期状態に戻します。
+物理状態を初期状態に戻します。テレポートやリスポーン時に使用します。
 
 ```cpp
-// 物理状態をリセット
-ResetDynamics();
+UFUNCTION(BlueprintCallable, Category = "Kawaii Physics", meta=(BlueprintThreadSafe))
+static FKawaiiPhysicsReference ResetDynamics(const FKawaiiPhysicsReference& KawaiiPhysics);
 ```
 
-### 使用例
+```cpp
+// ノード参照を取得してリセット
+bool bOk = false;
+FKawaiiPhysicsReference Ref;
+UKawaiiPhysicsLibrary::ConvertToKawaiiPhysicsPure(Node, Ref, bOk);
+if (bOk)
+{
+    UKawaiiPhysicsLibrary::ResetDynamics(Ref);
+}
+```
 
-- テレポート後
+:::note
+ノードの `bUseWarmUpWhenResetDynamics`（既定 `true`）が有効な場合、リセット時に `WarmUpFrames` 分の空回しが行われ、物理が落ち着いた状態から再開します。
+:::
+
+**使用例:**
+
+- テレポート後（しきい値を超える移動は自動でテレポート扱いになりますが、明示的なリセットも可能）
 - アニメーション遷移時
 - リスポーン時
 
 ## イベント連携
 
-### AnimNotifyサポート {#animnotify}
+### AnimNotify / AnimNotifyState {#animnotify}
 
 :::tip バージョン情報
-v1.17.0で追加
+v1.17.0 で外力系 Notify、v1.20.0 で Set Alpha NotifyState を追加
 :::
 
-KawaiiPhysics専用のAnimNotifyが提供されています。
+KawaiiPhysics 専用の AnimNotify / AnimNotifyState が提供されています。詳細は [AnimNotify](/docs/features/animnotify) を参照してください。
 
-**AnimNotify_KawaiiPhysics_ResetDynamics**
-
-物理状態をリセットします。テレポートやアニメーション遷移時に使用します。
-
-**AnimNotify_KawaiiPhysics_SetExternalForce**
-
-外部力を設定します。ジャンプ開始時の風圧などに使用します。
+| クラス | 種類 | 内容 |
+|--------|------|------|
+| `AnimNotify_KawaiiPhysicsAddExternalForce` | AnimNotify | その瞬間に外力を1回適用（OneShot） |
+| `AnimNotifyState_KawaiiPhysicsAddExternalForce` | AnimNotifyState | 区間中、外力を継続適用（Begin で追加・End で除去） |
+| `AnimNotifyState_KawaiiPhysicsSetAlpha` | AnimNotifyState | 区間中、物理のブレンド率（Alpha）を制御 |
 
 ### AnimNotifyState: Set Alpha {#animnotifystate-setalpha}
 
-:::tip バージョン情報
-v1.20.0で追加
-:::
-
-アニメーション中に物理のブレンド率を動的に変更できるAnimNotifyStateです。
+アニメーション中に物理のブレンド率を動的に変更できる AnimNotifyState です。内部的に `SetAlphaToComponent` を呼び出します。
 
 ```
 アニメーションタイムライン:
@@ -121,44 +195,15 @@ v1.20.0で追加
 - アニメーション遷移時のスムーズなブレンド
 - カットシーン中の制御
 
-### カスタムAnimNotify
-
-Anim Notifyから物理パラメータを変更:
+### ゲームプレイイベントからの適用
 
 ```cpp
-void UAnimNotify_KPForce::Notify(...)
+// ダメージを受けた時、衝撃を外力プリセットとして適用
+void AMyCharacter::OnDamageReceived(float Damage, FVector HitDirection)
 {
-    // ジャンプ開始時に外部力を適用
-    KawaiiPhysics->SetExternalForce(FVector(0, 0, 100));
+    // FKawaiiPhysics_ExternalForce_Basic を構築し、FInstancedStruct 化して
+    // AddExternalForcesToComponent( ..., bIsOneShot = true ) で適用する
 }
-```
-
-### ゲームプレイイベント
-
-```cpp
-// ダメージを受けた時
-void OnDamageReceived(float Damage, FVector HitDirection)
-{
-    // 衝撃を物理に反映
-    float ImpactForce = Damage * 10.0f;
-    KawaiiPhysics->SetExternalForce(HitDirection * ImpactForce);
-}
-```
-
-## Blueprint Function Library
-
-よく使う操作をライブラリ化すると便利です。
-
-```cpp
-UCLASS()
-class UKawaiiPhysicsLibrary : public UBlueprintFunctionLibrary
-{
-    UFUNCTION(BlueprintCallable)
-    static void ApplyImpulse(AActor* Actor, FVector Impulse);
-
-    UFUNCTION(BlueprintCallable)
-    static void ResetAllKawaiiPhysics(AActor* Actor);
-};
 ```
 
 詳しくは [APIリファレンス](/docs/api/kawaiiphysics-library) を参照してください。

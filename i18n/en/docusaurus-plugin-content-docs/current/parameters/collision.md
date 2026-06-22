@@ -144,6 +144,7 @@ Enabling this significantly increases physics processing load.
 |----------|-------|
 | Type | bool |
 | Default | true |
+| Edit Condition | `bAllowWorldCollision == true` |
 
 ### IgnoreBones
 
@@ -152,6 +153,7 @@ Enabling this significantly increases physics processing load.
 | Property | Value |
 |----------|-------|
 | Type | TArray\<FBoneReference\> |
+| Edit Condition | `bIgnoreSelfComponent == false` |
 
 ### IgnoreBoneNamePrefix
 
@@ -160,6 +162,7 @@ Enabling this significantly increases physics processing load.
 | Property | Value |
 |----------|-------|
 | Type | TArray\<FName\> |
+| Edit Condition | `bIgnoreSelfComponent == false` |
 
 ### bOverrideCollisionParams
 

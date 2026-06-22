@@ -35,7 +35,7 @@ struct KAWAIIPHYSICS_API FAnimNode_KawaiiPhysics : public FAnimNode_SkeletalCont
 |-----------|-----|-----------|------|
 | BoneSubdivisionCount | int32 | 0 | ボーン間ダミー分割数（ClampMin=0, ClampMax=10、0で無効） |
 | bBoneSubdivisionCollisionOnly | bool | true | ボーン間ダミーを速度積分から除外しコリジョン/制約専用にする |
-| bBoneSubdivisionDensifyByRadius | bool | false | 半径に応じてダミーを追加配置しコリジョン球の隙間を埋める |
+| bBoneSubdivisionDensifyByRadius | bool | false | `BoneSubdivisionCount` を最小として、ボーン間が半径に対して離れた区間ほどダミーを多く追加配置（1区間最大50本）。有効中に Radius / RadiusCurve を変更した場合はダミー数の再計算に再初期化（ABP再コンパイル等）が必要なことがある |
 | BoneConstraintSubdivisionCount | int32 | 0 | 横方向BoneConstraintに沿ったコリジョンプロキシダミー数（ClampMin=0, ClampMax=10、0で無効） |
 | BoneConstraintSubdivisionFeedbackScale | float | 1.0 | bridgeダミーのコリジョン変位を端点ボーンへ伝える強度（ClampMin=0.0, ClampMax=2.0） |
 
@@ -59,14 +59,14 @@ struct KAWAIIPHYSICS_API FAnimNode_KawaiiPhysics : public FAnimNode_SkeletalCont
 
 ### Physics Settings \| Curves（カーブ）
 
-| プロパティ | 型 | 説明 |
-|-----------|-----|------|
-| DampingCurveData | FRuntimeFloatCurve | 減衰カーブ |
-| StiffnessCurveData | FRuntimeFloatCurve | 剛性カーブ |
-| WorldDampingLocationCurveData | FRuntimeFloatCurve | ワールド位置減衰カーブ |
-| WorldDampingRotationCurveData | FRuntimeFloatCurve | ワールド回転減衰カーブ |
-| RadiusCurveData | FRuntimeFloatCurve | 半径カーブ |
-| LimitAngleCurveData | FRuntimeFloatCurve | 角度制限カーブ |
+| プロパティ | 型 | エディタ表示名 | 説明 |
+|-----------|-----|------|------|
+| DampingCurveData | FRuntimeFloatCurve | Damping Rate by Bone Length Rate | 減衰カーブ |
+| StiffnessCurveData | FRuntimeFloatCurve | Stiffness Rate by Bone Length Rate | 剛性カーブ |
+| WorldDampingLocationCurveData | FRuntimeFloatCurve | World Damping Location Rate by Bone Length Rate | ワールド位置減衰カーブ |
+| WorldDampingRotationCurveData | FRuntimeFloatCurve | World Damping Rotation Rate by Bone Length Rate | ワールド回転減衰カーブ |
+| RadiusCurveData | FRuntimeFloatCurve | Radius Rate by Bone Length Rate | 半径カーブ |
+| LimitAngleCurveData | FRuntimeFloatCurve | LimitAngle Rate by Bone Length Rate | 角度制限カーブ |
 
 すべて RootBone からのボーン長比（0.0〜1.0）に応じて各パラメータへ乗算されます（AdvancedDisplay）。
 
@@ -108,12 +108,12 @@ struct KAWAIIPHYSICS_API FAnimNode_KawaiiPhysics : public FAnimNode_SkeletalCont
 
 | プロパティ | 型 | デフォルト | 説明 |
 |-----------|-----|-----------|------|
-| bAllowWorldCollision | bool | false | ワールドコリジョン有効化 |
-| bOverrideCollisionParams | bool | false | コリジョンパラメータオーバーライド |
-| CollisionChannelSettings | FBodyInstance | - | コリジョン設定 |
-| bIgnoreSelfComponent | bool | true | 自己コリジョン無視 |
-| IgnoreBones | TArray\<FBoneReference\> | - | 無視ボーンリスト |
-| IgnoreBoneNamePrefix | TArray\<FName\> | - | 無視ボーン名プリフィックス |
+| bAllowWorldCollision | bool | false | ワールドコリジョン有効化（有効にすると物理負荷が大幅に上がる） |
+| bOverrideCollisionParams | bool | false | 独自のコリジョン設定を使用する（`CollisionChannelSettings` のインライントグル） |
+| CollisionChannelSettings | FBodyInstance | - | 独自コリジョン設定（表示名: Override SkelComp Collision Params、`bOverrideCollisionParams` 有効時のみ） |
+| bIgnoreSelfComponent | bool | true | 自己コリジョン（PhysicsAsset）を無視（編集条件: `bAllowWorldCollision`） |
+| IgnoreBones | TArray\<FBoneReference\> | - | 無視ボーンリスト（編集条件: `!bIgnoreSelfComponent`） |
+| IgnoreBoneNamePrefix | TArray\<FName\> | - | 無視ボーン名プリフィックス（編集条件: `!bIgnoreSelfComponent`） |
 
 ## Force（外部力）
 
@@ -123,9 +123,9 @@ struct KAWAIIPHYSICS_API FAnimNode_KawaiiPhysics : public FAnimNode_SkeletalCont
 | bUseLegacyGravity | bool | false | レガシー重力方式 |
 | bUseDefaultGravityZProjectSetting | bool | false | プロジェクト設定の重力使用 |
 | bUseWorldSpaceGravity | bool | true | ワールド空間重力 |
-| bEnableWind | bool | false | 風の有効化 |
-| WindScale | float | 1.0 | 風のスケール |
-| WindDirectionNoiseAngle | float | 0.0 | 風方向ノイズ（度） |
+| bEnableWind | bool | false | 風の有効化（WindDirectionalSource の影響を受ける） |
+| WindScale | float | 1.0 | 風のスケール（編集条件: `bEnableWind`） |
+| WindDirectionNoiseAngle | float | 0.0 | 風方向ノイズ（度、編集条件: `bEnableWind`） |
 
 ### Force \| External Force（外力プリセット）
 
@@ -140,7 +140,7 @@ struct KAWAIIPHYSICS_API FAnimNode_KawaiiPhysics : public FAnimNode_SkeletalCont
 
 | プロパティ | 型 | 説明 |
 |-----------|-----|------|
-| SyncBones | TArray\<FKawaiiPhysicsSyncBone\> | 同期ボーンリスト |
+| SyncBones | TArray\<FKawaiiPhysicsSyncBone\> | 同期ボーンリスト。詳細は [Sync Bone](/docs/features/sync-bone) を参照 |
 
 ## Tag（タグ）
 
@@ -199,20 +199,20 @@ virtual void ResetDynamics(ETeleportType InTeleportType) override;
 
 物理状態のリセット。テレポート時などに使用します。
 
-### OnInitializeAnimInstance
+### HasPreUpdate / PreUpdate
 
 ```cpp
-virtual bool NeedsOnInitializeAnimInstance() const override { return true; }
-virtual void OnInitializeAnimInstance(
-    const FAnimInstanceProxy* InProxy,
-    const UAnimInstance* InAnimInstance
-) override;
+virtual bool HasPreUpdate() const override;
+virtual void PreUpdate(const UAnimInstance* InAnimInstance) override;
 ```
 
-GameThreadで1回だけ呼ばれる初期化。警告ログ用の識別名収集や編集状態の判定を行います。
+GameThread 上で呼ばれる前処理です。ワーカースレッドから UObject へ安全にアクセスできない処理をここで行います。
+
+- **共有コリジョンの初期化**（`InitializeSharedCollision`）: Subsystem への登録は `TMap` の変更を伴うため、スレッドセーフな GameThread 側で実行されます
+- 警告ログ用の識別名（AnimInstance クラス名・コンポーネント名・オーナー Actor 名）を初回 1 回だけ収集します（AnyThread からの UObject アクセスを回避）
 
 :::note
-旧バージョンに存在した `PreUpdate` オーバーライドは廃止されました。毎フレームの GameThread 処理を避けるため、初期化時の処理は `OnInitializeAnimInstance`（1回のみ）へ集約され、共有コリジョンの再初期化はワーカースレッド上の `EvaluateSkeletalControl_AnyThread` 内で行われます。
+`HasPreUpdate()` が `true` を返すノードのみ `PreUpdate()` が呼ばれます。物理シミュレーション本体はワーカースレッド上の `EvaluateSkeletalControl_AnyThread` で実行され、`PreUpdate` は GameThread 限定の初期化・キャッシュ収集に徹しています。
 :::
 
 ### IsValidToEvaluate

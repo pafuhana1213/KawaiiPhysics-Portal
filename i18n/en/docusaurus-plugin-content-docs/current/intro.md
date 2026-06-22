@@ -32,7 +32,7 @@ description: "KawaiiPhysics - A lightweight bone physics plugin for Unreal Engin
 
 - **Simple Setup**: Just add one node in AnimGraph
 - **Lightweight Processing**: Custom algorithm that doesn't depend on PhysX
-- **Rich Collision Support**: Supports sphere, capsule, and plane collisions
+- **Rich Collision Support**: Supports sphere, capsule, box, and plane collisions
 - **Skeleton Protection**: Stable physics simulation that prevents bone stretching
 - **External Force Application**: Supports wind, gravity, and custom forces
 

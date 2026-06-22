@@ -34,14 +34,22 @@ spine_03 (Root Bone - no physics)
 You can exclude specific bones from physics calculation.
 
 ```cpp
-UPROPERTY()
+UPROPERTY(EditAnywhere, Category = "Bones")
 TArray<FBoneReference> ExcludeBones;
 ```
+
+:::warning
+A bone listed in `ExcludeBones` removes **that bone and all of its descendants** from physics control. If you specify a bone in the middle of a chain, physics will no longer be applied to anything down to the tip from there.
+:::
 
 ### Use Cases
 
 - Parts you don't want to move, like ribbon knots
 - Bones you want to control with a different KawaiiPhysics node
+
+:::tip
+To set a dedicated exclude list per Additional Root Bone, use `OverrideExcludeBones` (when `bUseOverrideExcludeBones` is enabled) on each `FKawaiiPhysicsRootBoneSetting`.
+:::
 
 ## Multiple Bone Chains
 

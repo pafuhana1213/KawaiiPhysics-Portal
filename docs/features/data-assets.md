@@ -24,10 +24,11 @@ title: "Data Assets"
 
 ## パラメータの設定
 
-Data Assetには以下のパラメータを保存できます：
+Data Assetには以下のコリジョン Limit を保存できます：
 
 - Spherical Limits
 - Capsule Limits
+- Box Limits
 - Planar Limits
 
 ## 使用方法
@@ -77,7 +78,7 @@ BoneConstraint設定専用のData Assetです。複数のAnimNodeやAnimation Bl
 *AnimNodeからBoneConstraint設定をエクスポート*
 
 ```cpp
-UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Constraint")
+UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Limits|Bone Constraint")
 TObjectPtr<UKawaiiPhysicsBoneConstraintsDataAsset> BoneConstraintsDataAsset;
 ```
 
@@ -97,6 +98,7 @@ TObjectPtr<UKawaiiPhysicsBoneConstraintsDataAsset> BoneConstraintsDataAsset;
 | BoneReference2 | FBoneReference | 2番目のボーンへの参照 |
 | bOverrideCompliance | bool | Compliance Typeを上書きするかどうか |
 | ComplianceType | EXPBDComplianceType | 上書きする場合のCompliance Type（デフォルト: Leather） |
+| bExcludeFromSubdivision | bool | この拘束を BoneConstraint Subdivision の対象から除外する（構造/対角の拘束をオプトアウト、デフォルト: false、v1.21.0で追加） |
 
 #### 正規表現による一括設定
 

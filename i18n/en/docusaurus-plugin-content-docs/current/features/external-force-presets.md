@@ -135,14 +135,14 @@ Gravity is always fixed to WorldSpace. Space selection is not available.
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | ForceRateByBoneLengthRate | FRuntimeFloatCurve | - | Force correction curve by bone length ratio |
-| bUseCharacterGravityDirection | bool | false | Use Character's CustomGravityDirection (UE5.4+) |
+| bUseCharacterGravityDirection | bool | false | Use Character's gravity direction (CustomGravityDirection); effective on UE5.3+ |
 | bUseCharacterGravityScale | bool | false | Use Character's GravityScale |
 | bUseOverrideGravityDirection | bool | false | Whether to override gravity direction |
 | OverrideGravityDirection | FVector | (0, 0, 0) | Override gravity direction value |
 
 ### Integration with Character
 
-In UE5.4 and later, you can automatically integrate with Character's gravity settings.
+In UE5.3 and later, you can automatically integrate with Character's gravity settings (gravity direction and GravityScale).
 
 ```cpp
 // Use Character's gravity settings

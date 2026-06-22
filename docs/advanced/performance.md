@@ -122,7 +122,9 @@ v1.16.0で追加
 
 - `a.AnimNode.KawaiiPhysics.Enable` - 有効/無効の切り替え
 - `a.AnimNode.KawaiiPhysics.Debug` - デバッグ表示
-- `a.AnimNode.KawaiiPhysics.Debug.LengthRate` - デバッグ表示のスケール
+- `a.AnimNode.KawaiiPhysics.DebugDrawThickness` - デバッグ描画の線の太さ
+
+CVar の全一覧は [コンソールコマンド / 変数](/docs/advanced/console-variables) を参照してください。
 
 ### ボトルネックの特定
 

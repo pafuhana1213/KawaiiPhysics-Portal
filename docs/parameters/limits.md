@@ -27,7 +27,7 @@ title: "リミットパラメータ"
 |-----------|-----|
 | 型 | EXPBDComplianceType |
 | デフォルト | Leather |
-| カテゴリ | Bone Constraint |
+| カテゴリ | Limits\|Bone Constraint |
 
 [XPBD Stiffnessについて](http://blog.mmacklin.com/2016/10/12/xpbd-slides-and-stiffness/)
 
@@ -55,7 +55,7 @@ title: "リミットパラメータ"
 |-----------|-----|
 | 型 | int32 |
 | デフォルト | 1 |
-| カテゴリ | Bone Constraint |
+| カテゴリ | Limits\|Bone Constraint |
 
 ### BoneConstraintIterationCountAfterCollision
 
@@ -65,7 +65,7 @@ title: "リミットパラメータ"
 |-----------|-----|
 | 型 | int32 |
 | デフォルト | 1 |
-| カテゴリ | Bone Constraint |
+| カテゴリ | Limits\|Bone Constraint |
 
 ![反復処理の効果](/img/generated/bone-constraint-iteration.svg)
 
@@ -79,14 +79,14 @@ title: "リミットパラメータ"
 |-----------|-----|
 | 型 | bool |
 | デフォルト | true |
-| カテゴリ | Bone Constraint |
+| カテゴリ | Limits\|Bone Constraint |
 
 ### BoneConstraints
 
 **ボーン制約リスト** - BoneConstraint処理の対象となるボーンのペアを設定します。
 
 ```cpp
-UPROPERTY(EditAnywhere, Category = "Bone Constraint")
+UPROPERTY(EditAnywhere, Category = "Limits|Bone Constraint")
 TArray<FModifyBoneConstraint> BoneConstraints;
 ```
 
@@ -105,7 +105,7 @@ TArray<FModifyBoneConstraint> BoneConstraints;
 **ボーン制約Data Asset** - BoneConstraint処理の対象となるボーンのペアをData Assetから設定します。別のAnimNodeやAnimation Blueprintで設定を流用したい場合に推奨されます。
 
 ```cpp
-UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Constraint")
+UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Limits|Bone Constraint")
 TObjectPtr<UKawaiiPhysicsBoneConstraintsDataAsset> BoneConstraintsDataAsset;
 ```
 

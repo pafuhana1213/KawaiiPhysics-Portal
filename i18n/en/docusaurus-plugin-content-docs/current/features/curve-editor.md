@@ -18,11 +18,14 @@ Root ←―――――――――――→ Tip
 
 ## Supported Parameters
 
-The following parameters support curves:
+The following parameters support curves (`Physics Settings | Curves` category, AdvancedDisplay). Each is multiplied into its parameter according to the bone-length ratio from the RootBone (0.0–1.0).
 
-- **Damping Curve** - Damping
-- **Stiffness Curve** - Stiffness
-- **Radius Curve** - Radius
+- **Damping Curve** - Damping (editor display name: Damping Rate by Bone Length Rate)
+- **Stiffness Curve** - Stiffness (Stiffness Rate by Bone Length Rate)
+- **World Damping Location Curve** - World location damping (World Damping Location Rate by Bone Length Rate)
+- **World Damping Rotation Curve** - World rotation damping (World Damping Rotation Rate by Bone Length Rate)
+- **Radius Curve** - Radius (Radius Rate by Bone Length Rate)
+- **LimitAngle Curve** - Angle limit (LimitAngle Rate by Bone Length Rate)
 
 ## Setting Up Curves
 

@@ -24,10 +24,11 @@ Using **KawaiiPhysicsLimitsDataAsset**, you can share collision settings and lim
 
 ## Setting Parameters
 
-Data Assets can store the following parameters:
+Data Assets can store the following collision limits:
 
 - Spherical Limits
 - Capsule Limits
+- Box Limits
 - Planar Limits
 
 ## Usage
@@ -65,7 +66,7 @@ A Data Asset dedicated to BoneConstraint settings. Recommended when you want to 
 [View Source](https://github.com/pafuhana1213/KawaiiPhysics/blob/master/Plugins/KawaiiPhysics/Source/KawaiiPhysics/Public/KawaiiPhysicsBoneConstraintsDataAsset.h)
 
 ```cpp
-UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Constraint")
+UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Limits|Bone Constraint")
 TObjectPtr<UKawaiiPhysicsBoneConstraintsDataAsset> BoneConstraintsDataAsset;
 ```
 
@@ -85,6 +86,7 @@ TObjectPtr<UKawaiiPhysicsBoneConstraintsDataAsset> BoneConstraintsDataAsset;
 | BoneReference2 | FBoneReference | Reference to second bone |
 | bOverrideCompliance | bool | Whether to override Compliance Type |
 | ComplianceType | EXPBDComplianceType | Compliance Type when overriding (Default: Leather) |
+| bExcludeFromSubdivision | bool | Exclude this constraint from BoneConstraint Subdivision (opt-out for structural/diagonal constraints; default: false, added in v1.21.0) |
 
 #### Batch Setup with Regular Expressions
 

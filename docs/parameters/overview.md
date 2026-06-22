@@ -41,7 +41,7 @@ KawaiiPhysicsノードで設定可能なパラメータの概要です。
 // AnimNode_KawaiiPhysics.h より
 Damping = 0.1f;
 Stiffness = 0.05f;
-Radius = 0.0f;
+Radius = 3.0f;  // 表示名: Collision Radius
 ```
 
 ## Data Assetによる管理

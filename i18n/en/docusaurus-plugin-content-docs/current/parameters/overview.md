@@ -41,7 +41,7 @@ Overview of configurable parameters in the KawaiiPhysics node.
 // From AnimNode_KawaiiPhysics.h
 Damping = 0.1f;
 Stiffness = 0.05f;
-Radius = 0.0f;
+Radius = 3.0f;  // Display name: Collision Radius
 ```
 
 ## Management with Data Asset

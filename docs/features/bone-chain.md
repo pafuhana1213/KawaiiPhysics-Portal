@@ -36,14 +36,22 @@ spine_03 (Root Bone - 物理なし)
 特定のボーンを物理計算から除外できます。
 
 ```cpp
-UPROPERTY()
+UPROPERTY(EditAnywhere, Category = "Bones")
 TArray<FBoneReference> ExcludeBones;
 ```
+
+:::warning
+`ExcludeBones` に指定したボーンは、**そのボーン自身とその子孫ボーンすべて** が制御対象から外れます。チェーンの途中のボーンを指定すると、それ以降の末端まで物理が適用されなくなる点に注意してください。
+:::
 
 ### 使用例
 
 - リボンの結び目など、動かしたくない部分
 - 別のKawaiiPhysicsノードで制御したいボーン
+
+:::tip
+`Additional Root Bones` ごとに専用の除外リストを設定したい場合は、各 `FKawaiiPhysicsRootBoneSetting` の `OverrideExcludeBones`（`bUseOverrideExcludeBones` 有効時）を使用します。
+:::
 
 ## 複数のボーンチェーン
 

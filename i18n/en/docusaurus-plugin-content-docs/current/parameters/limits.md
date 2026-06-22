@@ -23,7 +23,7 @@ Constraint settings for maintaining distance between bones. Used when you want t
 |----------|-------|
 | Type | EXPBDComplianceType |
 | Default | Leather |
-| Category | Bone Constraint |
+| Category | Limits\|Bone Constraint |
 
 [About XPBD Stiffness](http://blog.mmacklin.com/2016/10/12/xpbd-slides-and-stiffness/)
 
@@ -47,7 +47,7 @@ Constraint settings for maintaining distance between bones. Used when you want t
 |----------|-------|
 | Type | int32 |
 | Default | 1 |
-| Category | Bone Constraint |
+| Category | Limits\|Bone Constraint |
 
 ### BoneConstraintIterationCountAfterCollision
 
@@ -57,7 +57,7 @@ Constraint settings for maintaining distance between bones. Used when you want t
 |----------|-------|
 | Type | int32 |
 | Default | 1 |
-| Category | Bone Constraint |
+| Category | Limits\|Bone Constraint |
 
 ### bAutoAddChildDummyBoneConstraint
 
@@ -67,14 +67,14 @@ Constraint settings for maintaining distance between bones. Used when you want t
 |----------|-------|
 | Type | bool |
 | Default | true |
-| Category | Bone Constraint |
+| Category | Limits\|Bone Constraint |
 
 ### BoneConstraints
 
 **Bone Constraint List** - Sets bone pairs that are targets for BoneConstraint processing.
 
 ```cpp
-UPROPERTY(EditAnywhere, Category = "Bone Constraint")
+UPROPERTY(EditAnywhere, Category = "Limits|Bone Constraint")
 TArray<FModifyBoneConstraint> BoneConstraints;
 ```
 
@@ -93,7 +93,7 @@ TArray<FModifyBoneConstraint> BoneConstraints;
 **Bone Constraints Data Asset** - Sets bone pairs for BoneConstraint processing from a Data Asset. Recommended when you want to reuse settings across different AnimNodes or Animation Blueprints.
 
 ```cpp
-UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bone Constraint")
+UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Limits|Bone Constraint")
 TObjectPtr<UKawaiiPhysicsBoneConstraintsDataAsset> BoneConstraintsDataAsset;
 ```
 

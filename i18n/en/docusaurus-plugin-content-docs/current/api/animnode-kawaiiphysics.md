@@ -35,7 +35,7 @@ struct KAWAIIPHYSICS_API FAnimNode_KawaiiPhysics : public FAnimNode_SkeletalCont
 |----------|------|---------|-------------|
 | BoneSubdivisionCount | int32 | 0 | Inter-bone dummy count (ClampMin=0, ClampMax=10, 0 to disable) |
 | bBoneSubdivisionCollisionOnly | bool | true | Exclude inter-bone dummies from velocity integration (collision/constraint only) |
-| bBoneSubdivisionDensifyByRadius | bool | false | Add extra dummies based on radius to fill collision-sphere gaps |
+| bBoneSubdivisionDensifyByRadius | bool | false | Using `BoneSubdivisionCount` as the minimum, places more dummies where bones are far apart relative to their radius (up to 50 per segment). Changing Radius / RadiusCurve while enabled may require a re-init (e.g. recompiling the ABP) to recompute the dummy count |
 | BoneConstraintSubdivisionCount | int32 | 0 | Collision-proxy dummy count along horizontal BoneConstraints (ClampMin=0, ClampMax=10, 0 to disable) |
 | BoneConstraintSubdivisionFeedbackScale | float | 1.0 | Strength of transferring bridge-dummy collision displacement to endpoint bones (ClampMin=0.0, ClampMax=2.0) |
 
@@ -59,14 +59,14 @@ struct KAWAIIPHYSICS_API FAnimNode_KawaiiPhysics : public FAnimNode_SkeletalCont
 
 ### Physics Settings \| Curves
 
-| Property | Type | Description |
-|----------|------|-------------|
-| DampingCurveData | FRuntimeFloatCurve | Damping curve |
-| StiffnessCurveData | FRuntimeFloatCurve | Stiffness curve |
-| WorldDampingLocationCurveData | FRuntimeFloatCurve | World location damping curve |
-| WorldDampingRotationCurveData | FRuntimeFloatCurve | World rotation damping curve |
-| RadiusCurveData | FRuntimeFloatCurve | Radius curve |
-| LimitAngleCurveData | FRuntimeFloatCurve | Angle limit curve |
+| Property | Type | Editor Display Name | Description |
+|----------|------|------|-------------|
+| DampingCurveData | FRuntimeFloatCurve | Damping Rate by Bone Length Rate | Damping curve |
+| StiffnessCurveData | FRuntimeFloatCurve | Stiffness Rate by Bone Length Rate | Stiffness curve |
+| WorldDampingLocationCurveData | FRuntimeFloatCurve | World Damping Location Rate by Bone Length Rate | World location damping curve |
+| WorldDampingRotationCurveData | FRuntimeFloatCurve | World Damping Rotation Rate by Bone Length Rate | World rotation damping curve |
+| RadiusCurveData | FRuntimeFloatCurve | Radius Rate by Bone Length Rate | Radius curve |
+| LimitAngleCurveData | FRuntimeFloatCurve | LimitAngle Rate by Bone Length Rate | Angle limit curve |
 
 All are multiplied into their parameter by the bone-length ratio (0.0–1.0) from the RootBone (AdvancedDisplay).
 
@@ -108,12 +108,12 @@ All are multiplied into their parameter by the bone-length ratio (0.0–1.0) fro
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
-| bAllowWorldCollision | bool | false | Enable world collision |
-| bOverrideCollisionParams | bool | false | Override collision parameters |
-| CollisionChannelSettings | FBodyInstance | - | Collision settings |
-| bIgnoreSelfComponent | bool | true | Ignore self collision |
-| IgnoreBones | TArray\<FBoneReference\> | - | Ignore bones list |
-| IgnoreBoneNamePrefix | TArray\<FName\> | - | Ignore bone name prefix |
+| bAllowWorldCollision | bool | false | Enable world collision (significantly increases physics cost when enabled) |
+| bOverrideCollisionParams | bool | false | Use custom collision settings (inline toggle for `CollisionChannelSettings`) |
+| CollisionChannelSettings | FBodyInstance | - | Custom collision settings (display name: Override SkelComp Collision Params; only when `bOverrideCollisionParams` is enabled) |
+| bIgnoreSelfComponent | bool | true | Ignore self collision (PhysicsAsset); edit condition: `bAllowWorldCollision` |
+| IgnoreBones | TArray\<FBoneReference\> | - | Ignore bones list (edit condition: `!bIgnoreSelfComponent`) |
+| IgnoreBoneNamePrefix | TArray\<FName\> | - | Ignore bone name prefix (edit condition: `!bIgnoreSelfComponent`) |
 
 ## Force (External Forces)
 
@@ -123,9 +123,9 @@ All are multiplied into their parameter by the bone-length ratio (0.0–1.0) fro
 | bUseLegacyGravity | bool | false | Legacy gravity method |
 | bUseDefaultGravityZProjectSetting | bool | false | Use project setting gravity |
 | bUseWorldSpaceGravity | bool | true | World space gravity |
-| bEnableWind | bool | false | Enable wind |
-| WindScale | float | 1.0 | Wind scale |
-| WindDirectionNoiseAngle | float | 0.0 | Wind direction noise (degrees) |
+| bEnableWind | bool | false | Enable wind (receive WindDirectionalSource influence) |
+| WindScale | float | 1.0 | Wind scale (edit condition: `bEnableWind`) |
+| WindDirectionNoiseAngle | float | 0.0 | Wind direction noise (degrees, edit condition: `bEnableWind`) |
 
 ### Force \| External Force
 
@@ -140,7 +140,7 @@ All are multiplied into their parameter by the bone-length ratio (0.0–1.0) fro
 
 | Property | Type | Description |
 |----------|------|-------------|
-| SyncBones | TArray\<FKawaiiPhysicsSyncBone\> | Sync bone list |
+| SyncBones | TArray\<FKawaiiPhysicsSyncBone\> | Sync bone list. See [Sync Bone](/docs/features/sync-bone) for details |
 
 ## Tag
 
@@ -199,20 +199,20 @@ virtual void ResetDynamics(ETeleportType InTeleportType) override;
 
 Physics state reset. Used for teleportation, etc.
 
-### OnInitializeAnimInstance
+### HasPreUpdate / PreUpdate
 
 ```cpp
-virtual bool NeedsOnInitializeAnimInstance() const override { return true; }
-virtual void OnInitializeAnimInstance(
-    const FAnimInstanceProxy* InProxy,
-    const UAnimInstance* InAnimInstance
-) override;
+virtual bool HasPreUpdate() const override;
+virtual void PreUpdate(const UAnimInstance* InAnimInstance) override;
 ```
 
-Called once on the GameThread. Collects warning-log identifier names and resolves the editing state.
+Pre-processing that runs on the GameThread. Work that cannot safely touch UObjects from the worker thread is handled here.
+
+- **Shared collision initialization** (`InitializeSharedCollision`): registering with the Subsystem mutates a `TMap`, so it runs on the thread-safe GameThread side.
+- Collects warning-log identifier names (AnimInstance class name, component name, owner Actor name) once on the first call (avoids UObject access from the worker thread).
 
 :::note
-The `PreUpdate` override present in older versions has been removed. To avoid per-frame GameThread work, initialization logic was consolidated into `OnInitializeAnimInstance` (called once), and shared-collision re-initialization now happens inside `EvaluateSkeletalControl_AnyThread` on the worker thread.
+Only nodes whose `HasPreUpdate()` returns `true` have `PreUpdate()` called. The physics simulation itself runs in `EvaluateSkeletalControl_AnyThread` on the worker thread; `PreUpdate` is dedicated to GameThread-only initialization and cache collection.
 :::
 
 ### IsValidToEvaluate

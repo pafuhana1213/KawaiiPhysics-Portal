@@ -152,6 +152,7 @@ TObjectPtr<UPhysicsAsset> PhysicsAssetForLimits;
 |-----------|-----|
 | 型 | bool |
 | デフォルト | true |
+| 編集条件 | `bAllowWorldCollision == true` |
 
 ### IgnoreBones
 
@@ -160,6 +161,7 @@ TObjectPtr<UPhysicsAsset> PhysicsAssetForLimits;
 | プロパティ | 値 |
 |-----------|-----|
 | 型 | TArray\<FBoneReference\> |
+| 編集条件 | `bIgnoreSelfComponent == false` |
 
 ### IgnoreBoneNamePrefix
 
@@ -168,6 +170,7 @@ TObjectPtr<UPhysicsAsset> PhysicsAssetForLimits;
 | プロパティ | 値 |
 |-----------|-----|
 | 型 | TArray\<FName\> |
+| 編集条件 | `bIgnoreSelfComponent == false` |
 
 ### bOverrideCollisionParams
 

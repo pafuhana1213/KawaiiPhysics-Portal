@@ -514,7 +514,7 @@ static bool GetExternalForceBoolProperty(
 
 ### Other Type Property Access
 
-The following types are also supported with the same pattern:
+The following types are also supported with the same pattern. The `Set*` functions return `FKawaiiPhysicsReference` (chainable) and the `Get*` functions return the corresponding typed value. All output `ExecResult` (`EKawaiiPhysicsAccessExternalForceResult`) via `ExpandEnumAsExecs`.
 
 - `int32`: SetExternalForceIntProperty / GetExternalForceIntProperty
 - `float`: SetExternalForceFloatProperty / GetExternalForceFloatProperty
@@ -522,6 +522,10 @@ The following types are also supported with the same pattern:
 - `FRotator`: SetExternalForceRotatorProperty / GetExternalForceRotatorProperty
 - `FTransform`: SetExternalForceTransformProperty / GetExternalForceTransformProperty
 - Wildcard: SetExternalForceWildcardProperty / GetExternalForceWildcardProperty
+
+:::note
+The Wildcard versions are `CustomThunk` implementations that handle any type, and they return `void` (values are passed via reference parameters). Unlike the typed versions, they do not return `FKawaiiPhysicsReference`. When the type is known in advance, prefer the dedicated versions (Int / Float / Vector, etc.).
+:::
 
 ## Blueprint Usage Example
 

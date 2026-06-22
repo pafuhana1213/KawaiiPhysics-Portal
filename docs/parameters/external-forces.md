@@ -21,7 +21,7 @@ title: "外部力パラメータ"
 |-----------|-----|
 | 型 | FVector |
 | デフォルト | (0, 0, 0) |
-| カテゴリ | ExternalForce |
+| カテゴリ | Force |
 
 ```cpp
 // 下向きの重力を適用
@@ -36,7 +36,7 @@ Gravity = FVector(0, 0, -1.0f);
 |-----------|-----|
 | 型 | bool |
 | デフォルト | false |
-| カテゴリ | ExternalForce |
+| カテゴリ | Force |
 
 | 値 | 説明 |
 |-----|------|
@@ -51,7 +51,7 @@ Gravity = FVector(0, 0, -1.0f);
 |-----------|-----|
 | 型 | bool |
 | デフォルト | false |
-| カテゴリ | ExternalForce |
+| カテゴリ | Force |
 
 ### bUseWorldSpaceGravity
 
@@ -61,7 +61,7 @@ Gravity = FVector(0, 0, -1.0f);
 |-----------|-----|
 | 型 | bool |
 | デフォルト | true |
-| カテゴリ | ExternalForce |
+| カテゴリ | Force |
 
 ## Wind
 
@@ -73,7 +73,7 @@ Gravity = FVector(0, 0, -1.0f);
 |-----------|-----|
 | 型 | bool |
 | デフォルト | false |
-| カテゴリ | ExternalForce |
+| カテゴリ | Force |
 
 ### WindScale
 
@@ -83,7 +83,8 @@ Gravity = FVector(0, 0, -1.0f);
 |-----------|-----|
 | 型 | float |
 | デフォルト | 1.0 |
-| カテゴリ | ExternalForce |
+| 編集条件 | `bEnableWind == true` |
+| カテゴリ | Force |
 
 ![Wind External Force](/img/features/wind-externalforce.png)
 
@@ -95,7 +96,7 @@ WindScaleはbEnableWindがtrueの場合のみ有効です。
 
 ### WindDirectionNoiseAngle
 
-**風方向ノイズ** - WindDirectionalSourceによる風方向に与えるノイズ（角度）。
+**風方向ノイズ** - WindDirectionalSourceによる風方向に与えるノイズ（角度）。風向きにランダムなゆらぎを与え、機械的な揺れを和らげます。
 
 | プロパティ | 値 |
 |-----------|-----|
@@ -103,7 +104,8 @@ WindScaleはbEnableWindがtrueの場合のみ有効です。
 | デフォルト | 0.0 |
 | 単位 | 度 |
 | 範囲 | 0 以上 |
-| カテゴリ | ExternalForce |
+| 編集条件 | `bEnableWind == true` |
+| カテゴリ | Force |
 
 ## Simple External Force
 
@@ -115,7 +117,7 @@ WindScaleはbEnableWindがtrueの場合のみ有効です。
 |-----------|-----|
 | 型 | FVector |
 | デフォルト | (0, 0, 0) |
-| カテゴリ | ExternalForce |
+| カテゴリ | Force\|External Force |
 
 ### bUseWorldSpaceSimpleExternalForce
 
@@ -125,7 +127,7 @@ WindScaleはbEnableWindがtrueの場合のみ有効です。
 |-----------|-----|
 | 型 | bool |
 | デフォルト | true |
-| カテゴリ | ExternalForce |
+| カテゴリ | Force\|External Force |
 
 ## External Force プリセット
 
@@ -150,7 +152,7 @@ v1.16.0で追加
 **外力プリセット（Instanced Struct）** - 外力のプリセット。C++で独自のプリセットを追加可能です。
 
 ```cpp
-UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ExternalForce",
+UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Force|External Force",
     meta = (BaseStruct = "/Script/KawaiiPhysics.KawaiiPhysics_ExternalForce", ExcludeBaseStruct))
 TArray<FInstancedStruct> ExternalForces;
 ```
@@ -160,7 +162,8 @@ TArray<FInstancedStruct> ExternalForces;
 **カスタム外力（Instanced Property）** - BP・C++で独自のプリセットを追加可能です。
 
 ```cpp
-UPROPERTY(EditAnywhere, BlueprintReadWrite, Instanced, Category = "ExternalForce")
+UPROPERTY(EditAnywhere, BlueprintReadWrite, Instanced, Category = "Force|External Force",
+    meta=(DisplayName="CustomExternalForces(EXPERIMENTAL)"))
 TArray<TObjectPtr<UKawaiiPhysics_CustomExternalForce>> CustomExternalForces;
 ```
 

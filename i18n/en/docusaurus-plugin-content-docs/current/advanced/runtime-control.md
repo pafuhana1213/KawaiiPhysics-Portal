@@ -7,105 +7,179 @@ title: "Runtime Control"
 
 This guide explains how to dynamically control KawaiiPhysics during gameplay.
 
+Runtime control is done through the Blueprint functions provided by **[UKawaiiPhysicsLibrary](/docs/api/kawaiiphysics-library)**. They are marked `BlueprintThreadSafe`, so they can be safely called from the Animation Blueprint worker thread (AnimGraph node functions or `On Update Animation`).
+
+## Getting the Node Reference
+
+The parameter functions all take an `FKawaiiPhysicsReference` (node reference). Get it from an AnimGraph node handle with `Convert to Kawaii Physics`.
+
+```cpp
+// Convert FAnimNodeReference to a KawaiiPhysics node reference
+UFUNCTION(BlueprintCallable, Category = "Kawaii Physics",
+    meta = (BlueprintThreadSafe, ExpandEnumAsExecs = "Result"))
+static FKawaiiPhysicsReference ConvertToKawaiiPhysics(const FAnimNodeReference& Node,
+                                                      EAnimNodeReferenceConversionResult& Result);
+
+// Pure version (receives success/failure as a bool)
+static void ConvertToKawaiiPhysicsPure(const FAnimNodeReference& Node,
+                                       FKawaiiPhysicsReference& KawaiiPhysics, bool& Result);
+```
+
+:::tip
+In Blueprint, the basic pattern is to assign an **Anim Node Function** (a bound function) to the KawaiiPhysics node in the AnimGraph, and inside it call `Convert to Kawaii Physics` followed by the setters.
+:::
+
 ## Dynamic Parameter Changes
 
-### From Blueprint
-
-Parameters can be changed through Animation Blueprint variables.
+Each setter returns an `FKawaiiPhysicsReference`, so you can chain several parameter changes in a row.
 
 ```cpp
-// Inside Animation Blueprint
-UPROPERTY(BlueprintReadWrite)
-float DynamicDamping = 0.1f;
+// Change gravity, wind, and physics settings dynamically
+KawaiiPhysics = UKawaiiPhysicsLibrary::SetGravity(KawaiiPhysics, FVector(0, 0, -980.0f));
+KawaiiPhysics = UKawaiiPhysicsLibrary::SetWindScale(KawaiiPhysics, 2.0f);
+KawaiiPhysics = UKawaiiPhysicsLibrary::SetEnableWind(KawaiiPhysics, true);
 ```
 
-### From C++
+Physics parameters (Damping / Stiffness, etc.) are swapped in as a whole.
 
 ```cpp
-// Get AnimInstance and change parameters
-UAnimInstance* AnimInstance = Mesh->GetAnimInstance();
-// Expose parameters through custom AnimInstance class
+FKawaiiPhysicsSettings Settings = UKawaiiPhysicsLibrary::GetPhysicsSettings(KawaiiPhysics);
+Settings.Damping = 0.2f;
+Settings.Stiffness = 0.1f;
+KawaiiPhysics = UKawaiiPhysicsLibrary::SetPhysicsSettings(KawaiiPhysics, Settings);
 ```
+
+:::note
+Parameter changes such as `SetPhysicsSettings` are reflected every frame when the node's `bUpdatePhysicsSettingsInGame` (default `true`) is enabled. Disabling it improves performance but stops runtime parameter changes from taking effect.
+:::
+
+Main parameter functions (selection):
+
+| Function | Description |
+|----------|-------------|
+| `SetGravity` / `GetGravity` | Gravity vector |
+| `SetEnableWind` / `SetWindScale` | Enable wind / wind scale |
+| `SetPhysicsSettings` / `GetPhysicsSettings` | Batch set Damping / Stiffness / Radius, etc. |
+| `SetDummyBoneLength` | End dummy-bone length (auto-schedules re-init) |
+| `SetBoneSubdivisionCount` | Bone subdivision count (auto-schedules re-init) |
+| `SetTeleportDistanceThreshold` / `SetTeleportRotationThreshold` | Teleport thresholds |
+| `SetAllowWorldCollision` | Enable world collision |
+| `SetLimitsDataAsset` | Swap the collision Data Asset |
+
+For all functions, see [UKawaiiPhysicsLibrary](/docs/api/kawaiiphysics-library).
 
 ## Enable/Disable Toggle
 
-### Pause
+There is no per-node enable/disable property. Use one of the following.
+
+### Control via Alpha (Recommended)
+
+`SetAlphaToComponent` sets the blend ratio (input Alpha) of all KawaiiPhysics nodes in the component at once. `0.0` means physics OFF (original animation) and `1.0` means physics ON.
 
 ```cpp
-UPROPERTY()
-bool bEnabled = true;
+UFUNCTION(BlueprintCallable, Category = "Kawaii Physics", meta=(BlueprintThreadSafe))
+static bool SetAlphaToComponent(USkeletalMeshComponent* MeshComp, float Alpha,
+                                UPARAM(ref) FGameplayTagContainer& FilterTags,
+                                bool bFilterExactMatch = false);
 ```
 
-### Use Cases
+Passing a [KawaiiPhysicsTag](/docs/parameters/external-forces) in `FilterTags` lets you narrow the target nodes. For automatic control during animation, you can also use [AnimNotifyState: Set Alpha](#animnotifystate-setalpha).
 
-- Disable during cutscenes
-- Disable during pause menu
-- Disable based on LOD
+### Bulk Stop via Console Variable
+
+For debugging, `a.AnimNode.KawaiiPhysics.Enable 0` stops the simulation of all KawaiiPhysics nodes ([Console Variables](/docs/advanced/console-variables)).
+
+**Use Cases:**
+
+- Set Alpha to 0 during cutscenes
+- Stop during pause menu
+- Lower Alpha based on LOD
 
 ## Dynamic External Force Application
 
-### SetExternalForce
+External forces are added as `FInstancedStruct` (force presets). There is no API that takes a plain vector directly. For details on presets, see [External Force Presets](/docs/features/external-force-presets).
+
+### Add to a Node Reference
 
 ```cpp
-// Explosion impact
-void ApplyExplosionForce(FVector ExplosionLocation, float Force)
-{
-    FVector Direction = (BoneLocation - ExplosionLocation).GetSafeNormal();
-    SetExternalForce(Direction * Force);
-}
+UFUNCTION(BlueprintCallable, Category = "Kawaii Physics", meta=(BlueprintThreadSafe))
+static bool AddExternalForce(const FKawaiiPhysicsReference& KawaiiPhysics,
+                             FInstancedStruct& ExternalForce, UObject* Owner, bool bIsOneShot = false);
 ```
 
-### Decay Over Time
+Setting `bIsOneShot = true` applies the force only once (handy for impacts).
+
+### Add to a Component in Bulk
+
+From outside the AnimGraph (game thread), adding forces per component is simpler. `FilterTags` lets you narrow the target nodes.
 
 ```cpp
-void Tick(float DeltaTime)
-{
-    // Gradually decay external force
-    CurrentExternalForce *= FMath::Exp(-DecayRate * DeltaTime);
-    SetExternalForce(CurrentExternalForce);
-}
+UFUNCTION(BlueprintCallable, Category = "Kawaii Physics", meta=(BlueprintThreadSafe))
+static bool AddExternalForcesToComponent(USkeletalMeshComponent* MeshComp,
+                                         UPARAM(ref) TArray<FInstancedStruct>& ExternalForces, UObject* Owner,
+                                         UPARAM(ref) FGameplayTagContainer& FilterTags,
+                                         bool bFilterExactMatch = false,
+                                         bool bIsOneShot = false);
+
+// Remove added forces (by Owner)
+static bool RemoveExternalForcesFromComponent(USkeletalMeshComponent* MeshComp, UObject* Owner,
+                                              UPARAM(ref) FGameplayTagContainer& FilterTags,
+                                              bool bFilterExactMatch = false);
 ```
+
+:::tip
+For explosion or damage impacts, add an `FKawaiiPhysics_ExternalForce_Basic` preset (which carries a force direction and magnitude) with `bIsOneShot = true`. For continuous forces, do not use OneShot, and remove them with `RemoveExternalForcesFromComponent` when no longer needed.
+:::
 
 ## Reset
 
-Returns physics state to initial state.
+Returns the physics state to its initial state. Use after teleports or on respawn.
 
 ```cpp
-// Reset physics state
-ResetDynamics();
+UFUNCTION(BlueprintCallable, Category = "Kawaii Physics", meta=(BlueprintThreadSafe))
+static FKawaiiPhysicsReference ResetDynamics(const FKawaiiPhysicsReference& KawaiiPhysics);
 ```
 
-### Use Cases
+```cpp
+// Get the node reference and reset
+bool bOk = false;
+FKawaiiPhysicsReference Ref;
+UKawaiiPhysicsLibrary::ConvertToKawaiiPhysicsPure(Node, Ref, bOk);
+if (bOk)
+{
+    UKawaiiPhysicsLibrary::ResetDynamics(Ref);
+}
+```
 
-- After teleport
+:::note
+When the node's `bUseWarmUpWhenResetDynamics` (default `true`) is enabled, the reset runs `WarmUpFrames` of warm-up so physics resumes from a settled state.
+:::
+
+**Use Cases:**
+
+- After teleport (movement beyond the threshold is treated as a teleport automatically, but an explicit reset is also possible)
 - During animation transitions
 - On respawn
 
 ## Event Integration
 
-### AnimNotify Support {#animnotify}
+### AnimNotify / AnimNotifyState {#animnotify}
 
 :::tip Version Info
-Added in v1.17.0
+External-force Notifies added in v1.17.0; the Set Alpha NotifyState added in v1.20.0
 :::
 
-KawaiiPhysics-specific AnimNotifies are provided.
+KawaiiPhysics-specific AnimNotify / AnimNotifyState are provided. See [AnimNotify](/docs/features/animnotify) for details.
 
-**AnimNotify_KawaiiPhysics_ResetDynamics**
-
-Resets physics state. Use for teleports or animation transitions.
-
-**AnimNotify_KawaiiPhysics_SetExternalForce**
-
-Sets external force. Use for wind pressure at jump start, etc.
+| Class | Type | Description |
+|-------|------|-------------|
+| `AnimNotify_KawaiiPhysicsAddExternalForce` | AnimNotify | Applies an external force once at that instant (OneShot) |
+| `AnimNotifyState_KawaiiPhysicsAddExternalForce` | AnimNotifyState | Applies an external force continuously over the interval (added on Begin, removed on End) |
+| `AnimNotifyState_KawaiiPhysicsSetAlpha` | AnimNotifyState | Controls the physics blend ratio (Alpha) over the interval |
 
 ### AnimNotifyState: Set Alpha {#animnotifystate-setalpha}
 
-:::tip Version Info
-Added in v1.20.0
-:::
-
-AnimNotifyState that can dynamically change physics blend ratio during animation.
+An AnimNotifyState that dynamically changes the physics blend ratio during animation. Internally it calls `SetAlphaToComponent`.
 
 ```
 Animation Timeline:
@@ -121,44 +195,15 @@ Animation Timeline:
 - Smooth blending during animation transitions
 - Control during cutscenes
 
-### Custom AnimNotify
-
-Change physics parameters from Anim Notify:
+### Applying from Gameplay Events
 
 ```cpp
-void UAnimNotify_KPForce::Notify(...)
+// On damage, apply the impact as an external force preset
+void AMyCharacter::OnDamageReceived(float Damage, FVector HitDirection)
 {
-    // Apply external force at jump start
-    KawaiiPhysics->SetExternalForce(FVector(0, 0, 100));
+    // Build an FKawaiiPhysics_ExternalForce_Basic, wrap it in an FInstancedStruct,
+    // and apply with AddExternalForcesToComponent( ..., bIsOneShot = true )
 }
-```
-
-### Gameplay Events
-
-```cpp
-// When damage is received
-void OnDamageReceived(float Damage, FVector HitDirection)
-{
-    // Reflect impact in physics
-    float ImpactForce = Damage * 10.0f;
-    KawaiiPhysics->SetExternalForce(HitDirection * ImpactForce);
-}
-```
-
-## Blueprint Function Library
-
-It's convenient to make common operations into a library.
-
-```cpp
-UCLASS()
-class UKawaiiPhysicsLibrary : public UBlueprintFunctionLibrary
-{
-    UFUNCTION(BlueprintCallable)
-    static void ApplyImpulse(AActor* Actor, FVector Impulse);
-
-    UFUNCTION(BlueprintCallable)
-    static void ResetAllKawaiiPhysics(AActor* Actor);
-};
 ```
 
 For more details, see [API Reference](/docs/api/kawaiiphysics-library).

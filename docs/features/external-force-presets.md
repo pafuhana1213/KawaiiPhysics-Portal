@@ -135,14 +135,14 @@ CurveForce.CurveEvaluateType = EExternalForceCurveEvaluateType::Average;
 | パラメータ | 型 | デフォルト | 説明 |
 |-----------|-----|-----------|------|
 | ForceRateByBoneLengthRate | FRuntimeFloatCurve | - | ボーンの長さの比率による力の補正カーブ |
-| bUseCharacterGravityDirection | bool | false | Character側のCustomGravityDirectionを使用（UE5.4以降） |
+| bUseCharacterGravityDirection | bool | false | Character側の重力方向（CustomGravityDirection）を使用（UE5.3以降で有効） |
 | bUseCharacterGravityScale | bool | false | Character側のGravityScaleを使用 |
 | bUseOverrideGravityDirection | bool | false | 重力方向をオーバーライドするかどうか |
 | OverrideGravityDirection | FVector | (0, 0, 0) | 重力方向のオーバーライド値 |
 
 ### Characterとの連携
 
-UE5.4以降では、Characterの重力設定と自動連携できます。
+UE5.3以降では、Characterの重力設定（重力方向・GravityScale）と自動連携できます。
 
 ```cpp
 // Characterの重力設定を使用
