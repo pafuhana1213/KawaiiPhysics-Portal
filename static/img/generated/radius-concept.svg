@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 320" font-family="Segoe UI, Arial, sans-serif">
+  <!-- Background -->
+  <rect width="700" height="320" fill="#2a2a2a"/>
+
+  <!-- Title -->
+  <text x="350" y="30" font-size="16" fill="#ffffff" text-anchor="middle" font-weight="bold">Radius（ボーン半径）とコリジョン</text>
+
+  <!-- Panel 1: Radius = small -->
+  <g transform="translate(20, 55)">
+    <rect width="310" height="210" fill="#1e1e1e" rx="5"/>
+    <text x="155" y="24" font-size="13" fill="#60a5fa" text-anchor="middle" font-weight="bold">Radius = 小</text>
+    <text x="155" y="42" font-size="10" fill="#888" text-anchor="middle">（体に近づく）</text>
+
+    <!-- Other collision body/head -->
+    <ellipse cx="88" cy="122" rx="43" ry="76" fill="#444" stroke="#666" stroke-width="2"/>
+    <circle cx="83" cy="69" r="24" fill="#444" stroke="#666" stroke-width="2"/>
+    <text x="78" y="124" font-size="10" fill="#888" text-anchor="middle">体/頭</text>
+
+    <!-- Bone chain kept close by small radius -->
+    <path d="M 131 75 C 141 95, 143 124, 139 145 C 136 160, 132 169, 128 177"
+          fill="none" stroke="#60a5fa" stroke-width="2"/>
+
+    <circle cx="131" cy="75" r="10" fill="none" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <circle cx="131" cy="75" r="3" fill="#60a5fa"/>
+
+    <circle cx="140" cy="110" r="10" fill="none" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <circle cx="140" cy="110" r="3" fill="#60a5fa"/>
+
+    <circle cx="139" cy="145" r="10" fill="none" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <circle cx="139" cy="145" r="3" fill="#60a5fa"/>
+
+    <circle cx="128" cy="177" r="10" fill="none" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <circle cx="128" cy="177" r="3" fill="#60a5fa"/>
+
+    <text x="155" y="196" font-size="9" fill="#888" text-anchor="middle">体の表面ぎりぎりまで近づく</text>
+  </g>
+
+  <!-- Panel 2: Radius = large -->
+  <g transform="translate(370, 55)">
+    <rect width="310" height="210" fill="#1e1e1e" rx="5"/>
+    <text x="155" y="24" font-size="13" fill="#4ade80" text-anchor="middle" font-weight="bold">Radius = 大</text>
+    <text x="155" y="42" font-size="10" fill="#888" text-anchor="middle">（体から離れる）</text>
+
+    <!-- Other collision body/head -->
+    <ellipse cx="88" cy="122" rx="43" ry="76" fill="#444" stroke="#666" stroke-width="2"/>
+    <circle cx="83" cy="69" r="24" fill="#444" stroke="#666" stroke-width="2"/>
+    <text x="78" y="124" font-size="10" fill="#888" text-anchor="middle">体/頭</text>
+
+    <!-- Bone chain pushed away by large radius -->
+    <path d="M 143 75 C 153 95, 155 124, 151 145 C 148 160, 144 169, 140 177"
+          fill="none" stroke="#4ade80" stroke-width="2"/>
+
+    <circle cx="143" cy="75" r="22" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <circle cx="143" cy="75" r="3" fill="#4ade80"/>
+
+    <circle cx="152" cy="110" r="22" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <circle cx="152" cy="110" r="3" fill="#4ade80"/>
+
+    <circle cx="151" cy="145" r="22" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <circle cx="151" cy="145" r="3" fill="#4ade80"/>
+
+    <circle cx="140" cy="177" r="22" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <circle cx="140" cy="177" r="3" fill="#4ade80"/>
+
+    <text x="155" y="196" font-size="9" fill="#888" text-anchor="middle">半径の分だけ体から離れる</text>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(155, 285)">
+    <circle cx="0" cy="0" r="3" fill="#60a5fa"/>
+    <text x="10" y="3" font-size="9" fill="#888">ボーン位置</text>
+
+    <circle cx="125" cy="0" r="10" fill="none" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <text x="142" y="3" font-size="9" fill="#888">Radius（当たり判定）</text>
+
+    <circle cx="300" cy="0" r="8" fill="#444" stroke="#666" stroke-width="1.5"/>
+    <text x="314" y="3" font-size="9" fill="#888">他のコリジョン（体/頭）</text>
+  </g>
+
+  <text x="350" y="305" font-size="10" fill="#888" text-anchor="middle">値が大きいほど、ボーンが他のコリジョンから離れます</text>
+</svg>

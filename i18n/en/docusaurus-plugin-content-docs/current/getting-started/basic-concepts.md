@@ -36,6 +36,10 @@ head (Root Bone)
 
 You can exclude specific bones from physics calculation.
 
+![Bone chain and Exclude Bone](/img/generated/bone-chain-exclude.svg)
+
+*Physics is applied to the chain starting from the Root Bone. A bone listed in Exclude Bones — together with all of its descendant bones — is removed from the physics calculation. Diagram labels are in Japanese.*
+
 ## Physics Parameters
 
 ### Damping
@@ -48,9 +52,17 @@ Gradually converges bone movement. Higher values stop movement faster.
 
 The force that tries to return to the original animation pose. Higher values make it stiffer.
 
+![Stiffness value comparison](/img/generated/stiffness-comparison.svg)
+
+*Diagram labels are in Japanese.*
+
 ### Radius
 
 Defines the physical size of each bone. Used for collision detection.
+
+![Radius value comparison](/img/generated/radius-concept.svg)
+
+*Diagram labels are in Japanese.*
 
 ## Collision System
 

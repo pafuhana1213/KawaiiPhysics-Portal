@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 400" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="560" height="400" fill="#2a2a2a"/>
+
+  <text x="280" y="30" font-size="16" fill="#ffffff" text-anchor="middle" font-weight="bold">ボーンチェーンと Exclude Bone</text>
+
+  <line x1="280" y1="90" x2="280" y2="274" stroke="#666" stroke-width="2"/>
+
+  <rect x="199" y="116" width="162" height="44" fill="none" stroke="#4ade80" stroke-width="2" stroke-dasharray="5,5" rx="6"/>
+  <text x="94" y="141" font-size="11" fill="#4ade80">物理が適用される範囲</text>
+
+  <rect x="199" y="176" width="162" height="104" fill="none" stroke="#ff6b6b" stroke-width="2" stroke-dasharray="5,5" rx="6"/>
+  <text x="76" y="231" font-size="11" fill="#ff6b6b">Exclude Bone 以下は物理対象外</text>
+
+  <g transform="translate(215, 60)">
+    <rect x="0" y="0" width="130" height="36" fill="#4a3c00" stroke="#fbbf24" stroke-width="2" rx="5"/>
+    <text x="65" y="15" font-size="12" fill="#fbbf24" text-anchor="middle" font-weight="bold">head</text>
+    <text x="65" y="29" font-size="10" fill="#fbbf24" text-anchor="middle">Root Bone</text>
+  </g>
+  <text x="372" y="77" font-size="11" fill="#fbbf24">← Root Bone</text>
+  <text x="372" y="92" font-size="10" fill="#888">物理の起点（物理なし）</text>
+
+  <g transform="translate(215, 120)">
+    <rect x="0" y="0" width="130" height="36" fill="#0a3d62" stroke="#0080ff" stroke-width="2" rx="5"/>
+    <text x="65" y="15" font-size="12" fill="#60a5fa" text-anchor="middle" font-weight="bold">hair_01</text>
+    <text x="65" y="29" font-size="10" fill="#60a5fa" text-anchor="middle">物理ボーン</text>
+  </g>
+  <text x="372" y="142" font-size="10" fill="#60a5fa">← 物理ボーン</text>
+
+  <g transform="translate(215, 180)">
+    <rect x="0" y="0" width="130" height="36" fill="#3d1a1a" stroke="#ff6b6b" stroke-width="2" stroke-dasharray="5,4" rx="5"/>
+    <text x="65" y="15" font-size="12" fill="#ff6b6b" text-anchor="middle" font-weight="bold">hair_02</text>
+    <text x="65" y="29" font-size="10" fill="#ff6b6b" text-anchor="middle">Exclude Bone</text>
+  </g>
+  <text x="372" y="197" font-size="11" fill="#ff6b6b">← Exclude Bone</text>
+  <text x="372" y="212" font-size="10" fill="#888">このボーン自身と</text>
+  <text x="372" y="226" font-size="10" fill="#888">以下を物理計算から除外</text>
+
+  <g transform="translate(215, 240)">
+    <rect x="0" y="0" width="130" height="36" fill="#3d1a1a" stroke="#ff6b6b" stroke-width="2" stroke-dasharray="5,4" rx="5"/>
+    <text x="65" y="15" font-size="12" fill="#ff6b6b" text-anchor="middle" font-weight="bold">hair_03</text>
+    <text x="65" y="29" font-size="10" fill="#ff6b6b" text-anchor="middle">子ボーン（除外）</text>
+  </g>
+  <text x="372" y="262" font-size="10" fill="#ff6b6b">← 子も連動して除外</text>
+
+  <g transform="translate(42, 360)">
+    <rect x="0" y="0" width="16" height="16" fill="#4a3c00" stroke="#fbbf24" stroke-width="2" rx="2"/>
+    <text x="25" y="12" font-size="10" fill="#888">Root Bone（物理なし）</text>
+  </g>
+  <g transform="translate(220, 360)">
+    <rect x="0" y="0" width="16" height="16" fill="#0a3d62" stroke="#0080ff" stroke-width="2" rx="2"/>
+    <text x="25" y="12" font-size="10" fill="#888">物理ボーン</text>
+  </g>
+  <g transform="translate(340, 360)">
+    <rect x="0" y="0" width="16" height="16" fill="#3d1a1a" stroke="#ff6b6b" stroke-width="2" stroke-dasharray="5,4" rx="2"/>
+    <text x="25" y="12" font-size="10" fill="#888">Exclude Bone 以下（除外）</text>
+  </g>
+</svg>

@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 280" font-family="Segoe UI, Arial, sans-serif">
+  <!-- Background -->
+  <rect width="700" height="280" fill="#2a2a2a"/>
+
+  <!-- Title -->
+  <text x="350" y="30" font-size="16" fill="#ffffff" text-anchor="middle" font-weight="bold">Stiffnessによる形状維持の違い</text>
+
+  <!-- Panel 1: Stiffness = 0.0 -->
+  <g transform="translate(20, 50)">
+    <rect width="200" height="200" fill="#1e1e1e" rx="5"/>
+    <text x="100" y="25" font-size="13" fill="#ff6b6b" text-anchor="middle" font-weight="bold">Stiffness = 0.0</text>
+    <text x="100" y="45" font-size="10" fill="#888" text-anchor="middle">（柔らかい・大きく崩れる）</text>
+
+    <!-- Head -->
+    <circle cx="100" cy="70" r="18" fill="#444"/>
+
+    <!-- Original pose -->
+    <path d="M 100 88 C 100 112, 100 140, 100 166"
+          fill="none" stroke="#777" stroke-width="2" stroke-dasharray="4 4"/>
+
+    <!-- Simulation result -->
+    <path d="M 100 88 C 112 112, 145 128, 160 166"
+          fill="none" stroke="#ff6b6b" stroke-width="3"/>
+    <circle cx="160" cy="166" r="4" fill="#ff6b6b"/>
+
+    <!-- Offset -->
+    <line x1="100" y1="180" x2="160" y2="180" stroke="#888" stroke-width="1.5"/>
+    <line x1="100" y1="175" x2="100" y2="185" stroke="#888" stroke-width="1.5"/>
+    <line x1="160" y1="175" x2="160" y2="185" stroke="#888" stroke-width="1.5"/>
+    <text x="130" y="197" font-size="9" fill="#888" text-anchor="middle">ずれ量 大</text>
+  </g>
+
+  <!-- Panel 2: Stiffness = 0.05 -->
+  <g transform="translate(250, 50)">
+    <rect width="200" height="200" fill="#1e1e1e" rx="5"/>
+    <text x="100" y="25" font-size="13" fill="#4ade80" text-anchor="middle" font-weight="bold">Stiffness = 0.05</text>
+    <text x="100" y="45" font-size="10" fill="#888" text-anchor="middle">（デフォルト・適度）</text>
+
+    <!-- Head -->
+    <circle cx="100" cy="70" r="18" fill="#444"/>
+
+    <!-- Original pose -->
+    <path d="M 100 88 C 100 112, 100 140, 100 166"
+          fill="none" stroke="#777" stroke-width="2" stroke-dasharray="4 4"/>
+
+    <!-- Simulation result -->
+    <path d="M 100 88 C 106 114, 122 136, 132 166"
+          fill="none" stroke="#4ade80" stroke-width="3"/>
+    <circle cx="132" cy="166" r="4" fill="#4ade80"/>
+
+    <!-- Offset -->
+    <line x1="100" y1="180" x2="132" y2="180" stroke="#888" stroke-width="1.5"/>
+    <line x1="100" y1="175" x2="100" y2="185" stroke="#888" stroke-width="1.5"/>
+    <line x1="132" y1="175" x2="132" y2="185" stroke="#888" stroke-width="1.5"/>
+    <text x="116" y="197" font-size="9" fill="#888" text-anchor="middle">ずれ量 中</text>
+  </g>
+
+  <!-- Panel 3: Stiffness = 0.5 -->
+  <g transform="translate(480, 50)">
+    <rect width="200" height="200" fill="#1e1e1e" rx="5"/>
+    <text x="100" y="25" font-size="13" fill="#60a5fa" text-anchor="middle" font-weight="bold">Stiffness = 0.5</text>
+    <text x="100" y="45" font-size="10" fill="#888" text-anchor="middle">（硬い・形状を維持）</text>
+
+    <!-- Head -->
+    <circle cx="100" cy="70" r="18" fill="#444"/>
+
+    <!-- Original pose -->
+    <path d="M 100 88 C 100 112, 100 140, 100 166"
+          fill="none" stroke="#777" stroke-width="2" stroke-dasharray="4 4"/>
+
+    <!-- Simulation result -->
+    <path d="M 100 88 C 101 114, 104 140, 108 166"
+          fill="none" stroke="#60a5fa" stroke-width="3"/>
+    <circle cx="108" cy="166" r="4" fill="#60a5fa"/>
+
+    <!-- Offset -->
+    <line x1="100" y1="180" x2="108" y2="180" stroke="#888" stroke-width="1.5"/>
+    <line x1="100" y1="175" x2="100" y2="185" stroke="#888" stroke-width="1.5"/>
+    <line x1="108" y1="175" x2="108" y2="185" stroke="#888" stroke-width="1.5"/>
+    <text x="104" y="197" font-size="9" fill="#888" text-anchor="middle">ずれ量 小</text>
+  </g>
+
+  <!-- Legend -->
+  <line x1="240" y1="257" x2="280" y2="257" stroke="#777" stroke-width="2" stroke-dasharray="4 4"/>
+  <text x="288" y="260" font-size="9" fill="#888">元のポーズ</text>
+  <line x1="392" y1="257" x2="432" y2="257" stroke="#4ade80" stroke-width="3"/>
+  <text x="440" y="260" font-size="9" fill="#888">シミュレーション結果</text>
+
+  <text x="350" y="272" font-size="10" fill="#888" text-anchor="middle">値が大きいほど、元のアニメーションポーズに近い形を保ちます</text>
+</svg>

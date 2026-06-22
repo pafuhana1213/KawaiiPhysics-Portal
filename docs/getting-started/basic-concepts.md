@@ -33,6 +33,10 @@ head (Root Bone)
 
 特定のボーンを物理計算から除外できます。
 
+![ボーンチェーンとExclude Bone](/img/generated/bone-chain-exclude.svg)
+
+*Root Bone から始まるチェーンに物理が適用されます。Exclude Bone に指定したボーン自身と、それ以下（子孫）のボーンはすべて物理計算から除外されます。*
+
 ## 物理パラメータ
 
 ### Damping（減衰）
@@ -47,9 +51,17 @@ head (Root Bone)
 
 元のアニメーションポーズに戻ろうとする力です。値が大きいほど硬くなります。
 
+![Stiffness値の比較](/img/generated/stiffness-comparison.svg)
+
+*※自動生成された概念図です。実際の動作はパラメータや環境により異なります。*
+
 ### Radius（半径）
 
 各ボーンの物理的なサイズを定義します。コリジョン判定に使用されます。
+
+![Radius値の比較](/img/generated/radius-concept.svg)
+
+*※自動生成された概念図です。実際の動作はパラメータや環境により異なります。*
 
 ## コリジョンシステム
 
