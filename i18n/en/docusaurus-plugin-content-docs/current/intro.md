@@ -11,7 +11,7 @@ description: "KawaiiPhysics - A lightweight bone physics plugin for Unreal Engin
 
 ![KawaiiPhysics Demo](/img/intro-demo.webp)
 
-<div style={{textAlign: 'center', margin: '20px 0'}}>
+<div style={{textAlign: 'left', margin: '20px 0'}}>
   <iframe
     width="560"
     height="315"

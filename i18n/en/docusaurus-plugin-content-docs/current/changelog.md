@@ -283,7 +283,7 @@ See [GitHub Discussion #112](https://github.com/pafuhana1213/KawaiiPhysics/discu
 
 Added physics warm-up feature.
 
-<div style={{textAlign: 'center', margin: '20px 0'}}>
+<div style={{textAlign: 'left', margin: '20px 0'}}>
   <iframe
     width="560"
     height="315"

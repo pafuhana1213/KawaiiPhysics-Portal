@@ -60,7 +60,7 @@ Reducing update frequency can reduce load.
 
 The Warm Up feature allows you to pre-stabilize physics simulation when spawning characters.
 
-<div style={{textAlign: 'center', margin: '20px 0'}}>
+<div style={{textAlign: 'left', margin: '20px 0'}}>
   <iframe
     width="560"
     height="315"

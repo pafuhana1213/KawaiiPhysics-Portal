@@ -74,7 +74,7 @@ if (GetCurrentLOD() >= 2)
 
 Warm Up機能を使用すると、キャラクター生成時に物理演算を事前に安定させることができます。
 
-<div style={{textAlign: 'center', margin: '20px 0'}}>
+<div style={{textAlign: 'left', margin: '20px 0'}}>
   <iframe
     width="560"
     height="315"

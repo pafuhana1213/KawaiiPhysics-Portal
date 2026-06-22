@@ -349,7 +349,7 @@ Unreal EngineのWind Directional Sourceに対応しました。
 
 物理の空回し（Warm Up）機能が追加されました。
 
-<div style={{textAlign: 'center', margin: '20px 0'}}>
+<div style={{textAlign: 'left', margin: '20px 0'}}>
   <iframe
     width="560"
     height="315"
