@@ -11,7 +11,7 @@ KawaiiPhysicsの更新履歴です。
 
 最新のリリース情報は [GitHub Releases](https://github.com/pafuhana1213/KawaiiPhysics/releases) を参照してください。
 
-## v1.21.x (UE 5.3 - 5.8対応)
+## v1.21.x (UE 5.8対応)
 
 ### v1.21.0
 
