@@ -1,92 +1,69 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 280" font-family="Segoe UI, Arial, sans-serif">
-  <!-- Background -->
-  <rect width="650" height="280" fill="#2a2a2a"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 400" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="680" height="400" fill="#2a2a2a"/>
 
-  <!-- Title -->
-  <text x="325" y="30" font-size="16" fill="#ffffff" text-anchor="middle" font-weight="bold">DummyBone の効果</text>
-  <text x="325" y="50" font-size="11" fill="#888" text-anchor="middle">末端ボーンの物理制御を改善</text>
+  <text x="340" y="28" font-size="16" fill="#ffffff" text-anchor="middle" font-weight="bold">DummyBone の効果</text>
+  <text x="340" y="48" font-size="11" fill="#888" text-anchor="middle">末端ボーンの物理制御を改善</text>
 
-  <!-- Without DummyBone -->
-  <g transform="translate(50, 70)">
-    <rect width="250" height="180" fill="#1e1e1e" rx="5"/>
-    <text x="125" y="25" font-size="12" fill="#ff6b6b" text-anchor="middle" font-weight="bold">DummyBone なし</text>
-    <text x="125" y="42" font-size="10" fill="#888" text-anchor="middle">DummyBoneLength = 0</text>
+  <g transform="translate(45, 70)">
+    <rect width="280" height="250" fill="#1e1e1e" rx="5"/>
+    <text x="140" y="28" font-size="13" fill="#ff6b6b" text-anchor="middle" font-weight="bold">DummyBone なし</text>
+    <text x="140" y="47" font-size="10" fill="#888" text-anchor="middle">DummyBoneLength = 0</text>
 
-    <!-- Bone chain -->
-    <g transform="translate(125, 100)">
-      <!-- Root -->
-      <circle cx="0" cy="-30" r="10" fill="#4a3c00" stroke="#fbbf24" stroke-width="2"/>
-      <text x="25" y="-27" font-size="8" fill="#fbbf24">Root</text>
+    <g transform="translate(140, 78)">
+      <circle cx="0" cy="0" r="10" fill="#4a3c00" stroke="#fbbf24" stroke-width="2"/>
+      <text x="26" y="4" font-size="9" fill="#fbbf24">Root</text>
 
-      <!-- Bone 1 -->
-      <line x1="0" y1="-20" x2="0" y2="10" stroke="#0080ff" stroke-width="4"/>
-      <circle cx="0" cy="10" r="6" fill="#0080ff"/>
+      <line x1="0" y1="10" x2="0" y2="42" stroke="#0080ff" stroke-width="4"/>
+      <circle cx="0" cy="42" r="6" fill="#0080ff"/>
 
-      <!-- Bone 2 -->
-      <line x1="0" y1="16" x2="0" y2="46" stroke="#0080ff" stroke-width="4"/>
-      <circle cx="0" cy="46" r="6" fill="#0080ff"/>
+      <line x1="0" y1="48" x2="0" y2="80" stroke="#0080ff" stroke-width="4"/>
+      <circle cx="0" cy="80" r="6" fill="#0080ff"/>
 
-      <!-- End bone (problematic) -->
-      <line x1="0" y1="52" x2="0" y2="75" stroke="#ff6b6b" stroke-width="4"/>
-      <circle cx="0" cy="75" r="6" fill="#ff6b6b"/>
-      <text x="20" y="78" font-size="8" fill="#ff6b6b">末端</text>
-
-      <!-- Problem indicator -->
-      <path d="M 15 70 Q 25 65, 30 75 Q 35 85, 25 90" fill="none" stroke="#ff6b6b" stroke-width="2" stroke-dasharray="3,2"/>
-      <text x="40" y="85" font-size="8" fill="#ff6b6b">不安定</text>
+      <line x1="0" y1="86" x2="0" y2="118" stroke="#ff6b6b" stroke-width="4"/>
+      <circle cx="0" cy="118" r="6" fill="#ff6b6b"/>
+      <text x="24" y="122" font-size="9" fill="#ff6b6b">末端</text>
     </g>
 
-    <text x="125" y="165" font-size="9" fill="#ff6b6b" text-anchor="middle">末端ボーンの動きが不安定</text>
+    <text x="140" y="232" font-size="10" fill="#ff6b6b" text-anchor="middle">末端の動きが不安定</text>
   </g>
 
-  <!-- With DummyBone -->
-  <g transform="translate(350, 70)">
-    <rect width="250" height="180" fill="#1e1e1e" rx="5"/>
-    <text x="125" y="25" font-size="12" fill="#4ade80" text-anchor="middle" font-weight="bold">DummyBone あり</text>
-    <text x="125" y="42" font-size="10" fill="#888" text-anchor="middle">DummyBoneLength > 0</text>
+  <g transform="translate(355, 70)">
+    <rect width="280" height="250" fill="#1e1e1e" rx="5"/>
+    <text x="140" y="28" font-size="13" fill="#4ade80" text-anchor="middle" font-weight="bold">DummyBone あり</text>
+    <text x="140" y="47" font-size="10" fill="#888" text-anchor="middle">DummyBoneLength &gt; 0</text>
 
-    <!-- Bone chain with dummy -->
-    <g transform="translate(125, 100)">
-      <!-- Root -->
-      <circle cx="0" cy="-30" r="10" fill="#4a3c00" stroke="#fbbf24" stroke-width="2"/>
-      <text x="25" y="-27" font-size="8" fill="#fbbf24">Root</text>
+    <g transform="translate(140, 68)">
+      <circle cx="0" cy="0" r="10" fill="#4a3c00" stroke="#fbbf24" stroke-width="2"/>
+      <text x="26" y="4" font-size="9" fill="#fbbf24">Root</text>
 
-      <!-- Bone 1 -->
-      <line x1="0" y1="-20" x2="0" y2="10" stroke="#0080ff" stroke-width="4"/>
-      <circle cx="0" cy="10" r="6" fill="#0080ff"/>
+      <line x1="0" y1="10" x2="0" y2="38" stroke="#0080ff" stroke-width="4"/>
+      <circle cx="0" cy="38" r="6" fill="#0080ff"/>
 
-      <!-- Bone 2 -->
-      <line x1="0" y1="16" x2="0" y2="46" stroke="#0080ff" stroke-width="4"/>
-      <circle cx="0" cy="46" r="6" fill="#0080ff"/>
+      <line x1="0" y1="44" x2="0" y2="72" stroke="#0080ff" stroke-width="4"/>
+      <circle cx="0" cy="72" r="6" fill="#0080ff"/>
 
-      <!-- End bone (now stable) -->
-      <line x1="0" y1="52" x2="0" y2="75" stroke="#4ade80" stroke-width="4"/>
-      <circle cx="0" cy="75" r="6" fill="#4ade80"/>
-      <text x="20" y="78" font-size="8" fill="#4ade80">末端</text>
+      <line x1="0" y1="78" x2="0" y2="106" stroke="#4ade80" stroke-width="4"/>
+      <circle cx="0" cy="106" r="6" fill="#4ade80"/>
+      <text x="24" y="110" font-size="9" fill="#4ade80">末端</text>
 
-      <!-- Dummy bone -->
-      <line x1="0" y1="81" x2="0" y2="100" stroke="#c084fc" stroke-width="3" stroke-dasharray="4,2"/>
-      <circle cx="0" cy="100" r="5" fill="#c084fc" fill-opacity="0.5" stroke="#c084fc" stroke-width="1"/>
-      <text x="20" y="103" font-size="8" fill="#c084fc">Dummy</text>
+      <line x1="0" y1="112" x2="0" y2="148" stroke="#c084fc" stroke-width="3" stroke-dasharray="5,4"/>
+      <circle cx="0" cy="148" r="5" fill="#c084fc" fill-opacity="0.45" stroke="#c084fc" stroke-width="1"/>
+      <text x="24" y="152" font-size="9" fill="#c084fc">Dummy</text>
     </g>
 
-    <text x="125" y="165" font-size="9" fill="#4ade80" text-anchor="middle">末端ボーンが安定する</text>
+    <text x="140" y="232" font-size="10" fill="#4ade80" text-anchor="middle">末端が安定する</text>
   </g>
 
-  <!-- Explanation -->
-  <g transform="translate(100, 260)">
-    <text x="0" y="0" font-size="10" fill="#888">DummyBoneは見えないボーンを末端に追加し、末端ボーンに適切な「子」を与えることで物理計算を安定化させます。</text>
+  <g transform="translate(175, 350)">
+    <circle cx="0" cy="0" r="5" fill="#4a3c00" stroke="#fbbf24" stroke-width="2"/>
+    <text x="14" y="4" font-size="9" fill="#888">Root</text>
+
+    <circle cx="95" cy="0" r="5" fill="#0080ff"/>
+    <text x="109" y="4" font-size="9" fill="#888">物理ボーン</text>
+
+    <line x1="220" y1="0" x2="250" y2="0" stroke="#c084fc" stroke-width="3" stroke-dasharray="5,4"/>
+    <text x="262" y="4" font-size="9" fill="#888">Dummy</text>
   </g>
 
-  <!-- Legend -->
-  <g transform="translate(180, 235)">
-    <circle cx="0" cy="0" r="5" fill="#0080ff"/>
-    <text x="12" y="4" font-size="9" fill="#888">物理ボーン</text>
-
-    <circle cx="100" cy="0" r="5" fill="#c084fc" fill-opacity="0.5" stroke="#c084fc" stroke-width="1"/>
-    <text x="112" y="4" font-size="9" fill="#888">DummyBone</text>
-
-    <circle cx="220" cy="0" r="5" fill="#4a3c00" stroke="#fbbf24" stroke-width="2"/>
-    <text x="232" y="4" font-size="9" fill="#888">Root</text>
-  </g>
+  <text x="340" y="382" font-size="10" fill="#888" text-anchor="middle">DummyBoneは見えないボーンを末端に追加し、末端ボーンに『子』を与えて物理計算を安定させます</text>
 </svg>

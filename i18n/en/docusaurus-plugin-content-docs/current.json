@@ -7,10 +7,6 @@
     "message": "Setup Guides",
     "description": "The label for category 設定ガイド in sidebar docsSidebar"
   },
-  "sidebar.docsSidebar.category.詳細機能・リファレンス": {
-    "message": "Detailed Features & Reference",
-    "description": "The label for category 詳細機能・リファレンス in sidebar docsSidebar"
-  },
   "sidebar.docsSidebar.category.高度な機能": {
     "message": "Advanced Features",
     "description": "The label for category 高度な機能 in sidebar docsSidebar"
