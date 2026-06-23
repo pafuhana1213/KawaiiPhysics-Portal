@@ -33,6 +33,31 @@ spine_03 (Root Bone - no physics)
     └── hair_back_02   ← Physics applied
 ```
 
+## DummyBoneLength (Improving End-Bone Sway)
+
+The **end bone** of a chain has no child bone, so it lacks a reference for its rotation and its physics tends to be unstable. Setting `DummyBoneLength` to a value greater than 0 adds one **invisible dummy bone** at the tip, giving the end bone a "child" and stabilizing its rotation and sway. It is an important parameter that directly affects how things sway.
+
+![Effect of DummyBone](/img/generated/dummybone-effect.svg)
+
+*With DummyBoneLength = 0 (left), the end bone is unstable. With a value greater than 0 (right), an invisible dummy is added at the tip and the end bone sways stably and naturally. (Diagram labels are in Japanese.)*
+
+| Property | Value |
+|----------|-------|
+| Type | float |
+| Default | 0.0 (disabled) |
+| Range | 0 or higher |
+| Category | Bones |
+
+**Tips:**
+
+- Useful when the end bone's sway is weak, jerky, or unnatural
+- The value is the dummy bone's length (distance from the end bone). Start with roughly the same length as the end bone
+- At runtime it can be changed with `UKawaiiPhysicsLibrary::SetDummyBoneLength` (the bone structure is rebuilt when changed)
+
+:::note
+This adds a single dummy at the **tip** of the chain. It is different from `BoneSubdivisionCount`, which inserts dummies **between** adjacent bones to increase collision resolution (see [Bone Subdivision](/docs/features/bone-subdivision)).
+:::
+
 ## Exclude Bones
 
 You can exclude specific bones from physics calculation.

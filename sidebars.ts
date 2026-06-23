@@ -30,7 +30,6 @@ const sidebars: SidebarsConfig = {
         'features/wind-and-forces',
         'features/data-assets',
         'features/animnotify',
-        'advanced/runtime-control',
       ],
     },
 
@@ -49,6 +48,7 @@ const sidebars: SidebarsConfig = {
             'features/external-force-presets',
             'advanced/custom-gravity',
             'advanced/fixed-substepping',
+            'advanced/runtime-control',
           ],
         },
         {

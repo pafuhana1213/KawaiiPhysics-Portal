@@ -15,10 +15,9 @@ This page is a usage **guide**. For the reference of each curve property (`Dampi
 
 Using curves, you can smoothly vary parameters from the root to the tip of the bone chain.
 
-```
-Root ←―――――――――――→ Tip
-[====] Stiff    Soft [  ]
-```
+![Parameter variation from root to tip via curves](/img/generated/curve-root-to-tip.svg)
+
+*Smoothly varying a parameter (e.g. Stiffness) from the root toward the tip of the bone chain (diagram labels are in Japanese).*
 
 ## Supported Parameters
 

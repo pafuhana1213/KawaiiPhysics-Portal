@@ -1,38 +1,42 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 400" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 420" font-family="Segoe UI, Arial, sans-serif">
   <!-- Background -->
-  <rect width="500" height="400" fill="#2a2a2a"/>
+  <rect width="520" height="420" fill="#2a2a2a"/>
 
   <!-- Title -->
-  <text x="250" y="30" font-size="16" fill="#ffffff" text-anchor="middle" font-weight="bold">ボーンチェーンの構造</text>
+  <text x="260" y="30" font-size="16" fill="#ffffff" text-anchor="middle" font-weight="bold">ボーンチェーンの構造</text>
 
   <!-- Root Bone (No Physics) -->
-  <g transform="translate(200, 60)">
+  <g transform="translate(210, 60)">
     <rect x="0" y="0" width="100" height="40" fill="#4a3c00" stroke="#fbbf24" stroke-width="2" rx="5"/>
     <text x="50" y="25" font-size="12" fill="#fbbf24" text-anchor="middle" font-weight="bold">spine_03</text>
   </g>
-  <text x="320" y="80" font-size="11" fill="#fbbf24">← Root Bone</text>
-  <text x="320" y="95" font-size="10" fill="#888">（物理なし）</text>
+  <text x="330" y="80" font-size="11" fill="#fbbf24">Root Bone</text>
+  <text x="330" y="95" font-size="10" fill="#888">（物理なし）</text>
 
   <!-- Connection lines from root -->
-  <line x1="230" y1="100" x2="130" y2="140" stroke="#666" stroke-width="2"/>
-  <line x1="270" y1="100" x2="370" y2="140" stroke="#666" stroke-width="2"/>
+  <line x1="240" y1="100" x2="140" y2="140" stroke="#666" stroke-width="2"/>
+  <line x1="280" y1="100" x2="380" y2="140" stroke="#666" stroke-width="2"/>
+
+  <!-- Physics Applied Area -->
+  <rect x="42" y="126" width="436" height="196" fill="none" stroke="#4ade80" stroke-width="2" stroke-dasharray="6,5" rx="5"/>
+  <text x="260" y="342" font-size="11" fill="#4ade80" text-anchor="middle" font-weight="bold">物理が適用される範囲</text>
 
   <!-- Hair Front Chain (Left) -->
-  <g transform="translate(60, 140)">
+  <g transform="translate(80, 140)">
     <rect x="0" y="0" width="120" height="35" fill="#0a3d62" stroke="#0080ff" stroke-width="2" rx="5"/>
     <text x="60" y="22" font-size="11" fill="#0080ff" text-anchor="middle">hair_front_01</text>
   </g>
 
-  <line x1="120" y1="175" x2="120" y2="205" stroke="#666" stroke-width="2"/>
+  <line x1="140" y1="175" x2="140" y2="205" stroke="#666" stroke-width="2"/>
 
-  <g transform="translate(60, 205)">
+  <g transform="translate(80, 205)">
     <rect x="0" y="0" width="120" height="35" fill="#0a3d62" stroke="#0080ff" stroke-width="2" rx="5"/>
     <text x="60" y="22" font-size="11" fill="#0080ff" text-anchor="middle">hair_front_02</text>
   </g>
 
-  <line x1="120" y1="240" x2="120" y2="270" stroke="#666" stroke-width="2"/>
+  <line x1="140" y1="240" x2="140" y2="270" stroke="#666" stroke-width="2"/>
 
-  <g transform="translate(60, 270)">
+  <g transform="translate(80, 270)">
     <rect x="0" y="0" width="120" height="35" fill="#0a3d62" stroke="#0080ff" stroke-width="2" rx="5"/>
     <text x="60" y="22" font-size="11" fill="#0080ff" text-anchor="middle">hair_front_03</text>
   </g>
@@ -50,22 +54,16 @@
     <text x="60" y="22" font-size="11" fill="#0080ff" text-anchor="middle">hair_back_02</text>
   </g>
 
-  <!-- Physics Applied Arrow -->
-  <g transform="translate(200, 170)">
-    <rect x="0" y="0" width="100" height="120" fill="none" stroke="#4ade80" stroke-width="2" stroke-dasharray="5,5" rx="5"/>
-  </g>
-  <text x="250" y="310" font-size="11" fill="#4ade80" text-anchor="middle">物理が適用される範囲</text>
-
   <!-- Legend -->
-  <g transform="translate(30, 340)">
+  <g transform="translate(34, 378)">
     <rect x="0" y="0" width="16" height="16" fill="#4a3c00" stroke="#fbbf24" stroke-width="2" rx="2"/>
     <text x="25" y="13" font-size="10" fill="#888">Root Bone（物理なし）</text>
   </g>
-  <g transform="translate(200, 340)">
+  <g transform="translate(206, 378)">
     <rect x="0" y="0" width="16" height="16" fill="#0a3d62" stroke="#0080ff" stroke-width="2" rx="2"/>
     <text x="25" y="13" font-size="10" fill="#888">子ボーン（物理あり）</text>
   </g>
-  <g transform="translate(380, 340)">
+  <g transform="translate(388, 378)">
     <rect x="0" y="0" width="16" height="16" fill="none" stroke="#4ade80" stroke-width="2" stroke-dasharray="3,3" rx="2"/>
     <text x="25" y="13" font-size="10" fill="#888">適用範囲</text>
   </g>
