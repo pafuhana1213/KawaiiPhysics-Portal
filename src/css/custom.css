@@ -52,3 +52,58 @@
   75% { transform: rotate(-5deg); }
   100% { transform: rotate(0deg); }
 }
+
+/* 英語ブラウザ向けの言語案内バナー（src/theme/Root.tsx） */
+.langSuggestBanner {
+  position: fixed;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 92vw;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: #1e1e1e;
+  color: #e6e6e6;
+  border: 1px solid #3a3a3a;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+  font-size: 14px;
+  animation: langSuggestIn 0.25s ease-out;
+}
+
+.langSuggestBanner__text {
+  white-space: normal;
+}
+
+.langSuggestBanner__link {
+  color: #fbbf24;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.langSuggestBanner__link:hover {
+  text-decoration: underline;
+}
+
+.langSuggestBanner__close {
+  background: transparent;
+  border: none;
+  color: #888;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 2px;
+}
+
+.langSuggestBanner__close:hover {
+  color: #ffffff;
+}
+
+@keyframes langSuggestIn {
+  from { opacity: 0; transform: translate(-50%, 8px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
