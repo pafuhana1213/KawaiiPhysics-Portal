@@ -7,9 +7,13 @@ title: "リミットパラメータ"
 
 <!-- AUTO-GENERATED: このページはソースコードから自動生成されます -->
 
-ボーンの移動・回転を制限するパラメータです。
+ボーンの移動・回転を制限するパラメータです（Bone Constraint / Sync Bone / 角度制限）。
 
 [ソースを見る](https://github.com/pafuhana1213/KawaiiPhysics/blob/master/Plugins/KawaiiPhysics/Source/KawaiiPhysics/Public/AnimNode_KawaiiPhysics.h)
+
+:::tip このページについて
+ここは**リミット系パラメータの網羅的なリファレンス**です。使い方は [Sync Bone](/docs/features/sync-bone)（同期による貫通対策）、[ボーン細分化](/docs/features/bone-subdivision)（BoneConstraint Subdivision）を参照してください。
+:::
 
 ## Bone Constraint
 

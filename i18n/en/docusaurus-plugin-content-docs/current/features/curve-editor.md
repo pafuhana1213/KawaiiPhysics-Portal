@@ -7,6 +7,10 @@ title: "Curve Editor"
 
 This guide explains the curve feature for varying parameters along the bone chain.
 
+:::note
+This page is a usage **guide**. For the reference of each curve property (`DampingCurveData`, etc.), see [Physics Parameters](/docs/parameters/physics).
+:::
+
 ## Overview
 
 Using curves, you can smoothly vary parameters from the root to the tip of the bone chain.

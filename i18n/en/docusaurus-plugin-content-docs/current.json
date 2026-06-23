@@ -1,35 +1,27 @@
 {
-  "sidebar.docsSidebar.category.はじめに": {
+  "sidebar.docsSidebar.category.はじめ方": {
     "message": "Getting Started",
-    "description": "The label for category はじめに in sidebar docsSidebar"
+    "description": "The label for category はじめ方 in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.設定ガイド": {
+    "message": "Setup Guides",
+    "description": "The label for category 設定ガイド in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.詳細機能・リファレンス": {
+    "message": "Detailed Features & Reference",
+    "description": "The label for category 詳細機能・リファレンス in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.高度な機能": {
+    "message": "Advanced Features",
+    "description": "The label for category 高度な機能 in sidebar docsSidebar"
   },
   "sidebar.docsSidebar.category.パラメータリファレンス": {
     "message": "Parameter Reference",
     "description": "The label for category パラメータリファレンス in sidebar docsSidebar"
   },
-  "sidebar.docsSidebar.category.機能ガイド": {
-    "message": "Feature Guide",
-    "description": "The label for category 機能ガイド in sidebar docsSidebar"
-  },
-  "sidebar.docsSidebar.category.ボーン": {
-    "message": "Bones",
-    "description": "The label for category ボーン in sidebar docsSidebar"
-  },
-  "sidebar.docsSidebar.category.物理・カーブ": {
-    "message": "Physics & Curves",
-    "description": "The label for category 物理・カーブ in sidebar docsSidebar"
-  },
-  "sidebar.docsSidebar.category.コリジョン": {
-    "message": "Collision",
-    "description": "The label for category コリジョン in sidebar docsSidebar"
-  },
-  "sidebar.docsSidebar.category.外部力": {
-    "message": "Force",
-    "description": "The label for category 外部力 in sidebar docsSidebar"
-  },
-  "sidebar.docsSidebar.category.応用・Tips": {
-    "message": "Advanced & Tips",
-    "description": "The label for category 応用・Tips in sidebar docsSidebar"
+  "sidebar.docsSidebar.category.最適化・運用": {
+    "message": "Optimization & Operations",
+    "description": "The label for category 最適化・運用 in sidebar docsSidebar"
   },
   "sidebar.docsSidebar.category.APIリファレンス": {
     "message": "API Reference",

@@ -266,30 +266,9 @@ Set `bDrawDebug = true` to visualize force vectors in the viewport.
 
 ---
 
-## Blueprint API
+## Adding / Removing at Runtime
 
-External forces can be dynamically controlled from Blueprint.
-
-### Adding External Force
-
-```cpp
-UFUNCTION(BlueprintCallable, Category = "Kawaii Physics")
-static bool AddExternalForce(const FKawaiiPhysicsReference& KawaiiPhysics,
-                             FInstancedStruct& ExternalForce, UObject* Owner, bool bIsOneShot = false);
-```
-
-### Adding External Forces to Component
-
-```cpp
-UFUNCTION(BlueprintCallable, Category = "Kawaii Physics")
-static bool AddExternalForcesToComponent(USkeletalMeshComponent* MeshComp,
-                                         TArray<FInstancedStruct>& ExternalForces, UObject* Owner,
-                                         FGameplayTagContainer& FilterTags,
-                                         bool bFilterExactMatch = false,
-                                         bool bIsOneShot = false);
-```
-
-For more details, see [UKawaiiPhysicsLibrary](/docs/api/kawaiiphysics-library).
+Presets can be added and removed at runtime from Blueprint / C++ (`AddExternalForce` / `AddExternalForcesToComponent`). For the how-to flow see [Runtime Control](/docs/advanced/runtime-control), and for full function signatures see [UKawaiiPhysicsLibrary](/docs/api/kawaiiphysics-library#external-force-api).
 
 ---
 

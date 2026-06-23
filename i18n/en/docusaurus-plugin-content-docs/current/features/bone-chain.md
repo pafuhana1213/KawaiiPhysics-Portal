@@ -7,6 +7,10 @@ title: "Bone Chain Setup"
 
 This guide explains how to set up bone chains in KawaiiPhysics.
 
+:::note
+This page is a setup **guide**. For full details of the `RootBone` / `ExcludeBones` / `AdditionalRootBones` / `DummyBoneLength` properties, see [Physics Parameters](/docs/parameters/physics).
+:::
+
 ## Selecting Root Bone
 
 **Root Bone** specifies the **parent bone** of the bone chain to apply physics to.
@@ -41,6 +45,10 @@ TArray<FBoneReference> ExcludeBones;
 :::warning
 A bone listed in `ExcludeBones` removes **that bone and all of its descendants** from physics control. If you specify a bone in the middle of a chain, physics will no longer be applied to anything down to the tip from there.
 :::
+
+![Bone chain and Exclude Bone](/img/generated/bone-chain-exclude.svg)
+
+*Physics is applied to the chain starting from the Root Bone. A bone listed in Exclude Bones — together with all of its descendant bones — is removed from the physics calculation. Diagram labels are in Japanese.*
 
 ### Use Cases
 

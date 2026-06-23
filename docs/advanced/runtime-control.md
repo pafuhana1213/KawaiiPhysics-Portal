@@ -9,6 +9,10 @@ title: "ランタイム制御"
 
 ランタイム制御は **[UKawaiiPhysicsLibrary](/docs/api/kawaiiphysics-library)** が提供する Blueprint 関数を通じて行います。これらは `BlueprintThreadSafe` 指定のため、Animation Blueprint のワーカースレッド（AnimGraph のノード関数や `On Update Animation`）からも安全に呼べます。
 
+![ランタイム制御の流れ](/img/generated/runtime-control-flow.svg)
+
+*ノード参照を取得し、パラメータ変更・有効/無効・外力・リセットを呼び出す全体像*
+
 ## ノード参照の取得
 
 パラメータ系の関数はすべて `FKawaiiPhysicsReference`（ノード参照）を受け取ります。AnimGraph のノードハンドルから `Convert to Kawaii Physics` で取得します。

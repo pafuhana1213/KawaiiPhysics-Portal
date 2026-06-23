@@ -11,6 +11,10 @@ Parameters related to collision detection.
 
 [View Source](https://github.com/pafuhana1213/KawaiiPhysics/blob/master/Plugins/KawaiiPhysics/Source/KawaiiPhysics/Public/AnimNode_KawaiiPhysics.h)
 
+:::tip About This Page
+This is the **complete reference** for collision parameters. For the actual setup steps and how to choose shapes, see the [Collision Setup guide](/docs/features/collision-setup); for sharing collision across multiple meshes, see [Shared Collision](/docs/features/shared-collision).
+:::
+
 ## Collision Types
 
 KawaiiPhysics supports the following 4 collision shapes.

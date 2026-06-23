@@ -9,6 +9,10 @@ This guide explains how to dynamically control KawaiiPhysics during gameplay.
 
 Runtime control is done through the Blueprint functions provided by **[UKawaiiPhysicsLibrary](/docs/api/kawaiiphysics-library)**. They are marked `BlueprintThreadSafe`, so they can be safely called from the Animation Blueprint worker thread (AnimGraph node functions or `On Update Animation`).
 
+![Runtime control flow](/img/generated/runtime-control-flow.svg)
+
+*Overview: get a node reference, then call parameter changes, enable/disable, external forces, and reset (labels in Japanese)*
+
 ## Getting the Node Reference
 
 The parameter functions all take an `FKawaiiPhysicsReference` (node reference). Get it from an AnimGraph node handle with `Convert to Kawaii Physics`.

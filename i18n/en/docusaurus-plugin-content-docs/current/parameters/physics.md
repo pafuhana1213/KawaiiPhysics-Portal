@@ -11,6 +11,10 @@ Parameters that control the basic behavior of physics simulation.
 
 [View Source](https://github.com/pafuhana1213/KawaiiPhysics/blob/master/Plugins/KawaiiPhysics/Source/KawaiiPhysics/Public/AnimNode_KawaiiPhysics.h)
 
+:::tip About This Page
+This is the **complete reference** for physics parameters. For how to tune the sway, see [Adjusting the Sway](/docs/features/physics-setup); to learn the concepts first, see [Basic Concepts](/docs/getting-started/basic-concepts); for other task-oriented usage, see [Bone Chain Setup](/docs/features/bone-chain) / [Curve Editor](/docs/features/curve-editor) / [Bone Subdivision](/docs/features/bone-subdivision).
+:::
+
 ## FKawaiiPhysicsSettings
 
 A struct that defines the basic physics control settings. It is assigned to the node via the `PhysicsSettings` property. `Damping` (how easily it sways) and `Stiffness` (how strongly it returns) are the core of the physics behavior — the balance between the two determines the overall "softness." Each member can be modulated by bone-length ratio using the [curves](#curve-control) described later.

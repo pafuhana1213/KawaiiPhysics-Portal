@@ -205,40 +205,24 @@ AnimNotifyを使用してアニメーション中に外力を制御できます�
 
 *AnimNotifyStateによる外力の適用*
 
-## Blueprint API
+## ランタイム制御・Blueprint API
 
-外力はBlueprintから動的に制御できます。
+外力はBlueprintから動的に追加・除去できます（`AddExternalForce` / `AddExternalForcesToComponent` / `RemoveExternalForcesFromComponent`）。
 
 ![Blueprint Nodes](/img/features/bp-externalforce-nodes.png)
 
 *Blueprint用の外力制御ノード*
 
-### 外力の追加
+手順とシグネチャは以下を参照してください。
 
-```cpp
-UFUNCTION(BlueprintCallable, Category = "Kawaii Physics")
-static bool AddExternalForce(const FKawaiiPhysicsReference& KawaiiPhysics,
-                             FInstancedStruct& ExternalForce, UObject* Owner, bool bIsOneShot = false);
-```
+- 使い方の流れ: [ランタイム制御](/docs/advanced/runtime-control)
+- 全関数の一覧: [UKawaiiPhysicsLibrary](/docs/api/kawaiiphysics-library#external-force-api)
 
-### コンポーネントへの外力追加
+## 関連ページ
 
-```cpp
-UFUNCTION(BlueprintCallable, Category = "Kawaii Physics")
-static bool AddExternalForcesToComponent(USkeletalMeshComponent* MeshComp,
-                                         TArray<FInstancedStruct>& ExternalForces, UObject* Owner,
-                                         FGameplayTagContainer& FilterTags,
-                                         bool bFilterExactMatch = false,
-                                         bool bIsOneShot = false);
-```
+このページは外部力パラメータの**リファレンス**です。実際の使い方は以下のガイドを参照してください。
 
-### 外力の削除
-
-```cpp
-UFUNCTION(BlueprintCallable, Category = "Kawaii Physics")
-static bool RemoveExternalForcesFromComponent(USkeletalMeshComponent* MeshComp, UObject* Owner,
-                                              FGameplayTagContainer& FilterTags,
-                                              bool bFilterExactMatch = false);
-```
-
-詳しくは [UKawaiiPhysicsLibrary](/docs/api/kawaiiphysics-library) を参照してください。
+- [風と外部力](/docs/features/wind-and-forces) — 風・重力・外部力の基本的な使い方（入門）
+- [外部力プリセット](/docs/features/external-force-presets) — Basic / Curve / Gravity / Wind プリセットの詳細
+- [カスタム重力](/docs/advanced/custom-gravity) — 重力方向のカスタマイズ
+- [AnimNotify](/docs/features/animnotify) — アニメーション中の外力制御

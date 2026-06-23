@@ -266,30 +266,9 @@ ForceRateByBoneLengthRate.GetRichCurve()->AddKey(1.0f, 1.5f);
 
 ---
 
-## Blueprint API
+## ランタイムでの追加・除去
 
-外力はBlueprintから動的に制御できます。
-
-### 外力の追加
-
-```cpp
-UFUNCTION(BlueprintCallable, Category = "Kawaii Physics")
-static bool AddExternalForce(const FKawaiiPhysicsReference& KawaiiPhysics,
-                             FInstancedStruct& ExternalForce, UObject* Owner, bool bIsOneShot = false);
-```
-
-### コンポーネントへの外力追加
-
-```cpp
-UFUNCTION(BlueprintCallable, Category = "Kawaii Physics")
-static bool AddExternalForcesToComponent(USkeletalMeshComponent* MeshComp,
-                                         TArray<FInstancedStruct>& ExternalForces, UObject* Owner,
-                                         FGameplayTagContainer& FilterTags,
-                                         bool bFilterExactMatch = false,
-                                         bool bIsOneShot = false);
-```
-
-詳しくは [UKawaiiPhysicsLibrary](/docs/api/kawaiiphysics-library) を参照してください。
+プリセットはBlueprint/C++からランタイムで追加・除去できます（`AddExternalForce` / `AddExternalForcesToComponent`）。手順は [ランタイム制御](/docs/advanced/runtime-control)、全関数のシグネチャは [UKawaiiPhysicsLibrary](/docs/api/kawaiiphysics-library#external-force-api) を参照してください。
 
 ---
 

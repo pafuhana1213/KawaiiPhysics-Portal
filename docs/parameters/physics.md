@@ -11,6 +11,10 @@ title: "物理パラメータ"
 
 [ソースを見る](https://github.com/pafuhana1213/KawaiiPhysics/blob/master/Plugins/KawaiiPhysics/Source/KawaiiPhysics/Public/AnimNode_KawaiiPhysics.h)
 
+:::tip このページについて
+ここは**物理パラメータの網羅的なリファレンス**です。揺れ方の調整手順は [揺れ方の調整](/docs/features/physics-setup)、概念の全体像は [基本概念](/docs/getting-started/basic-concepts)、その他の用途別の使い方は [ボーンチェーン設定](/docs/features/bone-chain) / [カーブによる調整](/docs/features/curve-editor) / [ボーン細分化](/docs/features/bone-subdivision) を参照してください。
+:::
+
 ## FKawaiiPhysicsSettings
 
 物理制御の基本設定を定義する構造体です。`PhysicsSettings` プロパティとしてノードに設定します。`Damping`（揺れやすさ）と `Stiffness`（戻りやすさ）が物理挙動の中心で、この2つのバランスで全体の「柔らかさ」が決まります。各メンバーは後述の[カーブ](#カーブによる制御)でボーン長比に応じて補正できます。

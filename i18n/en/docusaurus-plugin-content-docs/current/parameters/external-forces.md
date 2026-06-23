@@ -169,36 +169,18 @@ FilterTags.AddTag(FGameplayTag::RequestGameplayTag("KawaiiPhysics.Hair"));
 UKawaiiPhysicsLibrary::AddExternalForcesToComponent(MeshComp, ExternalForces, Owner, FilterTags);
 ```
 
-## Blueprint API
+## Runtime Control / Blueprint API
 
-External forces can be dynamically controlled from Blueprint.
+External forces can be added and removed dynamically from Blueprint (`AddExternalForce` / `AddExternalForcesToComponent` / `RemoveExternalForcesFromComponent`). See the following for steps and signatures.
 
-### Adding External Force
+- How-to flow: [Runtime Control](/docs/advanced/runtime-control)
+- Full function list: [UKawaiiPhysicsLibrary](/docs/api/kawaiiphysics-library#external-force-api)
 
-```cpp
-UFUNCTION(BlueprintCallable, Category = "Kawaii Physics")
-static bool AddExternalForce(const FKawaiiPhysicsReference& KawaiiPhysics,
-                             FInstancedStruct& ExternalForce, UObject* Owner, bool bIsOneShot = false);
-```
+## Related Pages
 
-### Adding External Force to Component
+This page is the **reference** for external-force parameters. For actual usage, see the following guides.
 
-```cpp
-UFUNCTION(BlueprintCallable, Category = "Kawaii Physics")
-static bool AddExternalForcesToComponent(USkeletalMeshComponent* MeshComp,
-                                         TArray<FInstancedStruct>& ExternalForces, UObject* Owner,
-                                         FGameplayTagContainer& FilterTags,
-                                         bool bFilterExactMatch = false,
-                                         bool bIsOneShot = false);
-```
-
-### Removing External Force
-
-```cpp
-UFUNCTION(BlueprintCallable, Category = "Kawaii Physics")
-static bool RemoveExternalForcesFromComponent(USkeletalMeshComponent* MeshComp, UObject* Owner,
-                                              FGameplayTagContainer& FilterTags,
-                                              bool bFilterExactMatch = false);
-```
-
-For more details, see [UKawaiiPhysicsLibrary](/docs/api/kawaiiphysics-library).
+- [Wind and External Forces](/docs/features/wind-and-forces) — basic usage of wind, gravity, and external forces (introductory)
+- [External Force Presets](/docs/features/external-force-presets) — details of the Basic / Curve / Gravity / Wind presets
+- [Custom Gravity](/docs/advanced/custom-gravity) — customizing gravity direction
+- [AnimNotify](/docs/features/animnotify) — controlling external forces during animation

@@ -7,6 +7,10 @@ title: "ボーンチェーン設定"
 
 KawaiiPhysicsでボーンチェーンを設定する方法を説明します。
 
+:::note
+このページは設定の**ガイド**です。`RootBone` / `ExcludeBones` / `AdditionalRootBones` / `DummyBoneLength` の全プロパティ詳細は [物理パラメータ](/docs/parameters/physics) を参照してください。
+:::
+
 ## Root Boneの選択
 
 **Root Bone** は物理を適用するボーンチェーンの **親ボーン** を指定します。
@@ -43,6 +47,10 @@ TArray<FBoneReference> ExcludeBones;
 :::warning
 `ExcludeBones` に指定したボーンは、**そのボーン自身とその子孫ボーンすべて** が制御対象から外れます。チェーンの途中のボーンを指定すると、それ以降の末端まで物理が適用されなくなる点に注意してください。
 :::
+
+![ボーンチェーンとExclude Bone](/img/generated/bone-chain-exclude.svg)
+
+*Root Bone から始まるチェーンに物理が適用されます。Exclude Bone に指定したボーン自身と、それ以下（子孫）のボーンはすべて物理計算から除外されます。*
 
 ### 使用例
 

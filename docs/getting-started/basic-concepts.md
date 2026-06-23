@@ -1,90 +1,40 @@
 ---
 sidebar_position: 4
 title: "基本概念"
-description: "KawaiiPhysicsの仕組み。ボーンチェーン、Damping、Stiffness、コリジョンなどの基本概念を解説。"
+description: "KawaiiPhysicsの仕組みと主要な構成要素の全体像。ボーンチェーン、Damping/Stiffness/Radius、コリジョン、カーブ。"
 ---
 
 # 基本概念
 
-KawaiiPhysicsの仕組みを理解しましょう。
+KawaiiPhysicsの仕組みと、設定の全体像をつかみましょう。各要素の詳しい設定方法は、それぞれの設定ガイド・リファレンスにリンクしています。
 
 ## アーキテクチャ
 
-KawaiiPhysicsはPhysXを使用せず、独自の軽量アルゴリズムでボーン物理を実現します。
+KawaiiPhysicsはPhysXを使用せず、独自の軽量アルゴリズムでボーン物理を実現します。AnimGraph内のノードとして動作し、入力ポーズを受け取って物理シミュレーション後のポーズを出力します。
 
 ![アーキテクチャとデータフロー](/img/generated/architecture-dataflow.svg)
 
 *AnimGraph内でのKawaiiPhysicsノードの位置と内部処理フロー*
 
-## ボーンチェーン
+## 構成要素の全体像
 
-KawaiiPhysicsは **Root Bone** から始まるボーンチェーン全体に物理を適用します。
+KawaiiPhysicsの設定は、大きく次の要素で構成されます。
 
-```
-head (Root Bone)
-├── hair_01
-│   ├── hair_02
-│   └── hair_03  ← 物理が適用される範囲
-└── ponytail_01
-    └── ponytail_02
-```
+| 要素 | 概要 | 詳しく |
+|------|------|--------|
+| **ボーンチェーン** | Root Bone から始まる、物理を適用するボーンの範囲。Exclude Bones で一部を除外できる | [ボーンチェーン設定](/docs/features/bone-chain) |
+| **物理パラメータ** | Damping（収まりやすさ）/ Stiffness（戻りやすさ）/ Radius（太さ）で揺れ方を決める | [揺れ方の調整](/docs/features/physics-setup) |
+| **コリジョン** | 球・カプセル・ボックス・平面で体の貫通を防ぐ | [コリジョン設定](/docs/features/collision-setup) |
+| **カーブ** | 根元から先端にかけてパラメータを滑らかに変化させる | [カーブによる調整](/docs/features/curve-editor) |
+| **外部力** | 風・重力・任意の力を加える | [風と外部力](/docs/features/wind-and-forces) |
 
-### Exclude Bones
+## 次のステップ
 
-特定のボーンを物理計算から除外できます。
+全体像をつかんだら、やりたいことに応じて設定ガイドへ進みましょう。
 
-![ボーンチェーンとExclude Bone](/img/generated/bone-chain-exclude.svg)
+1. [ボーンチェーン設定](/docs/features/bone-chain) — 揺らすボーンを指定する
+2. [揺れ方の調整](/docs/features/physics-setup) — Damping / Stiffness / Radius で揺れ方を決める
+3. [コリジョン設定](/docs/features/collision-setup) — 体の貫通を防ぐ
+4. [風と外部力](/docs/features/wind-and-forces) — 風・重力をかける
 
-*Root Bone から始まるチェーンに物理が適用されます。Exclude Bone に指定したボーン自身と、それ以下（子孫）のボーンはすべて物理計算から除外されます。*
-
-## 物理パラメータ
-
-### Damping（減衰）
-
-ボーンの動きを徐々に収束させます。値が大きいほど早く止まります。
-
-![Damping値の比較](/img/generated/damping-comparison.svg)
-
-*※自動生成された概念図です。実際の動作はパラメータや環境により異なります。*
-
-### Stiffness（剛性）
-
-元のアニメーションポーズに戻ろうとする力です。値が大きいほど硬くなります。
-
-![Stiffness値の比較](/img/generated/stiffness-comparison.svg)
-
-*※自動生成された概念図です。実際の動作はパラメータや環境により異なります。*
-
-### Radius（半径）
-
-各ボーンの物理的なサイズを定義します。コリジョン判定に使用されます。
-
-![Radius値の比較](/img/generated/radius-concept.svg)
-
-*※自動生成された概念図です。実際の動作はパラメータや環境により異なります。*
-
-## コリジョンシステム
-
-KawaiiPhysicsは4種類のコリジョンをサポートします：
-
-| 種類 | 用途 |
-|-----|------|
-| Sphere | 球体（頭、肩など） |
-| Capsule | カプセル（腕、脚など） |
-| Box | ボックス（体、障害物など） |
-| Plane | 平面（地面、壁など） |
-
-![コリジョンシステム概要](/img/generated/collision-system-overview.svg)
-
-*コリジョンの配置例と各形状の用途*
-
-## カーブによる制御
-
-ボーンチェーンに沿ってパラメータを変化させることができます。
-
-```
-根元 ←――――――――――――→ 先端
-  硬い              柔らかい
-```
-
-詳しくは [カーブエディタ](/docs/features/curve-editor) を参照してください。
+全パラメータの一覧は [パラメータ概要](/docs/parameters/overview) を参照してください。

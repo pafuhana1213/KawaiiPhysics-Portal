@@ -7,6 +7,14 @@ title: "Collision Setup"
 
 Set up collisions to prevent bones from penetrating through the body.
 
+:::note
+This page is a setup **guide**. For all properties and default values of each collision shape, see [Collision Parameters](/docs/parameters/collision).
+:::
+
+![Collision system overview](/img/generated/collision-system-overview.svg)
+
+*Examples of collision placement and the purpose of each shape (diagram labels are in Japanese).*
+
 ## Collision Types
 
 ### Sphere

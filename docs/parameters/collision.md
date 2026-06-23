@@ -11,6 +11,10 @@ title: "コリジョンパラメータ"
 
 [ソースを見る](https://github.com/pafuhana1213/KawaiiPhysics/blob/master/Plugins/KawaiiPhysics/Source/KawaiiPhysics/Public/AnimNode_KawaiiPhysics.h)
 
+:::tip このページについて
+ここは**コリジョンパラメータの網羅的なリファレンス**です。実際の設定手順や形状の選び方は [コリジョン設定ガイド](/docs/features/collision-setup)、複数メッシュ間での共有は [共有コリジョン](/docs/features/shared-collision) を参照してください。
+:::
+
 ## コリジョンタイプ
 
 KawaiiPhysicsでは以下の4種類のコリジョン形状をサポートしています。
