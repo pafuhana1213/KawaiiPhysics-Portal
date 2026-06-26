@@ -184,14 +184,10 @@ function HomepageFeatures() {
   );
 }
 
-// Pick 5 highlighted titles from the adoption data
-const highlightedTitles: {game: GameTitle; year: number}[] = [
-  {game: adoptionData[0].titles[0], year: 2026}, // ドラゴンクエストVII Reimagined
-  {game: adoptionData[1].titles[1], year: 2025}, // SILENT HILL f
-  {game: adoptionData[2].titles[9], year: 2024}, // ペルソナ3 リロード
-  {game: adoptionData[1].titles[6], year: 2025}, // Clair Obscur
-  {game: adoptionData[2].titles[5], year: 2024}, // Stellar Blade
-];
+// Pick the 5 most recent adoption titles (newest first, auto-updates with data)
+const highlightedTitles: {game: GameTitle; year: number}[] = adoptionData
+  .flatMap((yearData) => yearData.titles.map((game) => ({game, year: yearData.year})))
+  .slice(0, 5);
 
 function AdoptionHighlightSection() {
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
