@@ -15,6 +15,7 @@ export const adoptionData: YearData[] = [
     {
       year: 2026,
       titles: [
+        {name: 'BEAST OF REINCARNATION', company: 'Game Freak / Fictions', videoId: 'zPAv3JEvtCs'},
         {name: translate({id: 'adoption.game.dqm4', message: 'ドラゴンクエストモンスターズ4 枯れ木の国のビアンカ・フローラ'}), company: 'SQUARE ENIX', videoId: 'd3pGz7nXMxo'},
         {name: translate({id: 'adoption.game.yoshi', message: 'ヨッシーとフカシギの図鑑'}), company: 'Good-Feel / Nintendo', videoId: 'Ous3BQj3kRk'},
         {name: 'NTE: Neverness to Everness', company: 'Hotta Studio / Perfect World Games', videoId: 'GlPM4ip7JZU'},

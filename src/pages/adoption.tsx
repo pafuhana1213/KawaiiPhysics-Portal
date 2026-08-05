@@ -175,6 +175,7 @@ export default function AdoptionPage(): ReactNode {
               {translate({id: 'adoption.copyrights', message: '著作権表示'})}
             </Heading>
             <div className={styles.copyrightsList}>
+              <p>© 2026 Fictions, Inc. All other marks and trademarks are the property of their respective owners. All rights reserved.</p>
               <p>© SQUARE ENIX</p>
               <p>© Netmarble Corp. All Rights Reserved.</p>
               <p>© Hotta Studio, a Perfect World company. All Rights Reserved.</p>
