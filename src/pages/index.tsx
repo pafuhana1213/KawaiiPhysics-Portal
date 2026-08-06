@@ -258,7 +258,7 @@ function VersionInfoSection() {
             <div className={styles.versionLabel}>
               {translate({id: 'homepage.version.ue', message: '対応UEバージョン'})}
             </div>
-            <div className={styles.versionValue}>5.3 - 5.7</div>
+            <div className={styles.versionValue}>5.3 - 5.8</div>
           </div>
           <div className={styles.versionCard}>
             <div className={styles.versionLabel}>

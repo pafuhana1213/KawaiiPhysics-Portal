@@ -11,7 +11,7 @@ KawaiiPhysicsの更新履歴です。
 
 最新のリリース情報は [GitHub Releases](https://github.com/pafuhana1213/KawaiiPhysics/releases) を参照してください。
 
-## v1.21.x (UE 5.3〜5.7対応)
+## v1.21.x (UE 5.3〜5.8対応)
 
 ### v1.21.0
 
@@ -55,7 +55,7 @@ KawaiiPhysicsの更新履歴です。
 - Wind に方向ノイズ `WindDirectionNoiseAngle` を追加
 - プロジェクト全体設定 `KawaiiPhysicsDeveloperSettings`（固定サブステップ / ダミー生成数の警告しきい値）を新設
 - 物理コアの自動テスト（UE Automation）基盤を追加し、回帰検出を強化
-- 各種ビルドエラー修正、各種パフォーマンス最適化（対応エンジンバージョンは UE 5.3〜5.7）
+- 各種ビルドエラー修正、各種パフォーマンス最適化（対応エンジンバージョンは UE 5.3〜5.8）
 
 最新のリリース情報は [GitHub Releases](https://github.com/pafuhana1213/KawaiiPhysics/releases) を参照してください。
 

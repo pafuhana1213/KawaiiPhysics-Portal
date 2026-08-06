@@ -40,7 +40,7 @@ description: "KawaiiPhysics - A lightweight bone physics plugin for Unreal Engin
 
 | KawaiiPhysics | Supported UE Versions |
 |---------------|----------------------|
-| 1.21.x        | 5.3, 5.4, 5.5, 5.6, 5.7 |
+| 1.21.x        | 5.3, 5.4, 5.5, 5.6, 5.7, 5.8 |
 | 1.20.x        | 5.3, 5.4, 5.5, 5.6, 5.7 |
 | 1.19.x        | 5.3, 5.4, 5.5, 5.6 |
 | 1.18.x        | 5.3, 5.4, 5.5 |

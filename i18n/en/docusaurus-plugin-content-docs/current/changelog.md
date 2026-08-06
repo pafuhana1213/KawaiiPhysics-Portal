@@ -11,7 +11,7 @@ Changelog for KawaiiPhysics.
 
 For the latest release information, see [GitHub Releases](https://github.com/pafuhana1213/KawaiiPhysics/releases).
 
-## v1.21.x (UE 5.3 - 5.7 Support)
+## v1.21.x (UE 5.3 - 5.8 Support)
 
 ### v1.21.0
 
@@ -55,7 +55,7 @@ See [Shared Collision](/docs/features/shared-collision) for details.
 - Added `WindDirectionNoiseAngle` (wind direction noise) to Wind
 - Added the project-wide `KawaiiPhysicsDeveloperSettings` (fixed substepping / dummy-generation warning thresholds)
 - Added an automated physics-core test suite (UE Automation) to strengthen regression detection
-- Various build error fixes and performance optimizations (supported engine versions: UE 5.3-5.7)
+- Various build error fixes and performance optimizations (supported engine versions: UE 5.3-5.8)
 
 For the latest release information, see [GitHub Releases](https://github.com/pafuhana1213/KawaiiPhysics/releases).
 

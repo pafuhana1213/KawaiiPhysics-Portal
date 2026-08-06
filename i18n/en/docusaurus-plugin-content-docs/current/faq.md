@@ -6,7 +6,7 @@ description: "Frequently asked questions about KawaiiPhysics. Troubleshooting, p
 
 # FAQ
 
-Frequently asked questions and answers. Based on the latest version (v1.21.0, supporting UE 5.3–5.7).
+Frequently asked questions and answers. Based on the latest version (v1.21.0, supporting UE 5.3–5.8).
 
 ## General
 
@@ -34,7 +34,7 @@ See [Installation](/docs/getting-started/installation) for setup instructions.
 
 | KawaiiPhysics | Supported UE Versions |
 |---------------|----------------------|
-| v1.21.x       | 5.3, 5.4, 5.5, 5.6, 5.7 |
+| v1.21.x       | 5.3, 5.4, 5.5, 5.6, 5.7, 5.8 |
 | v1.20.x       | 5.3, 5.4, 5.5, 5.6, 5.7 |
 | v1.19.x       | 5.3, 5.4, 5.5, 5.6 |
 | v1.18.x       | 5.3, 5.4, 5.5 |

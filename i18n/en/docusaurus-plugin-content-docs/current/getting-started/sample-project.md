@@ -30,7 +30,7 @@ KawaiiPhysics/
 |------|---------|
 | Project file | `KawaiiPhysicsSample.uproject` |
 | Sample level | `Content/KawaiiPhysicsSample/L_KawaiiPhysicsSample` |
-| Supported UE versions | 5.3 / 5.4 / 5.5 / 5.6 / 5.7 (for older versions, see the [compatibility table](/docs/#supported-versions)) |
+| Supported UE versions | 5.3 / 5.4 / 5.5 / 5.6 / 5.7 / 5.8 (for older versions, see the [compatibility table](/docs/#supported-versions)) |
 
 :::info
 The `Plugins/KawaiiPhysics` folder included in the repository is **C++ source code**. Opening the project as-is requires building the plugin. If you do not have a build environment, replace it with a precompiled build using the [steps for users without a build environment](#method-b) below.
@@ -140,7 +140,7 @@ Moving and rotating the character makes the swaying parts move more dramatically
 
 ### Watch Out for Version Mismatches {#version-mismatch}
 
-The sample level and assets are saved with a specific UE version. **You cannot open them in a UE version older than the one they were saved with.** If a level fails to open or appears corrupted, try a different UE version within the supported range (5.3–5.7). When using a precompiled version, always **match the UE version the plugin targets with the UE version you open the project in**.
+The sample level and assets are saved with a specific UE version. **You cannot open them in a UE version older than the one they were saved with.** If a level fails to open or appears corrupted, try a different UE version within the supported range (5.3–5.8). When using a precompiled version, always **match the UE version the plugin targets with the UE version you open the project in**.
 
 ### "This project needs to be rebuilt" appears and the editor will not launch
 
