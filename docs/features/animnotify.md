@@ -137,6 +137,16 @@ Time 0.5: Alpha = 0.0 (物理オフ)
 Time 1.0: Alpha = 1.0 (物理フル)
 ```
 
+:::warning CurveName未設定時の警告
+**Source = Curve** のまま **CurveName** が未設定（None）の場合、エディタでのアセット検証時（Animation Sequenceの保存・読み込み時など）にMessage Log（Asset Check）へ警告が表示されます。
+
+```
+AnimNotifyState(KawaiiPhysics_SetAlpha) CurveName is empty in <アセットパス>
+```
+
+カーブ制御を使う場合は必ず **CurveName** を設定してください。なお、CurveNameを設定していてもカーブの値が取得できない場合（アニメーションに該当カーブが存在しない等）は、警告は出ずに **DefaultAlphaIfNoCurve** の値が使用されます。
+:::
+
 ### 固定値を使用する場合
 
 ```cpp

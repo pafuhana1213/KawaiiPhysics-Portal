@@ -137,6 +137,16 @@ Time 0.5: Alpha = 0.0 (physics off)
 Time 1.0: Alpha = 1.0 (full physics)
 ```
 
+:::warning Warning When CurveName Is Not Set
+If **Source = Curve** but **CurveName** is left unset (None), a warning is shown in the Message Log (Asset Check) during editor asset validation (e.g., when saving or loading the Animation Sequence).
+
+```
+AnimNotifyState(KawaiiPhysics_SetAlpha) CurveName is empty in <asset path>
+```
+
+Always set **CurveName** when using curve-based control. Note that if CurveName is set but the curve value cannot be retrieved (e.g., the animation does not contain a curve with that name), no warning is shown and **DefaultAlphaIfNoCurve** is used instead.
+:::
+
 ### Using Constant Value
 
 ```cpp
