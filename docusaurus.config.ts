@@ -2,18 +2,26 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
+const currentLocale = process.env.DOCUSAURUS_CURRENT_LOCALE ?? 'ja';
+const isEn = currentLocale === 'en';
+
 // サイトURL（OG画像・構造化データの絶対URL生成に使用）
 const SITE_URL = 'https://pafuhana1213.github.io';
 const BASE_URL = '/KawaiiPhysics-Portal/';
-const SITE_TITLE = 'KawaiiPhysics ポータルサイト';
-const SITE_DESCRIPTION =
-  'KawaiiPhysics - Unreal Engine向け軽量ボーン物理プラグインのドキュメント。髪・服・アクセサリーに簡単に物理挙動を適用。';
+const SITE_TITLE = isEn ? 'KawaiiPhysics Portal' : 'KawaiiPhysics ポータルサイト';
+const SITE_TAGLINE = isEn
+  ? 'Simple bone physics for Unreal Engine'
+  : 'Unreal Engine向けのシンプルなボーン物理プラグイン';
+const SITE_DESCRIPTION = isEn
+  ? 'KawaiiPhysics documentation for a lightweight bone physics plugin for Unreal Engine. Easily apply physics behavior to hair, clothing, and accessories.'
+  : 'KawaiiPhysics - Unreal Engine向け軽量ボーン物理プラグインのドキュメント。髪・服・アクセサリーに簡単に物理挙動を適用。';
+const SITE_LANGUAGE = isEn ? 'en' : 'ja';
 const SOCIAL_CARD = `${SITE_URL}${BASE_URL}img/social-card.jpg`;
 const SITE_LOGO = `${SITE_URL}${BASE_URL}img/logo.png`;
 
 const config: Config = {
   title: SITE_TITLE,
-  tagline: 'Simple bone physics for Unreal Engine',
+  tagline: SITE_TAGLINE,
   favicon: 'img/logo.png',
 
   future: {
@@ -79,6 +87,7 @@ const config: Config = {
           editUrl: 'https://github.com/pafuhana1213/KawaiiPhysics-Portal/tree/main/',
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
+          exclude: ['source-mapping.md', 'assets/**'],
         },
         blog: {
           showReadingTime: true,
@@ -176,7 +185,7 @@ const config: Config = {
         alternateName: 'KawaiiPhysics',
         url: `${SITE_URL}${BASE_URL}`,
         description: SITE_DESCRIPTION,
-        inLanguage: 'ja',
+        inLanguage: SITE_LANGUAGE,
         image: {
           '@type': 'ImageObject',
           url: SOCIAL_CARD,

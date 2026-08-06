@@ -128,6 +128,29 @@ Because they are named "Damping (suppression)," `WorldDampingLocation` / `WorldD
 Using anything other than ComponentSpace causes minor performance degradation, but can avoid influence from sudden Root bone movement/rotation.
 :::
 
+### SimulationBaseBone
+
+**Simulation Base Bone** - The bone used as the reference in the BaseBone coordinate system.
+
+| Property | Value |
+|----------|-------|
+| Type | FBoneReference |
+| Category | Physics Settings |
+
+:::note
+Only enabled when SimulationSpace is BaseBoneSpace.
+:::
+
+### TargetFramerate
+
+**Target Framerate** - Target framerate for the physics simulation.
+
+| Property | Value |
+|----------|-------|
+| Type | int32 |
+| Default | 60 |
+| Category | Physics Settings |
+
 ### TeleportDistanceThreshold
 
 **Teleport Distance Threshold** - If the SkeletalMeshComponent movement per frame exceeds this value, that movement won't be reflected in physics control.
@@ -190,6 +213,20 @@ Using anything other than ComponentSpace causes minor performance degradation, b
 |----------|-------|
 | Type | TArray\<FBoneReference\> |
 | Category | Bones |
+
+### AdditionalRootBones
+
+**Additional Root Bones** - Adds the specified bones and all bones below them to the control targets (for adding multiple roots).
+
+| Property | Value |
+|----------|-------|
+| Type | TArray\<FKawaiiPhysicsRootBoneSetting\> |
+| Category | Bones |
+
+Each element has the following properties:
+- `RootBone`: Root bone to control
+- `OverrideExcludeBones`: Exclude bone list dedicated to this root bone
+- `bUseOverrideExcludeBones`: Enables the exclude bone override
 
 ### DummyBoneLength
 

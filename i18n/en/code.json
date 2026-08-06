@@ -27,6 +27,9 @@
     "message": "Fine-tune with rich parameters including collision, curves, and external forces.",
     "description": "Feature 3 description"
   },
+  "homepage.title": {
+    "message": "KawaiiPhysics Portal"
+  },
   "homepage.description": {
     "message": "Documentation for KawaiiPhysics, a lightweight bone physics plugin for Unreal Engine",
     "description": "The meta description of the homepage"
@@ -135,6 +138,14 @@
     "message": "DRAGON QUEST MONSTERS 4",
     "description": "Game title"
   },
+  "adoption.game.yoshi": {
+    "message": "Yoshi and the Mysterious Book",
+    "description": "Game title"
+  },
+  "adoption.game.mongil": {
+    "message": "MonGil: STAR DIVE",
+    "description": "Game title"
+  },
   "adoption.company.tarkHotaruika": {
     "message": "TARK / Hotaruika Museum",
     "description": "Company name"
@@ -236,7 +247,7 @@
     "description": "Game title"
   },
   "adoption.title": {
-    "message": "Adopted By",
+    "message": "Showcase",
     "description": "Adoption page title"
   },
   "adoption.heroText": {

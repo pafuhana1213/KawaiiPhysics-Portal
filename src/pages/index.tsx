@@ -252,7 +252,7 @@ function VersionInfoSection() {
             <div className={styles.versionLabel}>
               {translate({id: 'homepage.version.latest', message: '最新バージョン'})}
             </div>
-            <div className={styles.versionValue}>1.20.0</div>
+            <div className={styles.versionValue}>1.21.0</div>
           </div>
           <div className={styles.versionCard}>
             <div className={styles.versionLabel}>
@@ -292,6 +292,7 @@ function VersionInfoSection() {
 export default function Home(): ReactNode {
   return (
     <Layout
+      title={translate({id: 'homepage.title', message: 'KawaiiPhysics ポータルサイト'})}
       description={translate({id: 'homepage.description', message: 'Unreal Engine向け軽量ボーン物理プラグイン KawaiiPhysics のドキュメント'})}>
       <HomepageHeader />
       <main>

@@ -110,6 +110,14 @@ Limits bones to **outside** the sphere.
 
 - Use case: Preventing penetration into shoulders
 
+## Combining Multiple Shapes
+
+In actual characters, multiple collision shapes are used in combination.
+
+![Combining multiple collision shapes](/img/generated/collision-multi-shape-setup.svg)
+
+*Practical collision placement example for the upper body and skirt*
+
 ## Performance Considerations
 
 More collisions increase processing load.

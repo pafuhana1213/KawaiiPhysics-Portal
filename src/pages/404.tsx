@@ -1,4 +1,5 @@
 import type {ReactNode} from 'react';
+import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import {translate} from '@docusaurus/Translate';
@@ -22,12 +23,12 @@ function HeroSection() {
         })}
       </p>
       <div className={styles.buttonGroup}>
-        <a href="/" className={styles.buttonPrimary}>
+        <Link to="/" className={styles.buttonPrimary}>
           {translate({id: 'notFound.home', message: 'ホームへ戻る'})}
-        </a>
-        <a href="/docs" className={styles.buttonSecondary}>
+        </Link>
+        <Link to="/docs" className={styles.buttonSecondary}>
           {translate({id: 'notFound.docs', message: 'ドキュメントを見る'})}
-        </a>
+        </Link>
       </div>
     </div>
   );

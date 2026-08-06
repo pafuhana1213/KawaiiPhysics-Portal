@@ -169,6 +169,18 @@ FilterTags.AddTag(FGameplayTag::RequestGameplayTag("KawaiiPhysics.Hair"));
 UKawaiiPhysicsLibrary::AddExternalForcesToComponent(MeshComp, ExternalForces, Owner, FilterTags);
 ```
 
+## External Force Control via AnimNotify
+
+:::tip Version Info
+Added in v1.17.0
+:::
+
+External forces can be controlled during animation using AnimNotify.
+
+![AnimNotifyState External Force](/img/features/animnotify-externalforce.webp)
+
+*Applying external force with AnimNotifyState*
+
 ## Runtime Control / Blueprint API
 
 External forces can be added and removed dynamically from Blueprint (`AddExternalForce` / `AddExternalForcesToComponent` / `RemoveExternalForcesFromComponent`). See the following for steps and signatures.
