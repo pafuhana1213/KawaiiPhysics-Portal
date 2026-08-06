@@ -73,6 +73,8 @@ If you change `Radius` / `RadiusCurve` while this is enabled, recomputing the du
 
 In addition to the vertical direction, this fills the **gaps between adjacent bone chains (columns)**. For setups where multiple vertical chains line up like a skirt, it prevents penetration through the gaps between columns. Combining `BoneConstraintSubdivisionCount` with `BoneSubdivisionCount` arranges a 2D grid of collision points across the cloth surface.
 
+For how to configure the horizontal constraint pairs themselves, see [Bone Constraint](/docs/features/bone-constraint).
+
 ![Concept of horizontal subdivision (Bridge)](/img/generated/bridge-subdivision-concept.svg)
 
 *Without BoneConstraint Subdivision (left), a collider slips through the gap between columns. With it (right), collision points (bridge dummies) are inserted along the horizontal constraints, filling the gap and preventing penetration. (Diagram labels are in Japanese.)*
@@ -139,6 +141,7 @@ For details, see [KawaiiPhysics Library](/docs/api/kawaiiphysics-library).
 
 ## Related Pages
 
+- [Bone Constraint](/docs/features/bone-constraint)
 - [Collision Setup](/docs/features/collision-setup)
 - [Sync Bone](/docs/features/sync-bone)
 - [Limit Parameters](/docs/parameters/limits)

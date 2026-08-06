@@ -73,6 +73,8 @@ Bone Subdivision は実ボーンの間にダミーボーンを挿入すること
 
 縦方向だけでなく、隣接するボーンチェーン（列）の**間**を埋める機能です。スカートのように複数の縦チェーンが並ぶ構成で、列と列の隙間からの貫通を防ぎます。`BoneConstraintSubdivisionCount` と `BoneSubdivisionCount` を組み合わせると、布面に2Dグリッド状のコリジョン点が並びます。
 
+横方向の拘束ペアそのものの設定方法は [Bone Constraint（ボーン間拘束）](/docs/features/bone-constraint) を参照してください。
+
 ![横方向の細分化（Bridge）の概念図](/img/generated/bridge-subdivision-concept.svg)
 
 *BoneConstraint Subdivision なし（左）では列の隙間からコライダーがすり抜けて貫通。あり（右）では横方向Constraintに沿ってコリジョン点（bridge dummy）が挿入され、隙間を埋めて貫通を防ぐ。*
@@ -139,6 +141,7 @@ Bone Subdivision は実ボーンの間にダミーボーンを挿入すること
 
 ## 関連ページ
 
+- [Bone Constraint（ボーン間拘束）](/docs/features/bone-constraint)
 - [コリジョン設定](/docs/features/collision-setup)
 - [Sync Bone](/docs/features/sync-bone)
 - [リミットパラメータ](/docs/parameters/limits)

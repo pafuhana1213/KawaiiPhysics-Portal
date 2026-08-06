@@ -50,9 +50,10 @@ const sidebars: SidebarsConfig = {
       link: {
         type: 'generated-index',
         slug: 'advanced-features',
-        description: 'ボーン細分化、共有コリジョン、Sync Bone、外部力プリセット、カスタム重力、固定サブステップ、ランタイム制御など応用機能を解説します。',
+        description: 'ボーン間拘束（Bone Constraint）、ボーン細分化、共有コリジョン、Sync Bone、外部力プリセット、カスタム重力、固定サブステップ、ランタイム制御など応用機能を解説します。',
       },
       items: [
+        'features/bone-constraint',
         'features/bone-subdivision',
         'features/shared-collision',
         'features/sync-bone',

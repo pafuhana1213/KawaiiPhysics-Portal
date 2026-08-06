@@ -43,13 +43,15 @@ UKawaiiPhysicsLimitsDataAsset* LimitsDataAsset;
 
 ## BoneConstraint Settings
 
+See [Bone Constraint](/docs/features/bone-constraint) for a guide to the feature itself.
+
 From v1.14.0, BoneConstraint (distance constraints between bones) can be configured in DataAssets. Became official in v1.19.0.
 
 ![BoneConstraint Demo](/img/features/boneconstraint-demo.webp)
 
 Bone sets for constraints can be specified using regular expressions:
 
-```
+```text
 // Example: Constraints between skirt_01_* and skirt_02_*
 Bone1: skirt_01_.*
 Bone2: skirt_02_.*
@@ -118,7 +120,7 @@ Can be managed as assets, making change history easier to track.
 2. **Separate by part**: "Hair_Collision", "Tail_Collision", etc.
 3. **Naming convention**: `DA_KP_[BodyType]_[Part]`
 
-```
+```text
 Content/
 └── KawaiiPhysics/
     └── DataAssets/

@@ -12,7 +12,7 @@ title: "リミットパラメータ"
 [ソースを見る](https://github.com/pafuhana1213/KawaiiPhysics/blob/master/Plugins/KawaiiPhysics/Source/KawaiiPhysics/Public/AnimNode_KawaiiPhysics.h)
 
 :::tip このページについて
-ここは**リミット系パラメータの網羅的なリファレンス**です。使い方は [Sync Bone](/docs/features/sync-bone)（同期による貫通対策）、[ボーン細分化](/docs/features/bone-subdivision)（BoneConstraint Subdivision）を参照してください。
+ここは**リミット系パラメータの網羅的なリファレンス**です。使い方は [Bone Constraint](/docs/features/bone-constraint)（ボーン間拘束）、[Sync Bone](/docs/features/sync-bone)（同期による貫通対策）、[ボーン細分化](/docs/features/bone-subdivision)（BoneConstraint Subdivision）を参照してください。
 :::
 
 ## Bone Constraint

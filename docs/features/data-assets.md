@@ -51,13 +51,15 @@ UKawaiiPhysicsLimitsDataAsset* LimitsDataAsset;
 
 ## BoneConstraintの設定
 
+Bone Constraint機能そのものの使い方は [Bone Constraint（ボーン間拘束）](/docs/features/bone-constraint) を参照してください。
+
 v1.14.0からDataAssetでBoneConstraint（骨間の距離拘束）を設定できるようになりました。v1.19.0で正式版になっています。
 
 ![BoneConstraint Demo](/img/features/boneconstraint-demo.webp)
 
 正規表現を使って拘束対象の骨セットを指定できます：
 
-```
+```text
 // 例: skirt_01_* と skirt_02_* 間の拘束
 Bone1: skirt_01_.*
 Bone2: skirt_02_.*
@@ -130,7 +132,7 @@ Data Assetを修正すると、参照しているすべてのキャラクター�
 2. **部位ごとに分割**: 「Hair_Collision」「Tail_Collision」など
 3. **命名規則**: `DA_KP_[体型]_[部位]`
 
-```
+```text
 Content/
 └── KawaiiPhysics/
     └── DataAssets/

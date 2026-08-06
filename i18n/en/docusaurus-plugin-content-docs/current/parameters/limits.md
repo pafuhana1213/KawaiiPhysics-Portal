@@ -12,7 +12,7 @@ Parameters for limiting bone movement and rotation (Bone Constraint / Sync Bone 
 [View Source](https://github.com/pafuhana1213/KawaiiPhysics/blob/master/Plugins/KawaiiPhysics/Source/KawaiiPhysics/Public/AnimNode_KawaiiPhysics.h)
 
 :::tip About This Page
-This is the **complete reference** for limit-related parameters. For usage, see [Sync Bone](/docs/features/sync-bone) (penetration prevention via sync) and [Bone Subdivision](/docs/features/bone-subdivision) (BoneConstraint Subdivision).
+This is the **complete reference** for limit-related parameters. For usage, see [Bone Constraint](/docs/features/bone-constraint) (bone-to-bone constraints), [Sync Bone](/docs/features/sync-bone) (penetration prevention via sync), and [Bone Subdivision](/docs/features/bone-subdivision) (BoneConstraint Subdivision).
 :::
 
 ## Bone Constraint
