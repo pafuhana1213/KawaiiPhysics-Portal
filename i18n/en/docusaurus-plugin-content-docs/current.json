@@ -22,5 +22,89 @@
   "sidebar.docsSidebar.category.APIリファレンス": {
     "message": "API Reference",
     "description": "The label for category APIリファレンス in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.開発中（v1.22予定）": {
+    "message": "In Development (v1.22 Preview)",
+    "description": "Sidebar category for unreleased features"
+  },
+  "sidebar.docsSidebar.category.はじめ方.link.generated-index.description": {
+    "message": "Install KawaiiPhysics, explore the official sample, and follow the quick start and basic concepts to create your first setup.",
+    "description": "The generated-index description for はじめ方"
+  },
+  "sidebar.docsSidebar.category.設定ガイド.link.generated-index.description": {
+    "message": "Learn how to configure bone chains, motion, collisions, curves, forces, Data Assets, and AnimNotifies.",
+    "description": "The generated-index description for 設定ガイド"
+  },
+  "sidebar.docsSidebar.category.高度な機能.link.generated-index.description": {
+    "message": "Explore bone constraints, subdivision, shared collision, Sync Bone, force presets, custom gravity, fixed substepping, and runtime control.",
+    "description": "The generated-index description for 高度な機能"
+  },
+  "sidebar.docsSidebar.category.最適化・運用.link.generated-index.description": {
+    "message": "Optimize performance, debug behavior, and adjust project settings and console variables.",
+    "description": "The generated-index description for 最適化・運用"
+  },
+  "sidebar.docsSidebar.category.APIリファレンス.link.generated-index.description": {
+    "message": "Find runtime node control and diagnostics, editor authoring and audits, and animation Notify contracts by task.",
+    "description": "The generated-index description for APIリファレンス"
+  },
+  "sidebar.docsSidebar.category.共有・コリジョン": {
+    "message": "Sharing and Collision",
+    "description": "Preview topic group"
+  },
+  "sidebar.docsSidebar.category.アニメーション・実行時制御": {
+    "message": "Animation and Runtime Control",
+    "description": "Preview topic group"
+  },
+  "sidebar.docsSidebar.category.風・プリセット": {
+    "message": "Wind and Presets",
+    "description": "Preview topic group"
+  },
+  "sidebar.docsSidebar.category.制作・確認ツール": {
+    "message": "Authoring and Inspection Tools",
+    "description": "Preview topic group"
+  },
+  "sidebar.docsSidebar.category.設定・APIの詳細": {
+    "message": "Settings and API references",
+    "description": "Preview technical references"
+  },
+  "sidebar.docsSidebar.category.設定・APIの詳細.link.generated-index.description": {
+    "message": "Setup, settings, and API contracts for technical artists and programmers. These v1.22 Preview features have not been officially released.",
+    "description": "Preview reference index description"
+  },
+  "sidebar.docsSidebar.category.公式サンプル": {
+    "message": "Official Samples",
+    "description": "Sidebar category 公式サンプル"
+  },
+  "sidebar.docsSidebar.category.コリジョン": {
+    "message": "Collision",
+    "description": "Sidebar category コリジョン"
+  },
+  "sidebar.docsSidebar.category.外部力": {
+    "message": "External Forces",
+    "description": "Sidebar category 外部力"
+  },
+  "sidebar.docsSidebar.category.Data Asset": {
+    "message": "Data Asset",
+    "description": "Sidebar category Data Asset"
+  },
+  "sidebar.docsSidebar.category.アニメーション制御": {
+    "message": "Animation Control",
+    "description": "Sidebar category アニメーション制御"
+  },
+  "sidebar.docsSidebar.category.共有環境・コリジョン": {
+    "message": "Shared Environment and Collision",
+    "description": "Sidebar category 共有環境・コリジョン"
+  },
+  "sidebar.docsSidebar.category.UKawaiiPhysicsLibrary": {
+    "message": "UKawaiiPhysicsLibrary",
+    "description": "Sidebar category UKawaiiPhysicsLibrary"
+  },
+  "sidebar.docsSidebar.category.エディタ操作": {
+    "message": "Editor Operations",
+    "description": "Sidebar category エディタ操作"
+  },
+  "sidebar.docsSidebar.category.Sequencer": {
+    "message": "Sequencer",
+    "description": "Sidebar category Sequencer"
   }
 }

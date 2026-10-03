@@ -14,7 +14,7 @@
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
     "preview": "npm run build && npm run serve",
-    "open:prod": "start https://pafuhana1213.github.io/KawaiiPhysicsDocs/",
+    "open:prod": "start https://pafuhana1213.github.io/KawaiiPhysics-Portal/",
     "convert:gif-to-webp": "node scripts/convert-gifs.mjs"
   },
   "dependencies": {

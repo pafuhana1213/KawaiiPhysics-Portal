@@ -18,5 +18,9 @@
   "item.label.GitHub": {
     "message": "GitHub",
     "description": "Navbar item with label GitHub"
+  },
+  "item.label.v1.22予定": {
+    "message": "v1.22 Preview",
+    "description": "Navbar link to unreleased feature documentation"
   }
 }

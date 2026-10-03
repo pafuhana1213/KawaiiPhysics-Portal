@@ -45,9 +45,11 @@ description: "KawaiiPhysics - A lightweight bone physics plugin for Unreal Engin
 | 1.19.x        | 5.3, 5.4, 5.5, 5.6 |
 | 1.18.x        | 5.3, 5.4, 5.5 |
 | 1.17.x        | 5.3, 5.4, 5.5 |
-| 1.16.x        | 5.3, 5.4 |
+| 1.16.x        | 5.2, 5.3, 5.4 |
 | 1.14.x        | 5.0, 5.1, 5.2 |
 | 1.11.1        | 4.27 |
+
+The v1.16 row reflects the UE 5.2 / 5.3 / 5.4 binaries in the [published release](https://github.com/pafuhana1213/KawaiiPhysics/releases/tag/20240719-v1.16.0).
 
 ## Quick Start
 

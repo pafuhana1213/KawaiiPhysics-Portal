@@ -3,6 +3,9 @@ sidebar_position: 8
 title: "AnimNotify"
 ---
 
+import DocFigure from '@site/src/components/DocFigure';
+import LegacyReference from '@site/src/components/LegacyReference';
+
 # AnimNotify
 
 :::tip Version Info
@@ -13,13 +16,15 @@ Use AnimNotify to control KawaiiPhysics external forces and Alpha during animati
 
 ## Overview
 
-KawaiiPhysics provides three types of AnimNotify:
+KawaiiPhysics v1.21 and earlier provide these three types of AnimNotify:
 
 | Class | Type | Purpose |
 |-------|------|---------|
 | UAnimNotify_KawaiiPhysicsAddExternalForce | Notify | Add force instantly |
 | UAnimNotifyState_KawaiiPhysicsAddExternalForce | NotifyState | Apply force during interval |
 | UAnimNotifyState_KawaiiPhysicsSetAlpha | NotifyState | Override Alpha during interval |
+
+The three types above are available in v1.21 and earlier. Additional multiplier and gust Notifies are covered in the [planned-v1.22 section below](#settings-multiplier-notifies).
 
 [View Source](https://github.com/pafuhana1213/KawaiiPhysics/tree/master/Plugins/KawaiiPhysics/Source/KawaiiPhysics/Public/AnimNotifies)
 
@@ -159,7 +164,7 @@ ConstantAlpha = 0.5f;
 
 ## GameplayTag Filtering
 
-All AnimNotifies support filtering by GameplayTag.
+The external-force and Alpha Notifies above support node filtering by GameplayTag. The planned-v1.22 Trigger Gust uses different tags for Nodes and Shared Publisher targets.
 
 ### Setup
 
@@ -223,8 +228,72 @@ bFilterExactMatch = true; // Exact match only
 
 ---
 
+## Settings Multiplier / Trigger Gust (planned for v1.22) {#settings-multiplier-notifies}
+
+:::warning Not officially released
+This feature has not been officially released yet. It is planned for KawaiiPhysics v1.22. Specifications may change during development.
+:::
+
+### Overview {#new-notifies-when-to-use}
+
+You may want softer hair at a landing or looser clothing during an attack. If timing is driven only by gameplay events, revising the animation also requires adjusting when those calls occur.
+
+The new Notifies record multiplier or gust timing on the animation. They help artists adjust the event time or interval. Use these alongside the existing external-force and Alpha Notifies described above.
+
+### Notify Types {#new-notifies-choose}
+
+| Goal | Type |
+|---|---|
+| Change motion for a duration after an event | `KawaiiPhysics: Settings Multiplier (Pulse)` |
+| Apply multipliers during an action interval | NotifyState `KawaiiPhysics: Settings Multiplier` |
+| Trigger a gust with the animation | `KawaiiPhysics: Trigger Gust` |
+
+### Adding Settings Multiplier (Pulse) {#new-notifies-artist-setup}
+
+1. Open the Animation Sequence.
+2. Select the time when the effect should begin.
+3. Add `KawaiiPhysics: Settings Multiplier (Pulse)` on the Notify track (the following setting is an example).
+4. Set Stiffness in `SettingsScale` to 0.5; leave other scales at 1.
+5. Play and compare motion before and after the Notify.
+
+### Settings Multiplier (Pulse) {#new-notifies-pulse}
+
+Duration includes both fades. Zero or negative Duration does nothing. Pulse does not keep a stop handle; use NotifyState or an API for an event requiring early release.
+
+### Settings Multiplier NotifyState {#new-notifies-state}
+
+NotifyState applies `SettingsScale` over its interval. `Curve` uses the animation curve named by `CurveName` as weight.
+
+Envelope accumulates NotifyTick `FrameDeltaTime`. It may drift from the interval with changed PlayRate, reverse playback, or scrubbing. Use Curve when the weight must follow animation time under those conditions. Missing curves default to weight 1, so check the curve name.
+
+When a Montage is interrupted, or Curve mode ends, the current weight fades out over `BlendOutTime`. Check that interrupted playback returns as intended too.
+
+### Trigger Gust {#new-notifies-trigger-gust}
+
+Add an enabled Procedural Wind to the target node's External Forces. Leaving Gust Direction at zero inherits direction and related settings from that wind.
+
+Add `KawaiiPhysics: Trigger Gust` to the Notify track, set `Strength`, `RiseTime`, `HoldTime`, and `DecayTime`, then play the animation. `Strength` defaults to 0, which produces no gust.
+
+For this mesh, use `Gust Target=Kawaii Physics Nodes`. To send to hair and clothing together, prepare a [Kawaii Physics Shared Publisher](/docs/features/shared-publisher), select `Shared Publisher`, and match `SharedPublisherTag`. Filter Tags and Gust Direction are not used in that mode.
+
+[Property and playback contracts](/docs/api/animation-notifies)
+
+<span id="new-notifies-check" hidden />
+
+<LegacyReference redirect renderAnchors={false} targets={{"new-notifies-check": "/en/docs/features/animnotify#new-notifies-trigger-gust"}} to="/en/docs/features/animnotify#new-notifies-trigger-gust" label="Related specifications and usage" />
+
 ## Related Pages
 
 - [External Force Presets](/docs/features/external-force-presets) - External force preset details
 - [External Forces Parameters](/docs/parameters/external-forces) - AnimNode external force parameters
 - [UKawaiiPhysicsLibrary](/docs/api/kawaiiphysics-library) - Blueprint API
+
+<LegacyReference targets={{"programmer-details": "/en/docs/api/animation-notifies#programmer-details"}} to="/en/docs/api/animation-notifies" label="Read the detailed Notify reference" />
+
+<LegacyReference targets={{"new-notifies-references": "/en/docs/features/animnotify#ue-docs"}} to="/en/docs/features/animnotify#ue-docs" label="Read Related Documentation" />
+
+## Related UE documentation {#ue-docs}
+
+- [Animation Notifies](https://dev.epicgames.com/documentation/en-us/unreal-engine/animation-notifies-in-unreal-engine) — Review Notify tracks, NotifyState intervals, and event firing conditions. (UE 5.8)
+
+<LegacyReference redirect targets={{"new-notifies-result": "/en/docs/features/animnotify#new-notifies-artist-setup", "new-notifies-tuning": "/en/docs/features/animnotify#new-notifies-artist-setup", "new-notifies-common-pitfalls": "/en/docs/features/animnotify#new-notifies-artist-setup", "new-notifies-prerequisites": "/en/docs/features/animnotify#new-notifies-artist-setup"}} to="/en/docs/features/animnotify#new-notifies-artist-setup" label="Usage" />

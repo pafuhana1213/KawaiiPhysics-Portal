@@ -1,0 +1,17 @@
+.figure { width: 100%; max-width: 640px; margin: 1.2rem 0; background: transparent; }
+.flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.1rem; }
+.step { min-width: 0; position: relative; }
+.step:not(:last-child)::after { content: '→'; position: absolute; right: -.95rem; top: 1.9rem; color: var(--ifm-color-emphasis-600); font-size: 1.3rem; }
+.step svg { display: block; width: 100px; height: 84px; margin: 0 auto .4rem; background: transparent; }
+.words { display: flex; flex-direction: column; text-align: center; line-height: 1.45; }
+.words strong { font-size: .96rem; }
+.words span { font-size: .82rem; margin-top: .2rem; overflow-wrap: anywhere; color: var(--ifm-color-emphasis-700); }
+.caption { margin-top: 1rem; font-size: .86rem; line-height: 1.65; color: var(--ifm-color-emphasis-700); }
+@media (max-width: 600px) {
+  .flow { grid-template-columns: 1fr; gap: 1.4rem; }
+  .step { display: flex; align-items: center; gap: .8rem; }
+  .step svg { width: 72px; height: 60px; margin: 0; flex-shrink: 0; }
+  .words { text-align: left; }
+  .words span { font-size: .86rem; }
+  .step:not(:last-child)::after { content: '↓'; left: 1.7rem; top: auto; bottom: -1.45rem; right: auto; }
+}

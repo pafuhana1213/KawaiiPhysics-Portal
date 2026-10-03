@@ -39,9 +39,11 @@ See [Installation](/docs/getting-started/installation) for setup instructions.
 | v1.19.x       | 5.3, 5.4, 5.5, 5.6 |
 | v1.18.x       | 5.3, 5.4, 5.5 |
 | v1.17.x       | 5.3, 5.4, 5.5 |
-| v1.16.x       | 5.3, 5.4 |
+| v1.16.x       | 5.2, 5.3, 5.4 |
 | v1.14.x       | 5.0, 5.1, 5.2 |
 | v1.11.1       | 4.27 (final UE4 support) |
+
+The v1.16 row reflects the UE 5.2 / 5.3 / 5.4 binaries in the [published release](https://github.com/pafuhana1213/KawaiiPhysics/releases/tag/20240719-v1.16.0).
 
 ## Setup
 

@@ -9,8 +9,6 @@ title: "Collision Parameters"
 
 Parameters related to collision detection.
 
-[View Source](https://github.com/pafuhana1213/KawaiiPhysics/blob/master/Plugins/KawaiiPhysics/Source/KawaiiPhysics/Public/AnimNode_KawaiiPhysics.h)
-
 :::tip About This Page
 This is the **complete reference** for collision parameters. For the actual setup steps and how to choose shapes, see the [Collision Setup guide](/docs/features/collision-setup); for sharing collision across multiple meshes, see [Shared Collision](/docs/features/shared-collision).
 :::
@@ -74,6 +72,26 @@ TArray<FCapsuleLimit> CapsuleLimits;
 |------|------|---------|-------------|
 | Radius | float | 5.0 | Capsule radius (0 or higher) |
 | Length | float | 10.0 | Capsule length (0 or higher) |
+
+## FTaperedCapsuleLimit (Tapered Capsule) {#tapered-capsule}
+
+:::warning Not officially released
+This feature has not been officially released yet. It is planned for KawaiiPhysics v1.22. Specifications may change during development.
+:::
+
+`FTaperedCapsuleLimit` represents a collision shape with a different radius at each end. In addition to Simple World Collision gathering, it is supported by the node's `Collision > Tapered Capsule Collision`, Limits DataAssets, and shapes read from PhysicsAssets. Ordinary Capsules existed before v1.22; separate endpoint-radius support is the addition described here.
+
+| Setting | Default | Meaning |
+|---|---|---|
+| Radius0 | 5 cm | Radius at the shape-local +Z endpoint |
+| Radius1 | 5 cm | Radius at the shape-local −Z endpoint |
+| Length | 10 cm | Distance between endpoint sphere centers, not overall length |
+
+Position it with `Driving Bone` and location/rotation offsets. Equal endpoint radii give an equal-radius capsule. Radii and length are clamped to nonnegative values. When `Length <= abs(Radius0 - Radius1)` (with a small tolerance in the implementation), the smaller endpoint sphere is contained in the larger one, and the shape collapses to that larger sphere. Collision, editing, and debug drawing use the same condition.
+
+In the normal case, push-out linearly interpolates the radius at the closest point on the axis segment. This does not guarantee identical contacts to Chaos geometry, so test strong tapers and narrow parts in practice. Simple World Collision conversion uses query-enabled shapes and does not use cloth Width or one-sided collision attributes. [Mirror Data Table for Collision](/docs/features/collision-mirroring) swaps radii when needed to preserve endpoint meaning.
+
+[Setup steps and diagram](/docs/features/collision-setup#tapered-capsule)
 
 ## FBoxLimit (Box Collision)
 
@@ -235,3 +253,7 @@ Using Data Assets allows sharing collision settings across multiple AnimNodes an
 :::
 
 For more details, see [Data Assets](/docs/features/data-assets).
+
+## Related UE documentation {#ue-docs}
+
+- [Physics Asset Editor](https://dev.epicgames.com/documentation/en-us/unreal-engine/physics-asset-editor-in-unreal-engine) — Understand PhysicsAssets and the editor used to author their shapes. (UE 5.8)

@@ -34,9 +34,11 @@ import YouTubeThumbnail from '@site/src/components/YouTubeThumbnail';
 | 1.19.x        | 5.3, 5.4, 5.5, 5.6 |
 | 1.18.x        | 5.3, 5.4, 5.5 |
 | 1.17.x        | 5.3, 5.4, 5.5 |
-| 1.16.x        | 5.3, 5.4 |
+| 1.16.x        | 5.2, 5.3, 5.4 |
 | 1.14.x        | 5.0, 5.1, 5.2 |
 | 1.11.1        | 4.27 |
+
+v1.16の対応表は[公開リリースの配布物](https://github.com/pafuhana1213/KawaiiPhysics/releases/tag/20240719-v1.16.0)（UE 5.2 / 5.3 / 5.4）に基づいています。
 
 ## クイックスタート
 

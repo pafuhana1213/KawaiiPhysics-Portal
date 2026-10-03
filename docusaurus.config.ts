@@ -227,6 +227,11 @@ const config: Config = {
           label: 'ドキュメント',
         },
         {
+          to: '/docs/preview',
+          label: 'v1.22予定',
+          position: 'left',
+        },
+        {
           to: '/adoption',
           label: '採用実績',
           position: 'left',

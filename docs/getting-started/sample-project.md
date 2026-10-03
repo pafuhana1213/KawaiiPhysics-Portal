@@ -158,3 +158,5 @@ KawaiiPhysicsSample/
 - [インストール](/docs/getting-started/installation) - 自分のプロジェクトへ導入する
 - [クイックスタート](/docs/getting-started/quick-start) - 最初のセットアップ
 - [基本概念](/docs/getting-started/basic-concepts) - 仕組みを理解する
+
+開発版のテーマ別展示は[Feature Samples](/docs/getting-started/feature-samples)を参照してください。

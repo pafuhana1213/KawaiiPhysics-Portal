@@ -17,7 +17,11 @@ const sidebars: SidebarsConfig = {
       },
       items: [
         'getting-started/installation',
-        'getting-started/sample-project',
+        {
+          type: 'category', label: '公式サンプル',
+          link: {type: 'doc', id: 'getting-started/sample-project'},
+          items: ['getting-started/feature-samples'],
+        },
         'getting-started/quick-start',
         'getting-started/basic-concepts',
       ],
@@ -35,11 +39,27 @@ const sidebars: SidebarsConfig = {
       items: [
         'features/bone-chain',
         'features/physics-setup',
-        'features/collision-setup',
+        {
+          type: 'category', label: 'コリジョン',
+          link: {type: 'doc', id: 'features/collision-setup'},
+          items: ['features/simple-world-collision', 'features/collision-mirroring'],
+        },
         'features/curve-editor',
-        'features/wind-and-forces',
-        'features/data-assets',
-        'features/animnotify',
+        {
+          type: 'category', label: '外部力',
+          link: {type: 'doc', id: 'features/wind-and-forces'},
+          items: ['features/procedural-wind', 'features/wind-scope'],
+        },
+        {
+          type: 'category', label: 'Data Asset',
+          link: {type: 'doc', id: 'features/data-assets'},
+          items: ['features/settings-presets', 'features/node-audit'],
+        },
+        {
+          type: 'category', label: 'アニメーション制御',
+          link: {type: 'doc', id: 'features/animnotify'},
+          items: ['features/settings-multipliers'],
+        },
       ],
     },
 
@@ -55,12 +75,21 @@ const sidebars: SidebarsConfig = {
       items: [
         'features/bone-constraint',
         'features/bone-subdivision',
-        'features/shared-collision',
+        {
+          type: 'category', label: '共有環境・コリジョン',
+          link: {type: 'doc', id: 'features/shared-collision'},
+          items: ['features/shared-publisher'],
+        },
         'features/sync-bone',
         'features/external-force-presets',
         'advanced/custom-gravity',
         'advanced/fixed-substepping',
         'advanced/runtime-control',
+        {
+          type: 'category', label: 'Sequencer',
+          link: {type: 'generated-index', slug: 'advanced/sequencer'},
+          items: ['features/sequencer'],
+        },
       ],
     },
 
@@ -104,16 +133,28 @@ const sidebars: SidebarsConfig = {
       link: {
         type: 'generated-index',
         slug: 'api',
-        description: 'FAnimNode_KawaiiPhysicsとUKawaiiPhysicsLibraryのプロパティやBlueprint/C++向け関数を参照できます。',
+        description: 'ランタイムのノード制御・診断、エディタの編集・監査、アニメーション通知の技術仕様を用途別に参照できます。',
       },
       items: [
         'api/animnode-kawaiiphysics',
-        'api/kawaiiphysics-library',
+        {
+          type: 'category', label: 'UKawaiiPhysicsLibrary',
+          link: {type: 'doc', id: 'api/kawaiiphysics-library'},
+          items: ['api/runtime-properties', 'api/transient-effects', 'api/runtime-diagnostics'],
+        },
+        {
+          type: 'category', label: 'エディタ操作',
+          link: {type: 'doc', id: 'api/editor-library'},
+          items: ['api/node-audit', 'api/mcp'],
+        },
+        'api/animation-notifies',
       ],
     },
 
     'faq',
     'changelog',
+
+    'preview/overview',
   ],
 };
 

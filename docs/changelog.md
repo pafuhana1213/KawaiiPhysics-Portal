@@ -255,7 +255,7 @@ Unreal EngineのWind Directional Sourceに対応しました。
 
 詳細は [GitHub Discussion #138](https://github.com/pafuhana1213/KawaiiPhysics/discussions/138) を参照してください。
 
-## v1.16.x (UE 5.3-5.5対応)
+## v1.16.x (UE 5.2-5.4対応)
 
 ### v1.16.0
 

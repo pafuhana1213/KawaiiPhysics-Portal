@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 420" role="img" aria-labelledby="title desc">
+<title id="title">Collision mirroring before and after</title><desc id="desc">One authored sphere and capsule on the left leg are duplicated on the mapped right leg. The central dashed line is the mirror plane; the bone axes stay visible.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#718096"/></marker><g id="bones" fill="none" stroke="#718096" stroke-width="7" stroke-linecap="round"><path d="M140 114L108 176L100 282L88 342M140 114L172 176L180 282L192 342"/><circle cx="140" cy="114" r="10" fill="#d7e3e8"/><circle cx="108" cy="176" r="9" fill="#d7e3e8"/><circle cx="172" cy="176" r="9" fill="#d7e3e8"/><circle cx="100" cy="282" r="9" fill="#d7e3e8"/><circle cx="180" cy="282" r="9" fill="#d7e3e8"/></g></defs>
+<g font-family="Arial,sans-serif" font-size="27" font-weight="700" fill="#718096"><text x="82" y="43">BEFORE</text><text x="530" y="43">AFTER</text></g>
+<g transform="translate(45 0)"><path d="M140 72V368" stroke="#718096" stroke-width="2" stroke-dasharray="9 8"/><use href="#bones"/>
+<circle cx="108" cy="176" r="34" fill="#ed8c24" fill-opacity=".20" stroke="#cf7417" stroke-width="5"/>
+<path d="M98 229L89 287" fill="none" stroke="#cf7417" stroke-width="42" stroke-linecap="round"/><path d="M98 229L89 287" fill="none" stroke="#f8b553" stroke-width="32" stroke-linecap="round"/>
+<path d="M108 176L100 282" stroke="#ffffff" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="73" y="401" font-family="Arial,sans-serif" font-size="25" fill="#cf7417">Authored L</text></g>
+<path d="M342 203H440" stroke="#718096" stroke-width="5" marker-end="url(#arrow)"/>
+<text x="349" y="176" font-family="Arial,sans-serif" font-size="23" fill="#718096">L ↔ R</text>
+<g transform="translate(454 0)"><path d="M140 72V368" stroke="#718096" stroke-width="2" stroke-dasharray="9 8"/><use href="#bones"/>
+<circle cx="108" cy="176" r="34" fill="#ed8c24" fill-opacity=".20" stroke="#cf7417" stroke-width="5"/>
+<path d="M98 229L89 287" fill="none" stroke="#cf7417" stroke-width="42" stroke-linecap="round"/><path d="M98 229L89 287" fill="none" stroke="#f8b553" stroke-width="32" stroke-linecap="round"/>
+<circle cx="172" cy="176" r="34" fill="#2fa6a0" fill-opacity=".20" stroke="#178b85" stroke-width="5"/>
+<path d="M182 229L191 287" fill="none" stroke="#178b85" stroke-width="42" stroke-linecap="round"/><path d="M182 229L191 287" fill="none" stroke="#6bd0c6" stroke-width="32" stroke-linecap="round"/>
+<path d="M108 176L100 282M172 176L180 282" stroke="#ffffff" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="145" y="401" font-family="Arial,sans-serif" font-size="25" fill="#178b85">Mirror R</text></g>
+<text x="668" y="93" font-family="Arial,sans-serif" font-size="22" fill="#718096">Mirror plane</text><path d="M675 100L604 130" stroke="#718096" stroke-width="2"/>
+</svg>

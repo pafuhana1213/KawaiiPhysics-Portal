@@ -11,6 +11,12 @@ Blueprint Function LibraryのAPIリファレンスです。
 
 [ソースを見る](https://github.com/pafuhana1213/KawaiiPhysics/blob/master/Plugins/KawaiiPhysics/Source/KawaiiPhysics/Public/KawaiiPhysicsLibrary.h)
 
+## 用途別API {#api-by-task}
+
+- [ノード属性とプリセット](/docs/api/runtime-properties)
+- [一時効果・風](/docs/api/transient-effects)
+- [実行時の診断データ](/docs/api/runtime-diagnostics)
+
 ## クラス定義
 
 ```cpp

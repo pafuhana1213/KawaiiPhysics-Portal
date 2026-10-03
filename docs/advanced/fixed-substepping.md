@@ -6,7 +6,7 @@ title: "Fixed Substepping（フレームレート非依存化）"
 # Fixed Substepping（フレームレート非依存化）
 
 :::tip バージョン情報
-v1.21.0で追加。**デフォルトで有効（ON）**です。
+v1.21.0で追加。**デフォルトで有効（ON）です。**
 :::
 
 **Fixed Substepping** は、シミュレーション全体を固定タイムステップ（`FixedDt = 1 / TargetFramerate`）で必要回数だけ実行することで、フレームレートに依存しない安定した物理挙動を実現する機能です。

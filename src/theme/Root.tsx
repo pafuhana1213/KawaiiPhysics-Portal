@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import type {ReactNode} from 'react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import RevealAnchoredDetails from '@site/src/components/RevealAnchoredDetails';
 
 // 英語ブラウザのユーザーが日本語(デフォルトロケール)ページを開いたとき、
 // 同じページの英語版を案内する小さなバナーを表示する（強制リダイレクトはしない）。
@@ -81,6 +82,7 @@ function LanguageSuggestionBanner(): ReactNode {
 export default function Root({children}: {children: ReactNode}): ReactNode {
   return (
     <>
+      <RevealAnchoredDetails />
       <LanguageSuggestionBanner />
       {children}
     </>

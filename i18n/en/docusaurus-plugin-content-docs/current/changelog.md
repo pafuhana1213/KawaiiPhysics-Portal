@@ -205,7 +205,7 @@ Now supports Unreal Engine's Wind Directional Source.
 
 See [GitHub Discussion #138](https://github.com/pafuhana1213/KawaiiPhysics/discussions/138) for details.
 
-## v1.16.x (UE 5.3-5.5 Support)
+## v1.16.x (UE 5.2-5.4 Support)
 
 ### v1.16.0
 

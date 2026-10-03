@@ -158,3 +158,5 @@ If the plugin exists both in the engine (Fab version) and in the project (`Plugi
 - [Installation](/docs/getting-started/installation) - Add it to your own project
 - [Quick Start](/docs/getting-started/quick-start) - Your first setup
 - [Basic Concepts](/docs/getting-started/basic-concepts) - Understand how it works
+
+See [Feature Samples](/docs/getting-started/feature-samples) for the development version’s themed exhibits.

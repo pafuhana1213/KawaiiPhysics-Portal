@@ -11,6 +11,12 @@ API reference for the Blueprint Function Library.
 
 [View Source](https://github.com/pafuhana1213/KawaiiPhysics/blob/master/Plugins/KawaiiPhysics/Source/KawaiiPhysics/Public/KawaiiPhysicsLibrary.h)
 
+## APIs by Task {#api-by-task}
+
+- [Node Properties and Presets](/docs/api/runtime-properties)
+- [Transient Effects and Wind](/docs/api/transient-effects)
+- [Runtime Diagnostic Data](/docs/api/runtime-diagnostics)
+
 ## Class Definition
 
 ```cpp
