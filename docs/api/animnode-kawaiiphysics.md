@@ -302,7 +302,7 @@ void    ConvertSimulationSpace(FComponentSpacePoseContext& Output,
 | WorldDampingLocation | float | 0.8 | 0以上 | コンポーネント**移動**の反映抑制。`0`=フル反映（最大に揺れる）／`1`=追従（揺れなし）。反映率 = `1 - 値` |
 | WorldDampingRotation | float | 0.8 | 0以上 | コンポーネント**回転**の反映抑制（上と同様、反映率 = `1 - 値`） |
 | Radius | float | 3.0 | 0以上 | 各ボーンのコリジョン半径（エディタ表示名: Collision Radius） |
-| LimitAngle | float | 0.0 | 0以上 | 物理挙動による1ステップあたりの回転角度の上限（度）。`0`で無制限、荒ぶり抑制に有効 |
+| LimitAngle | float | 0.0 | 0以上 | 入力アニメーションとシミュレーションの親から子への方向の角度差の上限（度）。正の値を大きくすると許容角度が広がり、`0`で無制限 |
 
 :::note
 `WorldDampingLocation` / `WorldDampingRotation` は名前に反して **値が大きいほど揺れは小さく** なります（`1` でコンポーネントに完全追従＝揺れなし）。

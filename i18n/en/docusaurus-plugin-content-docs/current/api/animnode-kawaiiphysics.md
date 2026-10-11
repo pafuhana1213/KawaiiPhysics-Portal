@@ -302,7 +302,7 @@ The core physics settings struct (`PhysicsSettings` property). The balance betwe
 | WorldDampingLocation | float | 0.8 | ≥ 0 | Suppresses reflection of component **movement**. `0` = full reflection (max sway) / `1` = follow (no sway). Reflection = `1 - value` |
 | WorldDampingRotation | float | 0.8 | ≥ 0 | Suppresses reflection of component **rotation** (same as above; reflection = `1 - value`) |
 | Radius | float | 3.0 | ≥ 0 | Collision radius of each bone (editor display name: Collision Radius) |
-| LimitAngle | float | 0.0 | ≥ 0 | Max rotation angle (degrees) per step from physics. `0` = unlimited; helps suppress jitter |
+| LimitAngle | float | 0.0 | ≥ 0 | Maximum angular difference (degrees) between the parent-to-child direction in the input animation and that same direction during simulation. Higher positive values allow a wider angle; `0` = unlimited |
 
 :::note
 Contrary to their names, **higher** `WorldDampingLocation` / `WorldDampingRotation` values mean **less** sway (`1` follows the component exactly = no sway).

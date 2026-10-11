@@ -87,14 +87,11 @@ URO（Update Rate Optimization）や LOD で評価が間引かれると、Source
 UE 標準の `stat` コマンドで KawaiiPhysics の処理負荷を計測できます。
 
 ```bash
-# KawaiiPhysics 専用の統計グループ
-stat KawaiiPhysics
-
-# アニメーション全般の統計（KawaiiPhysics も STATGROUP_Anim に含まれる）
+# アニメーションの統計を表示
 stat Anim
 ```
 
-`stat KawaiiPhysics` では、シミュレーション時間・コリジョン処理・ボーン数などの内訳を確認できます。パフォーマンス調査の詳細は [パフォーマンス最適化](/docs/advanced/performance) を参照してください。
+KawaiiPhysicsの統計は独立したグループではなく `STATGROUP_Anim` に登録されています。`stat Anim` を実行し、`KawaiiPhysics_` で始まる項目を確認してください。詳しい調査方法は [パフォーマンス最適化](/docs/advanced/performance) を参照してください。
 
 ## ソースコード
 

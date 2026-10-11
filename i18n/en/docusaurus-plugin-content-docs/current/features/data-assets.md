@@ -9,7 +9,9 @@ This guide explains how to manage parameters as reusable Data Assets.
 
 ## Overview
 
-Using **KawaiiPhysicsLimitsDataAsset**, you can share collision settings and limit parameters across multiple characters.
+Since v1.21.0, **KawaiiPhysicsLimitsDataAsset** stores collision settings for spheres, capsules, boxes, and planes, along with the Skeleton used for editing. It does not include general node settings such as Damping, Stiffness, or Gravity.
+
+Use a [dedicated BoneConstraintsDataAsset](#boneconstraintsdataasset) for BoneConstraint settings. A preset for reusing node settings is planned for v1.22 and has not been officially released yet. For presets of external force settings, including wind, see [External Force Presets](/docs/features/external-force-presets).
 
 ## Creating a Data Asset
 
@@ -18,13 +20,9 @@ Using **KawaiiPhysicsLimitsDataAsset**, you can share collision settings and lim
 3. Select **KawaiiPhysicsLimitsDataAsset**
 4. Name and save
 
-![DataAsset Regex Settings](/img/features/dataasset-regex.png)
-
-*Specifying bone sets with regular expressions in DataAsset*
-
 ## Setting Parameters
 
-Data Assets can store the following collision limits:
+The LimitsDataAsset can store the following collision limits:
 
 - Spherical Limits
 - Capsule Limits
@@ -45,7 +43,11 @@ UKawaiiPhysicsLimitsDataAsset* LimitsDataAsset;
 
 See [Bone Constraint](/docs/features/bone-constraint) for a guide to the feature itself.
 
-From v1.14.0, BoneConstraint (distance constraints between bones) can be configured in DataAssets. Became official in v1.19.0.
+BoneConstraint settings are stored in a dedicated BoneConstraintsDataAsset, not in the LimitsDataAsset. BoneConstraint was introduced in v1.14.0 and became an official feature in v1.19.0.
+
+![Apply Regex and Bone Constraints Data in BoneConstraintsDataAsset](/img/features/dataasset-regex.png)
+
+*Generating bone constraints from regular expressions in BoneConstraintsDataAsset*
 
 ![BoneConstraint Demo](/img/features/boneconstraint-demo.webp)
 

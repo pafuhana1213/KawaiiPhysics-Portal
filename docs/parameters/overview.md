@@ -46,6 +46,6 @@ Radius = 3.0f;  // 表示名: Collision Radius
 
 ## Data Assetによる管理
 
-パラメータは **KawaiiPhysicsLimitsDataAsset** に保存して再利用できます。
+v1.21.0の **KawaiiPhysicsLimitsDataAsset** は、球・カプセル・ボックス・平面のコリジョン設定と、編集に使うSkeletonを保存します。Damping、Stiffness、Gravityなどのノード設定は保存しません。
 
-詳しくは [Data Assets](/docs/features/data-assets) を参照してください。
+BoneConstraintには [専用のData Asset](/docs/features/data-assets#boneconstraintsdataasset)、ノード設定には [v1.22予定のプリセット](/docs/features/settings-presets)、外力には [外力プリセット](/docs/features/external-force-presets) を使います。

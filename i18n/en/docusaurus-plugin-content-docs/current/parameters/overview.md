@@ -46,6 +46,6 @@ Radius = 3.0f;  // Display name: Collision Radius
 
 ## Management with Data Asset
 
-Parameters can be saved to **KawaiiPhysicsLimitsDataAsset** for reuse.
+The v1.21.0 **KawaiiPhysicsLimitsDataAsset** stores collision settings for spheres, capsules, boxes, and planes, along with the Skeleton used for editing. It does not store node settings such as Damping, Stiffness, or Gravity.
 
-For more details, see [Data Assets](/docs/features/data-assets).
+Use a [dedicated Data Asset](/docs/features/data-assets#boneconstraintsdataasset) for BoneConstraint, the [preset planned for v1.22](/docs/features/settings-presets) for node settings, and [External Force Presets](/docs/features/external-force-presets) for external forces.

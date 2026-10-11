@@ -6,7 +6,11 @@ description: "How to run the official KawaiiPhysics sample project (KawaiiPhysic
 
 # Running the Official Sample
 
-The KawaiiPhysics GitHub repository is not just the plugin — it is a **complete Unreal Engine project that bundles sample characters and a demo level**. If you want to see the physics in action on your own machine, running this sample is the quickest way.
+Use the official sample to try out hair and clothing physics. For your first run, choose the stable v1.21.0 release. To try unreleased features, choose the development version, `master`.
+
+:::warning
+**v1.22 has not been released.** `master` contains work in progress and is not a stable release. For testing, use the released [v1.21.0](https://github.com/pafuhana1213/KawaiiPhysics/releases/tag/20260624-v1.21.0).
+:::
 
 ## What the Sample Contains
 
@@ -30,7 +34,9 @@ KawaiiPhysics/
 |------|---------|
 | Project file | `KawaiiPhysicsSample.uproject` |
 | Sample level | `Content/KawaiiPhysicsSample/L_KawaiiPhysicsSample` |
-| Supported UE versions | 5.3 / 5.4 / 5.5 / 5.6 / 5.7 / 5.8 (for older versions, see the [compatibility table](/docs/#supported-versions)) |
+| UE versions supported by the v1.21.0 plugin | 5.3–5.8 (see the [compatibility table](/docs/#supported-versions) for details) |
+
+The UE versions in this table describe the plugin's supported range. They do not guarantee that the sample's assets and levels will open in a different UE version.
 
 :::info
 The `Plugins/KawaiiPhysics` folder included in the repository is **C++ source code**. Opening the project as-is requires building the plugin. If you do not have a build environment, replace it with a precompiled build using the [steps for users without a build environment](#method-b) below.
@@ -38,17 +44,32 @@ The `Plugins/KawaiiPhysics` folder included in the repository is **C++ source co
 
 ## Getting the Sample Project
 
-Either way, start by getting the full sample project.
+### Stable Release v1.21.0 (Recommended)
 
-- **Download as ZIP**: Download from **Code > Download ZIP** on the repository and extract it
-- **Clone with Git**:
+To use the released sample, pin your download to tag `20260624-v1.21.0`. The [`KawaiiPhysicsSample.uproject`](https://github.com/pafuhana1213/KawaiiPhysics/blob/20260624-v1.21.0/KawaiiPhysicsSample.uproject) in this version is configured for UE 5.3.
+
+- [Download the v1.21.0 source ZIP](https://github.com/pafuhana1213/KawaiiPhysics/archive/refs/tags/20260624-v1.21.0.zip)
+- Or clone the tagged version with Git:
 
 ```bash
-git clone https://github.com/pafuhana1213/KawaiiPhysics.git
+git clone --branch 20260624-v1.21.0 --depth 1 https://github.com/pafuhana1213/KawaiiPhysics.git
+```
+
+The plugin itself supports UE 5.3–5.8. If building from C++ source, prepare an environment for the UE version you will use. If you do not have a build environment, choose the precompiled build for your UE version from [GitHub Releases](https://github.com/pafuhana1213/KawaiiPhysics/releases/tag/20260624-v1.21.0).
+
+### Development Version `master` (To Try In-Development Features)
+
+`master` is configured for UE 5.8. `ModelContextProtocol`, `EditorToolset`, and `SlateInspectorToolset` are enabled in `KawaiiPhysicsSample.uproject`. To use the development version, build the source using [Method A](#method-a). The released precompiled builds in Method B may not be compatible with the development content in `master`. Do not infer whether this sample will launch from the plugin's supported-version table alone.
+
+- [Download the `master` ZIP](https://github.com/pafuhana1213/KawaiiPhysics/archive/refs/heads/master.zip)
+- Or clone `master` with Git:
+
+```bash
+git clone --branch master --depth 1 https://github.com/pafuhana1213/KawaiiPhysics.git
 ```
 
 :::tip
-**Check your UE version in advance.** When you open the sample, you need to match this version (see [Watch out for version mismatches](#version-mismatch)).
+Open the sample with the UE version specified by the version you downloaded. See Method A or B below for the steps that apply to your download.
 :::
 
 ---
@@ -68,7 +89,7 @@ Prepare a build environment that matches your UE version in advance, such as **V
 3. When the dialog "Missing modules. Would you like to rebuild them?" appears, choose **Yes**
 4. The plugin will compile, and the editor will launch once it finishes
 
-Once the build succeeds, you can try the sample with the latest source code applied. This method is also recommended if you want to modify the plugin and experiment with its behavior.
+Once the build succeeds, you can try the sample with the source code from the version you downloaded. This method is also recommended if you want to modify the plugin and experiment with its behavior.
 
 Continue to [Open and play the sample level](#play-sample).
 
@@ -76,7 +97,7 @@ Continue to [Open and play the sample level](#play-sample).
 
 ## Method B: Users without a Build Environment (Use Release/Fab Precompiled Binaries) {#method-b}
 
-If you do not have a C++ build environment, open the sample using a **precompiled (prebuilt) plugin**. You can choose either the Release version or the Fab version.
+The steps below are for the stable v1.21.0 sample project. If you do not have a C++ build environment, open the sample using a **precompiled (prebuilt) plugin**. You can choose either the GitHub Release version or the Fab version.
 
 :::warning
 Precompiled versions are **specific to each UE version**. Always use the one that matches your UE version.
@@ -84,10 +105,10 @@ Precompiled versions are **specific to each UE version**. Always use the one tha
 
 ### Method B-1: Replace with the GitHub Release Precompiled Build
 
-GitHub Releases distribute prebuilt plugins per UE version (e.g. `KawaiiPhysics_5.6_x.xx.x.zip`). Overwrite the sample project with this build.
+GitHub Releases provide prebuilt plugins for each UE version. Replace the plugin in the stable sample with the matching build.
 
-1. From [Releases](https://github.com/pafuhana1213/KawaiiPhysics/releases), download the latest zip for your UE version
-   (e.g. `KawaiiPhysics_5.6_x.xx.x.zip` for UE5.6)
+1. From the [v1.21.0 release](https://github.com/pafuhana1213/KawaiiPhysics/releases/tag/20260624-v1.21.0), download the zip for your UE version
+   (e.g. [`KawaiiPhysics_5.6_1.21.0.zip`](https://github.com/pafuhana1213/KawaiiPhysics/releases/download/20260624-v1.21.0/KawaiiPhysics_5.6_1.21.0.zip) for UE5.6)
 2. Extracting the zip gives you a `KawaiiPhysics` folder that includes a `Binaries` folder
 3. **Delete the entire** `Plugins/KawaiiPhysics` folder in the sample project you obtained
 4. Place the extracted precompiled `KawaiiPhysics` folder into `Plugins/` instead
@@ -140,7 +161,7 @@ Moving and rotating the character makes the swaying parts move more dramatically
 
 ### Watch Out for Version Mismatches {#version-mismatch}
 
-The sample level and assets are saved with a specific UE version. **You cannot open them in a UE version older than the one they were saved with.** If a level fails to open or appears corrupted, try a different UE version within the supported range (5.3–5.8). When using a precompiled version, always **match the UE version the plugin targets with the UE version you open the project in**.
+The plugin's supported UE versions alone do not tell you whether the sample will launch. **Open the project using the UE version specified in the project configuration.** If you use a precompiled plugin, match its build's UE version to the one you use to open the project. If you need to try opening the project or converting assets in another UE version, do so on a backup and verify the result.
 
 ### "This project needs to be rebuilt" appears and the editor will not launch
 

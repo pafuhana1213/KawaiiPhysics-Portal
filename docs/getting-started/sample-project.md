@@ -6,7 +6,11 @@ description: "KawaiiPhysics公式サンプルプロジェクト（KawaiiPhysicsS
 
 # 公式サンプルを動かす
 
-KawaiiPhysicsのGitHubリポジトリは、プラグイン単体ではなく **サンプルキャラクターとデモレベルを同梱した完全なUnreal Engineプロジェクト** になっています。実際に揺れる挙動を手元で確認したい場合は、このサンプルを動かすのが一番の近道です。
+公式サンプルで髪や服の物理挙動を試せます。初めて動かす場合は安定版v1.21.0を選んでください。未リリース機能を試す場合は開発版の `master` を選びます。
+
+:::warning
+**v1.22は未リリースです。** `master` は開発中の内容を含み、安定リリースではありません。動作確認には公開済みの [v1.21.0](https://github.com/pafuhana1213/KawaiiPhysics/releases/tag/20260624-v1.21.0) を使ってください。
+:::
 
 ## サンプルの中身
 
@@ -30,7 +34,9 @@ KawaiiPhysics/
 |------|------|
 | プロジェクトファイル | `KawaiiPhysicsSample.uproject` |
 | サンプルレベル | `Content/KawaiiPhysicsSample/L_KawaiiPhysicsSample` |
-| 対応UEバージョン | 5.3 / 5.4 / 5.5 / 5.6 / 5.7 / 5.8（古いバージョンは[対応表](/docs/#supported-versions)を参照） |
+| v1.21.0プラグインの対応UEバージョン | 5.3〜5.8（詳しくは[対応表](/docs/#supported-versions)を参照） |
+
+この表はプラグインの対応範囲です。サンプルのアセットやレベルが、別のUEバージョンで開けることを保証するものではありません。
 
 :::info
 リポジトリに含まれる `Plugins/KawaiiPhysics` は **C++ソースコード** です。そのままプロジェクトを開くにはプラグインのビルドが必要になります。ビルド環境がない場合は、後述の[ビルド環境がない人向けの手順](#method-b)でプリコンパイル版に差し替えてください。
@@ -38,17 +44,32 @@ KawaiiPhysics/
 
 ## サンプルプロジェクトの入手
 
-どちらの方法でも、まずはサンプルプロジェクト一式を入手します。
+### 安定版v1.21.0（推奨）
 
-- **ZIPでダウンロード**: リポジトリの **Code > Download ZIP** からダウンロードして展開
-- **Gitでクローン**:
+公開済みのサンプルを使う場合は、タグ `20260624-v1.21.0` を指定して入手します。このバージョンの [`KawaiiPhysicsSample.uproject`](https://github.com/pafuhana1213/KawaiiPhysics/blob/20260624-v1.21.0/KawaiiPhysicsSample.uproject) はUE 5.3に設定されています。
+
+- [v1.21.0のソースZIPをダウンロード](https://github.com/pafuhana1213/KawaiiPhysics/archive/refs/tags/20260624-v1.21.0.zip)
+- またはGitでタグを指定してクローンします。
 
 ```bash
-git clone https://github.com/pafuhana1213/KawaiiPhysics.git
+git clone --branch 20260624-v1.21.0 --depth 1 https://github.com/pafuhana1213/KawaiiPhysics.git
+```
+
+プラグイン自体はUE 5.3〜5.8に対応します。C++ソースからビルドする場合は、使用するUEバージョンのビルド環境を用意してください。ビルド環境がない場合は、[GitHub Releases](https://github.com/pafuhana1213/KawaiiPhysics/releases/tag/20260624-v1.21.0)から使用するUEバージョン向けのプリコンパイル版を選びます。
+
+### 開発版 `master`（開発中の機能を試す場合）
+
+`master` はUE 5.8に設定され、`KawaiiPhysicsSample.uproject` で `ModelContextProtocol`、`EditorToolset`、`SlateInspectorToolset` が有効です。開発版は [方法A](#method-a) でソースからビルドしてください。方法Bの公開済みプリコンパイル版は、`master` の開発中コンテンツと互換性がない可能性があります。プラグインの対応UE一覧だけでサンプルが起動すると判断しないでください。
+
+- [`master` のZIPをダウンロード](https://github.com/pafuhana1213/KawaiiPhysics/archive/refs/heads/master.zip)
+- またはGitで `master` を指定してクローンします。
+
+```bash
+git clone --branch master --depth 1 https://github.com/pafuhana1213/KawaiiPhysics.git
 ```
 
 :::tip
-**お使いのUEバージョンを確認しておきましょう。** サンプルを開く際はこのバージョンと合わせる必要があります（[バージョンの不一致に注意](#version-mismatch)を参照）。
+入手したバージョンのプロジェクト設定で指定されたUEを使って開いてください。以下の方法Aまたは方法Bから、入手したバージョンに合う手順を選びます。
 :::
 
 ---
@@ -68,7 +89,7 @@ Visual Studio など、UEのC++をビルドできる環境がある場合は、�
 3. 「モジュールが見つかりません。リビルドしますか？」というダイアログが出たら **はい** を選択
 4. プラグインのコンパイルが走り、完了するとエディタが起動します
 
-ビルドが通れば、最新のソースコードがそのまま反映された状態でサンプルを試せます。プラグインを改造して挙動を試したい場合もこの方法がおすすめです。
+ビルドが通れば、入手したバージョンのソースコードを使ってサンプルを試せます。プラグインを改造して挙動を試したい場合もこの方法がおすすめです。
 
 そのまま [サンプルレベルを開いて再生する](#play-sample) に進んでください。
 
@@ -76,7 +97,7 @@ Visual Studio など、UEのC++をビルドできる環境がある場合は、�
 
 ## 方法B: ビルド環境がない人（Release/Fabのプリコンパイル版を使う） {#method-b}
 
-C++のビルド環境がない場合は、**プリコンパイル済み（ビルド済み）のプラグイン** を使ってサンプルを開きます。Release版とFab版のどちらかを選べます。
+以下は安定版v1.21.0のサンプル向けの手順です。C++のビルド環境がない場合は、**プリコンパイル済み（ビルド済み）のプラグイン** を使ってサンプルを開きます。GitHub Release版とFab版のどちらかを選べます。
 
 :::warning
 プリコンパイル版は **UEのバージョンごとに別物** です。必ずお使いのUEバージョンと一致するものを使ってください。
@@ -84,10 +105,10 @@ C++のビルド環境がない場合は、**プリコンパイル済み（ビル
 
 ### 方法B-1: GitHub Releaseのプリコンパイル版に差し替える
 
-GitHub Releaseには、UEバージョンごとのビルド済みプラグイン（例: `KawaiiPhysics_5.6_x.xx.x.zip`）が配布されています。これをサンプルプロジェクトに上書きします。
+GitHub Releaseには、UEバージョンごとのビルド済みプラグインが配布されています。安定版サンプルのプラグインを、対応するビルドへ差し替えます。
 
-1. [Releases](https://github.com/pafuhana1213/KawaiiPhysics/releases) から、お使いのUEバージョンに対応した最新のzipをダウンロード
-   （例: UE5.6なら `KawaiiPhysics_5.6_x.xx.x.zip`）
+1. [v1.21.0リリース](https://github.com/pafuhana1213/KawaiiPhysics/releases/tag/20260624-v1.21.0) から、使用するUEバージョンに対応したzipをダウンロード
+   （例: UE5.6なら [`KawaiiPhysics_5.6_1.21.0.zip`](https://github.com/pafuhana1213/KawaiiPhysics/releases/download/20260624-v1.21.0/KawaiiPhysics_5.6_1.21.0.zip)）
 2. zipを展開すると、`Binaries` フォルダを含む `KawaiiPhysics` フォルダが得られます
 3. 入手したサンプルプロジェクトの `Plugins/KawaiiPhysics` フォルダを **丸ごと削除**
 4. 代わりに、展開したプリコンパイル版の `KawaiiPhysics` フォルダを `Plugins/` に配置
@@ -140,7 +161,7 @@ KawaiiPhysicsSample/
 
 ### バージョンの不一致に注意 {#version-mismatch}
 
-サンプルレベルやアセットは特定のUEバージョンで保存されています。**保存時より古いバージョンのUEでは開けません。** レベルが開けない・破損するといった場合は、対応範囲（5.3〜5.8）内で別のUEバージョンを試してください。プリコンパイル版を使う場合も、その**プラグインが対応するUEバージョンと、プロジェクトを開くUEバージョンを必ず一致**させます。
+プラグインの対応UEバージョンだけでは、サンプルが起動するかどうかは判断できません。**プロジェクト設定で指定されたUEバージョンを使って開いてください。** プリコンパイル版を使う場合は、そのビルドのUEバージョンも一致させます。別のUEバージョンでの起動やアセット変換を試す必要がある場合は、バックアップしたコピーで行い、結果を検証してください。
 
 ### 「このプロジェクトはリビルドが必要です」と出てエディタが起動しない
 

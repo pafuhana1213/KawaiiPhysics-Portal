@@ -87,14 +87,11 @@ When evaluation is throttled by URO (Update Rate Optimization) or LOD, the Sourc
 Use UE's standard `stat` commands to profile KawaiiPhysics.
 
 ```bash
-# KawaiiPhysics-specific stat group
-stat KawaiiPhysics
-
-# General animation stats (KawaiiPhysics is also part of STATGROUP_Anim)
+# Display animation stats
 stat Anim
 ```
 
-`stat KawaiiPhysics` breaks down simulation time, collision processing, bone counts, and more. For detailed performance investigation, see [Performance Optimization](/docs/advanced/performance).
+KawaiiPhysics stats are registered under `STATGROUP_Anim`, not in a separate group. Run `stat Anim` and look for entries that start with `KawaiiPhysics_`. For detailed performance investigation, see [Performance Optimization](/docs/advanced/performance).
 
 ## Source Code
 

@@ -26,13 +26,12 @@ KawaiiPhysicsはPhysXを使用しないため、一般的な物理シミュレ�
 
 必要最小限のボーンだけを物理対象にします。
 
-```
-// 悪い例: 全てのボーンを物理対象に
+```text
+スケルトンの階層:
 hair_root → hair_01 → hair_02 → hair_03 → hair_04 → hair_05
-
-// 良い例: 重要なボーンだけを物理対象に
-hair_root → hair_02 → hair_04
 ```
+
+`Root Bone` 配下の子孫ボーンがシミュレーション対象になります。階層の中間ボーンを飛ばして、その先のボーンだけを対象にすることはできません。たとえば `hair_02` とその子孫だけを対象にするなら、`Root Bone` を `hair_02` に設定します。`Exclude Bones` に指定したボーンとその子孫は除外されるため、枝全体を除外したい場合に使います。
 
 ### Additional RootBonesの活用
 
@@ -52,18 +51,15 @@ v1.17.0から、1つのAnimNodeで複数のRootBoneを制御できるように�
 
 ### 3. LODによる無効化
 
-距離に応じてKawaiiPhysicsを無効化できます。
+ノードが `FAnimNode_SkeletalControlBase` から継承する `LODThreshold`（Detailsの表示名: `LOD Threshold`）で、評価する最大LODを指定できます。設定したLOD以下で評価され、それより高いLODでは評価をスキップします。
 
 ![LODによる最適化](/img/generated/performance-lod-optimization.svg)
 
 *距離に応じたボーン数・コリジョン数の削減効果*
 
-```cpp
-// LOD 2以上で物理を無効化
-if (GetCurrentLOD() >= 2)
-{
-    bEnabled = false;
-}
+```text
+例: LOD 0とLOD 1で有効にし、LOD 2以上では評価をスキップする
+AnimGraphでKawaiiPhysicsノードを選び、DetailsのLOD Thresholdを1に設定する
 ```
 
 ### 4. Tick Rateの調整
@@ -103,10 +99,17 @@ AnimNode関数からWarm Upを動的に有効にすることも可能です。�
 
 ## プロファイリング
 
+### `stat Anim` での確認
+
+ゲームまたはPIEのコンソールで `stat Anim` を実行し、画面に表示される `KawaiiPhysics_` の統計を確認します。これは実行中の統計オーバーレイです。
+
 ### Unreal Insightsでの確認
 
-1. **stat KawaiiPhysics** コンソールコマンドを実行
-2. 処理時間を確認
+1. エディタ下部のTrace / Insightsステータスバーからトレースを開始します。
+2. 測定したい状況を再現し、記録したトレースをUnreal InsightsのSession Browserで開きます。
+3. Timing InsightsのCPUトラックで、アニメーション処理の時間を確認します。
+
+Unreal Insightsはトレースを記録・解析するツールです。`stat Anim` の統計オーバーレイとは別の手順で使います。
 
 ### コンソール変数によるデバッグ
 
@@ -132,14 +135,6 @@ CVar の全一覧は [コンソールコマンド / 変数](/docs/advanced/conso
 - コリジョン計算が重い → コリジョン簡略化
 - 多数のキャラクター → LOD活用
 
-## ベンチマーク目安
-
-| キャラクター数 | ボーン/キャラ | 目安処理時間 |
-|--------------|--------------|-------------|
-| 1 | 20 | 0.1ms以下 |
-| 10 | 20 | 1ms程度 |
-| 50 | 20 | 5ms程度 |
-
 :::note
-実際の処理時間は環境により異なります。必ず実機でプロファイリングしてください。
+処理時間はCPU、ビルド構成、キャラクター数、ボーン数、コリジョン、LOD、サブステップ設定などによって変わります。条件が示されていない処理時間をベンチマークとして扱わず、対象ビルドを実際の実行環境でプロファイリングしてください。
 :::

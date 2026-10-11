@@ -143,7 +143,7 @@ Rotation limit by physics behavior. Properly setting this can suppress erratic b
 | Category | KawaiiPhysics |
 
 :::tip
-LimitAngle limits the angle from each bone's parent bone. Higher values reduce freedom, while lower values make it more prone to erratic behavior.
+LimitAngle limits the angular difference between the parent-to-child direction in the input animation and that same direction during simulation. Higher positive values allow a wider angle. `0` disables the limit.
 :::
 
 ## Loading from Data Asset

@@ -98,7 +98,7 @@ Because they are named "Damping (suppression)," `WorldDampingLocation` / `WorldD
 
 ### LimitAngle
 
-**Rotation limit angle** - The maximum rotation angle (in degrees) per step caused by the physics behavior. `0` means unlimited. Setting it appropriately suppresses erratic, jittery behavior.
+**Rotation limit angle** - The maximum angular difference (in degrees) between the parent-to-child direction in the input animation and that same direction during simulation. Higher positive values allow a wider angle; `0` disables the limit. Setting it appropriately can suppress erratic, jittery behavior.
 
 | Property | Value |
 |----------|-------|
@@ -348,7 +348,7 @@ Inserts virtual dummies between real bones inside the simulation (without modify
 
 ## Curve Control
 
-The following parameters can be controlled by curves. The curve value at "length from RootBone to specific bone / length from RootBone to terminal bone" (0.0-1.0) is multiplied to each parameter.
+The following parameters can be controlled by curves. The curve is evaluated at the bone-length ratio (length from RootBone to the bone / length of the longest path under RootBone, including dummy bones, 0.0–1.0), and its value is multiplied by the parameter's base value. Endpoints on shorter branches are below `1`. The curve's Y value is a multiplier, not the parameter's actual value (for example, base value `0.05` × curve value `0.5` = applied value `0.025`).
 
 | Curve | Description |
 |-------|-------------|

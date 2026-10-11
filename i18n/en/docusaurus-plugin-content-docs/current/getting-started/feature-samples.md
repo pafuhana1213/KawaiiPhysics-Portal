@@ -73,7 +73,7 @@ In the editor, the sign actor's Details panel also provides **Open Docs** / **Op
 
 ## Character and Screenshot Usage Terms {#credits}
 
-- **Gray-chan**: [provider link in the public README](http://rarihoma.xvs.jp/products/graychan)
+- **Gray-chan**: the provider URL listed in the public README is `http://rarihoma.xvs.jp/products/graychan`.
 - **TA-style Sagimiya Kano**: provided by [TA Inc.](https://xta.co.jp/). Copyright (c) 2025 株式会社TA All rights reserved. [Usage terms](https://uzurig.com/ja/terms_of_use_jp/)
 
 Check the plugin license and each character's usage terms separately. This page reuses existing Portal screenshots and does not redistribute model files. Image references are the Portal's existing sample material and [v1.17 changelog](/docs/changelog).

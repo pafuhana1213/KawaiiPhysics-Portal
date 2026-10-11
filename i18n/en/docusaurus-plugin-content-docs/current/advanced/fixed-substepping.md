@@ -80,12 +80,21 @@ If you need exactly the same behavior as previous versions, turn `Use Fixed Subs
 
 ## Checking Performance
 
-You can check the load from the increased substep count at low fps with console commands.
+Measure the load from the increased substep count at low fps in the running environment. The statistics overlay and Unreal Insights use separate workflows.
+
+### `stat Anim` Statistics Overlay
+
+Run this command in the game or PIE console, then look for entries beginning with `KawaiiPhysics_`.
 
 ```bash
-stat KawaiiPhysics
 stat Anim
 ```
+
+### Unreal Insights Trace
+
+1. Start a trace from the Trace / Insights status bar at the bottom of the editor.
+2. Reproduce the scenario you want to measure, then open the trace in Unreal Insights Session Browser.
+3. In Timing Insights, inspect the CPU track for animation processing time.
 
 Setting `Target Framerate` higher than necessary increases the substep count and the load, so set a value appropriate for your target (60 in most cases).
 

@@ -155,7 +155,7 @@ TArray<FKawaiiPhysicsSyncBone> SyncBones;
 | カテゴリ | KawaiiPhysics |
 
 :::tip
-LimitAngleは各ボーンの親ボーンからの角度を制限します。値を大きくすると自由度が下がり、小さくすると荒ぶりやすくなります。
+LimitAngleは、入力アニメーションの親から子への方向と、シミュレーション中の同じ方向との角度差を制限します。正の値を大きくすると許容角度が広がります。`0` は角度制限を無効にします。
 :::
 
 ## Data Assetからの読み込み

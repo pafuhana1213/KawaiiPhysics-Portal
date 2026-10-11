@@ -92,13 +92,11 @@ Damping = 0.1f;
 
 ## コンソールコマンド
 
-```
-// KawaiiPhysics統計情報
-stat KawaiiPhysics
-
-// アニメーション全般の統計
+```bash
 stat Anim
 ```
+
+KawaiiPhysicsの統計は `STATGROUP_Anim` に含まれます。表示された一覧で `KawaiiPhysics_` から始まる項目を確認してください。
 
 ## ログ出力
 

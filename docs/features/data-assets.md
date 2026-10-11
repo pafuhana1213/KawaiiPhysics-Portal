@@ -9,7 +9,9 @@ title: "Data Assets"
 
 ## 概要
 
-**KawaiiPhysicsLimitsDataAsset** を使用すると、コリジョン設定や制限パラメータを複数のキャラクターで共有できます。
+v1.21.0の **KawaiiPhysicsLimitsDataAsset** は、球・カプセル・ボックス・平面のコリジョン設定と、編集に使うSkeletonを保存します。Damping、Stiffness、Gravityなどの一般的なノード設定は含みません。
+
+BoneConstraintには [専用のBoneConstraintsDataAsset](#boneconstraintsdataasset) を使います。ノード設定を再利用するプリセットはv1.22予定の未リリース機能です。風などの外力設定には [外力プリセット](/docs/features/external-force-presets) を参照してください。
 
 ## Data Assetの作成
 
@@ -18,13 +20,9 @@ title: "Data Assets"
 3. **KawaiiPhysicsLimitsDataAsset** を選択
 4. 名前を付けて保存
 
-![DataAsset Regex設定](/img/features/dataasset-regex.png)
-
-*DataAssetでの正規表現による骨セット指定*
-
 ## パラメータの設定
 
-Data Assetには以下のコリジョン Limit を保存できます：
+LimitsDataAssetには以下のコリジョン Limit を保存できます：
 
 - Spherical Limits
 - Capsule Limits
@@ -53,7 +51,11 @@ UKawaiiPhysicsLimitsDataAsset* LimitsDataAsset;
 
 Bone Constraint機能そのものの使い方は [Bone Constraint（ボーン間拘束）](/docs/features/bone-constraint) を参照してください。
 
-v1.14.0からDataAssetでBoneConstraint（骨間の距離拘束）を設定できるようになりました。v1.19.0で正式版になっています。
+BoneConstraintの設定はLimitsDataAssetではなく、専用のBoneConstraintsDataAssetに保存します。BoneConstraintはv1.14.0で追加され、v1.19.0で正式版になりました。
+
+![BoneConstraintsDataAssetのApply RegexとBone Constraints Data](/img/features/dataasset-regex.png)
+
+*BoneConstraintsDataAssetで正規表現からボーン制約を生成する設定*
 
 ![BoneConstraint Demo](/img/features/boneconstraint-demo.webp)
 

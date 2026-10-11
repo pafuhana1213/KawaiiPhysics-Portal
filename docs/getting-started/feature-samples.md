@@ -73,7 +73,7 @@ import DocFigure from '@site/src/components/DocFigure';
 
 ## キャラクターと画像の利用条件 {#credits}
 
-- **Grayちゃん**: [公開READMEの提供元リンク](http://rarihoma.xvs.jp/products/graychan)
+- **Grayちゃん**: 公開READMEに記載された提供元URLは `http://rarihoma.xvs.jp/products/graychan` です。
 - **TA式 鷺宮カノ**: [株式会社TA](https://xta.co.jp/)提供。Copyright (c) 2025 株式会社TA All rights reserved。[利用規約](https://uzurig.com/ja/terms_of_use_jp/)
 
 プラグインのライセンスと、同梱キャラクターの利用条件は別々に確認してください。このページはPortalの既存画像を再利用し、モデルファイルは再配布していません。画像の参照元は既存サンプル素材と[v1.17更新履歴](/docs/changelog)です。

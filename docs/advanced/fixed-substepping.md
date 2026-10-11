@@ -80,12 +80,21 @@ Fixed Substepping は **v1.21.0でデフォルト有効（ON）** になりま�
 
 ## パフォーマンスの確認
 
-低fps時のサブステップ増による負荷は、コンソールコマンドで確認できます。
+低fps時にサブステップ数が増えることで生じる負荷は、実際の実行環境で測定してください。統計オーバーレイとUnreal Insightsでは確認手順が異なります。
+
+### `stat Anim` による統計表示
+
+ゲームまたはPIEのコンソールで実行し、`KawaiiPhysics_` で始まる項目を確認します。
 
 ```bash
-stat KawaiiPhysics
 stat Anim
 ```
+
+### Unreal Insightsによるトレース
+
+1. エディタ下部のTrace / Insightsステータスバーからトレースを開始します。
+2. 測定したい状況を再現し、記録したトレースをUnreal InsightsのSession Browserで開きます。
+3. Timing InsightsのCPUトラックで、アニメーション処理の時間を確認します。
 
 `Target Framerate` を必要以上に高く設定するとサブステップ数が増えて負荷が上がるため、対象に合った値（多くの場合60）を設定してください。
 

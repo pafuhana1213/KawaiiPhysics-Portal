@@ -62,7 +62,13 @@ function HeroSection() {
         {featuredVideoIds.map((id, index) => (
           <img
             key={id}
-            src={`https://img.youtube.com/vi/${id}/maxresdefault.jpg`}
+            src={`https://img.youtube.com/vi/${id}/${id === '6WuqxGg0yek' ? 'hqdefault' : 'maxresdefault'}.jpg`}
+            onError={({currentTarget}) => {
+              const fallback = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+              if (currentTarget.src !== fallback) {
+                currentTarget.src = fallback;
+              }
+            }}
             alt=""
             className={styles.heroBgImage}
             style={{animationDelay: `${index * 5}s`}}

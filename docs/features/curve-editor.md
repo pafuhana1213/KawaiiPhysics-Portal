@@ -3,94 +3,98 @@ sidebar_position: 4
 title: "カーブエディタ"
 ---
 
+import RootToTip from '@site/static/img/generated/curve-root-to-tip.svg';
+import HairExample from '@site/static/img/generated/curve-hair-example.svg';
+import SkirtExample from '@site/static/img/generated/curve-skirt-example.svg';
+
+<span id="カーブエディタ" style={{display: 'block', height: 0, scrollMarginTop: 'calc(var(--ifm-navbar-height) + 1rem)'}} />
+
+<span id="curve-editor" style={{display: 'block', height: 0, scrollMarginTop: 'calc(var(--ifm-navbar-height) + 1rem)'}} />
+
 # カーブエディタ
 
-ボーンチェーンに沿ってパラメータを変化させるカーブ機能を説明します。
+<span id="概要" style={{display: 'block', height: 0, scrollMarginTop: 'calc(var(--ifm-navbar-height) + 1rem)'}} />
+<span id="overview" style={{display: 'block', height: 0, scrollMarginTop: 'calc(var(--ifm-navbar-height) + 1rem)'}} />
 
-:::note
-このページは使い方の**ガイド**です。各カーブプロパティ（`DampingCurveData` ほか）のリファレンスは [物理パラメータ](/docs/parameters/physics) を参照してください。
-:::
+カーブを使うと、髪の根元と先端、スカートの腰と裾など、ボーンチェーンの位置に応じてパラメータを調整できます。
 
-## 概要
+<span id="カーブの読み方" style={{display: 'block', height: 0, scrollMarginTop: 'calc(var(--ifm-navbar-height) + 1rem)'}} />
+<span id="reading-curves" style={{display: 'block', height: 0, scrollMarginTop: 'calc(var(--ifm-navbar-height) + 1rem)'}} />
 
-カーブを使うことで、ボーンチェーンの根元から先端にかけてパラメータを滑らかに変化させることができます。
+## カーブの読み方 {#reading-the-curve}
 
-![カーブによる根元→先端の変化](/img/generated/curve-root-to-tip.svg)
+横軸はRootBoneからの**ボーン長比**（根元 `0` → 先端 `1`）、縦軸は**基準値に掛ける倍率**です。位置ごとの適用値は「基準値 × カーブの倍率」で決まります。X=`1`はRoot配下の最長経路の末端（ダミーボーンを含む）で、短い枝の末端は`1`未満です。
 
-*ボーンチェーンの根元から先端へ向かってパラメータ（例: Stiffness）を滑らかに変化させる様子*
+<RootToTip style={{display: 'block', width: '100%', maxWidth: '420px', height: 'auto'}} />
 
-## 対応パラメータ
+カーブのY値にパラメータの実値を入力するわけではありません。以下の使用例でも、この倍率の考え方は共通です。
 
-以下のパラメータがカーブに対応しています（`Physics Settings | Curves` カテゴリ、AdvancedDisplay）。いずれも RootBone からのボーン長比（0.0〜1.0）に応じて各パラメータへ乗算されます。
+<span id="使用例" style={{display: 'block', height: 0, scrollMarginTop: 'calc(var(--ifm-navbar-height) + 1rem)'}} />
+<span id="設定例" style={{display: 'block', height: 0, scrollMarginTop: 'calc(var(--ifm-navbar-height) + 1rem)'}} />
+<span id="setting-examples" style={{display: 'block', height: 0, scrollMarginTop: 'calc(var(--ifm-navbar-height) + 1rem)'}} />
+<span id="尻尾" style={{display: 'block', height: 0, scrollMarginTop: 'calc(var(--ifm-navbar-height) + 1rem)'}} />
+<span id="tail" style={{display: 'block', height: 0, scrollMarginTop: 'calc(var(--ifm-navbar-height) + 1rem)'}} />
 
-- **Damping Curve** - 減衰（エディタ表示名: Damping Rate by Bone Length Rate）
-- **Stiffness Curve** - 剛性（Stiffness Rate by Bone Length Rate）
-- **World Damping Location Curve** - ワールド位置減衰（World Damping Location Rate by Bone Length Rate）
-- **World Damping Rotation Curve** - ワールド回転減衰（World Damping Rotation Rate by Bone Length Rate）
-- **Radius Curve** - 半径（Radius Rate by Bone Length Rate）
-- **LimitAngle Curve** - 角度制限（LimitAngle Rate by Bone Length Rate）
+## 使用例 {#examples}
 
-## カーブの設定
+以下は、X=`1`に達する末端を持つチェーンの例です。
 
-1. KawaiiPhysicsノードを選択
-2. 対象のCurveプロパティを展開
-3. カーブエディタでキーを追加・編集
+*形状や作用の図は模式図です。シミュレーション結果や揺れ幅を示すものではありません。紫の点は根元、緑の点は先端で、形状とカーブの位置を対応させています。*
 
-![カーブエディタUI](/img/generated/curve-editor-mock.svg)
+<span id="髪の毛" style={{display: 'block', height: 0, scrollMarginTop: 'calc(var(--ifm-navbar-height) + 1rem)'}} />
+<span id="髪の毛-先端ほど形に戻る力を弱める" style={{display: 'block', height: 0, scrollMarginTop: 'calc(var(--ifm-navbar-height) + 1rem)'}} />
+<span id="hair-reduce-the-return-force-toward-the-tip" style={{display: 'block', height: 0, scrollMarginTop: 'calc(var(--ifm-navbar-height) + 1rem)'}} />
 
-*※この図は自動生成されたイメージです。実際のUE5画面とは異なる場合があります。*
+### 髪の毛: 先端ほど形に戻る力を弱める {#hair}
 
-## カーブの読み方
+Stiffnessは、親ボーンに対する入力ポーズの形に戻ろうとする力を調整します。根元側の形を保ちつつ、毛先の戻る力を弱めたい場合は、根元から先端へ倍率を下げます。RootBone自体は入力ポーズに追従します。
 
-| 軸 | 意味 |
-|---|------|
-| X軸 | ボーンチェーンの位置（0=根元, 1=先端） |
-| Y軸 | パラメータ値 |
+<HairExample style={{display: 'block', width: '100%', maxWidth: '420px', height: 'auto'}} />
 
-## 設定例
+キーの例は根元 `(0, 1.0)`、先端 `(1, 0.1)` です。基準値が `0.5` なら、根元のキーでの計算は `0.5 × 1.0 = 0.5`、先端では `0.5 × 0.1 = 0.05` です。図の点線と白抜きの毛先は入力ポーズ、実線はそこから変位した髪を示します。実際の動きは減衰や外力などにも左右されます。
 
-![カーブ設定例と効果](/img/generated/curve-effect-comparison.svg)
+<span id="スカート" style={{display: 'block', height: 0, scrollMarginTop: 'calc(var(--ifm-navbar-height) + 1rem)'}} />
+<span id="スカート-裾ほど衝突半径を大きくする" style={{display: 'block', height: 0, scrollMarginTop: 'calc(var(--ifm-navbar-height) + 1rem)'}} />
+<span id="skirt-increase-the-collision-radius-toward-the-hem" style={{display: 'block', height: 0, scrollMarginTop: 'calc(var(--ifm-navbar-height) + 1rem)'}} />
 
-*髪の毛、尻尾、スカートでのカーブ設定例と視覚的効果*
+### スカート: 裾ほど衝突半径を大きくする {#skirt}
 
-### 髪の毛
+Radiusは、各ボーンの衝突判定に使う半径です。脚との衝突範囲を腰より裾で広く取りたい場合は、裾へ向かって倍率を上げます。
 
-根元は硬く、先端は柔らかく:
+<SkirtExample style={{display: 'block', width: '100%', maxWidth: '420px', height: 'auto'}} />
 
-```
-Stiffness Curve:
-  (0.0, 0.5)  ← 根元: 硬め
-  (1.0, 0.05) ← 先端: 柔らかめ
-```
+キーの例は腰 `(0, 1.0)`、裾 `(1, 3.0)` です。基準値が `5 cm` なら、半径は腰で `5 cm`、裾で `15 cm` になります。図の青い円がボーン周囲の衝突範囲、オレンジのカプセルが脚のコリジョンです。**スカートの布自体を膨らませる設定ではありません。**
 
-### 尻尾
+<span id="カーブの設定" style={{display: 'block', height: 0, scrollMarginTop: 'calc(var(--ifm-navbar-height) + 1rem)'}} />
+<span id="setting-up-curves" style={{display: 'block', height: 0, scrollMarginTop: 'calc(var(--ifm-navbar-height) + 1rem)'}} />
 
-均一な動き:
+## カーブの設定 {#setting-up-a-curve}
 
-```
-Damping Curve:
-  (0.0, 0.2)
-  (1.0, 0.2)  ← 全体で同じ値
-```
+1. AnimGraphでKawaiiPhysicsノードを選択します。
+2. Detailsの `Physics Settings | Curves`で対象のカーブを展開します（髪の例は `Stiffness Rate by Bone Length Rate`、スカートの例は `Radius Rate by Bone Length Rate`）。
+3. カーブエディタでキーを追加し、位置（X）と倍率（Y）を編集します。
+4. プレビューで動きを確認し、基準値とカーブを調整します。
 
-### スカート
+上のグラフは両端のキーを直線で結んだ例です。中間の変化はキーや補間方法で調整できます。
 
-裾に向かって広がる:
-
-```
-Radius Curve:
-  (0.0, 5.0)  ← 腰回り
-  (1.0, 15.0) ← 裾
-```
-
-## カーブ vs 固定値
-
-| 状況 | 推奨 |
-|-----|------|
-| 全体で同じ動きにしたい | 固定値 |
-| 根元と先端で違う動きにしたい | カーブ |
-| 中間部分だけ特殊な動きにしたい | カーブ |
+<span id="カーブ-vs-固定値" style={{display: 'block', height: 0, scrollMarginTop: 'calc(var(--ifm-navbar-height) + 1rem)'}} />
+<span id="curve-vs-fixed-value" style={{display: 'block', height: 0, scrollMarginTop: 'calc(var(--ifm-navbar-height) + 1rem)'}} />
 
 :::tip
-最初は固定値で調整し、必要に応じてカーブに切り替えると効率的です。
+まず固定値で全体の動きを調整し、根元と先端で違いが必要になったらカーブを使うと調整しやすくなります。
 :::
+
+<span id="対応パラメータ" style={{display: 'block', height: 0, scrollMarginTop: 'calc(var(--ifm-navbar-height) + 1rem)'}} />
+
+## 対応パラメータ {#supported-parameters}
+
+カーブに対応するパラメータは次の6つです。Detailsの表示名を示します。すべて同じボーン長比と倍率の考え方で設定します。
+
+- `Damping Rate by Bone Length Rate` — 減衰
+- `Stiffness Rate by Bone Length Rate` — 入力ポーズの形に戻る力
+- `World Damping Location Rate by Bone Length Rate` — ワールド位置減衰
+- `World Damping Rotation Rate by Bone Length Rate` — ワールド回転減衰
+- `Radius Rate by Bone Length Rate` — 衝突半径
+- `LimitAngle Rate by Bone Length Rate` — 角度制限
+
+各カーブプロパティ（`DampingCurveData` ほか）の仕様は [物理パラメータ](/docs/parameters/physics) を参照してください。

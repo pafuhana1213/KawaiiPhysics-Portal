@@ -559,21 +559,48 @@ Event: On Impact
 
 ## C++ Usage Example
 
+Set the Linked Anim Graph's tag to `HairPhysics`. Register `KawaiiPhysics.Hair` as a Gameplay Tag and assign it to the target node's `KawaiiPhysicsTag` property.
+
 ```cpp
 #include "KawaiiPhysicsLibrary.h"
 
 void AMyCharacter::OnTeleport()
 {
     UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
-
-    // Get node reference and reset
-    FAnimNodeReference NodeRef = AnimInstance->GetLinkedAnimGraphInstanceByTag("HairPhysics");
-    EAnimNodeReferenceConversionResult Result;
-    FKawaiiPhysicsReference KPRef = UKawaiiPhysicsLibrary::ConvertToKawaiiPhysics(NodeRef, Result);
-
-    if (Result == EAnimNodeReferenceConversionResult::Succeeded)
+    if (!AnimInstance)
     {
-        UKawaiiPhysicsLibrary::ResetDynamics(KPRef);
+        return;
+    }
+
+    // The Linked Anim Graph tag is specified as an FName.
+    UAnimInstance* LinkedAnimInstance =
+        AnimInstance->GetLinkedAnimGraphInstanceByTag(FName(TEXT("HairPhysics")));
+    if (!LinkedAnimInstance)
+    {
+        return;
+    }
+
+    // Use a Gameplay Tag to filter KawaiiPhysics nodes.
+    const FGameplayTag KawaiiPhysicsTag =
+        FGameplayTag::RequestGameplayTag(FName(TEXT("KawaiiPhysics.Hair")), false);
+    if (!KawaiiPhysicsTag.IsValid())
+    {
+        return;
+    }
+
+    FGameplayTagContainer FilterTags;
+    FilterTags.AddTag(KawaiiPhysicsTag);
+
+    TArray<FKawaiiPhysicsReference> Nodes;
+    if (!UKawaiiPhysicsLibrary::CollectKawaiiPhysicsNodes(
+            Nodes, LinkedAnimInstance, FilterTags, false))
+    {
+        return;
+    }
+
+    for (const FKawaiiPhysicsReference& Node : Nodes)
+    {
+        UKawaiiPhysicsLibrary::ResetDynamics(Node);
     }
 }
 
