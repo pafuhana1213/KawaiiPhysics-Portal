@@ -15,6 +15,7 @@ export const adoptionData: YearData[] = [
     {
       year: 2026,
       titles: [
+        {name: translate({id: 'adoption.game.whereTheSeedsFall', message: '崩落の国'}), company: translate({id: 'adoption.company.cygamesEdgeZereo', message: 'CygamesEdge / ゼレオ'}), videoId: '1K9JOa0--bM'},
         {name: 'MARVEL Tokon: Fighting Souls', company: 'ARC SYSTEM WORKS / SIE', videoId: '2sXxUOqoAGA'},
         {name: 'BEAST OF REINCARNATION', company: 'Game Freak / Fictions', videoId: 'zPAv3JEvtCs'},
         {name: translate({id: 'adoption.game.dqm4', message: 'ドラゴンクエストモンスターズ4 枯れ木の国のビアンカ・フローラ'}), company: 'SQUARE ENIX', videoId: 'd3pGz7nXMxo'},

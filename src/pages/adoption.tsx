@@ -181,6 +181,7 @@ export default function AdoptionPage(): ReactNode {
               {translate({id: 'adoption.copyrights', message: '著作権表示'})}
             </Heading>
             <div className={styles.copyrightsList}>
+              <p>© Cygames, Inc.</p>
               <p>
                 (C) 2026 MARVEL
                 <br />

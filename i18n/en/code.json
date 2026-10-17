@@ -130,6 +130,14 @@
     "message": "Download",
     "description": "Download button text"
   },
+  "adoption.game.whereTheSeedsFall": {
+    "message": "Where the Seeds Fall",
+    "description": "Game title"
+  },
+  "adoption.company.cygamesEdgeZereo": {
+    "message": "CygamesEdge / ZEREO",
+    "description": "Company name"
+  },
   "adoption.game.dq7": {
     "message": "DRAGON QUEST VII Reimagined",
     "description": "Game title"
