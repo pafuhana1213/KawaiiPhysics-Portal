@@ -206,22 +206,26 @@ function AdoptionHighlightSection() {
               style={{cursor: game.videoId ? 'pointer' : undefined}}
               onClick={() => game.videoId && setActiveVideo(game.videoId)}
             >
-              <div className={styles.adoptionThumbnail}>
-                <img
-                  src={`https://img.youtube.com/vi/${game.videoId}/mqdefault.jpg`}
-                  alt={game.name}
-                  loading="lazy"
-                />
-                {game.videoId && (
-                  <div className={styles.adoptionPlayButton}>
-                    <YouTubePlayButton />
-                  </div>
+              <div className={clsx(styles.adoptionThumbnail, !game.videoId && styles.adoptionTextThumbnail)}>
+                {game.videoId ? (
+                  <>
+                    <img
+                      src={`https://img.youtube.com/vi/${game.videoId}/mqdefault.jpg`}
+                      alt={game.name}
+                      loading="lazy"
+                    />
+                    <div className={styles.adoptionPlayButton}>
+                      <YouTubePlayButton />
+                    </div>
+                  </>
+                ) : (
+                  <span>{game.name}</span>
                 )}
               </div>
               <div className={styles.adoptionInfo}>
                 <div className={styles.adoptionName}>{game.name}</div>
                 <div className={styles.adoptionMeta}>
-                  {year} / {game.company}
+                  {game.releaseNote ?? year} / {game.company}
                 </div>
               </div>
             </div>

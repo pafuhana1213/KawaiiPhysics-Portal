@@ -130,6 +130,27 @@
     "message": "Download",
     "description": "Download button text"
   },
+  "adoption.game.rs3du": {
+    "message": "Romancing SaGa 3: Destinies United",
+    "description": "Game title"
+  },
+  "adoption.release.rs3du": {
+    "message": "Planned for 2027",
+    "description": "Planned release year for Romancing SaGa 3: Destinies United"
+  },
+  "adoption.rs3du.sourceNote": {
+    "message": "Romancing SaGa 3: Destinies United is planned for release in 2027. Its official PC license disclosure lists Kawaii Physics.",
+    "description": "Source note for the announced adoption"
+  },
+  "adoption.rs3du.officialSite": {
+    "message": "Official site"
+  },
+  "adoption.rs3du.releaseInfo": {
+    "message": "Release information"
+  },
+  "adoption.rs3du.pcLicense": {
+    "message": "Official PC license disclosure"
+  },
   "adoption.game.whereTheSeedsFall": {
     "message": "Where the Seeds Fall",
     "description": "Game title"

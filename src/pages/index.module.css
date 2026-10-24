@@ -251,6 +251,15 @@
   overflow: hidden;
 }
 
+.adoptionTextThumbnail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
 .adoptionPlayButton {
   position: absolute;
   top: 50%;

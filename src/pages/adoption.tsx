@@ -29,6 +29,7 @@ function VideoCard({game, onPlay}: {game: GameTitle; onPlay: (videoId: string) =
         </div>
         <div className={styles.videoInfo}>
           <div className={styles.gameName}>{game.name}</div>
+          {game.releaseNote && <div className={styles.gameCompany}>{game.releaseNote}</div>}
           {game.company && <div className={styles.gameCompany}>{game.company}</div>}
         </div>
       </div>
@@ -167,6 +168,21 @@ export default function AdoptionPage(): ReactNode {
           ))}
 
           <div className={styles.note}>
+            <p>
+              {translate({
+                id: 'adoption.rs3du.sourceNote',
+                message: 'ロマンシング サガ3 デスティニーユナイテッドは2027年発売予定です。公式PCライセンスに Kawaii Physics の記載があります。',
+              })}{' '}
+              <a href="https://www.square-enix.com/saga/en-us/games/romancing-saga-3-destinies-united/" target="_blank" rel="noopener noreferrer">
+                {translate({id: 'adoption.rs3du.officialSite', message: '公式サイト'})}
+              </a>{' / '}
+              <a href="https://store.jp.square-enix.com/estore/pages/sp_romasaga3_du.aspx" target="_blank" rel="noopener noreferrer">
+                {translate({id: 'adoption.rs3du.releaseInfo', message: '発売情報'})}
+              </a>{' / '}
+              <a href="https://www.square-enix-games.com/en_GB/documents/romancing-saga-3-destinies-united-pc-installer-software-and-associated-plug-ins-content-protection-disclosure" target="_blank" rel="noopener noreferrer">
+                {translate({id: 'adoption.rs3du.pcLicense', message: '公式PCライセンス'})}
+              </a>
+            </p>
             <p>
               {translate({
                 id: 'adoption.note',

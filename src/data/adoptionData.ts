@@ -4,6 +4,7 @@ export interface GameTitle {
   name: string;
   company?: string;
   videoId?: string;
+  releaseNote?: string;
 }
 
 export interface YearData {
@@ -12,6 +13,12 @@ export interface YearData {
 }
 
 export const adoptionData: YearData[] = [
+    {
+      year: 2027,
+      titles: [
+        {name: translate({id: 'adoption.game.rs3du', message: 'ロマンシング サガ3 デスティニーユナイテッド'}), company: 'SQUARE ENIX', releaseNote: translate({id: 'adoption.release.rs3du', message: '2027年発売予定'})},
+      ],
+    },
     {
       year: 2026,
       titles: [
