@@ -44,3 +44,5 @@ npm run build
 - 直訳ではなく、英語として自然な表現にする
 - コード例のコメントも翻訳する
 - IMAGE_NEEDED/VIDEO_NEEDED プレースホルダーは英語で書き直す
+- `DocVideo` と `DocFigure` の `alt`、`caption` も翻訳する
+- エディタの実画面は `-ja` / `-en` の画像を使い分ける

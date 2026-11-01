@@ -25,6 +25,8 @@ npm run build  # Production build - MUST pass before commit
 - `/sync-docs` - ソースからドキュメント同期
 - `/add-page [path] [title]` - 新規ページ追加
 - `/verify-build` - ビルド検証
+- `/preview` - ローカルプレビュー
+- `/capture-sample [内容]` - 公式サンプルをUEエディタで動かして動画・スクショを撮影
 
 ## Directory
 
@@ -33,6 +35,8 @@ npm run build  # Production build - MUST pass before commit
 | `docs/` | Markdownドキュメント |
 | `blog/` | 更新アナウンス |
 | `i18n/en/` | 英語翻訳 |
+| `static/video/sample/` | サンプルの録画とポスター |
+| `static/img/editor/` | エディタの実画面（言語別） |
 
 ## Rules
 
@@ -40,6 +44,7 @@ npm run build  # Production build - MUST pass before commit
 @.claude/rules/markdown-style.md
 @.claude/rules/docusaurus.md
 @.claude/rules/ue-docs.md
+@.claude/rules/media.md
 
 ## Source Mapping
 

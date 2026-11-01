@@ -19,6 +19,12 @@ KawaiiPhysics ドキュメントサイトのローカルプレビューを起動
 http://localhost:3000/KawaiiPhysics-Portal/
 ```
 
+## 起動方法の選び方
+
+- 編集しながら確認する: dev サーバー（`npm start`）。ja のみ配信する。
+- 完成した内容を ja/en で確認する: 後述の **build + serve**。直前に `npm run build` を実行した場合も、キャッシュ不整合を避けられるのでこちらを使う。
+- `docusaurus` が見つからないエラーは `node_modules` が未導入のため。`npm ci` を実行する。
+
 ## 動作
 
 1. ポート3000が既に LISTENING かを確認する。
