@@ -8,7 +8,7 @@
             "type": "command",
             "shell": "bash",
             "if": "Bash(git commit *)",
-            "command": "cd F:/Github/KawaiiPhysicsDocs && npm run build || exit 2",
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" && npm run build || exit 2",
             "timeout": 300,
             "statusMessage": "Running npm run build before commit..."
           }
