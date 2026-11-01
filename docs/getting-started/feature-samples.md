@@ -35,7 +35,7 @@ import DocFigure from '@site/src/components/DocFigure';
 | テーマ | 主な展示 | 関連ドキュメント |
 |---|---|---|
 | `01_BoneChain` | Root Bone、Dummy、除外、追加ルート、複数ノードとタグ | [ボーンチェーン](/docs/features/bone-chain) |
-| `02_PhysicsSettings` | Damping、Stiffness、World Damping、Limit Angle、カーブ、テレポート、ウォームアップ、SkelCompMoveScale | [揺れ方の設定](/docs/features/physics-setup) |
+| `02_PhysicsSettings` | Damping、Stiffness、World Damping、Limit Angle、カーブ、テレポート、ウォームアップ、SkelCompMoveScale、Per Axis LimitAngle | [揺れ方の設定](/docs/features/physics-setup) |
 | `03_Collision` | 球、カプセル、テーパードカプセル、箱、平面、Limits Data Asset、Physics Asset、ワールドコリジョン | [コリジョン](/docs/features/collision-setup)、[テーパードカプセル](/docs/features/collision-setup#tapered-capsule) |
 | `04_Forces` | 重力、Simple External Force、外力プリセット、AnimNotify、座標系、ボーン長による倍率、従来の重力方式 | [風と外力](/docs/features/wind-and-forces) |
 | `05_Advanced` | ボーン拘束、細分化、Sync Bone、プリセット、共有コリジョン | [共有コリジョン](/docs/features/shared-collision)、[UKawaiiPhysicsPresetDataAsset](/docs/features/settings-presets) |

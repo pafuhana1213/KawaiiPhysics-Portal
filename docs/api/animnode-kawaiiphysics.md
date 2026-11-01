@@ -302,13 +302,22 @@ void    ConvertSimulationSpace(FComponentSpacePoseContext& Output,
 | WorldDampingLocation | float | 0.8 | 0以上 | コンポーネント**移動**の反映抑制。`0`=フル反映（最大に揺れる）／`1`=追従（揺れなし）。反映率 = `1 - 値` |
 | WorldDampingRotation | float | 0.8 | 0以上 | コンポーネント**回転**の反映抑制（上と同様、反映率 = `1 - 値`） |
 | Radius | float | 3.0 | 0以上 | 各ボーンのコリジョン半径（エディタ表示名: Collision Radius） |
-| LimitAngle | float | 0.0 | 0以上 | 入力アニメーションとシミュレーションの親から子への方向の角度差の上限（度）。正の値を大きくすると許容角度が広がり、`0`で無制限 |
+| LimitAngleMode | [EKawaiiPhysicsLimitAngleMode](#ekawaiiphysicslimitanglemode) | Cone | - | 角度制限の形状 |
+| LimitAngle | float | 0.0 | 0以上 | `Cone` で使う。入力アニメーションとシミュレーションの親から子への方向の角度差の上限（度）。正の値を大きくすると許容角度が広がり、`0`で無制限 |
+| PerAxisLimitAngle | FKawaiiPhysicsPerAxisLimitAngle | 各軸 -30 〜 30 | 各軸 Min -180〜0、Max 0〜180 | `Per Axis` で使う。親ボーンのローカル軸ごとの回転制限。`0`はその方向をロック |
 
 :::note
 `WorldDampingLocation` / `WorldDampingRotation` は名前に反して **値が大きいほど揺れは小さく** なります（`1` でコンポーネントに完全追従＝揺れなし）。
 :::
 
 各メンバーの詳しい解説と図解は [物理パラメータ](/docs/parameters/physics) を参照してください。
+
+### EKawaiiPhysicsLimitAngleMode
+
+| 値 | 説明 |
+|----|------|
+| Cone | ポーズ方向を中心とする円錐で制限。`LimitAngle` を使用（デフォルト） |
+| PerAxis | 親ボーンのローカル軸ごとに制限。`PerAxisLimitAngle` を使用（エディタ表示名: Per Axis） |
 
 ### EKawaiiPhysicsSimulationSpace
 
