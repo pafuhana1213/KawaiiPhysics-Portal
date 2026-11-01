@@ -57,8 +57,6 @@ BoneConstraintの設定はLimitsDataAssetではなく、専用のBoneConstraints
 
 *BoneConstraintsDataAssetで正規表現からボーン制約を生成する設定*
 
-![BoneConstraint Demo](/img/features/boneconstraint-demo.webp)
-
 正規表現を使って拘束対象の骨セットを指定できます：
 
 ```text

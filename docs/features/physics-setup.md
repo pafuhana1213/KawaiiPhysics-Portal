@@ -3,6 +3,8 @@ sidebar_position: 2
 title: "揺れ方の調整"
 ---
 
+import DocVideo from '@site/src/components/DocVideo';
+
 # 揺れ方の調整
 
 揺れ方を決める3つの基本パラメータ **Damping / Stiffness / Radius** の調整方法を説明します。まずこの3つで「どれくらい揺れて、どれくらいで止まり、どれくらいの太さでぶつかるか」を決めます。
@@ -15,9 +17,7 @@ title: "揺れ方の調整"
 
 ボーンの動きを徐々に収束させます。**大きいほど早く止まり、小さいほど長く揺れ続けます**。
 
-![Damping値の比較](/img/generated/damping-comparison.svg)
-
-*※自動生成された概念図です。実際の動作はパラメータや環境により異なります。*
+<DocVideo src="/video/sample/damping.mp4" poster="/video/sample/damping.jpg" alt="Damping 0.02、0.1、0.5のキャラクターが同じ動きで走り、0.02の髪だけが頭上まで大きく跳ねる録画" caption="開発版サンプル展示2.1の実機録画。同じ走りモーションでDampingだけを変えています。左の0.02は髪が大きく跳ね、右の0.5は揺れがすぐに収まります。" />
 
 | 項目 | 内容 |
 |------|------|
@@ -30,9 +30,7 @@ title: "揺れ方の調整"
 
 元のアニメーションポーズに戻ろうとする力です。**大きいほど硬く（元の形を保つ）、小さいほど柔らかく（大きく揺れる）** なります。
 
-![Stiffness値の比較](/img/generated/stiffness-comparison.svg)
-
-*※自動生成された概念図です。実際の動作はパラメータや環境により異なります。*
+<DocVideo src="/video/sample/stiffness.mp4" poster="/video/sample/stiffness.jpg" alt="Stiffness 0、0.05、0.3のキャラクターが同じ動きで走り、値が大きいほど髪が元の形を保つ録画" caption="開発版サンプル展示2.2の実機録画。同じ走りモーションでStiffnessだけを変えています。値が大きい右の0.3ほど、髪が元の形を保ちます。" />
 
 | 項目 | 内容 |
 |------|------|

@@ -3,6 +3,8 @@ sidebar_position: 3
 title: "コリジョンパラメータ"
 ---
 
+import DocVideo from '@site/src/components/DocVideo';
+
 # コリジョンパラメータ
 
 <!-- AUTO-GENERATED: このページはソースコードから自動生成されます -->
@@ -24,9 +26,7 @@ KawaiiPhysicsでは以下の4種類のコリジョン形状をサポートして
 | Box | ボックスコリジョン |
 | Planar | 平面コリジョン |
 
-![コリジョン形状の比較](/img/generated/collision-shapes-comparison.svg)
-
-*各コリジョン形状の特徴と使用例*
+<DocVideo src="/video/sample/collision-shapes.mp4" poster="/video/sample/collision-shapes.jpg" alt="鎖が球、カプセル、箱、平面のコリジョンに押される4分割の録画" caption="開発版サンプル展示3.1、3.2、3.4、3.5の実機録画。上段は左からSpherical、Capsule、下段は左からBox、Planarです。" />
 
 ## FCollisionLimitBase（共通プロパティ）
 

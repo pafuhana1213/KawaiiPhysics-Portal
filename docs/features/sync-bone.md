@@ -3,6 +3,8 @@ sidebar_position: 6
 title: "Sync Bone"
 ---
 
+import DocVideo from '@site/src/components/DocVideo';
+
 # Sync Bone
 
 :::tip バージョン情報
@@ -14,8 +16,6 @@ Sync Bone機能は、物理制御下のボーンに対して、指定したボ�
 ## 概要
 
 従来、スカートなどの貫通対策にはコリジョンを使用していましたが、複雑な形状や動きに対応するのが難しい場合がありました。Sync Bone機能を使用すると、コリジョンを使わずに足などのボーンの動きを物理ボーンに反映させることができます。
-
-![Sync Boneデモ](/img/features/syncbone-demo.webp)
 
 ## 仕組み
 
@@ -29,9 +29,7 @@ Sync Bone機能は、物理制御下のボーンに対して、指定したボ�
 
 同期元のボーンが移動・回転すると、その動きが物理ボーンに反映され、貫通を防ぎます。
 
-![Sync Boneの処理フロー](/img/generated/sync-bone-concept.svg)
-
-*Sync Boneによる貫通防止の仕組み*
+<DocVideo src="/video/sample/sync-bone.mp4" poster="/video/sample/sync-bone.jpg" alt="SyncBonesなしのスカートは脚に押され、SyncBonesありのスカートは脚と一緒に持ち上がる録画" caption="開発版サンプル展示5.4の寄り録画。右はcalf_l/calf_rの動きをスカートへ加えており、脚を上げるとスカートも一緒に上がって、脚に埋まりにくくなります。" />
 
 ## 設定方法
 

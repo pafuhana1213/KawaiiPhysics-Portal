@@ -6,6 +6,7 @@ description: "風の揺れを作り、短い突風と風プリセットを演出
 import LegacyReference from '@site/src/components/LegacyReference';
 
 import DocFigure from '@site/src/components/DocFigure';
+import DocVideo from '@site/src/components/DocVideo';
 
 # Procedural Wind
 
@@ -19,7 +20,7 @@ import DocFigure from '@site/src/components/DocFigure';
 
 Procedural Windは、一定の風に周期的な強弱・毛先へ伝わる位相の変化・ランダムな揺らぎを組み合わせられます。まず一定の風で効き方を確認し、必要な変化だけ足していけば、何が見た目を変えたか追いやすくなります。
 
-<DocFigure src="/img/generated/artist-wind-flat-transparent.png" alt="左は風を加える前、右は青い矢印の向きへ服とボーンが流れる模式図" caption="AI生成の模式図。青い矢印の向きへ流れる服を示しています。実測した揺れの軌跡ではありません。" maxWidth={420} />
+<DocVideo src="/video/sample/procedural-wind-components.mp4" poster="/video/sample/procedural-wind-components.jpg" alt="ConstantForce、SwayForce、RippleForceで鎖の揺れ方が変わる3本の録画" caption="開発版サンプル展示8.1の実機録画。左からConstantForce（一定の風）、SwayForce（全体の揺れ）、RippleForce（先端へ伝わる波）です。" />
 
 ## 使用方法 {#基本的な設定}
 

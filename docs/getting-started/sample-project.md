@@ -144,14 +144,21 @@ KawaiiPhysicsSample/
 
 ## サンプルレベルを開いて再生する {#play-sample}
 
-プロジェクトが起動したら、デモを確認します。
+プロジェクトが起動したら、デモを確認します。開くレベルは、入手したバージョンで異なります。
+
+| バージョン | 開くレベル |
+|---|---|
+| 開発版 `master` | `L_KPS_AllExamples`（プロジェクトを開くと最初に読み込まれます） |
+| 安定版 v1.21.0 | `L_KawaiiPhysicsSample` |
 
 1. **Content Browser** で `Content/KawaiiPhysicsSample/` を開く
-2. `L_KawaiiPhysicsSample` をダブルクリックしてレベルを開く
+2. 上の表のレベルをダブルクリックして開く
 3. ツールバーの **Play**（プレイ）または **Simulate**（シミュレート）を実行
 4. サンプルキャラクターの髪や服が揺れる様子を確認できます
 
-<!-- IMAGE_NEEDED: L_KawaiiPhysicsSample をエディタで開いた画面とPlayボタンの位置 -->
+![L_KPS_AllExamplesをエディタで開いた実際の画面。ツールバーのPlayボタンを赤枠で示している](/img/editor/sample-level-play-ja.webp)
+
+*開発版 `master` の `L_KPS_AllExamples` をUE 5.8で開いた画面。赤枠が **Play** ボタンです。安定版のサンプルは展示の構成が異なります。*
 
 :::tip
 キャラクターを移動・回転させると、慣性で揺れものが大きく動きます。Animation Blueprintを開いてKawaiiPhysicsノードのパラメータを変更し、挙動の違いを試してみてください。

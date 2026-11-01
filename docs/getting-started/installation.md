@@ -42,9 +42,9 @@ git submodule add https://github.com/pafuhana1213/KawaiiPhysics.git Plugins/Kawa
 3. **Enabled** にチェック
 4. エディタを再起動
 
-![プラグイン有効化画面](/img/generated/plugin-enable-mock.svg)
+![Pluginsウィンドウで「KawaiiPhysics」を検索し、Enabledにチェックが入った実際の画面](/img/editor/plugin-enable-ja.webp)
 
-*※この図は自動生成されたイメージです。実際のUE5画面とは異なる場合があります。*
+*UE 5.8の実画面。バージョン表記は導入したプラグインによって異なります。*
 
 ## 確認
 

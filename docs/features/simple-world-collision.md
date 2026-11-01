@@ -6,6 +6,7 @@ description: "周囲の壁や家具の当たり判定を使い、髪や衣服の
 import LegacyReference from '@site/src/components/LegacyReference';
 
 import DocFigure from '@site/src/components/DocFigure';
+import DocVideo from '@site/src/components/DocVideo';
 
 # Simple World Collision
 
@@ -19,7 +20,7 @@ import DocFigure from '@site/src/components/DocFigure';
 
 Simple World Collisionは、近くの物が持つSimple Collisionを集めて、髪や服のボーンを形状の外へ押し戻します。レベル側の当たり判定を利用できるので、家具や壁のそばでも揺れを確認したい場面に使えます。
 
-<DocFigure src="/img/generated/style-a-flat-transparent-v1.png" alt="左はボーン半径がBoxと重なり、右は半径を含めて外へ押し戻された状態" caption="AI生成の模式図。橙の円を、青い箱の外へ押し戻す考え方です。" maxWidth={420} />
+<DocVideo src="/video/sample/simple-world-collision.mp4" poster="/video/sample/simple-world-collision.jpg" alt="Simple World CollisionがOFFの鎖は箱をすり抜け、ONの鎖は箱に沿って押し戻される録画" caption="開発版サンプル展示7.1の実機録画。OFF（左）の鎖は箱をすり抜け、ON（右）の鎖は箱の外へ押し戻されます。" />
 
 ## 使用方法 {#基本的な設定}
 

@@ -3,6 +3,8 @@ sidebar_position: 9
 title: "Bone Subdivision"
 ---
 
+import DocVideo from '@site/src/components/DocVideo';
+
 # Bone Subdivision
 
 :::tip Version Info
@@ -17,9 +19,7 @@ When physics-simulated bones are far apart, no collision is detected **in the ga
 
 Bone Subdivision inserts dummy bones between real bones so that collision and constraints act at a finer resolution, preventing this penetration.
 
-![Concept of penetration prevention via Bone Subdivision](/img/generated/bone-subdivision-concept.svg)
-
-*Dummy bones are inserted between real bones to raise collision resolution and prevent penetration. Horizontal (Bridge) subdivision also fills the gaps between columns. (Diagram labels are in Japanese.)*
+<DocVideo src="/video/sample/bone-subdivision.mp4" poster="/video/sample/bone-subdivision.jpg" alt="A chain with BoneSubdivisionCount 0 slips past a small blue sphere; with 2 it catches on the sphere" caption="Recorded from development sample exhibit 5.3. A blue sphere sits in the gap between bones: Count 0 (left) slips past it, Count 2 (right) catches it with virtual points. The right side uses bBoneSubdivisionCollisionOnly, so the points only affect collision." />
 
 :::note Under the Hood
 The inserted dummies do not exist in the real skeleton (their `BoneIndex` is negative) and are automatically removed from the final output. Results are applied only to real bones, so rigs and animation are unaffected. The number of insertions is auto-corrected from the bone distance and collision radius, clamped so segments do not overlap.

@@ -3,6 +3,8 @@ sidebar_position: 6
 title: "Sync Bone"
 ---
 
+import DocVideo from '@site/src/components/DocVideo';
+
 # Sync Bone
 
 :::tip Version Info
@@ -14,8 +16,6 @@ The Sync Bone feature applies the movement and rotation of a specified bone (the
 ## Overview
 
 Previously, collisions were used to prevent penetration of skirts and similar meshes, but it could be difficult to handle complex shapes and movements. With the Sync Bone feature, you can reflect the movement of bones such as legs onto physics bones without using collisions.
-
-![Sync Bone Demo](/img/features/syncbone-demo.webp)
 
 ## How It Works
 
@@ -29,9 +29,7 @@ Skirt Bone (Sync Target = TargetRoots)
 
 When the source bone moves or rotates, that movement is reflected onto the physics bones, preventing penetration.
 
-![Sync Bone Processing Flow](/img/generated/sync-bone-concept.svg)
-
-*How Sync Bone prevents penetration*
+<DocVideo src="/video/sample/sync-bone.mp4" poster="/video/sample/sync-bone.jpg" alt="Without SyncBones the leg pushes into the skirt; with SyncBones the skirt lifts together with the leg" caption="Close-up recorded from development sample exhibit 5.4. The right side adds calf_l/calf_r motion to the skirt, so it lifts with the leg and is less likely to sink into it." />
 
 ## Setup
 

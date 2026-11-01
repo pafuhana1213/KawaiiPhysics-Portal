@@ -3,6 +3,8 @@ sidebar_position: 1
 title: "ボーンチェーン設定"
 ---
 
+import DocVideo from '@site/src/components/DocVideo';
+
 # ボーンチェーン設定
 
 KawaiiPhysicsでボーンチェーンを設定する方法を説明します。
@@ -19,9 +21,7 @@ KawaiiPhysicsでボーンチェーンを設定する方法を説明します。
 Root Bone自体には物理が適用されません。その子ボーン以下に物理が適用されます。
 :::
 
-![ボーンチェーン構造図](/img/generated/bone-chain-diagram.svg)
-
-*※自動生成された概念図です。実際のボーン名やスケルトン構造はアセットにより異なります。*
+<DocVideo src="/video/sample/bone-chain-root.mp4" poster="/video/sample/bone-chain-root.jpg" alt="KawaiiPhysicsなしの鎖と、RootBoneにTorus001を設定して揺れる鎖を並べた録画" caption="開発版サンプル展示1.1の実機録画。左はKawaiiPhysicsなし、右はRoot BoneにTorus001を設定した鎖です。指定したボーンより下のボーンが揺れます。" />
 
 ## 自動検出
 
@@ -39,9 +39,7 @@ spine_03 (Root Bone - 物理なし)
 
 チェーンの**末端ボーン**は、子ボーンを持たないため回転の基準が定まらず、物理制御が不安定になりがちです。`DummyBoneLength` に 0 より大きい値を設定すると、末端に**見えないダミーボーン**を1本追加し、末端ボーンに「子」を与えて回転・揺れを安定させます。揺れ方に直結する重要なパラメータです。
 
-![DummyBoneの効果](/img/generated/dummybone-effect.svg)
-
-*DummyBoneLength = 0（左）では末端ボーンが不安定。0 より大きくする（右）と末端に見えないダミーが追加され、末端ボーンが安定して自然に揺れる。*
+<DocVideo src="/video/sample/dummy-bone-length.mp4" poster="/video/sample/dummy-bone-length.jpg" alt="DummyBoneLengthが0の鎖は先端だけ折れ曲がり、25の鎖は先端まで滑らかにつながって揺れる録画" caption="開発版サンプル展示2.3の鎖でDummyBoneLengthだけを変えた比較録画。0（左）では末端ボーンだけが折れ曲がり、25（右）では末端まで一続きに揺れます。" />
 
 | プロパティ | 値 |
 |-----------|-----|
@@ -73,9 +71,7 @@ TArray<FBoneReference> ExcludeBones;
 `ExcludeBones` に指定したボーンは、**そのボーン自身とその子孫ボーンすべて** が制御対象から外れます。チェーンの途中のボーンを指定すると、それ以降の末端まで物理が適用されなくなる点に注意してください。
 :::
 
-![ボーンチェーンとExclude Bone](/img/generated/bone-chain-exclude.svg)
-
-*Root Bone から始まるチェーンに物理が適用されます。Exclude Bone に指定したボーン自身と、それ以下（子孫）のボーンはすべて物理計算から除外されます。*
+<DocVideo src="/video/sample/exclude-bones.mp4" poster="/video/sample/exclude-bones.jpg" alt="ExcludeBonesなしでは背骨と脚まで揺れ、Spine_01とThighを除外するとスカートだけが揺れる録画" caption="開発版サンプル展示1.3の実機録画。左はRoot BoneをPelvisにしただけで背骨と脚まで動きます。右はSpine_01とThigh_L/Rを除外し、スカートだけを揺らしています。Exclude Boneに指定したボーン自身と、その子孫はすべて物理計算から除外されます。" />
 
 ### 使用例
 

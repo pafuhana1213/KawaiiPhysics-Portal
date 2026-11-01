@@ -6,6 +6,7 @@ description: "Shape wind motion, add short gusts, and reuse wind presets for sce
 import LegacyReference from '@site/src/components/LegacyReference';
 
 import DocFigure from '@site/src/components/DocFigure';
+import DocVideo from '@site/src/components/DocVideo';
 
 # Procedural Wind
 
@@ -19,7 +20,7 @@ Hair and clothing drifting in a constant direction can look repetitive on an out
 
 Procedural Wind combines steady force with periodic changes, phase changes toward the tips, and random variation. Start with steady wind, then add the changes the scene needs. This makes it easier to see which setting changed the appearance.
 
-<DocFigure src="/img/generated/artist-wind-flat-transparent.png" alt="Clothing before wind, then flowing with the blue arrows" caption="AI-generated concept of clothing drifting with wind. It is not a measured motion trajectory." maxWidth={420} />
+<DocVideo src="/video/sample/procedural-wind-components.mp4" poster="/video/sample/procedural-wind-components.jpg" alt="Three chains showing ConstantForce, SwayForce and RippleForce" caption="Recorded from development sample exhibit 8.1. Left to right: ConstantForce (steady wind), SwayForce (whole-chain sway), RippleForce (a wave travelling to the tip)." />
 
 ## Usage {#basic-setup}
 

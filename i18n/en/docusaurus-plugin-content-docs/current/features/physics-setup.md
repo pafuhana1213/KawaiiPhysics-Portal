@@ -3,6 +3,8 @@ sidebar_position: 2
 title: "Adjusting the Sway"
 ---
 
+import DocVideo from '@site/src/components/DocVideo';
+
 # Adjusting the Sway
 
 This guide explains how to tune the three basic parameters that determine how things sway: **Damping / Stiffness / Radius**. These three decide "how much it sways, how quickly it settles, and how thick it is when it collides."
@@ -15,9 +17,7 @@ This page is a tuning **guide**. For the full specification of each parameter (t
 
 Gradually converges the bone's motion. **Higher = settles faster; lower = keeps swaying longer.**
 
-![Damping comparison](/img/generated/damping-comparison.svg)
-
-*Auto-generated conceptual diagram. Actual behavior varies with parameters and environment.*
+<DocVideo src="/video/sample/damping.mp4" poster="/video/sample/damping.jpg" alt="Characters run with Damping 0.02, 0.1 and 0.5; only the hair at 0.02 flies up above the head" caption="Recorded from development sample exhibit 2.1. Only Damping differs in the same running motion: the hair flies up at 0.02 on the left and settles quickly at 0.5 on the right." />
 
 | Item | Detail |
 |------|--------|
@@ -30,9 +30,7 @@ Gradually converges the bone's motion. **Higher = settles faster; lower = keeps 
 
 The force pulling back to the original animation pose. **Higher = stiff (keeps the original shape); lower = soft (sways more).**
 
-![Stiffness comparison](/img/generated/stiffness-comparison.svg)
-
-*Auto-generated conceptual diagram. Actual behavior varies with parameters and environment.*
+<DocVideo src="/video/sample/stiffness.mp4" poster="/video/sample/stiffness.jpg" alt="Characters run with Stiffness 0, 0.05 and 0.3; the hair keeps its shape better at higher values" caption="Recorded from development sample exhibit 2.2. Only Stiffness differs in the same running motion: the higher the value, the better the hair keeps its original shape." />
 
 | Item | Detail |
 |------|--------|

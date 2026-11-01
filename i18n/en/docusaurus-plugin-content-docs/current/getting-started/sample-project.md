@@ -144,14 +144,21 @@ Continue to [Open and play the sample level](#play-sample).
 
 ## Open and Play the Sample Level {#play-sample}
 
-Once the project launches, check out the demo.
+Once the project launches, check out the demo. The level to open depends on the version you downloaded.
+
+| Version | Level to open |
+|---|---|
+| Development `master` | `L_KPS_AllExamples` (loaded first when the project opens) |
+| Stable v1.21.0 | `L_KawaiiPhysicsSample` |
 
 1. Open `Content/KawaiiPhysicsSample/` in the **Content Browser**
-2. Double-click `L_KawaiiPhysicsSample` to open the level
+2. Double-click the level from the table above
 3. Click **Play** or **Simulate** in the toolbar
 4. You can watch the sample character's hair and clothing sway
 
-<!-- IMAGE_NEEDED: L_KawaiiPhysicsSample opened in the editor, showing the Play button location -->
+![L_KPS_AllExamples open in the editor, with the toolbar Play button outlined in red](/img/editor/sample-level-play-en.webp)
+
+*`L_KPS_AllExamples` from the development `master` opened in UE 5.8. The red outline marks the **Play** button. The stable sample has a different exhibit layout.*
 
 :::tip
 Moving and rotating the character makes the swaying parts move more dramatically due to inertia. Open the Animation Blueprint, change the parameters on the KawaiiPhysics node, and compare how the behavior differs.

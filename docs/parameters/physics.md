@@ -3,6 +3,8 @@ sidebar_position: 2
 title: "物理パラメータ"
 ---
 
+import DocVideo from '@site/src/components/DocVideo';
+
 # 物理パラメータ
 
 <!-- AUTO-GENERATED: このページはソースコードから自動生成されます -->
@@ -173,9 +175,7 @@ SimulationSpaceがBaseBoneSpaceの場合のみ有効です。
 | 型 | float |
 | デフォルト | 10.0 |
 
-![Teleport Thresholdの動作](/img/generated/teleport-threshold-concept.svg)
-
-*しきい値を超える移動があった場合、物理に反映されずテレポート扱いになる*
+<DocVideo src="/video/sample/teleport-distance.mp4" poster="/video/sample/teleport-distance.jpg" alt="Threshold 300の鎖は瞬間移動で大きく揺れ、50の鎖は揺れない録画" caption="開発版サンプル展示2.7の実機録画。3秒ごとに120cm瞬間移動します。既定値300（左）は移動が反映されて大きく揺れ、50（右）はしきい値を超えた移動が物理に反映されません。" />
 
 ### PlanarConstraint
 
@@ -250,9 +250,7 @@ SimulationSpaceがBaseBoneSpaceの場合のみ有効です。
 | デフォルト | 0.0 |
 | 範囲 | 0.0 以上 |
 
-![DummyBoneの効果](/img/generated/dummybone-effect.svg)
-
-*DummyBoneを追加することで末端ボーンの動きが安定する*
+<DocVideo src="/video/sample/dummy-bone-length.mp4" poster="/video/sample/dummy-bone-length.jpg" alt="DummyBoneLengthが0の鎖は先端だけ折れ曲がり、25の鎖は先端まで滑らかにつながって揺れる録画" caption="開発版サンプル展示2.3の鎖でDummyBoneLengthだけを変えた比較録画。0（左）では末端ボーンだけが折れ曲がり、25（右）では末端まで一続きに揺れます。" />
 
 ### BoneForwardAxis
 

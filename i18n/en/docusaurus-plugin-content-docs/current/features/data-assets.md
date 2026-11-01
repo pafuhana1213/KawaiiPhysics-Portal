@@ -49,8 +49,6 @@ BoneConstraint settings are stored in a dedicated BoneConstraintsDataAsset, not 
 
 *Generating bone constraints from regular expressions in BoneConstraintsDataAsset*
 
-![BoneConstraint Demo](/img/features/boneconstraint-demo.webp)
-
 Bone sets for constraints can be specified using regular expressions:
 
 ```text

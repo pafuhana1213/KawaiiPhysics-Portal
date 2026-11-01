@@ -3,6 +3,8 @@ sidebar_position: 8
 title: "Bone Constraint"
 ---
 
+import DocVideo from '@site/src/components/DocVideo';
+
 # Bone Constraint
 
 :::tip Version Info
@@ -17,11 +19,7 @@ In setups where multiple vertical bone chains line up like a skirt, each chain c
 
 Adding horizontal distance constraints between bones at the same level with Bone Constraint keeps the distance between columns and gives them a cloth-like cohesion. This makes it easier to reduce over-spreading, variation, and penetration between chains.
 
-![How Bone Constraint works](/img/generated/bone-constraint-concept.svg)
-
-*Constrains adjacent bone chains horizontally and maintains the distance between bones.*
-
-![BoneConstraint Demo](/img/features/boneconstraint-demo.webp)
+<DocVideo src="/video/sample/bone-constraint.mp4" poster="/video/sample/bone-constraint.jpg" alt="Without constraints a leg pokes through the skirt; with BoneConstraints and Subdivision the hem lifts and the leg passes under it" caption="Close-up comparison recorded with development sample exhibit 5.1. Without constraints (left) the leg pokes through the skirt. The right side adds BoneSubdivisionCount = 1 and BoneConstraintSubdivisionCount = 2 to BoneConstraints, so the hem lifts and the leg passes under it." />
 
 ## Setup
 

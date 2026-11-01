@@ -3,6 +3,8 @@ sidebar_position: 4
 title: "リミットパラメータ"
 ---
 
+import DocVideo from '@site/src/components/DocVideo';
+
 # リミットパラメータ
 
 <!-- AUTO-GENERATED: このページはソースコードから自動生成されます -->
@@ -19,9 +21,7 @@ title: "リミットパラメータ"
 
 ボーン間の距離を維持するための制約設定です。スカートのように、ボーン間の距離を一定に保ちたい場合に使用します。
 
-![Bone Constraintの仕組み](/img/generated/bone-constraint-concept.svg)
-
-*Bone Constraintによるボーン間距離の維持*
+<DocVideo src="/video/sample/bone-constraint.mp4" poster="/video/sample/bone-constraint.jpg" alt="拘束なしのスカートは脚が突き抜け、BoneConstraintsとSubdivisionを併用したスカートは裾が持ち上がって脚を通す録画" caption="開発版サンプル展示5.1を使った寄りの比較録画。左の拘束なしは脚がスカートを突き抜けます。右はBoneConstraintsにBoneSubdivisionCount = 1とBoneConstraintSubdivisionCount = 2を加えた設定で、裾が持ち上がって脚を下から通します。" />
 
 ### BoneConstraintGlobalComplianceType
 

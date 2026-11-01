@@ -6,6 +6,7 @@ description: "Reuse nearby walls and props' collision to help keep hair and clot
 import LegacyReference from '@site/src/components/LegacyReference';
 
 import DocFigure from '@site/src/components/DocFigure';
+import DocVideo from '@site/src/components/DocVideo';
 
 # Simple World Collision
 
@@ -19,7 +20,7 @@ Hair or a hem can pass through a corridor wall or a chair near the character. Co
 
 Simple World Collision gathers nearby objects' Simple Collision and pushes simulated bones outside those shapes. It lets you reuse collision prepared on the level's objects when checking motion near walls and furniture.
 
-<DocFigure src="/img/generated/style-a-flat-transparent-v1.png" alt="Left: a bone radius overlaps a Box. Right: it has been pushed outside, including its radius." caption="AI-generated concept: push the orange circle outside the blue box." maxWidth={420} />
+<DocVideo src="/video/sample/simple-world-collision.mp4" poster="/video/sample/simple-world-collision.jpg" alt="With Simple World Collision off a chain passes through a box; with it on the chain is pushed out around the box" caption="Recorded from development sample exhibit 7.1. Off (left): the chain passes through the box. On (right): the chain is pushed outside the box." />
 
 ## Usage {#basic-setup}
 

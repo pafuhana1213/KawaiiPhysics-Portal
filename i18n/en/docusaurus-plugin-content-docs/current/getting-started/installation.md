@@ -42,7 +42,9 @@ git submodule add https://github.com/pafuhana1213/KawaiiPhysics.git Plugins/Kawa
 3. Check **Enabled**
 4. Restart the editor
 
-![Plugin enable screen](/img/generated/plugin-enable-mock.svg)
+![The Plugins window filtered to KawaiiPhysics with its Enabled box checked](/img/editor/plugin-enable-en.webp)
+
+*The actual UE 5.8 window. The version shown depends on the plugin you installed.*
 
 ## Verification
 

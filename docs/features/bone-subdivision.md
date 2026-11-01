@@ -3,6 +3,8 @@ sidebar_position: 9
 title: "Bone Subdivision（ボーン細分化）"
 ---
 
+import DocVideo from '@site/src/components/DocVideo';
+
 # Bone Subdivision（ボーン細分化）
 
 :::tip バージョン情報
@@ -17,9 +19,7 @@ v1.21.0で追加
 
 Bone Subdivision は実ボーンの間にダミーボーンを挿入することで、コリジョンや拘束をより細かく効かせ、この貫通を防ぎます。
 
-![Bone Subdivisionによる貫通防止の概念図](/img/generated/bone-subdivision-concept.svg)
-
-*実ボーン間にダミーを挿入してコリジョン解像度を上げ、貫通を防ぐ。横方向（Bridge）細分化で列と列の隙間も埋められる。*
+<DocVideo src="/video/sample/bone-subdivision.mp4" poster="/video/sample/bone-subdivision.jpg" alt="BoneSubdivisionCount 0の鎖は青い小球をすり抜け、2の鎖は小球に引っかかる録画" caption="開発版サンプル展示5.3の実機録画。ボーンの間に置いた青い球を、Count 0（左）はすり抜け、Count 2（右）は仮想の点で止めます。右はbBoneSubdivisionCollisionOnlyで当たり判定だけに使っています。" />
 
 :::note 内部的な動作
 挿入されるダミーは実スケルトンには存在せず（`BoneIndex` が負）、最終出力時に自動で除外されます。結果は実ボーンにのみ反映されるため、リグやアニメーションには影響しません。挿入数はボーン間距離とコリジョン半径から自動補正され、セグメントが重ならないようにクランプされます。

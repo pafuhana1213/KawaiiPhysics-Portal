@@ -3,6 +3,8 @@ sidebar_position: 8
 title: "Bone Constraint（ボーン間拘束）"
 ---
 
+import DocVideo from '@site/src/components/DocVideo';
+
 # Bone Constraint（ボーン間拘束）
 
 :::tip バージョン情報
@@ -17,11 +19,7 @@ v1.14.0で実験的機能として追加、v1.19.0で正式化
 
 Bone Constraint で同じ段のボーン同士に横方向の距離拘束を入れると、列同士の距離が保たれ、布のようなまとまりが生まれます。これにより、広がりすぎ、ばらつき、チェーン間のすり抜けを抑えやすくなります。
 
-![Bone Constraintの仕組み](/img/generated/bone-constraint-concept.svg)
-
-*隣接するボーンチェーンを横方向に拘束し、ボーン間距離を維持する。*
-
-![BoneConstraint Demo](/img/features/boneconstraint-demo.webp)
+<DocVideo src="/video/sample/bone-constraint.mp4" poster="/video/sample/bone-constraint.jpg" alt="拘束なしのスカートは脚が突き抜け、BoneConstraintsとSubdivisionを併用したスカートは裾が持ち上がって脚を通す録画" caption="開発版サンプル展示5.1を使った寄りの比較録画。左の拘束なしは脚がスカートを突き抜けます。右はBoneConstraintsにBoneSubdivisionCount = 1とBoneConstraintSubdivisionCount = 2を加えた設定で、裾が持ち上がって脚を下から通します。" />
 
 ## 設定方法
 
