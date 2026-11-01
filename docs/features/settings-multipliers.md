@@ -25,7 +25,7 @@ import LegacyReference from '@site/src/components/LegacyReference';
 |---|---|
 | WorldDampingLocation／Rotation | 実際の反映率は `1 - 値`。倍率1未満では移動・回転が強く反映される |
 | Radius | 0ではワールドコリジョンのSweep・押し出しが実質無効。ダミーボーン密度はベース半径で決まるので、1未満では被覆に隙間が生じうる |
-| LimitAngle | ベース0は無制限のまま。正のベースは倍率0でも極小の正値にクランプされ、無制限へ変わらない |
+| LimitAngle | ベース0は無制限のまま。正のベースは倍率0でも極小の正値にクランプされ、無制限へ変わらない。`LimitAngleMode` が `Per Axis` のときは `PerAxisLimitAngle` の各軸の `Min` と `Max` に掛かり、倍率0で全軸がロックされる |
 
 ## Settings Multiplier (Pulse)の使用方法 {#artist-setup}
 

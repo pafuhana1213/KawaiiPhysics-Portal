@@ -158,6 +158,10 @@ TArray<FKawaiiPhysicsSyncBone> SyncBones;
 LimitAngleは、入力アニメーションの親から子への方向と、シミュレーション中の同じ方向との角度差を制限します。正の値を大きくすると許容角度が広がります。`0` は角度制限を無効にします。
 :::
 
+### LimitAngleMode と PerAxisLimitAngle
+
+`LimitAngleMode` を `Per Axis` にすると、`LimitAngle` の代わりに `PerAxisLimitAngle` を使い、親ボーンのローカル軸ごとに範囲を指定できます。ヒンジや片側だけの曲げを作れます。詳しくは [PerAxisLimitAngle](/docs/parameters/physics#peraxislimitangle) を参照してください。
+
 ## Data Assetからの読み込み
 
 制限パラメータは以下のData Assetから読み込むことができます：

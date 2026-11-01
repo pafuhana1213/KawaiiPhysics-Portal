@@ -53,6 +53,30 @@ import DocVideo from '@site/src/components/DocVideo';
 | 大きくすると | コリジョンに早く反応する（太い） |
 | 小さくすると | すり抜けやすい（細い） |
 
+## 角度制限 — 曲がる範囲を決める
+
+揺れが大きすぎるときや、曲がってほしくない方向があるときは、角度制限を使います。`PhysicsSettings` の `LimitAngleMode` で形状を選びます。
+
+| LimitAngleMode | 向いている用途 | 設定 |
+|----------------|---------------|------|
+| Cone | 全方向の暴れを抑えたい | `LimitAngle` に上限の角度を指定する |
+| Per Axis | 蝶番のように一方向にだけ揺らしたい、片側にだけ曲げたい | `PerAxisLimitAngle` に軸ごとの範囲を指定する |
+
+:::warning 未正式リリース
+`Per Axis` はまだ正式リリースされていません。KawaiiPhysics v1.22でリリース予定です。開発中のため仕様が変更される場合があります。
+:::
+
+<DocVideo src="/video/sample/per-axis-limit-angle.mp4" poster="/video/sample/per-axis-limit-angle.jpg" alt="向きが回転する同じ外力で、Cone 60の鎖は前後左右に回り、ヒンジの鎖は左右にだけ揺れ、片側の鎖は右へ振れて真下で止まる録画" caption="開発版サンプル展示2.11の実機録画。土台は固定で、3本とも向きが一周する同じ外力（Curve、3秒で一周、強さ50）で押しています。左のCone 60は前後左右に回ります。中央はYをロックしてZを±60にしたヒンジで、左右にだけ揺れます。右はYをロックしてZを0〜60にしており、右へ振れたあと真下で止まります。" />
+
+`Per Axis` の設定は次の順に進めます。
+
+1. `LimitAngleMode` を `Per Axis` にします。
+2. 止めたい曲げに対応する軸の **ロック** を押します。`Min` と `Max` が `0` になります。
+3. 片側だけ曲げたい軸は、`Min` か `Max` の一方を `0` にします。
+4. AnimBP のプレビューで、制限の境界と軸の向きを確認します。曲がる向きが逆のときは、範囲を `Min` と `Max` のもう一方に指定します。
+
+`Per Axis` の `0` は「ロック」で、`LimitAngle` の `0`（制限なし）とは意味が逆です。各項目の詳細は [PerAxisLimitAngle](/docs/parameters/physics#peraxislimitangle) を参照してください。
+
 ## 調整のコツ（レシピ）
 
 まず Damping と Stiffness の組み合わせで全体の質感を決め、必要に応じてコリジョンを足します。下表はあくまで出発点の目安です。
