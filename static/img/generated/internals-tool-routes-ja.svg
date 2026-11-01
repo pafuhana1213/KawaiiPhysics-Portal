@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="830" viewBox="0 0 1200 830" role="img" aria-labelledby="title" font-family="system-ui, sans-serif">
+  <title id="title">エディタツールの読み書き経路</title>
+  <defs>
+    <marker id="arrow-green" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker>
+    <marker id="arrow-blue" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#417aa5"/></marker>
+    <marker id="arrow-orange" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker>
+    <marker id="arrow-gray" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#6b7c78"/></marker>
+  </defs>
+  <rect width="1200" height="830" rx="24" fill="#f5faf8"/>
+  <text x="36" y="58" font-size="30" font-weight="700" fill="#244e46">エディタツールの読み書き経路</text>
+  <text x="36" y="96" font-size="22" fill="#244e46">青：読み取り　　緑：書き込み</text>
+  <text x="36" y="134" font-size="20" font-weight="650" fill="#244e46">ツール</text>
+  <text x="286" y="134" font-size="20" font-weight="650" fill="#244e46">経路</text>
+  <text x="900" y="134" font-size="20" font-weight="650" fill="#305e80">情報</text>
+  <rect x="36" y="154" width="210" height="154" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <circle cx="62" cy="182" r="14" fill="#39756a"/>
+  <text x="62" y="188" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">1</text>
+  <text x="88" y="190" font-size="20" font-weight="650" fill="#244e46">Wind Scope</text>
+  <text x="54" y="232" font-size="18" fill="#244e46">Preview / Live</text>
+  <text x="54" y="266" font-size="18" fill="#244e46">波形・値・編集</text>
+  <rect x="900" y="154" width="264" height="154" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <text x="918" y="188" font-size="18" fill="#305e80">グラフの風設定</text>
+  <text x="918" y="224" font-size="18" fill="#305e80"><tspan font-family="Consolas, monospace">ScopeBuffer</tspan></text>
+  <text x="918" y="260" font-size="18" fill="#305e80">実行中の <tspan font-family="Consolas, monospace">UPROPERTY</tspan> 値</text>
+  <text x="918" y="292" font-size="18" fill="#305e80">風の変更要求</text>
+  <text x="286" y="184" font-size="18" fill="#305e80"><tspan font-family="Consolas, monospace">ResolveGraphWind</tspan> / <tspan font-family="Consolas, monospace">ComputeWindSample</tspan></text>
+  <text x="750" y="184" font-size="18" fill="#244e46">直接編集</text>
+  <path d="M890 200H256" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+  <path d="M256 192H890" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+  <text x="286" y="220" font-size="18" fill="#305e80"><tspan font-family="Consolas, monospace">ResolveLiveWind</tspan> / <tspan font-family="Consolas, monospace">Mutex</tspan></text>
+  <path d="M890 232H256" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+  <text x="286" y="256" font-size="18" fill="#305e80"><tspan font-family="Consolas, monospace">UpdateLiveEditValuesFromRuntime</tspan></text>
+  <path d="M890 268H256" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+  <text x="286" y="292" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">RequestDynamicParams</tspan> / <tspan font-family="Consolas, monospace">RequestGust</tspan></text>
+  <path d="M256 304H890" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+  <rect x="36" y="328" width="210" height="78" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <circle cx="62" cy="356" r="14" fill="#39756a"/>
+  <text x="62" y="362" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">2</text>
+  <text x="88" y="364" font-size="20" font-weight="650" fill="#244e46"><tspan font-family="Consolas, monospace">Node</tspan> Audit</text>
+  <rect x="900" y="328" width="264" height="78" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <text x="918" y="366" font-size="18" fill="#305e80">グラフノード</text>
+  <text x="918" y="390" font-size="18" fill="#305e80"><tspan font-family="Consolas, monospace">Node</tspan></text>
+  <text x="286" y="360" font-size="18" fill="#305e80"><tspan font-family="Consolas, monospace">CollectKawaiiPhysicsGraphNodes</tspan></text>
+  <text x="286" y="390" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">ApplyPresetToProject</tspan></text>
+  <path d="M890 366H256" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+  <path d="M256 402H890" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+  <rect x="36" y="426" width="210" height="100" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <circle cx="62" cy="454" r="14" fill="#39756a"/>
+  <text x="62" y="460" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">3</text>
+  <text x="88" y="462" font-size="20" font-weight="650" fill="#244e46">Preset Diff</text>
+  <rect x="900" y="426" width="264" height="100" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <text x="918" y="464" font-size="18" fill="#305e80">グラフの <tspan font-family="Consolas, monospace">Node</tspan></text>
+  <text x="918" y="500" font-size="18" fill="#305e80"><tspan font-family="Consolas, monospace">Preset.Node</tspan></text>
+  <text x="286" y="458" font-size="18" fill="#305e80"><tspan font-family="Consolas, monospace">BuildSnapshot</tspan> / <tspan font-family="Consolas, monospace">MatchesNode</tspan> / <tspan font-family="Consolas, monospace">FProperty</tspan></text>
+  <path d="M890 470H256" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+  <text x="286" y="504" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">CopyPropertiesByName</tspan> / <tspan font-family="Consolas, monospace">ApplyPresetToGraphNode</tspan></text>
+  <path d="M256 516H890" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+  <rect x="36" y="546" width="210" height="100" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <circle cx="62" cy="574" r="14" fill="#39756a"/>
+  <text x="62" y="580" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">4</text>
+  <text x="88" y="582" font-size="20" font-weight="650" fill="#244e46">Editor</text>
+  <text x="88" y="614" font-size="20" font-weight="650" fill="#244e46">Library</text>
+  <rect x="900" y="546" width="264" height="100" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <text x="918" y="584" font-size="18" fill="#305e80">グラフノード</text>
+  <text x="918" y="620" font-size="18" fill="#305e80"><tspan font-family="Consolas, monospace">Node</tspan></text>
+  <text x="286" y="578" font-size="18" fill="#305e80"><tspan font-family="Consolas, monospace">FKawaiiPhysicsGraphNodeHandle</tspan></text>
+  <path d="M890 590H256" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+  <text x="286" y="624" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">Modify</tspan> → <tspan font-family="Consolas, monospace">PostEditChangeProperty</tspan></text>
+  <path d="M256 636H890" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+  <rect x="36" y="666" width="210" height="130" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <circle cx="62" cy="694" r="14" fill="#39756a"/>
+  <text x="62" y="700" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">5</text>
+  <text x="88" y="702" font-size="20" font-weight="650" fill="#244e46">Toolset</text>
+  <rect x="900" y="666" width="264" height="130" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <text x="918" y="704" font-size="18" fill="#305e80">編集値</text>
+  <text x="918" y="748" font-size="18" fill="#305e80">直近の評価値</text>
+  <text x="286" y="700" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">unreal.KawaiiPhysicsEditorLibrary</tspan></text>
+  <path d="M890 710H256" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+  <path d="M256 720H890" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+  <text x="286" y="742" font-size="18" fill="#305e80"><tspan font-family="Consolas, monospace">GetRuntimeNodeInfosOnComponent</tspan></text>
+  <text x="286" y="784" font-size="18" fill="#305e80">Game Thread / コンポーネント Tick 後</text>
+  <path d="M890 754H256" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="diagram-title" font-family="system-ui, sans-serif">
+<title id="diagram-title">外力の3系統</title>
+<defs>
+<marker id="arrow-green" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker>
+<marker id="arrow-blue" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#417aa5"/></marker>
+<marker id="arrow-orange" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker>
+</defs>
+<rect width="1200" height="675" rx="24" fill="#f5faf8"/>
+<!-- Text width budget: full-width = font-size; ASCII = font-size * 0.6. Box padding >= 16 px. -->
+<text x="36" y="58" font-size="30" font-weight="650" fill="#244e46">外力の3系統</text>
+<text x="36" y="96" font-size="22" fill="#39756a">追加経路・保持形式・削除条件</text>
+<rect x="36" y="142" width="352" height="491" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="62" cy="168" r="14" fill="#39756a"/>
+<text x="62" y="174" font-size="18" font-weight="650" text-anchor="middle" fill="#f5faf8">1</text>
+<text x="88" y="175" font-size="20" font-weight="650" fill="#244e46">UObject 外力</text>
+<text x="54" y="213" font-size="18" font-family="Consolas, monospace" fill="#244e46">CustomExternalForces</text>
+<path d="M54 231H370" fill="none" stroke="#6b7c78" stroke-width="1.5"/>
+<text x="54" y="264" font-size="18" font-weight="650" fill="#244e46">追加</text>
+<text x="54" y="297" font-size="18" fill="#244e46">ノード設定</text>
+<path d="M212 337V363" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+<text x="54" y="395" font-size="18" font-weight="650" fill="#244e46">保持</text>
+<text x="54" y="428" font-size="18" font-family="Consolas, monospace" fill="#244e46">UObject / Instanced</text>
+<text x="54" y="457" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">Blueprint</tspan>・<tspan font-family="Consolas, monospace">C</tspan>++</text>
+<text x="54" y="486" font-size="18" fill="#244e46">UPROPERTY / GC</text>
+<path d="M54 517H370" fill="none" stroke="#6b7c78" stroke-width="1.5"/>
+<text x="54" y="552" font-size="18" font-weight="650" fill="#244e46">削除</text>
+<text x="54" y="589" font-size="18" fill="#244e46">ノード設定</text>
+<rect x="424" y="142" width="352" height="491" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<circle cx="450" cy="168" r="14" fill="#417aa5"/>
+<text x="450" y="174" font-size="18" font-weight="650" text-anchor="middle" fill="#f5faf8">2</text>
+<text x="476" y="175" font-size="20" font-weight="650" fill="#244e46">構造体外力</text>
+<text x="442" y="213" font-size="18" font-family="Consolas, monospace" fill="#244e46">ExternalForces</text>
+<path d="M442 231H758" fill="none" stroke="#6b7c78" stroke-width="1.5"/>
+<text x="442" y="264" font-size="18" font-weight="650" fill="#244e46">追加</text>
+<text x="442" y="297" font-size="18" fill="#244e46">ノード設定</text>
+<text x="442" y="326" font-size="18" fill="#244e46">Library / AnimNotify</text>
+<path d="M600 337V363" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+<text x="442" y="395" font-size="18" font-weight="650" fill="#244e46">保持</text>
+<text x="442" y="428" font-size="18" font-family="Consolas, monospace" fill="#244e46">FInstancedStruct</text>
+<text x="442" y="457" font-size="18" font-family="Consolas, monospace" fill="#244e46">C++</text>
+<text x="442" y="486" font-size="18" fill="#244e46">UPROPERTY / GC</text>
+<path d="M442 517H758" fill="none" stroke="#6b7c78" stroke-width="1.5"/>
+<text x="442" y="552" font-size="18" font-weight="650" fill="#244e46">削除</text>
+<text x="442" y="589" font-size="18" fill="#244e46">明示削除 / one-shot</text>
+<rect x="812" y="142" width="352" height="491" rx="12" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+<circle cx="838" cy="168" r="14" fill="#bd6a4d"/>
+<text x="838" y="174" font-size="18" font-weight="650" text-anchor="middle" fill="#f5faf8">3</text>
+<text x="864" y="175" font-size="20" font-weight="650" fill="#244e46">一時外力</text>
+<text x="830" y="213" font-size="18" font-family="Consolas, monospace" fill="#244e46">TransientForceStore.Items</text>
+<path d="M830 231H1146" fill="none" stroke="#6b7c78" stroke-width="1.5"/>
+<text x="830" y="264" font-size="18" font-weight="650" fill="#244e46">追加</text>
+<text x="830" y="297" font-size="18" fill="#244e46">任意スレッド → 要求キュー</text>
+<text x="830" y="326" font-size="18" fill="#244e46">Worker 取り込み</text>
+<path d="M988 337V363" fill="none" stroke="#bd6a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-orange)"/>
+<text x="830" y="395" font-size="18" font-weight="650" fill="#244e46">保持</text>
+<text x="830" y="428" font-size="18" font-family="Consolas, monospace" fill="#244e46">FInstancedStruct</text>
+<text x="830" y="457" font-size="18" font-family="Consolas, monospace" fill="#244e46">RemainingLifetime / HandleId</text>
+<text x="830" y="486" font-size="18" fill="#244e46">Worker 専用 / GC 追跡なし</text>
+<path d="M830 517H1146" fill="none" stroke="#6b7c78" stroke-width="1.5"/>
+<text x="830" y="552" font-size="18" font-weight="650" fill="#244e46">削除</text>
+<text x="830" y="589" font-size="18" fill="#244e46">寿命 / 停止 / 上限超過</text>
+</svg>

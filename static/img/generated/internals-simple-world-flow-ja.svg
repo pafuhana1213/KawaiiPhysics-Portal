@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="810" viewBox="0 0 1200 810" role="img" aria-labelledby="diagram-title" font-family="system-ui, sans-serif">
+<title id="diagram-title">Simple World Collision の収集と読み取り</title>
+<defs><marker id="green-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker><marker id="orange-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker></defs>
+<rect width="1200" height="810" rx="24" fill="#f5faf8"/>
+<text x="36" y="58" font-size="30" fill="#244e46" font-weight="700">Simple World Collision の収集と読み取り</text>
+<text x="36" y="96" font-size="22" fill="#39756a" font-family="Consolas, monospace">TickSimpleWorldCollision / UpdateSimpleWorldCollisionLimits</text>
+<rect id="desc" x="36" y="132" width="456" height="112" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<circle cx="62" cy="158" r="14" fill="#417aa5"/>
+<text x="62" y="164" font-size="18" fill="#f5faf8" font-weight="650" text-anchor="middle">1</text>
+<text x="88" y="168" font-size="20" fill="#244e46" font-weight="650">評価側・Desc 登録</text>
+<text x="54" y="211" font-size="18" fill="#417aa5" font-family="Consolas, monospace">SetDesc · Merge キャッシュ更新</text>
+<rect id="merge" x="580" y="132" width="584" height="112" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<circle cx="606" cy="158" r="14" fill="#417aa5"/>
+<text x="606" y="164" font-size="18" fill="#f5faf8" font-weight="650" text-anchor="middle">2</text>
+<text x="632" y="168" font-size="20" fill="#244e46" font-weight="650"><tspan font-family="Consolas, monospace">Tick</tspan>・Desc 取得</text>
+<text x="598" y="211" font-size="18" fill="#417aa5" font-family="Consolas, monospace">BuildMergedDesc · DescLock</text>
+<path d="M492 188H580" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)"/>
+<rect id="gt" x="36" y="288" width="1128" height="196" rx="12" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5" stroke-dasharray="7 6"/>
+<text x="56" y="324" font-size="20" fill="#39756a" font-weight="650">Game Thread · <tspan font-family="Consolas, monospace">Tick</tspan></text>
+<rect id="gather" x="56" y="338" width="332" height="126" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="82" cy="364" r="14" fill="#39756a"/>
+<text x="82" y="370" font-size="18" fill="#f5faf8" font-weight="650" text-anchor="middle">3</text>
+<text x="108" y="374" font-size="20" fill="#244e46" font-weight="650">収集タイミング</text>
+<rect id="update" x="434" y="338" width="332" height="126" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="460" cy="364" r="14" fill="#39756a"/>
+<text x="460" y="370" font-size="18" fill="#f5faf8" font-weight="650" text-anchor="middle">4</text>
+<text x="486" y="374" font-size="20" fill="#244e46" font-weight="650">毎 <tspan font-family="Consolas, monospace">Tick</tspan> の形状更新</text>
+<rect id="publish" x="812" y="338" width="332" height="126" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="838" cy="364" r="14" fill="#39756a"/>
+<text x="838" y="370" font-size="18" fill="#f5faf8" font-weight="650" text-anchor="middle">5</text>
+<text x="864" y="374" font-size="20" fill="#244e46" font-weight="650">変化時の <tspan font-family="Consolas, monospace">Publish</tspan></text>
+<text x="74" y="409" font-size="18" fill="#244e46">Overlap・地面</text>
+<text x="74" y="443" font-size="18" fill="#39756a" font-family="Consolas, monospace">GatherSimpleWorldEntry</text>
+<text x="452" y="409" font-size="18" fill="#244e46">Transform・フェード</text>
+<text x="452" y="443" font-size="18" fill="#39756a" font-family="Consolas, monospace">UpdateSimpleWorldTransforms</text>
+<text x="830" y="409" font-size="18" fill="#39756a" font-family="Consolas, monospace">Slot / GroundSlot</text>
+<text x="830" y="443" font-size="18" fill="#39756a" font-family="Consolas, monospace">MemberSlots</text>
+<path d="M872 244V268H406V332H222V338" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)"/>
+<path d="M388 401H434" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)"/>
+<path d="M766 401H812" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)"/>
+<rect id="worker" x="36" y="520" width="1128" height="250" rx="12" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5" stroke-dasharray="7 6"/>
+<text x="56" y="556" font-size="20" fill="#417aa5" font-weight="650">評価スレッド · Worker / Game · 毎評価</text>
+<rect id="serial" x="56" y="590" width="332" height="120" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<circle cx="82" cy="616" r="14" fill="#417aa5"/>
+<text x="82" y="622" font-size="18" fill="#f5faf8" font-weight="650" text-anchor="middle">6</text>
+<text x="108" y="626" font-size="20" fill="#244e46" font-weight="650">Serial の比較</text>
+<rect id="copy" x="434" y="590" width="332" height="120" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<circle cx="460" cy="616" r="14" fill="#417aa5"/>
+<text x="460" y="622" font-size="18" fill="#f5faf8" font-weight="650" text-anchor="middle">7</text>
+<text x="486" y="626" font-size="20" fill="#244e46" font-weight="650">変更時・未読時</text>
+<rect id="space" x="812" y="590" width="332" height="120" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<circle cx="838" cy="616" r="14" fill="#417aa5"/>
+<text x="838" y="622" font-size="18" fill="#f5faf8" font-weight="650" text-anchor="middle">8</text>
+<text x="864" y="626" font-size="20" fill="#244e46" font-weight="650">空間変換</text>
+<text x="74" y="660" font-size="18" fill="#417aa5" font-family="Consolas, monospace">PublishSerial · atomic</text>
+<text x="74" y="690" font-size="18" fill="#417aa5">コピー前の取得</text>
+<text x="452" y="660" font-size="18" fill="#417aa5" font-family="Consolas, monospace">CopyShapeLimits</text>
+<text x="452" y="690" font-size="18" fill="#417aa5"><tspan font-family="Consolas, monospace">BufferLock</tspan> · ワールド空間</text>
+<text x="830" y="660" font-size="18" fill="#417aa5">シミュレーション空間</text>
+<text x="830" y="690" font-size="18" fill="#417aa5">保存済みコピーの再変換</text>
+<path d="M978 464V504H1176V572H222V590" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)"/>
+<path d="M388 650H434" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)"/>
+<path d="M766 650H812" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)"/>
+<path d="M222 710V744H978V710" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)"/>
+<text x="476" y="735" font-size="18" fill="#39756a">同値：コピー省略</text>
+<text x="36" y="795" font-size="18" fill="#6b7c78">Reader：Merge 対象外　　形状・地面：個別の Serial</text>
+</svg>

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="710" viewBox="0 0 1200 710" role="img" aria-labelledby="diagram-title" font-family="system-ui, sans-serif">
+<title id="diagram-title">角度制限の2モード</title>
+<defs>
+<marker id="arrow-g" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker>
+<marker id="arrow-b" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#417aa5"/></marker>
+<marker id="arrow-o" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker>
+<marker id="arrow-gray" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#6b7c78"/></marker>
+</defs>
+<rect width="1200" height="710" rx="24" fill="#f5faf8"/>
+<text id="label-1" x="36" y="58" font-size="30" fill="#244e46" font-weight="650">角度制限の2モード</text>
+<text id="label-2" x="36" y="96" font-size="22" fill="#39756a">回転ベクトルの角度空間</text>
+<rect id="cone" x="36" y="142" width="552" height="466" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="62" cy="168" r="14" fill="#39756a"/><text x="62" y="174" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">1</text>
+<text id="label-3" x="88" y="176" font-size="20" fill="#244e46" font-weight="650">円錐モード</text>
+<rect id="peraxis" x="612" y="142" width="552" height="466" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="638" cy="168" r="14" fill="#39756a"/><text x="638" y="174" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">2</text>
+<text id="label-4" x="664" y="176" font-size="20" font-family="Consolas, monospace" fill="#244e46" font-weight="650">PerAxis</text>
+<text id="label-5" x="54" y="210" font-size="18" font-family="Consolas, monospace" fill="#244e46">Cone</text>
+<text id="label-6" x="630" y="210" font-size="18" fill="#244e46">象限ごとの楕円</text>
+<circle cx="304" cy="350" r="110" fill="#dcebe7" stroke="#39756a" stroke-width="2"/>
+<path d="M138 350H476" fill="none" stroke="#6b7c78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-gray)"/>
+<path d="M304 490V228" fill="none" stroke="#6b7c78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-gray)"/>
+<text id="label-7" x="492" y="356" font-size="18" font-family="Consolas, monospace" fill="#6b7c78">A</text>
+<text id="label-8" x="320" y="230" font-size="18" font-family="Consolas, monospace" fill="#6b7c78">B</text>
+<text id="label-9" x="185" y="482" font-size="18" font-family="Consolas, monospace" fill="#39756a">LimitAngle</text>
+<path d="M304 350L454 260" fill="none" stroke="#bd6a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 5"/>
+<path d="M454 260L398.32 293.41" fill="none" stroke="#bd6a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-o)"/>
+<circle cx="454" cy="260" r="6" fill="#bd6a4d" stroke="#bd6a4d" stroke-width="2"/>
+<circle cx="398.3242218283799" cy="293.4054669029721" r="6" fill="#39756a" stroke="#39756a" stroke-width="2"/>
+<circle cx="304" cy="350" r="6" fill="#417aa5" stroke="#417aa5" stroke-width="2"/>
+<path d="M884 290A130 60 0 0 1 1014 350A130 110 0 0 1 884 460A76 110 0 0 1 808 350A76 60 0 0 1 884 290Z" fill="#dcebe7" stroke="#39756a" stroke-width="2"/>
+<path d="M732 350H1064" fill="none" stroke="#6b7c78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-gray)"/>
+<path d="M884 488V232" fill="none" stroke="#6b7c78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-gray)"/>
+<text id="label-10" x="1080" y="356" font-size="18" font-family="Consolas, monospace" fill="#6b7c78">A</text>
+<text id="label-11" x="900" y="250" font-size="18" font-family="Consolas, monospace" fill="#6b7c78">B</text>
+<text id="label-12" x="736" y="382" font-size="18" font-family="Consolas, monospace" fill="#39756a">MinA</text>
+<text id="label-13" x="1022" y="382" font-size="18" font-family="Consolas, monospace" fill="#39756a">MaxA</text>
+<text id="label-14" x="806" y="273" font-size="18" font-family="Consolas, monospace" fill="#39756a">MaxB</text>
+<text id="label-15" x="900" y="482" font-size="18" font-family="Consolas, monospace" fill="#39756a">MinB</text>
+<path d="M1032 256L991.35 316.16" fill="none" stroke="#bd6a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-o)"/>
+<circle cx="1032" cy="256" r="6" fill="#bd6a4d" stroke="#bd6a4d" stroke-width="2"/>
+<circle cx="991.3491166989712" cy="316.15891496152636" r="6" fill="#39756a" stroke="#39756a" stroke-width="2"/>
+<circle cx="884" cy="350" r="6" fill="#417aa5" stroke="#417aa5" stroke-width="2"/>
+<text id="label-16" x="54" y="535" font-size="20" font-family="Consolas, monospace" fill="#244e46">LimitAngle</text>
+<text id="label-17" x="54" y="574" font-size="18" fill="#945139">0：制限なし</text>
+<text id="label-18" x="630" y="535" font-size="20" font-family="Consolas, monospace" fill="#244e46">PerAxisLimitAngle</text>
+<text id="label-19" x="630" y="574" font-size="18" fill="#945139"><tspan font-family="Consolas, monospace">Min</tspan> = <tspan font-family="Consolas, monospace">Max</tspan> = 0：軸ロック</text>
+<circle cx="54" cy="640" r="6" fill="#bd6a4d" stroke="#bd6a4d" stroke-width="2"/>
+<text id="label-20" x="72" y="646" font-size="18" fill="#244e46">制限前</text>
+<circle cx="214" cy="640" r="6" fill="#39756a" stroke="#39756a" stroke-width="2"/>
+<text id="label-21" x="232" y="646" font-size="18" fill="#244e46">制限後</text>
+<circle cx="374" cy="640" r="6" fill="#417aa5" stroke="#417aa5" stroke-width="2"/>
+<text id="label-22" x="392" y="646" font-size="18" fill="#244e46">ポーズ方向</text>
+<text id="label-23" x="36" y="684" font-size="18" fill="#6b7c78">A・B：ツイスト軸以外の2軸</text>
+</svg>

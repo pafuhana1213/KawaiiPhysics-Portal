@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="diagram-title" font-family="system-ui, sans-serif">
+<title id="diagram-title">拘束と制限の実行順</title>
+<defs>
+<marker id="arrow-g" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker>
+<marker id="arrow-b" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#417aa5"/></marker>
+<marker id="arrow-o" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker>
+<marker id="arrow-gray" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#6b7c78"/></marker>
+</defs>
+<rect width="1200" height="720" rx="24" fill="#f5faf8"/>
+<text id="label-1" x="36" y="58" font-size="30" fill="#244e46" font-weight="650">拘束と制限の実行順</text>
+<text id="label-2" x="36" y="96" font-size="22" font-family="Consolas, monospace" fill="#39756a">SimulateOnce</text>
+<rect id="before" x="36" y="142" width="264" height="150" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="62" cy="168" r="14" fill="#39756a"/><text x="62" y="174" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">1</text>
+<text id="label-3" x="88" y="176" font-size="20" font-family="Consolas, monospace" fill="#244e46" font-weight="650">Bone Constraint</text>
+<text id="label-4" x="54" y="222" font-size="18" fill="#244e46">コリジョン前</text>
+<text id="label-5" x="54" y="258" font-size="18" fill="#244e46">反復</text>
+<rect id="collision" x="324" y="142" width="264" height="150" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="350" cy="168" r="14" fill="#39756a"/><text x="350" y="174" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">2</text>
+<text id="label-6" x="376" y="176" font-size="20" fill="#244e46" font-weight="650">コリジョン</text>
+<text id="label-7" x="342" y="222" font-size="18" fill="#244e46">形状による押し出し</text>
+<text id="label-8" x="342" y="258" font-size="18" font-family="Consolas, monospace" fill="#244e46">Location</text>
+<rect id="feedback" x="612" y="142" width="264" height="150" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="638" cy="168" r="14" fill="#39756a"/><text x="638" y="174" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">3</text>
+<text id="label-9" x="664" y="176" font-size="20" font-family="Consolas, monospace" fill="#244e46" font-weight="650">Bridge</text>
+<text id="label-10" x="630" y="222" font-size="18" fill="#244e46">端点へフィードバック</text>
+<text id="label-11" x="630" y="258" font-size="18" fill="#244e46">重み付き集計</text>
+<rect id="after" x="900" y="142" width="264" height="150" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="926" cy="168" r="14" fill="#39756a"/><text x="926" y="174" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">4</text>
+<text id="label-12" x="952" y="176" font-size="20" font-family="Consolas, monospace" fill="#244e46" font-weight="650">Bone Constraint</text>
+<text id="label-13" x="918" y="222" font-size="18" fill="#244e46">コリジョン後</text>
+<text id="label-14" x="918" y="258" font-size="18" fill="#244e46">反復</text>
+<path d="M300 250H324" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path d="M588 250H612" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path d="M876 250H900" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<rect id="restore" x="36" y="370" width="1128" height="216" rx="12" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+<text id="label-15" x="428" y="404" font-size="20" font-family="Consolas, monospace" fill="#244e46">RestoreBoneLengthsAndLimits</text>
+<path d="M1032 292V338H224V428" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<rect id="angle" x="52" y="428" width="344" height="138" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="78" cy="454" r="14" fill="#39756a"/><text x="78" y="460" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">5</text>
+<text id="label-16" x="104" y="462" font-size="20" fill="#244e46" font-weight="650">角度制限</text>
+<text id="label-17" x="70" y="504" font-size="18" font-family="Consolas, monospace" fill="#244e46">AdjustByAngleLimit</text>
+<text id="label-18" x="70" y="540" font-size="18" fill="#244e46">ポーズ方向を基準</text>
+<rect id="plane" x="428" y="428" width="344" height="138" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="454" cy="454" r="14" fill="#39756a"/><text x="454" y="460" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">6</text>
+<text id="label-19" x="480" y="462" font-size="20" fill="#244e46" font-weight="650">平面制約</text>
+<text id="label-20" x="446" y="504" font-size="18" font-family="Consolas, monospace" fill="#244e46">AdjustByPlanarConstraint</text>
+<text id="label-21" x="446" y="540" font-size="18" fill="#244e46">親を通る平面へ投影</text>
+<rect id="length" x="804" y="428" width="344" height="138" rx="12" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+<circle cx="830" cy="454" r="14" fill="#bd6a4d"/><text x="830" y="460" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">7</text>
+<text id="label-22" x="856" y="462" font-size="20" fill="#244e46" font-weight="650">長さ復元</text>
+<text id="label-23" x="822" y="504" font-size="18" fill="#945139">対象点の最終位置</text>
+<text id="label-24" x="822" y="540" font-size="18" fill="#945139">ポーズの親子間距離</text>
+<path d="M396 510H428" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path d="M772 510H804" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<text id="label-25" x="54" y="626" font-size="18" fill="#6b7c78">長さ復元：親子方向 ≠ 0</text>
+<rect id="dummy" x="704" y="632" width="460" height="56" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5" stroke-dasharray="7 6"/>
+<text id="label-26" x="934" y="667" font-size="20" fill="#244e46" text-anchor="middle">Inter-Bone 再配置</text>
+<path d="M976 586V632" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<text id="label-27" x="36" y="669" font-size="18" font-family="Consolas, monospace" fill="#305e80">bBoneSubdivisionCollisionOnly</text>
+<path d="M356 661H704" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-b)" stroke-dasharray="6 5"/>
+</svg>

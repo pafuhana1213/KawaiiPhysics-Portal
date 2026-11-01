@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="812" viewBox="0 0 1200 812" role="img" aria-labelledby="diagram-title" font-family="system-ui, sans-serif">
+<title id="diagram-title">風の時計と Shared</title>
+<defs>
+<marker id="arrow-green" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker>
+<marker id="arrow-blue" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#417aa5"/></marker>
+<marker id="arrow-orange" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker>
+</defs>
+<rect width="1200" height="812" rx="24" fill="#f5faf8"/>
+<!-- Text width budget: full-width = font-size; ASCII = font-size * 0.6. Box padding >= 16 px. -->
+<text x="36" y="58" font-size="30" font-weight="650" fill="#244e46">風の時計と Shared</text>
+<text x="36" y="96" font-size="22" fill="#39756a">PreApply / Local・Shared・Auto</text>
+<rect x="36" y="142" width="328" height="430" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="62" cy="168" r="14" fill="#39756a"/>
+<text x="62" y="174" font-size="18" font-weight="650" text-anchor="middle" fill="#f5faf8">1</text>
+<text x="88" y="175" font-size="20" font-family="Consolas, monospace" font-weight="650" fill="#244e46">Local</text>
+<text x="54" y="219" font-size="18" font-family="Consolas, monospace" fill="#244e46">AdvanceWindTime</text>
+<text x="54" y="265" font-size="18" font-family="Consolas, monospace" fill="#244e46">Time += dt × TimeScale</text>
+<text x="54" y="301" font-size="18" font-family="Consolas, monospace" fill="#244e46">UnscaledTime += dt</text>
+<path d="M54 325H346" fill="none" stroke="#6b7c78" stroke-width="1.5"/>
+<text x="54" y="362" font-size="18" font-family="Consolas, monospace" font-weight="650" fill="#244e46">Time</text>
+<text x="54" y="394" font-size="18" fill="#244e46">波形・方向・通常 Gust</text>
+<text x="54" y="442" font-size="18" font-family="Consolas, monospace" font-weight="650" fill="#244e46">UnscaledTime</text>
+<text x="54" y="474" font-size="18" fill="#244e46">実時間 Gust</text>
+<text x="54" y="535" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">NumSteps </tspan>= 0：時計前進</text>
+<rect x="408" y="142" width="352" height="188" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<circle cx="434" cy="168" r="14" fill="#417aa5"/>
+<text x="434" y="174" font-size="18" font-weight="650" text-anchor="middle" fill="#f5faf8">2</text>
+<text x="460" y="175" font-size="20" font-family="Consolas, monospace" font-weight="650" fill="#244e46">Publisher</text>
+<text x="426" y="215" font-size="18" fill="#244e46">共有13項目 / Time</text>
+<text x="426" y="247" font-size="18" font-family="Consolas, monospace" fill="#244e46">UnscaledTime / ActiveGust</text>
+<text x="426" y="289" font-size="18" font-family="Consolas, monospace" fill="#244e46">PublisherTimeScale</text>
+<rect x="804" y="142" width="360" height="188" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<circle cx="830" cy="168" r="14" fill="#417aa5"/>
+<text x="830" y="174" font-size="18" font-weight="650" text-anchor="middle" fill="#f5faf8">3</text>
+<text x="856" y="175" font-size="20" font-weight="650" fill="#244e46">Serial 更新</text>
+<text x="822" y="215" font-size="18" font-family="Consolas, monospace" fill="#244e46">ApplySharedWindState</text>
+<text x="822" y="253" font-size="18" fill="#244e46">初回採用時のみ Local 13項目を退避</text>
+<text x="822" y="289" font-size="18" fill="#244e46">共有状態の採用</text>
+<path d="M760 236H804" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+<path d="M984 330V370" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+<rect x="408" y="370" width="756" height="202" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<text x="426" y="405" font-size="20" font-weight="650" fill="#244e46">Shared / Auto：外挿</text>
+<path d="M786 422V554" fill="none" stroke="#6b7c78" stroke-width="1.5"/>
+<text x="426" y="445" font-size="18" font-weight="650" fill="#244e46">ゲーム時刻あり</text>
+<text x="426" y="481" font-size="18" font-family="Consolas, monospace" fill="#244e46">Time = SharedWindTimeAtPublish</text>
+<text x="426" y="515" font-size="18" font-family="Consolas, monospace" fill="#244e46">+ Elapsed ×</text>
+<text x="426" y="549" font-size="18" font-family="Consolas, monospace" fill="#244e46">CachedPublisherTimeScale</text>
+<text x="804" y="445" font-size="18" font-weight="650" fill="#244e46">ゲーム時刻なし</text>
+<text x="804" y="481" font-size="18" fill="#244e46">同一 Serial / WarmUp 外</text>
+<text x="804" y="515" font-size="18" font-family="Consolas, monospace" fill="#244e46">Time += dt ×</text>
+<text x="804" y="549" font-size="18" font-family="Consolas, monospace" fill="#244e46">CachedPublisherTimeScale</text>
+<rect x="408" y="596" width="756" height="54" rx="12" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+<text x="426" y="630" font-size="18" fill="#244e46">Publisher 無効：外挿停止・適用停止</text>
+<rect x="36" y="684" width="1128" height="92" rx="12" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+<text x="54" y="719" font-size="20" font-family="Consolas, monospace" font-weight="650" fill="#244e46">RestoreLocalSharedParams</text>
+<text x="54" y="754" font-size="18" fill="#244e46">共有13項目：退避値へ復元</text>
+<text x="540" y="754" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">Time </tspan>/ <tspan font-family="Consolas, monospace">UnscaledTime </tspan>/ <tspan font-family="Consolas, monospace">ActiveGust</tspan>：継続</text>
+<path d="M1164 471H1180V730H1164" fill="none" stroke="#bd6a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-orange)"/>
+<path d="M330 684V572" fill="none" stroke="#bd6a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-orange)"/>
+<text x="54" y="615" font-size="18" fill="#bd6a4d">Local 切替</text>
+<text x="54" y="647" font-size="18" fill="#bd6a4d">Entry 不在・期限切れ</text>
+</svg>

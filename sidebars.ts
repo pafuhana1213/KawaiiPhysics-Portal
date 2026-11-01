@@ -1,6 +1,6 @@
 import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 
-// 段階的に深まる構成: 概要 → はじめ方 → 設定ガイド → 高度な機能 → 最適化・運用 → パラメータ → API
+// 段階的に深まる構成: 概要 → はじめ方 → 設定ガイド → 高度な機能 → 最適化・運用 → パラメータ → API → 内部設計
 const sidebars: SidebarsConfig = {
   docsSidebar: [
     // 1. 概要
@@ -148,6 +148,43 @@ const sidebars: SidebarsConfig = {
           items: ['api/node-audit', 'api/mcp'],
         },
         'api/animation-notifies',
+      ],
+    },
+
+    // 8. 内部設計（調査・改造するプログラマ向け）
+    {
+      type: 'category',
+      label: '内部設計',
+      link: {type: 'doc', id: 'internals/overview'},
+      items: [
+        {
+          type: 'category', label: 'コア処理',
+          items: ['internals/frame-lifecycle', 'internals/bone-model', 'internals/simulation'],
+        },
+        {
+          type: 'category', label: '拘束・コリジョン',
+          items: ['internals/constraints-and-limits', 'internals/collision', 'internals/sync-bone'],
+        },
+        {
+          type: 'category', label: '外力と風',
+          items: ['internals/external-forces', 'internals/procedural-wind'],
+        },
+        {
+          type: 'category', label: '共有システム',
+          items: ['internals/shared-collision', 'internals/simple-world-collision', 'internals/shared-publisher'],
+        },
+        {
+          type: 'category', label: '実行時制御とデータ',
+          items: ['internals/runtime-control', 'internals/animation-control', 'internals/presets-and-data-assets'],
+        },
+        {
+          type: 'category', label: 'エディタ',
+          items: ['internals/editor-module', 'internals/editor-tools'],
+        },
+        {
+          type: 'category', label: '調査と開発',
+          items: ['internals/investigation-guide', 'internals/modification-guide', 'internals/testing'],
+        },
       ],
     },
 

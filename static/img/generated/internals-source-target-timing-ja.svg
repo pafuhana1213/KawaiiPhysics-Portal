@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="770" viewBox="0 0 1200 770" role="img" aria-labelledby="diagram-title" font-family="system-ui, sans-serif">
+<title id="diagram-title">Source と Target の評価タイミング</title>
+<defs><marker id="green-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker><marker id="orange-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker></defs>
+<rect width="1200" height="770" rx="24" fill="#f5faf8"/>
+<text x="36" y="58" font-size="30" fill="#244e46" font-weight="700">Source と Target の評価タイミング</text>
+<text x="36" y="96" font-size="22" fill="#39756a" font-family="Consolas, monospace">EvaluateSkeletalControl_AnyThread</text>
+<text x="36" y="140" font-size="20" fill="#39756a" font-weight="650">評価スレッド · Worker / Game</text>
+<rect id="src" x="36" y="162" width="444" height="198" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="62" cy="188" r="14" fill="#39756a"/>
+<text x="62" y="194" font-size="18" fill="#f5faf8" font-weight="650" text-anchor="middle">1</text>
+<text x="88" y="198" font-size="20" fill="#244e46" font-weight="650">Source</text>
+<text x="54" y="237" font-size="20" fill="#244e46" font-weight="650">物理計算</text>
+<text x="54" y="280" font-size="18" fill="#39756a" font-family="Consolas, monospace">WriteSharedCollisionToSubsystem</text>
+<text x="54" y="326" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">Publish</tspan> · ワールド空間</text>
+<path d="M270 244V258" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)"/>
+<rect id="slot" x="516" y="236" width="168" height="90" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<text x="600" y="273" font-size="18" fill="#417aa5" font-weight="650" text-anchor="middle">Source <tspan font-family="Consolas, monospace">Slot</tspan></text>
+<text x="600" y="305" font-size="18" fill="#417aa5" font-family="Consolas, monospace" text-anchor="middle">BufferLock</text>
+<path d="M480 302H516" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)"/>
+<rect id="tgt" x="720" y="162" width="444" height="198" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="746" cy="188" r="14" fill="#39756a"/>
+<text x="746" y="194" font-size="18" fill="#f5faf8" font-weight="650" text-anchor="middle">2</text>
+<text x="772" y="198" font-size="20" fill="#244e46" font-weight="650">Target</text>
+<text x="738" y="237" font-size="18" fill="#39756a" font-family="Consolas, monospace">UpdateSharedCollisionLimits</text>
+<text x="738" y="280" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">ReadMerged</tspan> · 空間変換</text>
+<text x="738" y="326" font-size="20" fill="#244e46" font-weight="650">物理計算</text>
+<path d="M944 285V301" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)"/>
+<path d="M684 262H702V230H720" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)"/>
+<text x="36" y="411" font-size="20" fill="#244e46" font-weight="650">同じフレームの評価順（両者が毎フレーム評価・Publish する場合の例）</text>
+<text x="36" y="476" font-size="20" fill="#244e46" font-weight="650">Source → Target</text>
+<rect id="now1" x="278" y="438" width="260" height="116" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<rect id="now2" x="592" y="438" width="260" height="116" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<rect id="now3" x="906" y="438" width="258" height="116" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="304" cy="464" r="14" fill="#39756a"/>
+<text x="304" y="470" font-size="18" fill="#f5faf8" font-weight="650" text-anchor="middle">3</text>
+<text x="330" y="474" font-size="20" fill="#244e46" font-weight="650">Source</text>
+<text x="296" y="514" font-size="18" fill="#244e46">物理計算 → <tspan font-family="Consolas, monospace">Publish</tspan></text>
+<text x="296" y="538" font-size="18" fill="#39756a">形状 n</text>
+<text x="610" y="474" font-size="20" fill="#244e46" font-weight="650">Target</text>
+<text x="610" y="514" font-size="18" fill="#417aa5">形状 n を読み取り</text>
+<text x="610" y="538" font-size="18" fill="#244e46">物理計算</text>
+<text x="924" y="474" font-size="20" fill="#244e46" font-weight="650">同一フレーム</text>
+<text x="924" y="518" font-size="18" fill="#39756a">形状 n</text>
+<path d="M538 496H592" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)"/>
+<path d="M852 496H906" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)"/>
+<text x="36" y="632" font-size="20" fill="#244e46" font-weight="650">Target → Source</text>
+<rect id="old1" x="278" y="594" width="260" height="116" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<rect id="old2" x="592" y="594" width="260" height="116" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<rect id="old3" x="906" y="594" width="258" height="116" rx="12" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+<circle cx="304" cy="620" r="14" fill="#39756a"/>
+<text x="304" y="626" font-size="18" fill="#f5faf8" font-weight="650" text-anchor="middle">4</text>
+<text x="330" y="630" font-size="20" fill="#244e46" font-weight="650">Target</text>
+<text x="296" y="670" font-size="18" fill="#244e46">形状 n−1 を読み取り</text>
+<text x="296" y="694" font-size="18" fill="#244e46">物理計算</text>
+<text x="610" y="630" font-size="20" fill="#244e46" font-weight="650">Source</text>
+<text x="610" y="670" font-size="18" fill="#417aa5">物理計算 → <tspan font-family="Consolas, monospace">Publish</tspan></text>
+<text x="610" y="694" font-size="18" fill="#417aa5">形状 n</text>
+<text x="924" y="630" font-size="20" fill="#bd6a4d" font-weight="650">1フレーム遅れ</text>
+<text x="924" y="674" font-size="18" fill="#bd6a4d">Target：形状 n−1</text>
+<path d="M538 652H592" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)"/>
+<path d="M852 652H906" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)"/>
+<text x="36" y="746" font-size="18" fill="#6b7c78">別 AnimInstance：評価順の規定なし</text>
+</svg>

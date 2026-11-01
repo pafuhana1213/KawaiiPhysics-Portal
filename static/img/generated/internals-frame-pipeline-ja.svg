@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="diagram-title diagram-desc" font-family="system-ui, sans-serif">
+  <title id="diagram-title">EvaluateSkeletalControl_AnyThread の評価ループ</title>
+  <desc id="diagram-desc">1 前処理、2 リセットと再初期化の判定、3 ボーンの検証と構築、4 物理設定の更新、5 コリジョン形状の更新、6 ポーズと移動量、7 シミュレーション、8 出力と後処理。上段から下段へ、各段は左から右へ進む。3 では RootBone と AdditionalRootBones のいずれかが無効なら return し、以降の処理を行わない。7 では必要時の WarmUp の後、SimulationSpace が WorldSpace かつ TeleportType が TeleportPhysics なら通常のシミュレーションをスキップし、それ以外は SimulateModifyBones を実行する。いずれも8へ進む。</desc>
+  <defs>
+    <marker id="flow-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M0 0 8 4 0 8Z" fill="#39756a"/>
+    </marker>
+    <marker id="branch-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/>
+    </marker>
+    <style>
+      .stage { fill: #dcebe7; stroke: #39756a; stroke-width: 1.5; }
+      .data-stage { fill: #d7e6f3; stroke: #417aa5; stroke-width: 1.5; }
+      .heading { font-size: 20px; font-weight: 650; fill: #244e46; }
+      .label { font-size: 18px; fill: #244e46; }
+      .data-label { font-size: 18px; fill: #305e80; }
+      .code { font-family: Consolas, monospace; }
+      .number { font-size: 18px; font-weight: 650; fill: #f5faf8; text-anchor: middle; }
+      .flow { fill: none; stroke: #39756a; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#flow-arrow); }
+      .branch { fill: none; stroke: #bd6a4d; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#branch-arrow); }
+      .branch-label { font-size: 18px; fill: #945139; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="675" rx="24" fill="#f5faf8"/>
+  <text x="36" y="58" font-size="30" font-weight="700" fill="#244e46">評価ループ</text>
+  <text x="36" y="96" font-size="22" fill="#39756a" class="code">EvaluateSkeletalControl_AnyThread</text>
+
+  <!-- Width budget: Japanese = 1 em/character; code = 0.62 em/character;
+       other ASCII = 0.70 em/character. Padding is reserved on both sides.
+       Stage 2's full heading is wrapped to preserve the 20 px minimum heading size. -->
+  <g id="stage-1" aria-label="1 前処理">
+    <rect class="stage" x="36" y="142" width="224" height="142" rx="12"/>
+    <circle cx="62" cy="168" r="14" fill="#39756a"/>
+    <text class="number" x="62" y="174">1</text>
+    <text class="heading" x="88" y="175">前処理</text>
+    <text class="label" x="54" y="225">遅延リセット</text>
+    <text class="label" x="54" y="257">空間キャッシュ</text>
+  </g>
+
+  <g id="stage-2" aria-label="2 リセットと再初期化の判定">
+    <rect class="stage" x="284" y="142" width="294" height="142" rx="12"/>
+    <circle cx="310" cy="168" r="14" fill="#39756a"/>
+    <text class="number" x="310" y="174">2</text>
+    <text class="heading" x="336" y="175">リセットと</text>
+    <text class="heading" x="336" y="201">再初期化の判定</text>
+    <text class="label" x="302" y="233">空間変換・再初期化</text>
+    <text class="label" x="302" y="263">エディタ同期</text>
+  </g>
+
+  <g id="stage-3" aria-label="3 ボーンの検証と構築">
+    <rect class="stage" x="602" y="142" width="302" height="142" rx="12"/>
+    <circle cx="628" cy="168" r="14" fill="#39756a"/>
+    <text class="number" x="628" y="174">3</text>
+    <text class="heading" x="654" y="175">ボーンの検証と構築</text>
+    <rect x="622" y="202" width="262" height="34" rx="6" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+    <text class="branch-label" x="640" y="225">ルート検証</text>
+    <text class="label" x="622" y="263">有効 → 空なら構築</text>
+  </g>
+
+  <g id="stage-4" aria-label="4 物理設定の更新">
+    <rect class="data-stage" x="928" y="142" width="236" height="142" rx="12"/>
+    <circle cx="954" cy="168" r="14" fill="#417aa5"/>
+    <text class="number" x="954" y="174">4</text>
+    <text class="heading" x="980" y="175">物理設定の更新</text>
+    <text class="data-label" x="946" y="225">倍率の取り込み</text>
+    <text class="data-label" x="946" y="257">必要時に設定更新</text>
+  </g>
+
+  <path class="flow" d="M260 256H284"/>
+  <path class="flow" d="M578 256H602"/>
+  <path class="flow" d="M904 256H928"/>
+
+  <!-- Early return ends here; it has no outgoing connection. -->
+  <path class="branch" d="M855 236V310"/>
+  <text class="branch-label" x="865" y="304">無効</text>
+  <rect x="794" y="310" width="122" height="40" rx="20" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+  <text class="branch-label code" x="855" y="336" text-anchor="middle">return</text>
+
+  <!-- The second row also reads from left to right. -->
+  <path class="flow" d="M1046 284V366H139V386"/>
+
+  <g id="stage-5" aria-label="5 コリジョン形状の更新">
+    <rect class="data-stage" x="36" y="386" width="206" height="244" rx="12"/>
+    <circle cx="62" cy="412" r="14" fill="#417aa5"/>
+    <text class="number" x="62" y="418">5</text>
+    <text class="heading" x="88" y="419">コリジョン</text>
+    <text class="heading" x="88" y="445">形状の更新</text>
+    <text class="data-label" x="54" y="488">ローカル形状</text>
+    <text class="data-label" x="54" y="520">共有形状</text>
+    <text class="data-label" x="54" y="552">ワールド形状</text>
+  </g>
+
+  <g id="stage-6" aria-label="6 ポーズと移動量">
+    <rect class="data-stage" x="264" y="386" width="206" height="244" rx="12"/>
+    <circle cx="290" cy="412" r="14" fill="#417aa5"/>
+    <text class="number" x="290" y="418">6</text>
+    <text class="heading" x="316" y="419">ポーズと</text>
+    <text class="heading" x="316" y="445">移動量</text>
+    <text class="data-label" x="282" y="488">ポーズ・同期</text>
+    <text class="data-label" x="282" y="520"><tspan class="code">Component</tspan></text>
+    <text class="data-label" x="282" y="546">移動量の算出</text>
+    <text class="data-label" x="282" y="586">一時外力の取り込み</text>
+  </g>
+
+  <g id="stage-7" aria-label="7 シミュレーション">
+    <rect class="stage" x="492" y="386" width="442" height="244" rx="12"/>
+    <circle cx="518" cy="412" r="14" fill="#39756a"/>
+    <text class="number" x="518" y="418">7</text>
+    <text class="heading" x="544" y="419">シミュレーション</text>
+    <text class="label" x="713" y="451" text-anchor="middle">必要時 <tspan class="code">WarmUp</tspan></text>
+    <path class="flow" d="M713 458V474"/>
+    <rect x="512" y="474" width="402" height="50" rx="6" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+    <text class="branch-label" x="713" y="505" text-anchor="middle"><tspan class="code">WorldSpace</tspan> かつ <tspan class="code">TeleportPhysics</tspan></text>
+
+    <path class="flow" d="M628 524V567"/>
+    <text class="label" x="640" y="551">いいえ</text>
+    <path class="branch" d="M839 524V567"/>
+    <text class="branch-label" x="851" y="551">はい</text>
+
+    <!-- 19 code characters * 18 px * 0.62 + 2 * 10 px < 232 px. -->
+    <rect x="512" y="567" width="232" height="40" rx="6" fill="#f5faf8" stroke="#39756a" stroke-width="1.5"/>
+    <text class="label code" x="628" y="593" text-anchor="middle">SimulateModifyBones</text>
+    <rect x="764" y="567" width="150" height="40" rx="6" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+    <text class="branch-label" x="839" y="593" text-anchor="middle">スキップ</text>
+
+    <path d="M628 607V621H839" fill="none" stroke="#39756a" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M839 607V621" fill="none" stroke="#bd6a4d" stroke-width="2"/>
+    <circle cx="839" cy="621" r="3" fill="#39756a"/>
+  </g>
+
+  <g id="stage-8" aria-label="8 出力と後処理">
+    <rect class="stage" x="956" y="386" width="208" height="244" rx="12"/>
+    <circle cx="982" cy="412" r="14" fill="#39756a"/>
+    <text class="number" x="982" y="418">8</text>
+    <text class="heading" x="1008" y="419">出力と後処理</text>
+    <text class="label" x="974" y="477">共有形状の書き込み</text>
+    <text class="label" x="974" y="509">結果の出力</text>
+    <text class="label" x="974" y="541"><tspan class="code">Teleport</tspan> 解除</text>
+    <text class="label" x="974" y="573">前回変換の更新</text>
+    <text class="label" x="974" y="605">デバッグ描画</text>
+  </g>
+
+  <path class="flow" d="M242 451H264"/>
+  <path class="flow" d="M470 451H492"/>
+  <path class="flow" d="M839 621H945V451H956"/>
+</svg>

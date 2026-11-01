@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="740" viewBox="0 0 1200 740" role="img" aria-labelledby="diagram-title" font-family="system-ui, sans-serif">
+<title id="diagram-title">Sync Bone から後続処理への流れ</title>
+<defs>
+<marker id="arrow-g" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker>
+<marker id="arrow-b" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#417aa5"/></marker>
+<marker id="arrow-o" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker>
+<marker id="arrow-gray" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#6b7c78"/></marker>
+</defs>
+<rect width="1200" height="740" rx="24" fill="#f5faf8"/>
+<text id="label-1" x="36" y="58" font-size="30" fill="#244e46" font-weight="650">Sync Bone から後続処理への流れ</text>
+<text id="label-2" x="36" y="96" font-size="22" font-family="Consolas, monospace" fill="#39756a">ApplySyncBones</text>
+<rect id="delta" x="36" y="142" width="360" height="168" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="62" cy="168" r="14" fill="#39756a"/><text x="62" y="174" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">1</text>
+<text id="label-3" x="88" y="176" font-size="20" fill="#244e46" font-weight="650">同期元の移動量</text>
+<text id="label-4" x="54" y="222" font-size="18" fill="#244e46">同期元の現在位置</text>
+<text id="label-5" x="54" y="258" font-size="18" font-family="Consolas, monospace" fill="#244e46">− InitialPoseLocation</text>
+<text id="label-6" x="54" y="290" font-size="18" fill="#305e80">Component 空間</text>
+<rect id="scaling" x="420" y="142" width="360" height="168" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="446" cy="168" r="14" fill="#39756a"/><text x="446" y="174" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">2</text>
+<text id="label-7" x="472" y="176" font-size="20" fill="#244e46" font-weight="650">移動量の調整</text>
+<text id="label-8" x="438" y="222" font-size="18" fill="#244e46">カーブ・<tspan font-family="Consolas, monospace">GlobalScale</tspan></text>
+<text id="label-9" x="438" y="258" font-size="18" fill="#244e46">方向選別・空間変換</text>
+<text id="label-10" x="438" y="290" font-size="18" fill="#244e46">距離減衰・長さ率カーブ</text>
+<rect id="target" x="804" y="142" width="360" height="168" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<circle cx="830" cy="168" r="14" fill="#417aa5"/><text x="830" y="174" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">3</text>
+<text id="label-11" x="856" y="176" font-size="20" fill="#244e46" font-weight="650">ターゲットへ適用</text>
+<text id="label-12" x="822" y="211" font-size="18" font-family="Consolas, monospace" fill="#244e46">FKawaiiPhysicsSyncTarget</text>
+<text id="label-13" x="822" y="238" font-size="18" font-family="Consolas, monospace" fill="#244e46">Apply</text>
+<text id="label-14" x="822" y="266" font-size="22" font-family="Consolas, monospace" fill="#244e46">PoseLocation</text>
+<text id="label-15" x="822" y="294" font-size="18" fill="#305e80">親からの長さ維持</text>
+<path d="M396 250H420" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path d="M780 250H804" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<rect id="pose" x="36" y="370" width="1128" height="94" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<text id="label-16" x="54" y="407" font-size="20" fill="#244e46" font-weight="650">同期後のポーズ</text>
+<text id="label-17" x="54" y="440" font-size="18" font-family="Consolas, monospace" fill="#244e46">PoseLocation</text>
+<text id="label-18" x="450" y="407" font-size="20" fill="#244e46" font-weight="650">ダミーの再計算</text>
+<text id="label-19" x="450" y="440" font-size="18" fill="#244e46">ポーズの追従</text>
+<text id="label-20" x="860" y="407" font-size="20" font-family="Consolas, monospace" fill="#244e46">CurrentPoseLocation</text>
+<text id="label-21" x="860" y="440" font-size="18" fill="#244e46">サブステップ補間</text>
+<path d="M984 310V340H212V370" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path d="M330 420H416" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path d="M766 420H830" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path d="M600 464V498H168" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M600 498H1032" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect id="stiffness" x="36" y="532" width="264" height="148" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<text id="label-22" x="54" y="566" font-size="20" font-family="Consolas, monospace" fill="#244e46" font-weight="650">Stiffness</text>
+<text id="label-23" x="54" y="612" font-size="18" fill="#244e46">親子の目標差分</text>
+<text id="label-24" x="54" y="650" font-size="18" font-family="Consolas, monospace" fill="#244e46">ApplyStiffnessPull</text>
+<path d="M168 498V532" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<rect id="limit" x="324" y="532" width="264" height="148" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<text id="label-25" x="342" y="566" font-size="20" fill="#244e46" font-weight="650">角度制限</text>
+<text id="label-26" x="342" y="612" font-size="18" fill="#244e46">同期後の基準方向</text>
+<text id="label-27" x="342" y="650" font-size="18" font-family="Consolas, monospace" fill="#244e46">AdjustByAngleLimit</text>
+<path d="M456 498V532" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<rect id="restorelength" x="612" y="532" width="264" height="148" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<text id="label-28" x="630" y="566" font-size="20" fill="#244e46" font-weight="650">長さ復元</text>
+<text id="label-29" x="630" y="612" font-size="18" fill="#244e46">ポーズの親子間距離</text>
+<text id="label-30" x="630" y="650" font-size="18" font-family="Consolas, monospace" fill="#244e46">Location</text>
+<path d="M744 498V532" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<rect id="output" x="900" y="532" width="264" height="148" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<text id="label-31" x="918" y="566" font-size="20" fill="#244e46" font-weight="650">出力</text>
+<text id="label-32" x="918" y="612" font-size="18" fill="#244e46">ポーズと物理の方向差</text>
+<text id="label-33" x="918" y="650" font-size="18" font-family="Consolas, monospace" fill="#244e46">ApplySimulateResult</text>
+<path d="M1032 498V532" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+</svg>

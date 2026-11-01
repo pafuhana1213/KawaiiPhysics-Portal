@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="790" viewBox="0 0 1200 790" role="img" aria-labelledby="diagram-title" font-family="system-ui, sans-serif">
+<title id="diagram-title">評価全体と外力フック</title>
+<defs>
+<marker id="arrow-green" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker>
+<marker id="arrow-blue" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#417aa5"/></marker>
+<marker id="arrow-orange" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker>
+<marker id="arrow-gray" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#6b7c78"/></marker>
+</defs>
+<rect width="1200" height="790" rx="24" fill="#f5faf8"/>
+<text x="36" y="58" font-size="30" font-weight="700" fill="#244e46" text-anchor="start">評価全体と外力フック</text>
+<text x="36" y="96" font-size="22" font-weight="400" fill="#39756a" text-anchor="start" font-family="Consolas, monospace">EvaluateSkeletalControl_AnyThread</text>
+<g id="consume"><rect x="36" y="134" width="566" height="82" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<circle cx="62" cy="176" r="14" fill="#417aa5"/>
+<text x="62" y="182" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">1</text>
+<text x="88" y="182" font-size="18" font-weight="650" fill="#305e80" text-anchor="start" font-family="Consolas, monospace">ConsumeAndRemoveExpiredTransientExternalForces</text>
+</g>
+<g id="warmup-test"><rect x="648" y="134" width="516" height="82" rx="12" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+<circle cx="674" cy="162" r="14" fill="#bd6a4d"/>
+<text x="674" y="168" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">2</text>
+<text x="700" y="168" font-size="18" font-weight="650" fill="#945139" text-anchor="start" font-family="Consolas, monospace">bNeedWarmUp</text>
+<text x="666" y="196" font-size="18" font-weight="400" fill="#945139" text-anchor="start">かつ <tspan font-family="Consolas, monospace">WarmUpFrames</tspan> &gt; 0</text>
+</g>
+<path d="M602 175H648" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+<g id="teleport"><rect x="36" y="286" width="370" height="100" rx="12" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+<text x="54" y="324" font-size="18" font-weight="400" fill="#945139" text-anchor="start" font-family="Consolas, monospace">WorldSpace</text>
+<text x="54" y="360" font-size="18" font-weight="400" fill="#945139" text-anchor="start">かつ <tspan font-family="Consolas, monospace">TeleportPhysics</tspan></text>
+</g>
+<g id="skip"><rect x="440" y="310" width="136" height="52" rx="12" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+<text x="458" y="344" font-size="18" font-weight="400" fill="#945139" text-anchor="start">スキップ</text>
+</g>
+<g id="warmup"><rect x="612" y="286" width="552" height="100" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="638" cy="315" r="14" fill="#39756a"/>
+<text x="638" y="321" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">3</text>
+<text x="664" y="321" font-size="18" font-weight="650" fill="#244e46" text-anchor="start" font-family="Consolas, monospace">WarmUp</text>
+<text x="630" y="359" font-size="18" font-weight="400" fill="#244e46" text-anchor="start" font-family="Consolas, monospace">SimulateModifyBones × WarmUpFrames</text>
+</g>
+<path d="M1040 216V286" fill="none" stroke="#bd6a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-orange)"/>
+<text x="1054" y="258" font-size="18" font-weight="400" fill="#945139" text-anchor="start">はい</text>
+<path d="M700 216V242H221V286" fill="none" stroke="#bd6a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-orange)"/>
+<text x="714" y="237" font-size="18" font-weight="400" fill="#945139" text-anchor="start">いいえ</text>
+<path d="M612 336H592V262H221" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="221" cy="262" r="3" fill="#39756a"/>
+<path d="M406 336H440" fill="none" stroke="#bd6a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-orange)"/>
+<text x="410" y="297" font-size="18" font-weight="400" fill="#945139" text-anchor="start">はい</text>
+<g id="simulate-modify"><rect x="36" y="448" width="274" height="108" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="62" cy="503" r="14" fill="#39756a"/>
+<text x="62" y="509" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">4</text>
+<text x="88" y="509" font-size="18" font-weight="650" fill="#244e46" text-anchor="start" font-family="Consolas, monospace">SimulateModifyBones</text>
+</g>
+<g id="preapply"><rect x="342" y="448" width="390" height="108" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="368" cy="476" r="14" fill="#39756a"/>
+<text x="368" y="482" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">5</text>
+<text x="394" y="482" font-size="18" font-weight="650" fill="#244e46" text-anchor="start" font-family="Consolas, monospace">PreApply</text>
+<text x="360" y="510" font-size="18" font-weight="400" fill="#244e46" text-anchor="start" font-family="Consolas, monospace">CustomExternalForces</text>
+<text x="360" y="538" font-size="18" font-weight="400" fill="#244e46" text-anchor="start"><tspan font-family="Consolas, monospace">ExternalForces</tspan> → 一時外力</text>
+</g>
+<g id="simulate-once"><rect x="768" y="448" width="396" height="108" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="794" cy="480" r="14" fill="#39756a"/>
+<text x="794" y="486" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">6</text>
+<text x="820" y="486" font-size="18" font-weight="650" fill="#244e46" text-anchor="start" font-family="Consolas, monospace">SimulateOnce</text>
+<text x="786" y="526" font-size="18" font-weight="400" fill="#244e46" text-anchor="start"><tspan font-family="Consolas, monospace">NumSteps</tspan> 回</text>
+</g>
+<path d="M221 386V416H171V448" fill="none" stroke="#bd6a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-orange)"/>
+<text x="235" y="415" font-size="18" font-weight="400" fill="#945139" text-anchor="start">いいえ</text>
+<path d="M310 502H342" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+<path d="M732 502H768" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+<path d="M966 556V576H136V598" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+<g id="simulate-bone"><rect x="36" y="598" width="200" height="68" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="62" cy="622" r="14" fill="#39756a"/><text x="62" y="628" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">7</text>
+<text x="88" y="628" font-size="18" fill="#244e46" font-family="Consolas, monospace" font-weight="650">Simulate</text>
+<text x="54" y="652" font-size="18" fill="#244e46">対象ボーンごと</text>
+</g>
+<g id="velocity"><rect x="272" y="598" width="230" height="68" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="298" cy="632" r="14" fill="#39756a"/><text x="298" y="638" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">8</text>
+<text x="324" y="638" font-size="18" fill="#244e46" font-family="Consolas, monospace" font-weight="650">ApplyToVelocity</text>
+</g>
+<g id="apply"><rect x="538" y="598" width="160" height="68" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="564" cy="632" r="14" fill="#39756a"/><text x="564" y="638" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">9</text>
+<text x="590" y="638" font-size="18" fill="#244e46" font-family="Consolas, monospace" font-weight="650">Apply</text>
+</g>
+<g id="postapply"><rect x="734" y="598" width="430" height="68" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="762" cy="622" r="14" fill="#39756a"/><text x="762" y="628" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">10</text>
+<text x="786" y="628" font-size="18" fill="#244e46" font-family="Consolas, monospace" font-weight="650">PostApply</text>
+<text x="752" y="652" font-size="18" fill="#244e46">全ボーンの後</text>
+</g>
+<path d="M236 632H272" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+<path d="M502 632H538" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+<path d="M698 632H734" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+<path d="M950 666V682H161V700" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+<g id="constraint-before"><rect x="36" y="700" width="250" height="74" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<text x="54" y="728" font-size="18" fill="#244e46">Constraint（衝突前）</text>
+<text x="54" y="756" font-size="18" fill="#244e46">設定された反復回数だけ</text>
+</g>
+<g id="collision"><rect x="310" y="700" width="154" height="74" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<text x="328" y="742" font-size="18" fill="#244e46">コリジョン</text>
+</g>
+<g id="bridge-transfer"><rect x="488" y="700" width="196" height="74" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<text x="506" y="728" font-size="18" fill="#244e46" font-family="Consolas, monospace">Bridge</text>
+<text x="506" y="756" font-size="18" fill="#244e46">変位転送</text>
+</g>
+<g id="constraint-after"><rect x="708" y="700" width="250" height="74" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<text x="726" y="728" font-size="18" fill="#244e46">Constraint（衝突後）</text>
+<text x="726" y="756" font-size="18" fill="#244e46">設定された反復回数だけ</text>
+</g>
+<g id="limits-restore"><rect x="982" y="700" width="182" height="74" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<text x="1000" y="742" font-size="18" fill="#244e46">制限・長さ復元</text>
+</g>
+<path d="M286 737H310" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+<path d="M464 737H488" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+<path d="M684 737H708" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+<path d="M958 737H982" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+</svg>

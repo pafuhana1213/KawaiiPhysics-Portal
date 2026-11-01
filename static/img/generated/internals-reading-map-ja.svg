@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="880" viewBox="0 0 1200 880" role="img" aria-labelledby="diagram-title" font-family="system-ui, sans-serif">
+  <title id="diagram-title">内部設計の読む順序</title>
+  <defs>
+    <marker id="arrow-g" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker>
+    <marker id="arrow-b" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#417aa5"/></marker>
+    <marker id="arrow-o" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker>
+    <marker id="arrow-z" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#6b7c78"/></marker>
+    <style>.code { font-family: Consolas, monospace; } text { fill: #244e46; } .heading { font-size: 20px; font-weight: 650; } .label { font-size: 18px; } .number { font-size: 18px; font-weight: 650; fill: #f5faf8; text-anchor: middle; }</style>
+  </defs>
+  <rect width="1200" height="880" rx="24" fill="#f5faf8"/>
+  <text x="36" y="58" font-size="30" font-weight="700" text-anchor="start" style="fill:#244e46" >内部設計の読む順序</text>
+  <text x="36" y="96" font-size="22" font-weight="400" text-anchor="start" style="fill:#244e46" >7グループのページ構成</text>
+  <rect x="36" y="124" width="1128" height="72" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <text x="56" y="167" font-size="20" font-weight="650" text-anchor="start" style="fill:#244e46" >全体を理解する</text>
+  <text x="298" y="167" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >1フレームの処理順</text>
+  <path d="M476 160H532" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+  <text x="552" y="167" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >ボーンモデル</text>
+  <path d="M682 160H738" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+  <text x="758" y="167" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >シミュレーション</text>
+  <rect x="36" y="212" width="1128" height="64" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <text x="56" y="251" font-size="20" font-weight="650" text-anchor="start" style="fill:#305e80" >不具合を調べる</text>
+  <text x="298" y="251" font-size="18" font-weight="400" text-anchor="start" style="fill:#305e80" >調査ガイド</text>
+  <path d="M422 244H480" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+  <text x="500" y="251" font-size="18" font-weight="400" text-anchor="start" style="fill:#305e80" >症状別の確認箇所</text>
+  <rect x="36" y="292" width="1128" height="64" rx="12" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+  <text x="56" y="331" font-size="20" font-weight="650" text-anchor="start" style="fill:#945139" >改造する</text>
+  <text x="298" y="331" font-size="18" font-weight="400" text-anchor="start" style="fill:#945139" >改造ガイド</text>
+  <path d="M422 324H480" fill="none" stroke="#bd6a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-o)"/>
+  <text x="500" y="331" font-size="18" font-weight="400" text-anchor="start" style="fill:#945139" >該当機能のページ</text>
+  <rect x="36" y="392" width="360" height="210" rx="12" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+  <text x="56" y="426" font-size="20" font-weight="650" text-anchor="start" style="fill:#244e46" >コア処理</text>
+  <path d="M56 443H376" fill="none" stroke="#6b7c78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="67" cy="470" r="14" fill="#39756a"/><text x="67" y="476" class="number">1</text>
+  <text x="92" y="476" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >1フレームの処理順</text>
+  <circle cx="67" cy="505" r="14" fill="#39756a"/><text x="67" y="511" class="number">2</text>
+  <text x="92" y="511" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >ボーンモデル</text>
+  <circle cx="67" cy="540" r="14" fill="#39756a"/><text x="67" y="546" class="number">3</text>
+  <text x="92" y="546" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >シミュレーション</text>
+  <rect x="420" y="392" width="360" height="210" rx="12" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+  <text x="440" y="426" font-size="20" font-weight="650" text-anchor="start" style="fill:#244e46" >共有システム</text>
+  <path d="M440 443H760" fill="none" stroke="#6b7c78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="440" y="476" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >Subsystem と Shared Collision</text>
+  <text x="440" y="511" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >Simple World Collision</text>
+  <text x="440" y="546" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >Shared Publisher</text>
+  <rect x="804" y="392" width="360" height="210" rx="12" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+  <text x="824" y="426" font-size="20" font-weight="650" text-anchor="start" style="fill:#244e46" >実行時制御とデータ</text>
+  <path d="M824 443H1144" fill="none" stroke="#6b7c78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="824" y="476" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >ランタイム制御と要求キュー</text>
+  <text x="824" y="511" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >アニメーション連携</text>
+  <text x="824" y="546" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >Data Asset とプリセット</text>
+  <rect x="36" y="630" width="264" height="210" rx="12" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+  <text x="56" y="664" font-size="20" font-weight="650" text-anchor="start" style="fill:#244e46" >拘束・コリジョン</text>
+  <path d="M56 681H280" fill="none" stroke="#6b7c78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="56" y="714" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >拘束と制限</text>
+  <text x="56" y="749" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >ローカルコリジョン</text>
+  <text x="56" y="784" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >Sync Bone</text>
+  <rect x="324" y="630" width="264" height="210" rx="12" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+  <text x="344" y="664" font-size="20" font-weight="650" text-anchor="start" style="fill:#244e46" >外力と風</text>
+  <path d="M344 681H568" fill="none" stroke="#6b7c78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="344" y="714" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >外力</text>
+  <text x="344" y="749" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >Procedural Wind</text>
+  <rect x="612" y="630" width="264" height="210" rx="12" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+  <text x="632" y="664" font-size="20" font-weight="650" text-anchor="start" style="fill:#244e46" >エディタ</text>
+  <path d="M632 681H856" fill="none" stroke="#6b7c78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="632" y="714" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >エディタモジュール</text>
+  <text x="632" y="749" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >エディタツール</text>
+  <rect x="900" y="630" width="264" height="210" rx="12" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+  <text x="920" y="664" font-size="20" font-weight="650" text-anchor="start" style="fill:#244e46" >調査と開発</text>
+  <path d="M920 681H1144" fill="none" stroke="#6b7c78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="931" cy="708" r="7" fill="#417aa5"/>
+  <text x="956" y="714" font-size="18" font-weight="400" text-anchor="start" style="fill:#305e80" >調査ガイド</text>
+  <circle cx="931" cy="743" r="7" fill="#bd6a4d"/>
+  <text x="956" y="749" font-size="18" font-weight="400" text-anchor="start" style="fill:#945139" >改造ガイド</text>
+  <text x="920" y="784" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >テスト</text>
+</svg>

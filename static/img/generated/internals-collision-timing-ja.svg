@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="710" viewBox="0 0 1200 710" role="img" aria-labelledby="diagram-title" font-family="system-ui, sans-serif">
+<title id="diagram-title">コリジョンの更新頻度</title>
+<defs>
+<marker id="arrow-g" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker>
+<marker id="arrow-b" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#417aa5"/></marker>
+<marker id="arrow-o" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker>
+<marker id="arrow-gray" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#6b7c78"/></marker>
+</defs>
+<rect width="1200" height="710" rx="24" fill="#f5faf8"/>
+<text id="label-1" x="36" y="58" font-size="30" fill="#244e46" font-weight="650">コリジョンの更新頻度</text>
+<text id="label-2" x="36" y="96" font-size="22" font-family="Consolas, monospace" fill="#39756a">EvaluateSkeletalControl_AnyThread</text>
+<rect id="eval1" x="36" y="142" width="408" height="448" rx="12" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+<text id="label-3" x="54" y="177" font-size="20" fill="#244e46" font-weight="650">評価 1</text>
+<text id="label-4" x="54" y="208" font-size="18" font-family="Consolas, monospace" fill="#244e46">NumSteps = 2</text>
+<rect id="eval1follow" x="54" y="230" width="372" height="76" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<text id="label-5" x="240" y="261" font-size="20" fill="#244e46" font-weight="650" text-anchor="middle">形状追従</text>
+<text id="label-6" x="240" y="290" font-size="18" fill="#305e80" text-anchor="middle">評価ごと</text>
+<rect id="eval2" x="468" y="142" width="240" height="448" rx="12" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+<text id="label-7" x="486" y="177" font-size="20" fill="#244e46" font-weight="650">評価 2</text>
+<text id="label-8" x="486" y="208" font-size="18" font-family="Consolas, monospace" fill="#244e46">NumSteps = 0</text>
+<rect id="eval2follow" x="486" y="230" width="204" height="76" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<text id="label-9" x="588" y="261" font-size="20" fill="#244e46" font-weight="650" text-anchor="middle">形状追従</text>
+<text id="label-10" x="588" y="290" font-size="18" fill="#305e80" text-anchor="middle">評価ごと</text>
+<rect id="eval3" x="732" y="142" width="432" height="448" rx="12" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+<text id="label-11" x="750" y="177" font-size="20" fill="#244e46" font-weight="650">評価 3</text>
+<text id="label-12" x="750" y="208" font-size="18" font-family="Consolas, monospace" fill="#244e46">NumSteps = 1</text>
+<rect id="eval3follow" x="750" y="230" width="396" height="76" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<text id="label-13" x="948" y="261" font-size="20" fill="#244e46" font-weight="650" text-anchor="middle">形状追従</text>
+<text id="label-14" x="948" y="290" font-size="18" fill="#305e80" text-anchor="middle">評価ごと</text>
+<rect id="step11" x="54" y="358" width="174" height="210" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<text id="label-15" x="72" y="392" font-size="20" fill="#244e46" font-weight="650">ステップ 1</text>
+<text id="label-16" x="141" y="431" font-size="18" font-family="Consolas, monospace" fill="#244e46" text-anchor="middle">PostApply</text>
+<path d="M141 440V460" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<text id="label-17" x="141" y="486" font-size="18" fill="#244e46" text-anchor="middle">キャッシュ</text>
+<path d="M141 495V515" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<text id="label-18" x="141" y="542" font-size="18" fill="#244e46" text-anchor="middle">押し出し</text>
+<rect id="step12" x="252" y="358" width="174" height="210" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<text id="label-19" x="270" y="392" font-size="20" fill="#244e46" font-weight="650">ステップ 2</text>
+<text id="label-20" x="339" y="431" font-size="18" font-family="Consolas, monospace" fill="#244e46" text-anchor="middle">PostApply</text>
+<path d="M339 440V460" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<text id="label-21" x="339" y="486" font-size="18" fill="#244e46" text-anchor="middle">キャッシュ</text>
+<path d="M339 495V515" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<text id="label-22" x="339" y="542" font-size="18" fill="#244e46" text-anchor="middle">押し出し</text>
+<rect id="step31" x="750" y="358" width="396" height="210" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<text id="label-23" x="768" y="392" font-size="20" fill="#244e46" font-weight="650">ステップ 1</text>
+<text id="label-24" x="948" y="431" font-size="18" font-family="Consolas, monospace" fill="#244e46" text-anchor="middle">PostApply</text>
+<path d="M948 440V460" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<text id="label-25" x="948" y="486" font-size="18" fill="#244e46" text-anchor="middle">キャッシュ</text>
+<path d="M948 495V515" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<text id="label-26" x="948" y="542" font-size="18" fill="#244e46" text-anchor="middle">押し出し</text>
+<path d="M240 306V332H141V358" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<path d="M228 464H252" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path d="M948 306V358" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+<text id="label-27" x="588" y="460" font-size="18" fill="#945139" text-anchor="middle">ステップなし</text>
+<path d="M444 174H468" fill="none" stroke="#6b7c78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-gray)"/>
+<path d="M708 174H732" fill="none" stroke="#6b7c78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-gray)"/>
+<text id="label-28" x="36" y="636" font-size="18" fill="#305e80">形状追従：<tspan font-family="Consolas, monospace">Location</tspan>・<tspan font-family="Consolas, monospace">Rotation</tspan></text>
+<text id="label-29" x="36" y="680" font-size="18" fill="#39756a">キャッシュ</text>
+<text id="label-30" x="250" y="680" font-size="18" font-family="Consolas, monospace" fill="#39756a">PrepareCollisionShapeCaches</text>
+</svg>

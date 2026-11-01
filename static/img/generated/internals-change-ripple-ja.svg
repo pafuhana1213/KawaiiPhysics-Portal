@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="850" viewBox="0 0 1200 850" role="img" aria-labelledby="title" font-family="system-ui, sans-serif">
+  <title id="title">作業別の変更箇所</title>
+  <defs>
+    <marker id="arrow-green" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker>
+    <marker id="arrow-blue" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#417aa5"/></marker>
+    <marker id="arrow-orange" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker>
+    <marker id="arrow-gray" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#6b7c78"/></marker>
+  </defs>
+  <rect width="1200" height="850" rx="24" fill="#f5faf8"/>
+  <text x="36" y="58" font-size="30" font-weight="700" fill="#244e46">作業別の変更箇所</text>
+  <text x="36" y="96" font-size="22" fill="#244e46">作業 → 同時に確認する箇所</text>
+  <rect x="36" y="142" width="280" height="114" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <circle cx="62" cy="170" r="14" fill="#39756a"/>
+  <text x="62" y="176" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">1</text>
+  <text x="88" y="178" font-size="20" font-weight="650" fill="#244e46"><tspan font-family="Consolas, monospace">UPROPERTY</tspan></text>
+  <text x="54" y="224" font-size="18" fill="#244e46">追加</text>
+  <rect x="356" y="142" width="808" height="114" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <text x="374" y="176" font-size="18" fill="#305e80"><tspan font-family="Consolas, monospace">ClassifyNodeProperty</tspan> / <tspan font-family="Consolas, monospace">CopyNodeDataToPreviewNode</tspan></text>
+  <text x="374" y="207" font-size="18" fill="#305e80">カテゴリ・再初期化の3集合・<tspan font-family="Consolas, monospace">ShouldReinitModifyBones</tspan></text>
+  <text x="374" y="238" font-size="18" fill="#305e80">確認：プロパティ分類・カテゴリ整合性</text>
+  <path d="M316 199H356" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+  <rect x="36" y="276" width="280" height="114" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <circle cx="62" cy="304" r="14" fill="#39756a"/>
+  <text x="62" y="310" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">2</text>
+  <text x="88" y="312" font-size="20" font-weight="650" fill="#244e46">1ステップの処理</text>
+  <text x="54" y="358" font-size="18" fill="#244e46">追加・変更</text>
+  <rect x="356" y="276" width="808" height="114" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <text x="374" y="310" font-size="18" fill="#305e80"><tspan font-family="Consolas, monospace">SimulateOnce</tspan> / <tspan font-family="Consolas, monospace">Simulate</tspan> → <tspan font-family="Consolas, monospace">StepOnce</tspan> / <tspan font-family="Consolas, monospace">StepFrame</tspan></text>
+  <text x="374" y="341" font-size="18" fill="#305e80"><tspan font-family="Consolas, monospace">GetStepDeltaTime()</tspan>・ダミーの条件・処理順</text>
+  <text x="374" y="372" font-size="18" fill="#305e80">確認：Golden・本番ノード評価</text>
+  <path d="M316 333H356" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+  <rect x="36" y="410" width="280" height="114" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <circle cx="62" cy="438" r="14" fill="#39756a"/>
+  <text x="62" y="444" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">3</text>
+  <text x="88" y="446" font-size="20" font-weight="650" fill="#244e46">コリジョン形状</text>
+  <text x="54" y="492" font-size="18" fill="#244e46">追加</text>
+  <rect x="356" y="410" width="808" height="114" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <text x="374" y="444" font-size="18" fill="#305e80">形状配列・空間変換・キャッシュ・押し出し・描画</text>
+  <text x="374" y="475" font-size="18" fill="#305e80"><tspan font-family="Consolas, monospace">SourceType</tspan> / <tspan font-family="Consolas, monospace">DrivingBone.Initialize</tspan></text>
+  <text x="374" y="506" font-size="18" fill="#305e80">Shared・Simple World・Data Asset・ランタイム情報・ハーネス</text>
+  <path d="M316 467H356" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+  <rect x="36" y="544" width="280" height="114" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <circle cx="62" cy="572" r="14" fill="#39756a"/>
+  <text x="62" y="578" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">4</text>
+  <text x="88" y="580" font-size="20" font-weight="650" fill="#244e46">Game Thread の要求</text>
+  <text x="54" y="626" font-size="18" fill="#244e46">追加</text>
+  <rect x="356" y="544" width="808" height="114" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <text x="374" y="578" font-size="18" fill="#305e80"><tspan font-family="Consolas, monospace">FKawaiiPhysicsTransientForceQueue</tspan> / <tspan font-family="Consolas, monospace">FKawaiiPhysicsTransientForceStore</tspan></text>
+  <text x="374" y="609" font-size="18" fill="#305e80"><tspan font-family="Consolas, monospace">Mutex</tspan>・上限 → <tspan font-family="Consolas, monospace">Swap</tspan>・消費 → <tspan font-family="Consolas, monospace">ResetTransientRuntimeState</tspan></text>
+  <text x="374" y="640" font-size="18" fill="#305e80">確認：<tspan font-family="Consolas, monospace">FQueueBufferSnapshot</tspan></text>
+  <path d="M316 601H356" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+  <rect x="36" y="678" width="280" height="114" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <circle cx="62" cy="706" r="14" fill="#39756a"/>
+  <text x="62" y="712" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">5</text>
+  <text x="88" y="714" font-size="20" font-weight="650" fill="#244e46">倍率成分の追加</text>
+  <text x="54" y="760" font-size="18" fill="#244e46">Settings Multiplier</text>
+  <rect x="356" y="678" width="808" height="114" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <text x="374" y="712" font-size="18" fill="#305e80"><tspan font-family="Consolas, monospace">ComputeEffectivePhysicsSettingsMultiplierScale</tspan></text>
+  <text x="374" y="743" font-size="18" fill="#305e80"><tspan font-family="Consolas, monospace">UpdatePhysicsSettingsOfModifyBones</tspan>：2分岐</text>
+  <text x="374" y="774" font-size="18" fill="#305e80">Sequencer：Section・Template・TrackEditor</text>
+  <path d="M316 735H356" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+</svg>

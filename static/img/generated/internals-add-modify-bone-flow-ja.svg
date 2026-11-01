@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="790" viewBox="0 0 1200 790" role="img" aria-labelledby="diagram-title" font-family="system-ui, sans-serif">
+<title id="diagram-title">ボーン追加の判断フロー</title>
+<defs>
+<marker id="arrow-green" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker>
+<marker id="arrow-blue" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#417aa5"/></marker>
+<marker id="arrow-orange" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker>
+<marker id="arrow-gray" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#6b7c78"/></marker>
+</defs>
+<rect width="1200" height="790" rx="24" fill="#f5faf8"/>
+<text x="36" y="58" font-size="30" font-weight="700" fill="#244e46" text-anchor="start">ボーン追加の判断フロー</text>
+<text x="36" y="96" font-size="22" font-weight="400" fill="#39756a" text-anchor="start" font-family="Consolas, monospace">AddModifyBone</text>
+<g id="entry"><rect x="36" y="134" width="252" height="90" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="62" cy="180" r="14" fill="#39756a"/>
+<text x="62" y="186" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">1</text>
+<text x="88" y="186" font-size="18" font-weight="650" fill="#244e46" text-anchor="start" font-family="Consolas, monospace">AddModifyBone</text>
+</g>
+<g id="excluded"><rect x="324" y="134" width="440" height="90" rx="12" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+<text x="342" y="170" font-size="18" font-weight="400" fill="#945139" text-anchor="start">除外対象</text>
+<text x="342" y="202" font-size="18" font-weight="400" fill="#945139" text-anchor="start">または Compact Pose にない</text>
+</g>
+<g id="invalid-return"><rect x="924" y="134" width="240" height="90" rx="12" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+<text x="942" y="170" font-size="18" font-weight="400" fill="#945139" text-anchor="start" font-family="Consolas, monospace">INDEX_NONE</text>
+<text x="942" y="202" font-size="18" font-weight="400" fill="#945139" text-anchor="start">返却</text>
+</g>
+<path d="M288 179H324" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+<path d="M764 179H924" fill="none" stroke="#bd6a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-orange)"/>
+<text x="812" y="162" font-size="18" font-weight="400" fill="#945139" text-anchor="start">はい</text>
+<g id="child-loop"><rect x="324" y="278" width="840" height="280" rx="12" fill="none" stroke="#417aa5" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="342" y="306" font-size="18" fill="#305e80" font-weight="650">子ごとに繰り返す</text>
+<g id="insert-dummies"><rect x="348" y="324" width="338" height="84" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="374" cy="350" r="14" fill="#39756a"/><text x="374" y="356" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">3</text>
+<text x="400" y="356" font-size="20" fill="#244e46" font-weight="650">Inter-Bone ダミー</text>
+<text x="366" y="390" font-size="18" fill="#244e46">子ごとに挿入</text>
+</g>
+<g id="recurse"><rect x="742" y="324" width="398" height="84" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="768" cy="350" r="14" fill="#39756a"/><text x="768" y="356" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">4</text>
+<text x="794" y="356" font-size="18" fill="#244e46" font-family="Consolas, monospace" font-weight="650">AddModifyBone</text>
+<text x="760" y="390" font-size="18" fill="#244e46">子を再帰で追加</text>
+</g>
+<path d="M686 366H742" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+<g id="connect"><rect x="348" y="466" width="338" height="68" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="374" cy="490" r="14" fill="#39756a"/><text x="374" y="496" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">5</text>
+<text x="400" y="496" font-size="20" fill="#244e46" font-weight="650">親子を接続</text>
+<text x="366" y="520" font-size="18" fill="#244e46">補間先を確定</text>
+</g>
+<g id="rollback"><rect x="742" y="466" width="398" height="68" rx="12" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+<circle cx="768" cy="490" r="14" fill="#bd6a4d"/><text x="768" y="496" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">5</text>
+<text x="794" y="496" font-size="20" fill="#945139" font-weight="650">挿入ダミー</text>
+<text x="760" y="520" font-size="18" fill="#945139">ロールバック</text>
+</g>
+<path d="M942 408V430H517V466" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+<text x="531" y="454" font-size="18" fill="#244e46">成功</text>
+<path d="M1110 408V466" fill="none" stroke="#bd6a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-orange)"/>
+<text x="1122" y="444" font-size="18" fill="#945139">失敗</text>
+<path d="M517 534V546H941" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M941 534V558" fill="none" stroke="#bd6a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g id="add-self"><rect x="36" y="324" width="252" height="84" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="62" cy="366" r="14" fill="#39756a"/><text x="62" y="372" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">2</text>
+<text x="88" y="372" font-size="20" fill="#244e46" font-weight="650">配列へ追加</text>
+</g>
+<path d="M544 224V258H162V324" fill="none" stroke="#bd6a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-orange)"/>
+<text x="558" y="248" font-size="18" fill="#945139">いいえ</text>
+<path d="M288 366H348" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+<path d="M162 408V572H941" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="54" y="462" font-size="18" fill="#305e80">子が0本</text>
+<path d="M941 558V590" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+<g id="no-child"><rect x="688" y="590" width="476" height="70" rx="12" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+<circle cx="714" cy="616" r="14" fill="#bd6a4d"/><text x="714" y="622" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">6</text>
+<text x="740" y="622" font-size="20" fill="#945139" font-weight="650">全ての子を処理後、</text>
+<text x="706" y="648" font-size="20" fill="#945139" font-weight="650">追加できた実子が0本</text>
+</g>
+<g id="tip"><rect x="36" y="700" width="500" height="66" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="62" cy="724" r="14" fill="#39756a"/><text x="62" y="730" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">7</text>
+<text x="88" y="730" font-size="18" fill="#244e46" font-family="Consolas, monospace" font-weight="650">DummyBoneLength &gt; 0</text>
+<text x="54" y="754" font-size="18" fill="#244e46">末端ダミー追加</text>
+</g>
+<g id="return-index"><rect x="768" y="700" width="396" height="66" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="794" cy="733" r="14" fill="#39756a"/><text x="794" y="739" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">8</text>
+<text x="820" y="739" font-size="20" fill="#244e46" font-weight="650">インデックス返却</text>
+</g>
+<path d="M926 660V684H286V700" fill="none" stroke="#bd6a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-orange)"/>
+<text x="600" y="678" font-size="18" fill="#945139">はい</text>
+<path d="M1164 630H1180V686H1060V700" fill="none" stroke="#bd6a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-orange)"/>
+<text x="1080" y="679" font-size="18" fill="#945139">いいえ</text>
+<path d="M536 733H768" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+</svg>

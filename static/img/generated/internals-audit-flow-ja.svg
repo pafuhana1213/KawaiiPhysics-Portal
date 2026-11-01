@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="790" viewBox="0 0 1200 790" role="img" aria-labelledby="diagram-title" font-family="system-ui, sans-serif">
+<title id="diagram-title">Node Audit の呼び出し</title>
+<defs>
+ <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker>
+ <marker id="branch-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker>
+ <style>
+ .stage{fill:#dcebe7;stroke:#39756a;stroke-width:1.5}
+ .data{fill:#d7e6f3;stroke:#417aa5;stroke-width:1.5}
+ .note{fill:#f5e3db;stroke:#bd6a4d;stroke-width:1.5}
+ .neutral{fill:#f5faf8;stroke:#6b7c78;stroke-width:1.5}
+ .flow{fill:none;stroke:#39756a;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow)}
+ .branch{fill:none;stroke:#bd6a4d;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#branch-arrow)}
+ .code{font-family:Consolas, monospace}
+ </style></defs>
+<rect width="1200" height="790" rx="24" fill="#f5faf8"/>
+<text x="36" y="58" font-size="30" fill="#244e46" font-weight="650"><tspan>Node Audit の呼び出し</tspan></text>
+<text x="36" y="96" font-size="22" fill="#39756a"><tspan>入口 → 共通処理 → 監査エントリ → JSON</tspan></text>
+<rect x="36" y="126" width="352" height="92" rx="12" class="stage" />
+<rect x="424" y="126" width="352" height="92" rx="12" class="stage" />
+<rect x="812" y="126" width="352" height="92" rx="12" class="stage" />
+<circle cx="62" cy="152" r="14" fill="#39756a"/><text x="62" y="158" text-anchor="middle" font-size="18" font-weight="650" fill="#f5faf8">1</text>
+<text x="88" y="159" font-size="20" fill="#244e46" font-weight="650"><tspan>プリセットの Details</tspan></text>
+<circle cx="450" cy="152" r="14" fill="#39756a"/><text x="450" y="158" text-anchor="middle" font-size="18" font-weight="650" fill="#f5faf8">1</text>
+<text x="476" y="159" font-size="20" fill="#244e46" font-weight="650"><tspan>タブ</tspan></text>
+<circle cx="838" cy="152" r="14" fill="#39756a"/><text x="838" y="158" text-anchor="middle" font-size="18" font-weight="650" fill="#f5faf8">1</text>
+<text x="864" y="159" font-size="20" fill="#244e46" font-weight="650"><tspan>コマンドレット</tspan></text>
+<text x="54" y="193" font-size="18" fill="#244e46"><tspan class="code">Dry Run</tspan></text>
+<text x="442" y="193" font-size="18" fill="#244e46"><tspan class="code">SKawaiiPhysicsNodeAuditWindow</tspan></text>
+<text x="830" y="193" font-size="18" fill="#244e46"><tspan class="code">UKawaiiPhysicsAuditCommandlet</tspan></text>
+<text x="212" y="245" font-size="18" fill="#244e46" text-anchor="middle"><tspan class="code">ApplyPresetToProject</tspan></text>
+<text x="212" y="270" font-size="18" fill="#244e46" text-anchor="middle"><tspan class="code">(Dry Run)</tspan></text>
+<text x="600" y="245" font-size="18" fill="#244e46" text-anchor="middle"><tspan>Refresh / Apply to Project</tspan></text>
+<text x="988" y="245" font-size="18" fill="#244e46" text-anchor="middle"><tspan class="code">AuditKawaiiPhysicsNodes</tspan></text>
+<path d="M212 218V224" class="flow" />
+<path d="M212 278V288H410V302" class="flow" />
+<path d="M600 218V224" class="flow" />
+<path d="M600 260V302" class="flow" />
+<path d="M988 218V224" class="flow" />
+<path d="M988 260V288H790V302" class="flow" />
+<rect x="320" y="302" width="560" height="70" rx="12" class="stage" />
+<circle cx="346" cy="328" r="14" fill="#39756a"/><text x="346" y="334" text-anchor="middle" font-size="18" font-weight="650" fill="#f5faf8">2</text>
+<text x="600" y="345" font-size="20" fill="#244e46" text-anchor="middle"><tspan class="code">UKawaiiPhysicsEditorLibrary</tspan></text>
+<path d="M600 372V412" class="flow" />
+<rect x="340" y="412" width="520" height="72" rx="12" class="data" />
+<circle cx="366" cy="438" r="14" fill="#417aa5"/><text x="366" y="444" text-anchor="middle" font-size="18" font-weight="650" fill="#f5faf8">3</text>
+<text x="600" y="455" font-size="18" fill="#244e46" text-anchor="middle"><tspan class="code">FKawaiiPhysicsNodeAuditEntry</tspan><tspan> の配列</tspan></text>
+<path d="M500 484V502H335V526" class="flow" />
+<path d="M700 484V502H865V526" class="flow" />
+<rect x="110" y="526" width="450" height="80" rx="12" class="data" />
+<rect x="640" y="526" width="450" height="80" rx="12" class="data" />
+<text x="132" y="555" font-size="20" fill="#244e46" font-weight="650"><tspan>タブ</tspan></text>
+<text x="132" y="584" font-size="18" fill="#244e46"><tspan class="code">SKawaiiPhysicsNodeAuditWindow</tspan></text>
+<text x="662" y="555" font-size="20" fill="#244e46" font-weight="650"><tspan>コマンドレット</tspan></text>
+<text x="662" y="584" font-size="18" fill="#244e46"><tspan class="code">UKawaiiPhysicsAuditCommandlet</tspan></text>
+<text x="335" y="643" font-size="18" fill="#244e46" text-anchor="middle"><tspan>JSON の Export</tspan></text>
+<text x="865" y="643" font-size="18" fill="#244e46" text-anchor="middle"><tspan class="code">Output=</tspan><tspan> 指定時</tspan></text>
+<path d="M335 606V618" class="flow" />
+<path d="M335 654V674H470V700" class="flow" />
+<path d="M865 606V618" class="flow" />
+<path d="M865 654V674H730V700" class="flow" />
+<rect x="370" y="700" width="460" height="60" rx="12" class="data" />
+<circle cx="396" cy="726" r="14" fill="#417aa5"/><text x="396" y="732" text-anchor="middle" font-size="18" font-weight="650" fill="#f5faf8">4</text>
+<text x="600" y="738" font-size="20" fill="#244e46" text-anchor="middle"><tspan class="code">MakeAuditJsonObject</tspan></text>
+</svg>

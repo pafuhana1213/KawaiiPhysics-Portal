@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="754" viewBox="0 0 1200 754" role="img" aria-labelledby="title" font-family="system-ui, sans-serif">
+  <title id="title">Library、AnimNotify、Sequencer の入口とキューの対応</title>
+  <defs>
+    <marker id="flow-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker>
+    <style>
+      .stage{fill:#dcebe7;stroke:#39756a;stroke-width:1.5}
+      .data-stage{fill:#d7e6f3;stroke:#417aa5;stroke-width:1.5}
+      .warning{fill:#f5e3db;stroke:#bd6a4d;stroke-width:1.5}
+      .heading{font-size:20px;font-weight:650;fill:#244e46}
+      .label{font-size:18px;fill:#244e46}
+      .data-label{font-size:18px;fill:#305e80}
+      .warn-label{font-size:18px;fill:#945139}
+      .code{font-family:Consolas, monospace}
+      .flow{fill:none;stroke:#39756a;stroke-width:2;stroke-linecap:round;marker-end:url(#flow-arrow)}
+    </style>
+  </defs>
+  <rect width="1200" height="754" rx="24" fill="#f5faf8"/>
+  <text x="36" y="58" font-size="30" font-weight="700" fill="#244e46">入口とキューの対応</text>
+  <text x="36" y="96" font-size="22" fill="#39756a" class="code">UKawaiiPhysicsLibrary</text>
+  <text class="label" x="650" y="96">Blueprint / C++：全経路</text>
+  <text class="heading" x="54" y="132">入口</text>
+  <text class="heading" x="472" y="132">操作</text>
+  <text class="heading" x="668" y="132">書き込み先</text>
+
+  <g id="pulse">
+    <rect class="stage" x="36" y="150" width="350" height="78" rx="12"/>
+    <text class="heading" x="54" y="182">Settings Multiplier</text>
+    <text class="label" x="54" y="207">AnimNotify / Pulse</text>
+    <text class="label code" x="510" y="179" text-anchor="middle">Start</text>
+    <path class="flow" d="M386 196H650"/>
+    <rect class="data-stage" x="650" y="150" width="514" height="78" rx="12"/>
+    <text class="data-label code" x="668" y="181">PendingSettingsMultipliers</text>
+    <text class="data-label" x="668" y="210">時間型</text>
+  </g>
+  <g id="driven">
+    <rect class="stage" x="36" y="248" width="350" height="106" rx="12"/>
+    <text class="heading" x="54" y="285">Settings Multiplier</text>
+    <text class="label" x="54" y="323">AnimNotifyState / Sequencer</text>
+    <text class="label code" x="510" y="270" text-anchor="middle">Push</text>
+    <path class="flow" d="M386 281H650"/>
+    <text class="label code" x="510" y="319" text-anchor="middle">Stop</text>
+    <path class="flow" d="M386 330H650"/>
+    <rect class="data-stage" x="650" y="248" width="514" height="106" rx="12"/>
+    <text class="data-label code" x="668" y="285">PendingSettingsMultiplierPushes</text>
+    <text class="data-label code" x="668" y="330">PendingSettingsMultiplierStops</text>
+  </g>
+  <g id="gust">
+    <rect class="stage" x="36" y="374" width="350" height="106" rx="12"/>
+    <text class="heading" x="54" y="411">Trigger Gust</text>
+    <text class="label" x="54" y="449">AnimNotify</text>
+    <text class="label" x="510" y="396" text-anchor="middle">Nodes</text>
+    <path class="flow" d="M386 407H650"/>
+    <text class="label" x="510" y="445" text-anchor="middle">SharedPublisher</text>
+    <path class="flow" d="M386 456H650"/>
+    <rect class="data-stage" x="650" y="374" width="514" height="106" rx="12"/>
+    <text class="data-label code" x="668" y="411">PendingGusts</text>
+    <text class="data-label" x="668" y="456">Entry の <tspan class="code">PendingGusts</tspan></text>
+  </g>
+  <g id="direct">
+    <rect class="stage" x="36" y="500" width="350" height="102" rx="12"/>
+    <text class="heading" x="54" y="532">Add ExternalForce</text>
+    <text class="label" x="54" y="561">AnimNotify / State</text>
+    <text class="label" x="54" y="581">Set Alpha / AnimNotifyState</text>
+    <text class="warn-label" x="510" y="541" text-anchor="middle">直接</text>
+    <path class="flow" d="M386 558H650"/>
+    <rect class="warning" x="650" y="500" width="514" height="102" rx="12"/>
+    <text class="warn-label code" x="668" y="537">ExternalForces / Alpha</text>
+    <text class="warn-label" x="668" y="578">同期なし</text>
+  </g>
+  <g id="library-forces">
+    <rect class="stage" x="36" y="622" width="350" height="88" rx="12"/>
+    <text class="heading" x="54" y="655">Blueprint / C++</text>
+    <text class="label" x="54" y="688">一時外力</text>
+    <text class="label" x="510" y="656" text-anchor="middle">追加 / 停止</text>
+    <path class="flow" d="M386 673H650"/>
+    <rect class="data-stage" x="650" y="622" width="514" height="88" rx="12"/>
+    <text class="data-label code" x="668" y="655">PendingForces</text>
+    <text class="data-label code" x="668" y="688">PendingStops</text>
+  </g>
+</svg>

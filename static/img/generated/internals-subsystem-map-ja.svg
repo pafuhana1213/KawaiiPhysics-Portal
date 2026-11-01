@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="850" viewBox="0 0 1200 850" role="img" aria-labelledby="diagram-title" font-family="system-ui, sans-serif">
+<title id="diagram-title">Subsystem の構造と所有</title>
+<defs><marker id="green-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker><marker id="orange-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker></defs>
+<rect width="1200" height="850" rx="24" fill="#f5faf8"/>
+<text x="36" y="58" font-size="30" fill="#244e46" font-weight="700">Subsystem の構造と所有</text>
+<text x="36" y="96" font-size="22" fill="#39756a" font-family="Consolas, monospace">UKawaiiPhysicsSharedCollisionSubsystem</text>
+<rect id="r1" x="36" y="136" width="360" height="112" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<circle cx="62" cy="162" r="14" fill="#417aa5"/>
+<text x="62" y="168" font-size="18" fill="#f5faf8" font-weight="650" text-anchor="middle">1</text>
+<text x="88" y="172" font-size="20" fill="#244e46" font-family="Consolas, monospace" font-weight="650">Registry</text>
+<text x="54" y="221" font-size="18" fill="#417aa5" font-family="Consolas, monospace">RegistryLock</text>
+<path d="M216 248V274" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)"/>
+<rect id="r2" x="420" y="136" width="360" height="112" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<circle cx="446" cy="162" r="14" fill="#417aa5"/>
+<text x="446" y="168" font-size="18" fill="#f5faf8" font-weight="650" text-anchor="middle">2</text>
+<text x="472" y="172" font-size="20" fill="#244e46" font-family="Consolas, monospace" font-weight="650">SimpleWorldRegistry</text>
+<text x="438" y="221" font-size="18" fill="#417aa5" font-family="Consolas, monospace">SimpleWorldRegistryLock</text>
+<path d="M600 248V274" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)"/>
+<rect id="r3" x="804" y="136" width="360" height="112" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<circle cx="830" cy="162" r="14" fill="#417aa5"/>
+<text x="830" y="168" font-size="18" fill="#f5faf8" font-weight="650" text-anchor="middle">3</text>
+<text x="856" y="172" font-size="20" fill="#244e46" font-family="Consolas, monospace" font-weight="650">SharedPublisherRegistry</text>
+<text x="822" y="221" font-size="18" fill="#417aa5" font-family="Consolas, monospace">SharedPublisherRegistryLock</text>
+<path d="M984 248V274" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)"/>
+<rect id="e1" x="36" y="274" width="360" height="306" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<text x="54" y="310" font-size="20" fill="#244e46" font-weight="650">共有形状 Entry</text>
+<text x="54" y="341" font-size="18" fill="#39756a" font-family="Consolas, monospace">SlotsLock</text>
+<rect id="s1" x="54" y="367" width="324" height="120" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<text x="72" y="403" font-size="20" fill="#244e46" font-weight="650">Source <tspan font-family="Consolas, monospace">Slot</tspan></text>
+<text x="72" y="432" font-size="18" fill="#417aa5"><tspan font-family="Consolas, monospace">SourceID</tspan> ごと</text>
+<text x="72" y="466" font-size="18" fill="#417aa5" font-family="Consolas, monospace">BufferLock</text>
+<text x="54" y="524" font-size="18" fill="#39756a" font-family="Consolas, monospace">TSharedPtr</text>
+<text x="54" y="556" font-size="18" fill="#244e46">Entry・ノード → <tspan font-family="Consolas, monospace">Slot</tspan></text>
+<rect id="e2" x="420" y="274" width="360" height="306" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<text x="438" y="310" font-size="20" fill="#244e46" font-weight="650">Simple World Entry</text>
+<text x="438" y="341" font-size="18" fill="#39756a" font-family="Consolas, monospace">DescLock</text>
+<rect id="s2" x="438" y="367" width="324" height="120" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<text x="456" y="403" font-size="18" fill="#417aa5" font-family="Consolas, monospace">Slot / GroundSlot</text>
+<text x="456" y="432" font-size="18" fill="#417aa5" font-family="Consolas, monospace">MemberSlots</text>
+<text x="456" y="466" font-size="18" fill="#417aa5" font-family="Consolas, monospace">BufferLock</text>
+<text x="438" y="524" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">Slot</tspan>・<tspan font-family="Consolas, monospace">GroundSlot</tspan>：値所有</text>
+<text x="438" y="556" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">MemberSlots</tspan>：<tspan font-family="Consolas, monospace">TSharedPtr</tspan></text>
+<rect id="e3" x="804" y="274" width="360" height="306" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<text x="822" y="310" font-size="20" fill="#244e46" font-weight="650">Publisher Entry</text>
+<text x="822" y="355" font-size="18" fill="#39756a" font-family="Consolas, monospace">StateLock</text>
+<text x="822" y="387" font-size="18" fill="#39756a" font-family="Consolas, monospace">State / ProviderID</text>
+<text x="822" y="435" font-size="18" fill="#bd6a4d" font-family="Consolas, monospace">GustMutex</text>
+<text x="822" y="467" font-size="18" fill="#bd6a4d">Pending 要求</text>
+<text x="822" y="524" font-size="18" fill="#244e46" font-family="Consolas, monospace">StateLock / GustMutex</text>
+<text x="822" y="556" font-size="18" fill="#bd6a4d">同時保持なし</text>
+<rect id="own" x="36" y="604" width="1128" height="108" rx="12" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+<text x="54" y="640" font-size="20" fill="#244e46" font-weight="650"><tspan font-family="Consolas, monospace">TSharedPtr</tspan>：レジストリ・ノード → Entry</text>
+<text x="54" y="675" font-size="18" fill="#244e46">ノード：共有形状 Entry・Source <tspan font-family="Consolas, monospace">Slot</tspan>・Simple World Entry</text>
+<text x="754" y="675" font-size="18" fill="#244e46">Publisher Helper：2種の Entry</text>
+<rect id="tick" x="36" y="736" width="1128" height="78" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<text x="54" y="772" font-size="20" fill="#244e46" font-weight="650"><tspan font-family="Consolas, monospace">Tick</tspan> · Game Thread</text>
+<text x="330" y="772" font-size="18" fill="#244e46">毎回：Simple World 更新（収集・<tspan font-family="Consolas, monospace">Publish</tspan> は条件付き）</text>
+<text x="330" y="797" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">CleanupInterval</tspan>：3レジストリの掃除</text>
+<text x="36" y="838" font-size="18" fill="#6b7c78"><tspan font-family="Consolas, monospace">FRWLock</tspan>：各 Lock　　<tspan font-family="Consolas, monospace">FCriticalSection</tspan>：<tspan font-family="Consolas, monospace">GustMutex</tspan></text>
+</svg>

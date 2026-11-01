@@ -19,6 +19,29 @@ sidebar_class_name: hidden
 | `AnimNotifies/*.h` | `docs/features/animnotify.md` |
 | `KawaiiPhysicsSyncBone.h` | `docs/features/sync-bone.md` |
 
+## 内部設計カテゴリ（`docs/internals/`）
+
+ソースの処理順、データ構造、不変条件を説明する手動メンテナンスのページです。基準コミットは `docs/internals/overview.md` の注記に記載します。対象のソースを変更したら、該当ページの更新と基準コミットの見直しを行います。
+
+| ソースファイル（`Plugins/KawaiiPhysics/Source/`） | ドキュメント |
+|--------------|-------------|
+| `KawaiiPhysics/Private/AnimNode_KawaiiPhysics.cpp` | `frame-lifecycle.md`, `overview.md` |
+| `KawaiiPhysics/Private/AnimNode_KawaiiPhysicsSimulation.cpp` | `simulation.md`, `constraints-and-limits.md` |
+| `KawaiiPhysics/Private/AnimNode_KawaiiPhysicsModifyBones.cpp` | `bone-model.md` |
+| `KawaiiPhysics/Private/AnimNode_KawaiiPhysicsCollision.cpp`, `KawaiiPhysicsCollisionLimits.h` | `collision.md`, `constraints-and-limits.md` |
+| `KawaiiPhysics/Private/KawaiiPhysicsAngleLimit.cpp` | `constraints-and-limits.md` |
+| `KawaiiPhysicsSyncBone.h/.cpp`, `AnimNode_KawaiiPhysicsSyncBone.cpp` | `sync-bone.md` |
+| `ExternalForces/*`, `KawaiiPhysicsCustomExternalForce.h` | `external-forces.md`, `procedural-wind.md` |
+| `KawaiiPhysicsSharedCollisionSubsystem.h/.cpp` | `shared-collision.md`, `simple-world-collision.md`, `shared-publisher.md` |
+| `KawaiiPhysicsSimpleWorldCollision.h/.cpp`, `KawaiiPhysicsGroundProvider.h` | `simple-world-collision.md` |
+| `AnimNode_KawaiiPhysicsSharedPublisher.h/.cpp` | `shared-publisher.md` |
+| `KawaiiPhysicsLibrary.h/.cpp`, `KawaiiPhysicsRuntimeInfoTypes.h` | `runtime-control.md` |
+| `AnimNotifies/*`, `KawaiiPhysicsSequencer/*` | `animation-control.md` |
+| `*DataAsset.h/.cpp`, `Config/DefaultKawaiiPhysics.ini` | `presets-and-data-assets.md` |
+| `KawaiiPhysicsEd/*` | `editor-module.md`, `editor-tools.md` |
+| `KawaiiPhysicsTests/*` | `testing.md` |
+| 上記の変更全般 | `investigation-guide.md`, `modification-guide.md` |
+
 ## パラメータカテゴリとファイルの対応
 
 | UPROPERTYカテゴリ | ドキュメントファイル |
@@ -49,6 +72,7 @@ sidebar_class_name: hidden
 - `docs/getting-started/*.md`
 - `docs/features/*.md`
 - `docs/advanced/*.md`
+- `docs/internals/*.md`
 - `docs/faq.md`
 
 ## 更新トリガー

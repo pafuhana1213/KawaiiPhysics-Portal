@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="diagram-title" font-family="system-ui, sans-serif">
+<title id="diagram-title">Bridge の押し出し配分</title>
+<defs>
+<marker id="arrow-g" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker>
+<marker id="arrow-b" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#417aa5"/></marker>
+<marker id="arrow-o" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker>
+<marker id="arrow-gray" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#6b7c78"/></marker>
+</defs>
+<rect width="1200" height="720" rx="24" fill="#f5faf8"/>
+<text id="label-1" x="36" y="58" font-size="30" fill="#244e46" font-weight="650">Bridge の押し出し配分</text>
+<text id="label-2" x="36" y="96" font-size="22" font-family="Consolas, monospace" fill="#39756a">ApplyBridgeDummyCollisionFeedback</text>
+<rect id="geometry" x="36" y="142" width="1128" height="274" rx="12" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+<text id="label-3" x="70" y="180" font-size="20" fill="#244e46" font-weight="650">端点1</text>
+<text id="label-4" x="386" y="180" font-size="20" fill="#244e46" font-weight="650">Bridge ダミー</text>
+<text id="label-5" x="992" y="180" font-size="20" fill="#244e46" font-weight="650">端点2</text>
+<path d="M170 312H980" fill="none" stroke="#6b7c78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 5"/>
+<circle cx="170" cy="312" r="8" fill="#f5faf8" stroke="#417aa5" stroke-width="2"/>
+<circle cx="980" cy="312" r="8" fill="#f5faf8" stroke="#417aa5" stroke-width="2"/>
+<path d="M440 303l9 9-9 9-9-9Z" fill="#f5faf8" stroke="#bd6a4d" stroke-width="2"/>
+<path d="M440 302V217" fill="none" stroke="#bd6a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-o)"/>
+<path d="M440 199l9 9-9 9-9-9Z" fill="#bd6a4d" stroke="#bd6a4d" stroke-width="2"/>
+<text id="label-6" x="460" y="263" font-size="18" font-family="Consolas, monospace" fill="#945139">Push</text>
+<path d="M422 210H170V235" fill="none" stroke="#bd6a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-o)"/>
+<path d="M458 210H980V268" fill="none" stroke="#bd6a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-o)"/>
+<circle cx="170" cy="243" r="8" fill="#39756a" stroke="#39756a" stroke-width="2"/>
+<circle cx="980" cy="277" r="8" fill="#39756a" stroke="#39756a" stroke-width="2"/>
+<path d="M170 302V254" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<path d="M980 302V288" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<text id="label-7" x="186" y="247" font-size="18" font-family="Consolas, monospace" fill="#945139">Push × (1 − α)</text>
+<text id="label-8" x="992" y="252" font-size="18" font-family="Consolas, monospace" fill="#945139">Push × α</text>
+<path d="M170 362H440" fill="none" stroke="#6b7c78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M440 362H980" fill="none" stroke="#6b7c78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M170 355V369" fill="none" stroke="#6b7c78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M440 355V369" fill="none" stroke="#6b7c78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M980 355V369" fill="none" stroke="#6b7c78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text id="label-9" x="305" y="395" font-size="18" font-family="Consolas, monospace" fill="#244e46" text-anchor="middle">α</text>
+<text id="label-10" x="710" y="395" font-size="18" font-family="Consolas, monospace" fill="#244e46" text-anchor="middle">1 − α</text>
+<text id="label-11" x="54" y="452" font-size="18" font-family="Consolas, monospace" fill="#305e80">α = InterBoneAlpha</text>
+<text id="label-12" x="612" y="452" font-size="18" font-family="Consolas, monospace" fill="#945139">Push = Location − PoseLocation</text>
+<rect id="accumulate" x="36" y="484" width="552" height="150" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="62" cy="510" r="14" fill="#39756a"/><text x="62" y="516" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">1</text>
+<text id="label-13" x="88" y="518" font-size="20" fill="#244e46" font-weight="650">端点ごとの集計</text>
+<text id="label-14" x="54" y="564" font-size="22" font-family="Consolas, monospace" fill="#244e46">Σ(Push × w)</text>
+<text id="label-15" x="350" y="564" font-size="22" font-family="Consolas, monospace" fill="#244e46">Σw</text>
+<text id="label-16" x="54" y="606" font-size="18" font-family="Consolas, monospace" fill="#244e46">w ∈ {1 − α, α}</text>
+<rect id="normalize" x="612" y="484" width="552" height="150" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="638" cy="510" r="14" fill="#39756a"/><text x="638" y="516" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">2</text>
+<text id="label-17" x="664" y="518" font-size="20" fill="#244e46" font-weight="650">正規化・スケール</text>
+<text id="label-18" x="630" y="564" font-size="22" font-family="Consolas, monospace" fill="#244e46">Σ(Push × w) / max(1, Σw)</text>
+<text id="label-19" x="630" y="606" font-size="18" font-family="Consolas, monospace" fill="#244e46">× BoneConstraintSubdivisionFeedbackScale</text>
+<path d="M588 564H612" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+<text id="label-20" x="36" y="683" font-size="18" fill="#6b7c78">Collision Only：Inter-Bone 端点 → 実端点へ再配分</text>
+</svg>

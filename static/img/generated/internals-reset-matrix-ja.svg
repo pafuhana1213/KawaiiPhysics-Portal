@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="882" viewBox="0 0 1200 882" role="img" aria-labelledby="diagram-title" font-family="system-ui, sans-serif">
+  <title id="diagram-title">リセット系イベントの比較</title>
+  <defs>
+    <marker id="arrow-g" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker>
+    <marker id="arrow-b" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#417aa5"/></marker>
+    <marker id="arrow-o" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker>
+    <marker id="arrow-z" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#6b7c78"/></marker>
+    <style>.code { font-family: Consolas, monospace; } text { fill: #244e46; } .heading { font-size: 20px; font-weight: 650; } .label { font-size: 18px; } .number { font-size: 18px; font-weight: 650; fill: #f5faf8; text-anchor: middle; }</style>
+  </defs>
+  <rect width="1200" height="882" rx="24" fill="#f5faf8"/>
+  <text x="36" y="58" font-size="30" font-weight="700" text-anchor="start" style="fill:#244e46" >リセット系イベントの比較</text>
+  <text x="36" y="96" font-size="22" font-weight="400" text-anchor="start" style="fill:#244e46" >状態 × イベント</text>
+  <text x="654" y="129" font-size="18" font-weight="400" class="code" text-anchor="middle" style="fill:#244e46" >ResetDynamics</text>
+  <path d="M472 145V139H836V145" fill="none" stroke="#6b7c78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="332" y="151" width="138" height="52" rx="6" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+  <text x="401" y="183" font-size="18" font-weight="650" text-anchor="middle" style="fill:#244e46" >初期化</text>
+  <rect x="474" y="151" width="162" height="52" rx="6" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+  <text x="555" y="183" font-size="18" font-weight="650" class="code" text-anchor="middle" style="fill:#244e46" >ResetPhysics</text>
+  <rect x="640" y="151" width="194" height="52" rx="6" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+  <text x="737" y="183" font-size="18" font-weight="650" class="code" text-anchor="middle" style="fill:#244e46" >TeleportPhysics</text>
+  <rect x="838" y="151" width="166" height="52" rx="6" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+  <text x="921" y="183" font-size="18" font-weight="650" text-anchor="middle" style="fill:#244e46" >閾値 Teleport</text>
+  <rect x="1008" y="151" width="154" height="52" rx="6" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+  <text x="1085" y="183" font-size="18" font-weight="650" text-anchor="middle" style="fill:#244e46" >再構築判定</text>
+  <text x="52" y="243" font-size="18" font-weight="400" class="code" text-anchor="start" style="fill:#244e46" >ModifyBones</text>
+  <rect x="332" y="211" width="138" height="46" rx="6" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+  <text x="401" y="240" font-size="18" font-weight="400" text-anchor="middle" style="fill:#945139" >破棄</text>
+  <rect x="474" y="211" width="162" height="46" rx="6" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+  <text x="555" y="240" font-size="18" font-weight="400" text-anchor="middle" style="fill:#945139" >破棄</text>
+  <rect x="640" y="211" width="194" height="46" rx="6" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <text x="737" y="240" font-size="18" font-weight="400" text-anchor="middle" style="fill:#305e80" >一部 ※1</text>
+  <rect x="838" y="211" width="166" height="46" rx="6" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <text x="921" y="240" font-size="18" font-weight="400" text-anchor="middle" style="fill:#305e80" >一部 ※1</text>
+  <rect x="1008" y="211" width="154" height="46" rx="6" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+  <text x="1085" y="240" font-size="18" font-weight="400" text-anchor="middle" style="fill:#945139" >破棄</text>
+  <text x="52" y="295" font-size="18" font-weight="400" class="code" text-anchor="start" style="fill:#244e46" >bInitPhysicsSettings</text>
+  <rect x="332" y="263" width="138" height="46" rx="6" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <text x="401" y="292" font-size="18" font-weight="400" text-anchor="middle" style="fill:#244e46" >保持</text>
+  <rect x="474" y="263" width="162" height="46" rx="6" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+  <text x="555" y="292" font-size="18" font-weight="400" class="code" text-anchor="middle" style="fill:#945139" >false</text>
+  <rect x="640" y="263" width="194" height="46" rx="6" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <text x="737" y="292" font-size="18" font-weight="400" text-anchor="middle" style="fill:#244e46" >保持</text>
+  <rect x="838" y="263" width="166" height="46" rx="6" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <text x="921" y="292" font-size="18" font-weight="400" text-anchor="middle" style="fill:#244e46" >保持</text>
+  <rect x="1008" y="263" width="154" height="46" rx="6" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+  <text x="1085" y="292" font-size="18" font-weight="400" class="code" text-anchor="middle" style="fill:#945139" >false</text>
+  <text x="52" y="347" font-size="18" font-weight="400" class="code" text-anchor="start" style="fill:#244e46" >MergedBoneConstraints</text>
+  <rect x="332" y="315" width="138" height="46" rx="6" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+  <text x="401" y="344" font-size="18" font-weight="400" text-anchor="middle" style="fill:#945139" >再生成 ※4</text>
+  <rect x="474" y="315" width="162" height="46" rx="6" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+  <text x="555" y="344" font-size="18" font-weight="400" text-anchor="middle" style="fill:#945139" >再生成 ※4</text>
+  <rect x="640" y="315" width="194" height="46" rx="6" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <text x="737" y="344" font-size="18" font-weight="400" text-anchor="middle" style="fill:#244e46" >保持</text>
+  <rect x="838" y="315" width="166" height="46" rx="6" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <text x="921" y="344" font-size="18" font-weight="400" text-anchor="middle" style="fill:#244e46" >保持</text>
+  <rect x="1008" y="315" width="154" height="46" rx="6" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+  <text x="1085" y="344" font-size="18" font-weight="400" text-anchor="middle" style="fill:#945139" >再生成 ※4</text>
+  <text x="52" y="399" font-size="18" font-weight="400" class="code" text-anchor="start" style="fill:#244e46" >SubstepAccumulator</text>
+  <rect x="332" y="367" width="138" height="46" rx="6" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+  <text x="401" y="396" font-size="18" font-weight="400" class="code" text-anchor="middle" style="fill:#945139" >0</text>
+  <rect x="474" y="367" width="162" height="46" rx="6" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+  <text x="555" y="396" font-size="18" font-weight="400" class="code" text-anchor="middle" style="fill:#945139" >0</text>
+  <rect x="640" y="367" width="194" height="46" rx="6" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+  <text x="737" y="396" font-size="18" font-weight="400" class="code" text-anchor="middle" style="fill:#945139" >0</text>
+  <rect x="838" y="367" width="166" height="46" rx="6" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <text x="921" y="396" font-size="18" font-weight="400" text-anchor="middle" style="fill:#305e80" >0 ※2</text>
+  <rect x="1008" y="367" width="154" height="46" rx="6" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <text x="1085" y="396" font-size="18" font-weight="400" text-anchor="middle" style="fill:#244e46" >保持</text>
+  <text x="52" y="451" font-size="18" font-weight="400" class="code" text-anchor="start" style="fill:#244e46" >bSubstepPoseInitialized</text>
+  <rect x="332" y="419" width="138" height="46" rx="6" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+  <text x="401" y="448" font-size="18" font-weight="400" class="code" text-anchor="middle" style="fill:#945139" >false</text>
+  <rect x="474" y="419" width="162" height="46" rx="6" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+  <text x="555" y="448" font-size="18" font-weight="400" class="code" text-anchor="middle" style="fill:#945139" >false</text>
+  <rect x="640" y="419" width="194" height="46" rx="6" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+  <text x="737" y="448" font-size="18" font-weight="400" class="code" text-anchor="middle" style="fill:#945139" >false</text>
+  <rect x="838" y="419" width="166" height="46" rx="6" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <text x="921" y="448" font-size="18" font-weight="400" text-anchor="middle" style="fill:#305e80" ><tspan class="code">false</tspan> ※2</text>
+  <rect x="1008" y="419" width="154" height="46" rx="6" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+  <text x="1085" y="448" font-size="18" font-weight="400" class="code" text-anchor="middle" style="fill:#945139" >false</text>
+  <text x="52" y="503" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >一時外力・設定倍率</text>
+  <rect x="332" y="471" width="138" height="46" rx="6" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+  <text x="401" y="500" font-size="18" font-weight="400" text-anchor="middle" style="fill:#945139" >破棄</text>
+  <rect x="474" y="471" width="162" height="46" rx="6" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <text x="555" y="500" font-size="18" font-weight="400" text-anchor="middle" style="fill:#244e46" >保持</text>
+  <rect x="640" y="471" width="194" height="46" rx="6" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <text x="737" y="500" font-size="18" font-weight="400" text-anchor="middle" style="fill:#244e46" >保持</text>
+  <rect x="838" y="471" width="166" height="46" rx="6" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <text x="921" y="500" font-size="18" font-weight="400" text-anchor="middle" style="fill:#244e46" >保持</text>
+  <rect x="1008" y="471" width="154" height="46" rx="6" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <text x="1085" y="500" font-size="18" font-weight="400" text-anchor="middle" style="fill:#244e46" >保持</text>
+  <text x="52" y="555" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >共有コリジョンの接続</text>
+  <rect x="332" y="523" width="138" height="46" rx="6" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+  <text x="401" y="552" font-size="18" font-weight="400" text-anchor="middle" style="fill:#945139" >破棄</text>
+  <rect x="474" y="523" width="162" height="46" rx="6" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <text x="555" y="552" font-size="18" font-weight="400" text-anchor="middle" style="fill:#244e46" >保持</text>
+  <rect x="640" y="523" width="194" height="46" rx="6" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <text x="737" y="552" font-size="18" font-weight="400" text-anchor="middle" style="fill:#244e46" >保持</text>
+  <rect x="838" y="523" width="166" height="46" rx="6" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <text x="921" y="552" font-size="18" font-weight="400" text-anchor="middle" style="fill:#244e46" >保持</text>
+  <rect x="1008" y="523" width="154" height="46" rx="6" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <text x="1085" y="552" font-size="18" font-weight="400" text-anchor="middle" style="fill:#244e46" >保持</text>
+  <text x="52" y="607" font-size="18" font-weight="400" class="code" text-anchor="start" style="fill:#244e46" >bNeedWarmUp</text>
+  <rect x="332" y="575" width="138" height="46" rx="6" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <text x="401" y="604" font-size="18" font-weight="400" text-anchor="middle" style="fill:#244e46" >保持</text>
+  <rect x="474" y="575" width="162" height="46" rx="6" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <text x="555" y="604" font-size="18" font-weight="400" text-anchor="middle" style="fill:#305e80" ><tspan class="code">true</tspan> ※3</text>
+  <rect x="640" y="575" width="194" height="46" rx="6" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <text x="737" y="604" font-size="18" font-weight="400" text-anchor="middle" style="fill:#305e80" ><tspan class="code">true</tspan> ※3</text>
+  <rect x="838" y="575" width="166" height="46" rx="6" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <text x="921" y="604" font-size="18" font-weight="400" text-anchor="middle" style="fill:#244e46" >保持</text>
+  <rect x="1008" y="575" width="154" height="46" rx="6" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <text x="1085" y="604" font-size="18" font-weight="400" text-anchor="middle" style="fill:#244e46" >保持</text>
+  <text x="52" y="659" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >World 移動の追従</text>
+  <rect x="332" y="627" width="138" height="46" rx="6" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+  <text x="401" y="656" font-size="18" font-weight="400" text-anchor="middle" style="fill:#6b7c78" >—</text>
+  <rect x="474" y="627" width="162" height="46" rx="6" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+  <text x="555" y="656" font-size="18" font-weight="400" text-anchor="middle" style="fill:#6b7c78" >—</text>
+  <rect x="640" y="627" width="194" height="46" rx="6" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <text x="737" y="656" font-size="18" font-weight="400" text-anchor="middle" style="fill:#305e80" >停止 ※5</text>
+  <rect x="838" y="627" width="166" height="46" rx="6" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <text x="921" y="656" font-size="18" font-weight="400" text-anchor="middle" style="fill:#305e80" >停止 ※5</text>
+  <rect x="1008" y="627" width="154" height="46" rx="6" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+  <text x="1085" y="656" font-size="18" font-weight="400" text-anchor="middle" style="fill:#6b7c78" >—</text>
+  <rect x="36" y="706" width="24" height="24" rx="6" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+  <text x="72" y="725" font-size="18" font-weight="400" text-anchor="start" style="fill:#945139" >破棄・初期化</text>
+  <rect x="318" y="706" width="24" height="24" rx="6" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <text x="354" y="725" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >保持</text>
+  <rect x="600" y="706" width="24" height="24" rx="6" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <text x="636" y="725" font-size="18" font-weight="400" text-anchor="start" style="fill:#305e80" >一部・条件付き</text>
+  <rect x="882" y="706" width="24" height="24" rx="6" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+  <text x="918" y="725" font-size="18" font-weight="400" text-anchor="start" style="fill:#6b7c78" >対象外</text>
+  <text x="36" y="762" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >初期化</text>
+  <text x="126" y="762" font-size="18" font-weight="400" class="code" text-anchor="start" style="fill:#244e46" >Initialize_AnyThread</text>
+  <text x="576" y="762" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >再構築判定</text>
+  <text x="702" y="762" font-size="18" font-weight="400" class="code" text-anchor="start" style="fill:#244e46" >ShouldReinitModifyBones</text>
+  <text x="36" y="798" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >※1 <tspan class="code">WorldSpace</tspan>：位置補正・速度 0・通常シミュレーションを1評価スキップ</text>
+  <text x="36" y="830" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >※2 <tspan class="code">WorldSpace</tspan> のみ</text>
+  <text x="420" y="830" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >※3</text>
+  <text x="474" y="830" font-size="18" font-weight="400" class="code" text-anchor="start" style="fill:#244e46" >bUseWarmUpWhenResetDynamics</text>
+  <text x="777" y="830" font-size="18" font-weight="400" class="code" text-anchor="start" style="fill:#244e46" >→ true</text>
+  <text x="36" y="862" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >※4 次のボーン構築</text>
+  <text x="420" y="862" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >※5 <tspan class="code">ComponentSpace</tspan>・<tspan class="code">BaseBoneSpace</tspan> のみ。<tspan class="code">WorldSpace</tspan> は通常時も追従なし</text>
+</svg>

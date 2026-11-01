@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="768" viewBox="0 0 1200 768" role="img" aria-labelledby="diagram-title" font-family="system-ui, sans-serif">
+<title id="diagram-title">Sync Bone の実行順序</title>
+<defs>
+ <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker>
+ <marker id="branch-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker>
+ <style>
+ .stage{fill:#dcebe7;stroke:#39756a;stroke-width:1.5}
+ .data{fill:#d7e6f3;stroke:#417aa5;stroke-width:1.5}
+ .note{fill:#f5e3db;stroke:#bd6a4d;stroke-width:1.5}
+ .neutral{fill:#f5faf8;stroke:#6b7c78;stroke-width:1.5}
+ .flow{fill:none;stroke:#39756a;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow)}
+ .branch{fill:none;stroke:#bd6a4d;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#branch-arrow)}
+ .code{font-family:Consolas, monospace}
+ </style></defs>
+<rect width="1200" height="768" rx="24" fill="#f5faf8"/>
+<text x="36" y="58" font-size="30" fill="#244e46" font-weight="650"><tspan>Sync Bone の実行順序</tspan></text>
+<text x="36" y="96" font-size="22" fill="#39756a"><tspan class="code">EvaluateSkeletalControl_AnyThread</tspan></text>
+<rect x="850" y="76" width="314" height="40" rx="8" class="note" />
+<text x="1007" y="102" font-size="18" fill="#945139" text-anchor="middle"><tspan>同期の適用: 評価ごと1回</tspan></text>
+<rect x="36" y="142" width="532" height="104" rx="12" class="stage" />
+<rect x="624" y="142" width="540" height="104" rx="12" class="stage" />
+<circle cx="62" cy="168" r="14" fill="#39756a"/><text x="62" y="174" text-anchor="middle" font-size="18" font-weight="650" fill="#f5faf8">1</text>
+<text x="88" y="175" font-size="20" fill="#244e46" font-weight="650"><tspan>ポーズ取得</tspan></text>
+<text x="54" y="221" font-size="18" fill="#244e46"><tspan class="code">UpdateModifyBonesPoseTransform</tspan></text>
+<circle cx="650" cy="168" r="14" fill="#39756a"/><text x="650" y="174" text-anchor="middle" font-size="18" font-weight="650" fill="#f5faf8">2</text>
+<text x="676" y="175" font-size="20" fill="#244e46" font-weight="650"><tspan>同期の適用</tspan></text>
+<text x="642" y="221" font-size="18" fill="#244e46"><tspan class="code">ApplySyncBones</tspan></text>
+<path d="M568 194H624" class="flow" />
+<path d="M894 246V268H326V298" class="flow" />
+<rect x="36" y="298" width="580" height="104" rx="12" class="data" />
+<rect x="674" y="298" width="490" height="104" rx="12" class="stage" />
+<circle cx="62" cy="324" r="14" fill="#417aa5"/><text x="62" y="330" text-anchor="middle" font-size="18" font-weight="650" fill="#f5faf8">3</text>
+<text x="88" y="331" font-size="20" fill="#244e46" font-weight="650"><tspan class="code">ApplySyncBones</tspan><tspan> 内 · ダミーポーズ更新</tspan></text>
+<text x="54" y="377" font-size="18" fill="#244e46"><tspan class="code">UpdateSubdivisionDummyPoseAfterSyncBones</tspan></text>
+<circle cx="700" cy="324" r="14" fill="#39756a"/><text x="700" y="330" text-anchor="middle" font-size="18" font-weight="650" fill="#f5faf8">4</text>
+<text x="726" y="331" font-size="20" fill="#244e46" font-weight="650"><tspan>Component 移動量</tspan></text>
+<text x="692" y="377" font-size="18" fill="#244e46"><tspan class="code">UpdateSkelCompMove</tspan></text>
+<path d="M616 350H674" class="flow" />
+<path d="M919 402V428H176V454" class="flow" />
+<rect x="36" y="454" width="280" height="268" rx="12" class="stage" />
+<rect x="356" y="454" width="808" height="268" rx="12" class="stage" />
+<circle cx="62" cy="480" r="14" fill="#39756a"/><text x="62" y="486" text-anchor="middle" font-size="18" font-weight="650" fill="#f5faf8">5</text>
+<text x="88" y="487" font-size="20" fill="#244e46" font-weight="650"><tspan>必要時</tspan></text>
+<text x="176" y="551" font-size="20" fill="#244e46" text-anchor="middle"><tspan class="code">WarmUp</tspan></text>
+<text x="176" y="598" font-size="18" fill="#244e46" text-anchor="middle"><tspan>同じ同期後ポーズ</tspan></text>
+<path d="M316 588H356" class="flow" />
+<circle cx="382" cy="480" r="14" fill="#39756a"/><text x="382" y="486" text-anchor="middle" font-size="18" font-weight="650" fill="#f5faf8">6</text>
+<text x="408" y="487" font-size="20" fill="#244e46" font-weight="650"><tspan class="code">SimulateModifyBones</tspan></text>
+<rect x="380" y="528" width="342" height="152" rx="12" class="data" />
+<rect x="770" y="528" width="370" height="152" rx="12" class="note" />
+<circle cx="406" cy="554" r="14" fill="#417aa5"/><text x="406" y="560" text-anchor="middle" font-size="18" font-weight="650" fill="#f5faf8">7</text>
+<text x="432" y="561" font-size="20" fill="#244e46" font-weight="650"><tspan>目標の退避</tspan></text>
+<text x="398" y="610" font-size="18" fill="#244e46"><tspan class="code">CurrentPoseLocation</tspan></text>
+<text x="398" y="648" font-size="18" fill="#244e46"><tspan>同期後ポーズ</tspan></text>
+<circle cx="796" cy="554" r="14" fill="#bd6a4d"/><text x="796" y="560" text-anchor="middle" font-size="18" font-weight="650" fill="#f5faf8">8</text>
+<text x="822" y="561" font-size="20" fill="#244e46" font-weight="650"><tspan>サブステップごと</tspan></text>
+<text x="788" y="610" font-size="20" fill="#244e46"><tspan>補間</tspan></text>
+<text x="788" y="648" font-size="18" fill="#244e46"><tspan>固定サブステップ</tspan></text>
+<path d="M722 604H770" class="flow" />
+<rect x="36" y="732" width="1128" height="28" rx="6" class="note"/>
+<text x="54" y="753" font-size="18" fill="#945139">通常シミュレーションを行う経路。WorldSpace の Teleport 時は手順6以降をスキップ</text>
+</svg>

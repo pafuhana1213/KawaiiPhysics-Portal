@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="diagram-title" font-family="system-ui, sans-serif">
+  <title id="diagram-title">ボーンと3種類のダミー</title>
+  <defs>
+    <marker id="flow-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker>
+    <marker id="data-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#417aa5"/></marker>
+    <marker id="accent-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker>
+    <marker id="muted-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#6b7c78"/></marker>
+    <marker id="white-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#f5faf8"/></marker>
+  </defs>
+  <rect x="0" y="0" width="1200" height="675" rx="24" fill="#f5faf8"/>
+  <text x="36" y="58" font-size="30" font-weight="700" fill="#244e46">ボーンと3種類のダミー</text>
+  <text x="36" y="96" font-size="22" font-weight="400" fill="#39756a" font-family="Consolas, monospace">ModifyBones</text>
+  <rect x="36" y="142" width="760" height="489" rx="12" fill="#f5faf8" stroke="#39756a" stroke-width="1.5"/>
+  <rect x="820" y="142" width="344" height="489" rx="12" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+  <text x="240" y="178" font-size="18" font-weight="400" fill="#244e46" font-family="Consolas, monospace" text-anchor="middle">RootBone</text>
+  <text x="600" y="178" font-size="18" font-weight="400" fill="#244e46" font-family="Consolas, monospace" text-anchor="middle">AdditionalRootBones</text>
+  <path d="M240 221V520" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="240" cy="205" r="16" fill="#39756a"/>
+  <rect x="226" y="274" width="28" height="28" rx="5" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <circle cx="240" cy="371" r="16" fill="#39756a"/>
+  <rect x="226" y="440" width="28" height="28" rx="5" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <path d="M240 519L258 551H222Z" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+  <path d="M600 221V520" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="600" cy="205" r="16" fill="#39756a"/>
+  <rect x="586" y="274" width="28" height="28" rx="5" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <circle cx="600" cy="371" r="16" fill="#39756a"/>
+  <rect x="586" y="440" width="28" height="28" rx="5" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <path d="M600 519L618 551H582Z" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+  <path d="M256 371H584" fill="none" stroke="#bd6a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M420 349L442 371L420 393L398 371Z" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+  <text x="420" y="336" font-size="18" font-weight="400" fill="#244e46" font-family="Consolas, monospace" text-anchor="middle">Bone Constraint</text>
+  <text x="420" y="416" font-size="18" font-weight="400" fill="#bd6a4d" font-family="Consolas, monospace" text-anchor="middle">Bridge</text>
+  <text x="240" y="591" font-size="18" font-weight="400" fill="#244e46" text-anchor="middle">縦の親子</text>
+  <text x="600" y="591" font-size="18" font-weight="400" fill="#244e46" text-anchor="middle">縦の親子</text>
+  <circle cx="854" cy="212" r="14" fill="#39756a"/>
+  <text x="888" y="218" font-size="20" font-weight="650" fill="#244e46">実ボーン</text>
+  <text x="888" y="254" font-size="18" font-weight="400" fill="#6b7c78" font-family="Consolas, monospace">BoneRef</text>
+  <rect x="842" y="310" width="24" height="24" rx="5" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <text x="888" y="328" font-size="20" font-weight="650" fill="#244e46">Inter-Bone ダミー</text>
+  <text x="888" y="364" font-size="18" font-weight="400" fill="#6b7c78">縦の区間</text>
+  <path d="M854 416L870 444H838Z" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+  <text x="888" y="438" font-size="20" font-weight="650" fill="#244e46">末端ダミー</text>
+  <text x="888" y="474" font-size="18" font-weight="400" fill="#6b7c78">チェーン末端</text>
+  <path d="M854 525L871 542L854 559L837 542Z" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+  <text x="888" y="548" font-size="20" font-weight="650" fill="#244e46">Bridge ダミー</text>
+  <text x="888" y="584" font-size="18" font-weight="400" fill="#6b7c78">横の拘束</text>
+</svg>

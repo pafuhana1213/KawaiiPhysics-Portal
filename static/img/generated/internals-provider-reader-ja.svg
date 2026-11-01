@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="890" viewBox="0 0 1200 890" role="img" aria-labelledby="diagram-title" font-family="system-ui, sans-serif">
+<title id="diagram-title">Local / Shared / Auto の解決</title>
+<defs><marker id="green-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker><marker id="orange-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker></defs>
+<rect width="1200" height="890" rx="24" fill="#f5faf8"/>
+<text x="36" y="58" font-size="30" fill="#244e46" font-weight="700"><tspan font-family="Consolas, monospace">Local</tspan> / <tspan font-family="Consolas, monospace">Shared</tspan> / <tspan font-family="Consolas, monospace">Auto</tspan> の解決</text>
+<text x="36" y="96" font-size="22" fill="#39756a" font-family="Consolas, monospace">SimpleWorldCollisionSource / WindSource</text>
+<rect id="table" x="36" y="132" width="1128" height="214" rx="12" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+<path d="M36 184H1164M36 234H1164M36 284H1164M232 132V346M698 132V346" fill="none" stroke="#6b7c78" stroke-width="1.5"/>
+<text x="54" y="166" font-size="20" fill="#244e46" font-weight="650">設定</text>
+<text x="250" y="166" font-size="20" fill="#244e46" font-weight="650">当たり判定</text>
+<text x="716" y="166" font-size="20" fill="#244e46" font-weight="650">風</text>
+<text x="54" y="217" font-size="20" fill="#244e46" font-family="Consolas, monospace">Local</text>
+<text x="250" y="217" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">Local</tspan>：自身で収集</text>
+<text x="716" y="217" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">Local</tspan>：自身で計算</text>
+<text x="54" y="267" font-size="20" fill="#244e46" font-family="Consolas, monospace">Shared</text>
+<text x="250" y="267" font-size="18" fill="#244e46">Reader：不在時は空・再試行</text>
+<text x="716" y="267" font-size="18" fill="#244e46">共有：不在時は <tspan font-family="Consolas, monospace">Local</tspan></text>
+<text x="54" y="324" font-size="20" fill="#244e46" font-family="Consolas, monospace">Auto</text>
+<text x="250" y="324" font-size="18" fill="#244e46">生存：Reader / 不在：<tspan font-family="Consolas, monospace">Local</tspan></text>
+<text x="716" y="324" font-size="18" fill="#244e46">共有：不在時は <tspan font-family="Consolas, monospace">Local</tspan></text>
+<text x="36" y="379" font-size="18" fill="#bd6a4d"><tspan font-family="Consolas, monospace">Shared</tspan> / <tspan font-family="Consolas, monospace">Auto</tspan>・Tag 無効 → <tspan font-family="Consolas, monospace">Local</tspan></text>
+<text x="36" y="423" font-size="20" fill="#244e46" font-weight="650"><tspan font-family="Consolas, monospace">Auto</tspan>：provider の状態</text>
+<text x="630" y="423" font-size="18" fill="#6b7c78">再確認：<tspan font-family="Consolas, monospace">AutoResolveInterval</tspan></text>
+<rect id="local" x="36" y="488" width="300" height="178" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="62" cy="514" r="14" fill="#39756a"/>
+<text x="62" y="520" font-size="18" fill="#f5faf8" font-weight="650" text-anchor="middle">1</text>
+<text x="88" y="524" font-size="20" fill="#244e46" font-weight="650"><tspan font-family="Consolas, monospace">Local</tspan></text>
+<text x="54" y="566" font-size="18" fill="#244e46">当たり判定：収集</text>
+<text x="54" y="600" font-size="18" fill="#244e46">風：ローカル積算</text>
+<rect id="shared" x="450" y="488" width="300" height="178" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<circle cx="476" cy="514" r="14" fill="#417aa5"/>
+<text x="476" y="520" font-size="18" fill="#f5faf8" font-weight="650" text-anchor="middle">2</text>
+<text x="502" y="524" font-size="20" fill="#244e46" font-weight="650">共有</text>
+<text x="468" y="566" font-size="18" fill="#417aa5">当たり判定：Reader</text>
+<text x="468" y="600" font-size="18" fill="#417aa5">風：共有</text>
+<rect id="disabled" x="864" y="488" width="300" height="178" rx="12" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+<circle cx="890" cy="514" r="14" fill="#bd6a4d"/>
+<text x="890" y="520" font-size="18" fill="#f5faf8" font-weight="650" text-anchor="middle">3</text>
+<text x="916" y="524" font-size="20" fill="#244e46" font-weight="650">共有・無効</text>
+<text x="882" y="566" font-size="18" fill="#bd6a4d">当たり判定：空</text>
+<text x="882" y="600" font-size="18" fill="#bd6a4d">風：0・外挿停止</text>
+<text x="882" y="638" font-size="18" fill="#bd6a4d"><tspan font-family="Consolas, monospace">Publish</tspan>・heartbeat 継続</text>
+<path d="M336 576H450" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)"/>
+<text x="348" y="551" font-size="18" fill="#39756a">生存</text>
+<path d="M750 576H864" fill="none" stroke="#bd6a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#orange-arrow)"/>
+<text x="762" y="535" font-size="18" fill="#bd6a4d" font-family="Consolas, monospace">bEnabled</text>
+<text x="762" y="559" font-size="18" fill="#bd6a4d" font-family="Consolas, monospace">false</text>
+<path d="M1014 488V456H600V488" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)"/>
+<text x="766" y="446" font-size="18" fill="#39756a" font-family="Consolas, monospace">bEnabled=true</text>
+<path d="M600 666V718H186V666" fill="none" stroke="#bd6a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#orange-arrow)"/>
+<path d="M1014 666V718H600" fill="none" stroke="#bd6a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="408" y="708" font-size="18" fill="#bd6a4d">不在・期限切れ</text>
+<rect id="missing" x="36" y="754" width="720" height="100" rx="12" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+<text x="54" y="790" font-size="20" fill="#244e46" font-weight="650"><tspan font-family="Consolas, monospace">Shared</tspan>・provider 不在</text>
+<text x="54" y="817" font-size="18" fill="#244e46">当たり判定：空・再試行</text>
+<text x="394" y="817" font-size="18" fill="#244e46">風：ローカル積算</text>
+<rect id="restore" x="780" y="754" width="384" height="100" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<text x="798" y="790" font-size="20" fill="#244e46" font-weight="650">共有終了時の風</text>
+<text x="798" y="817" font-size="18" fill="#417aa5">共有13項目 → ローカル値</text>
+</svg>

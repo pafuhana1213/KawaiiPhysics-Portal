@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="diagram-title" font-family="system-ui, sans-serif">
+  <title id="diagram-title">子の数と出力回転</title>
+  <defs>
+    <marker id="flow-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker>
+    <marker id="data-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#417aa5"/></marker>
+    <marker id="accent-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker>
+    <marker id="muted-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#6b7c78"/></marker>
+    <marker id="white-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#f5faf8"/></marker>
+  </defs>
+  <rect x="0" y="0" width="1200" height="720" rx="24" fill="#f5faf8"/>
+  <text x="36" y="58" font-size="30" font-weight="700" fill="#244e46">子の数と出力回転</text>
+  <text x="36" y="96" font-size="22" font-weight="400" fill="#39756a" font-family="Consolas, monospace">ApplySimulateResult</text>
+  <text x="888" y="96" font-size="18" font-weight="400" fill="#6b7c78">親：有効な BoneRef</text>
+  <rect x="36" y="142" width="542" height="414" rx="12" fill="#f5faf8" stroke="#39756a" stroke-width="1.5"/>
+  <rect x="622" y="142" width="542" height="414" rx="12" fill="#f5faf8" stroke="#417aa5" stroke-width="1.5"/>
+  <circle cx="62" cy="168" r="14" fill="#39756a"/>
+  <text x="62" y="174" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">1</text>
+  <text x="88" y="175" font-size="20" font-weight="650" fill="#244e46">子1本：親の回転更新</text>
+  <text x="54" y="215" font-size="18" font-weight="400" fill="#244e46" font-family="Consolas, monospace">ChildIndices.Num() = 1</text>
+  <circle cx="648" cy="168" r="14" fill="#417aa5"/>
+  <text x="648" y="174" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">2</text>
+  <text x="674" y="175" font-size="20" font-weight="650" fill="#244e46">複数の子：ポーズの回転</text>
+  <text x="640" y="215" font-size="18" font-weight="400" fill="#244e46" font-family="Consolas, monospace">ChildIndices.Num() &gt; 1</text>
+  <path d="M180 340V448" fill="none" stroke="#6b7c78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 5" marker-end="url(#muted-arrow)"/>
+  <path d="M195 330L362 409" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#flow-arrow)"/>
+  <circle cx="180" cy="322" r="17" fill="#39756a"/>
+  <circle cx="180" cy="464" r="14" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+  <circle cx="378" cy="416" r="14" fill="#39756a"/>
+  <path d="M180 374A52 52 0 0 0 227 344" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#flow-arrow)"/>
+  <text x="144" y="292" font-size="20" font-weight="400" fill="#244e46">親</text>
+  <text x="58" y="398" font-size="18" font-weight="400" fill="#6b7c78" font-family="Consolas, monospace">PoseVector</text>
+  <text x="306" y="355" font-size="18" font-weight="400" fill="#39756a" font-family="Consolas, monospace">SimulateVector</text>
+  <text x="76" y="500" font-size="18" font-weight="400" fill="#6b7c78" font-family="Consolas, monospace">PoseLocation</text>
+  <text x="397" y="451" font-size="18" font-weight="400" fill="#39756a" font-family="Consolas, monospace">Location</text>
+  <text x="54" y="535" font-size="18" font-weight="400" fill="#39756a">親の回転：<tspan font-family="Consolas, monospace">SimulateRotation</tspan></text>
+  <path d="M879 336L790 452" fill="none" stroke="#6b7c78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 5"/>
+  <path d="M901 336L990 452" fill="none" stroke="#6b7c78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 5"/>
+  <path d="M875 331L744 410" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#flow-arrow)"/>
+  <path d="M905 329L1065 404" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#flow-arrow)"/>
+  <circle cx="890" cy="322" r="17" fill="#417aa5"/>
+  <circle cx="780" cy="464" r="14" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+  <circle cx="1000" cy="464" r="14" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+  <circle cx="730" cy="418" r="14" fill="#39756a"/>
+  <circle cx="1080" cy="411" r="14" fill="#39756a"/>
+  <path d="M890 305V273M907 322H939" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#data-arrow)"/>
+  <text x="927" y="286" font-size="18" font-weight="400" fill="#417aa5" font-family="Consolas, monospace">PoseRotation</text>
+  <text x="665" y="460" font-size="18" font-weight="400" fill="#39756a" font-family="Consolas, monospace">Location</text>
+  <text x="1046" y="456" font-size="18" font-weight="400" fill="#39756a" font-family="Consolas, monospace">Location</text>
+  <text x="640" y="535" font-size="18" font-weight="400" fill="#417aa5">親の回転：<tspan font-family="Consolas, monospace">PoseRotation</tspan></text>
+  <rect x="36" y="582" width="1128" height="110" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <text x="54" y="620" font-size="20" font-weight="400" fill="#244e46" font-family="Consolas, monospace">SimulateRotation =</text>
+  <text x="54" y="662" font-size="18" font-weight="400" fill="#244e46" font-family="Consolas, monospace">FQuat::FindBetweenVectors(PoseVector, SimulateVector) * ParentBone.PoseRotation</text>
+</svg>

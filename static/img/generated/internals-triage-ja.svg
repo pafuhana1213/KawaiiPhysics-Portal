@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="842" viewBox="0 0 1200 842" role="img" aria-labelledby="title" font-family="system-ui, sans-serif">
+  <title id="title">不具合の切り分け</title>
+  <defs>
+    <marker id="arrow-green" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker>
+    <marker id="arrow-blue" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#417aa5"/></marker>
+    <marker id="arrow-orange" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker>
+    <marker id="arrow-gray" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#6b7c78"/></marker>
+  </defs>
+  <rect width="1200" height="842" rx="24" fill="#f5faf8"/>
+  <text x="36" y="58" font-size="30" font-weight="700" fill="#244e46">不具合の切り分け</text>
+  <text x="36" y="96" font-size="22" fill="#244e46">上から順に確認　　橙：不一致の調査先</text>
+  <rect x="36" y="142" width="518" height="112" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <circle cx="62" cy="170" r="14" fill="#39756a"/>
+  <text x="62" y="176" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">1</text>
+  <text x="88" y="178" font-size="20" font-weight="650" fill="#244e46">評価が走っているか</text>
+  <text x="54" y="212" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">IsValidToEvaluate</tspan></text>
+  <text x="54" y="238" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">RootBone</tspan> / <tspan font-family="Consolas, monospace">AdditionalRootBones</tspan></text>
+  <rect x="646" y="142" width="518" height="112" rx="12" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+  <text x="664" y="186" font-size="18" fill="#945139">Enable CVar・デバッガ</text>
+  <text x="664" y="224" font-size="18" fill="#945139"><tspan font-family="Consolas, monospace">RootBone</tspan> / <tspan font-family="Consolas, monospace">BoneContainer</tspan></text>
+  <path d="M554 198H646" fill="none" stroke="#bd6a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-orange)"/>
+  <path d="M295 254V278" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+  <rect x="36" y="278" width="518" height="112" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <circle cx="62" cy="306" r="14" fill="#39756a"/>
+  <text x="62" y="312" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">2</text>
+  <text x="88" y="314" font-size="20" font-weight="650" fill="#244e46">ボーン構成は期待どおりか</text>
+  <text x="54" y="348" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">ModifyBones</tspan></text>
+  <text x="54" y="374" font-size="18" fill="#244e46">実ボーン・ダミー・<tspan font-family="Consolas, monospace">bSkipSimulate</tspan></text>
+  <rect x="646" y="278" width="518" height="112" rx="12" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+  <text x="664" y="322" font-size="18" fill="#945139"><tspan font-family="Consolas, monospace">GetRuntimeNodeInfosOnComponent</tspan></text>
+  <text x="664" y="360" font-size="18" fill="#945139">Debug CVar・デバッガ</text>
+  <path d="M554 334H646" fill="none" stroke="#bd6a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-orange)"/>
+  <path d="M295 390V414" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+  <rect x="36" y="414" width="518" height="112" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <circle cx="62" cy="442" r="14" fill="#39756a"/>
+  <text x="62" y="448" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">3</text>
+  <text x="88" y="450" font-size="20" font-weight="650" fill="#244e46">実効値は期待どおりか</text>
+  <text x="54" y="484" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">Bone.PhysicsSettings</tspan></text>
+  <text x="54" y="510" font-size="18" fill="#244e46">ボーンごとの設定</text>
+  <rect x="646" y="414" width="518" height="112" rx="12" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+  <text x="664" y="458" font-size="18" fill="#945139">デバッガ・Wind Scope</text>
+  <text x="664" y="496" font-size="18" fill="#945139"><tspan font-family="Consolas, monospace">Node</tspan> Audit / Preset Diff：編集値</text>
+  <path d="M554 470H646" fill="none" stroke="#bd6a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-orange)"/>
+  <path d="M295 526V550" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+  <rect x="36" y="550" width="518" height="112" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <circle cx="62" cy="578" r="14" fill="#39756a"/>
+  <text x="62" y="584" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">4</text>
+  <text x="88" y="586" font-size="20" font-weight="650" fill="#244e46">どの段階が結果を変えるか</text>
+  <text x="54" y="620" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">SimulateOnce</tspan></text>
+  <text x="54" y="646" font-size="18" fill="#244e46">拘束（前）→ コリジョン → 拘束（後）→ 長さ復元</text>
+  <rect x="646" y="550" width="518" height="112" rx="12" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+  <text x="664" y="594" font-size="18" fill="#945139">デバッガ・ステップ実行</text>
+  <text x="664" y="632" font-size="18" fill="#945139"><tspan font-family="Consolas, monospace">stat</tspan> anim / <tspan font-family="Consolas, monospace">LogKawaiiPhysics</tspan></text>
+  <path d="M554 606H646" fill="none" stroke="#bd6a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-orange)"/>
+  <path d="M295 662V686" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+  <rect x="36" y="686" width="518" height="112" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <circle cx="62" cy="714" r="14" fill="#39756a"/>
+  <text x="62" y="720" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">5</text>
+  <text x="88" y="722" font-size="20" font-weight="650" fill="#244e46">環境による差か</text>
+  <text x="54" y="756" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">WITH_EDITOR</tspan> / <tspan font-family="Consolas, monospace">bEditing</tspan></text>
+  <text x="54" y="782" font-size="18" fill="#244e46">PIE・パッケージ・Persona</text>
+  <rect x="646" y="686" width="518" height="112" rx="12" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+  <text x="664" y="730" font-size="18" fill="#945139">環境差の比較表</text>
+  <text x="664" y="768" font-size="18" fill="#945139">Data Asset・プレビュー同期</text>
+  <path d="M554 742H646" fill="none" stroke="#bd6a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-orange)"/>
+</svg>

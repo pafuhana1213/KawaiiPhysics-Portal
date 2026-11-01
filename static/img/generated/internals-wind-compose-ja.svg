@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="730" viewBox="0 0 1200 730" role="img" aria-labelledby="diagram-title" font-family="system-ui, sans-serif">
+<title id="diagram-title">Procedural Wind の合成</title>
+<defs>
+<marker id="arrow-green" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker>
+<marker id="arrow-blue" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#417aa5"/></marker>
+<marker id="arrow-orange" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker>
+</defs>
+<rect width="1200" height="730" rx="24" fill="#f5faf8"/>
+<!-- Text width budget: full-width = font-size; ASCII = font-size * 0.6. Box padding >= 16 px. -->
+<text x="36" y="58" font-size="30" font-weight="650" fill="#244e46">Procedural Wind の合成</text>
+<text x="36" y="96" font-size="22" fill="#39756a">共通成分：PreApply / Ripple：Apply</text>
+<rect x="36" y="150" width="244" height="126" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<text x="54" y="183" font-size="20" font-family="Consolas, monospace" font-weight="650" fill="#244e46">Constant + Sway</text>
+<text x="54" y="223" font-size="18" font-family="Consolas, monospace" fill="#244e46">Time</text>
+<text x="54" y="255" font-size="18" fill="#244e46">共通キャッシュ</text>
+<rect x="36" y="340" width="244" height="112" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<text x="54" y="373" font-size="20" font-family="Consolas, monospace" font-weight="650" fill="#244e46">Ripple</text>
+<text x="54" y="408" font-size="18" font-family="Consolas, monospace" fill="#244e46">LengthRateFromRoot</text>
+<text x="54" y="434" font-size="18" fill="#244e46">ボーンごとの位相</text>
+<circle cx="328" cy="310" r="22" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<text x="328" y="318" font-size="24" font-weight="650" text-anchor="middle" fill="#244e46">+</text>
+<path d="M280 214H328V288" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+<path d="M280 396H328V332" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+<rect x="400" y="150" width="232" height="90" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<text x="418" y="185" font-size="20" font-family="Consolas, monospace" font-weight="650" fill="#244e46">StrengthCycle</text>
+<text x="418" y="220" font-size="18" font-family="Consolas, monospace" fill="#244e46">Time</text>
+<circle cx="516" cy="310" r="22" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<text x="516" y="318" font-size="24" font-weight="650" text-anchor="middle" fill="#244e46">×</text>
+<path d="M350 310H494" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+<path d="M516 240V288" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+<rect x="650" y="150" width="220" height="90" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<text x="668" y="185" font-size="20" font-family="Consolas, monospace" font-weight="650" fill="#244e46">Random + Gust</text>
+<text x="668" y="220" font-size="18" fill="#244e46">共通キャッシュ</text>
+<circle cx="752" cy="310" r="22" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<text x="752" y="318" font-size="24" font-weight="650" text-anchor="middle" fill="#244e46">+</text>
+<path d="M538 310H730" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+<path d="M752 240V288" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+<rect x="900" y="270" width="264" height="80" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<text x="918" y="319" font-size="20" font-family="Consolas, monospace" font-weight="650" fill="#244e46">Total</text>
+<path d="M774 310H900" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+<rect x="36" y="530" width="380" height="160" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<text x="54" y="565" font-size="20" font-weight="650" fill="#244e46">風向き</text>
+<text x="54" y="601" font-size="18" font-family="Consolas, monospace" fill="#244e46">WindDirection</text>
+<text x="54" y="634" font-size="18" fill="#244e46">円錐ノイズ・空間変換</text>
+<text x="54" y="668" font-size="18" font-family="Consolas, monospace" fill="#244e46">CachedWindVector</text>
+<rect x="452" y="530" width="712" height="160" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="478" cy="556" r="14" fill="#39756a"/>
+<text x="478" y="562" font-size="18" font-weight="650" text-anchor="middle" fill="#f5faf8">1</text>
+<text x="504" y="563" font-size="20" font-weight="650" fill="#244e46">Apply / ボーンごと・ステップごと</text>
+<text x="470" y="608" font-size="18" font-family="Consolas, monospace" fill="#244e46">Force = Dir × Total × ForceRate</text>
+<text x="470" y="714" font-size="18" font-family="Consolas, monospace" fill="#6b7c78">Dir = CachedWindVector（BoneSpace は BoneTM.TransformVector）</text>
+<text x="470" y="645" font-size="18" font-family="Consolas, monospace" fill="#244e46">Bone.Location += Force × GetStepDeltaTime()</text>
+<text x="470" y="673" font-size="18" fill="#244e46">ForceRate：ボーン長カーブ</text>
+<path d="M416 620H452" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+<path d="M1032 350V487H950V530" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+</svg>

@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="790" viewBox="0 0 1200 790" role="img" aria-labelledby="title" font-family="system-ui, sans-serif">
+  <title id="title">Pending と Consuming の交換、Store への取り込みと上限</title>
+  <defs>
+    <marker id="flow-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker>
+    <marker id="data-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#417aa5"/></marker>
+    <style>
+      .stage{fill:#dcebe7;stroke:#39756a;stroke-width:1.5}
+      .data-stage{fill:#d7e6f3;stroke:#417aa5;stroke-width:1.5}
+      .warning{fill:#f5e3db;stroke:#bd6a4d;stroke-width:1.5}
+      .heading{font-size:20px;font-weight:650;fill:#244e46}
+      .label{font-size:18px;fill:#244e46}
+      .data-label{font-size:18px;fill:#305e80}
+      .warn-label{font-size:18px;fill:#945139}
+      .code{font-family:Consolas, monospace}
+      .number{font-size:18px;font-weight:650;fill:#f5faf8;text-anchor:middle}
+      .flow{fill:none;stroke:#39756a;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#flow-arrow)}
+      .swap{fill:none;stroke:#417aa5;stroke-width:2;stroke-linecap:round;marker-start:url(#data-arrow);marker-end:url(#data-arrow)}
+    </style>
+  </defs>
+  <rect width="1200" height="790" rx="24" fill="#f5faf8"/>
+  <text x="36" y="58" font-size="30" font-weight="700" fill="#244e46">要求キューの交換と取り込み</text>
+  <text class="label" x="36" y="107">呼び出し側</text>
+  <text class="label" x="742" y="107">評価スレッド</text>
+  <path d="M729 119V410H408V744" fill="none" stroke="#6b7c78" stroke-width="1.5" stroke-dasharray="6 6"/>
+
+  <g id="pending">
+    <rect class="data-stage" x="36" y="142" width="380" height="254" rx="12"/>
+    <circle cx="62" cy="168" r="14" fill="#417aa5"/>
+    <text class="number" x="62" y="174">1</text>
+    <text class="heading" x="88" y="175">受付：<tspan class="code">Pending</tspan></text>
+    <text class="data-label code" x="54" y="216">PendingForces</text>
+    <text class="data-label code" x="54" y="247">PendingGusts</text>
+    <text class="data-label code" x="54" y="278">PendingStops</text>
+    <text class="data-label code" x="54" y="309">PendingSettingsMultipliers</text>
+    <text class="data-label code" x="54" y="340">PendingSettingsMultiplierPushes</text>
+    <text class="data-label code" x="54" y="371">PendingSettingsMultiplierStops</text>
+  </g>
+  <g id="swap">
+    <rect class="data-stage" x="440" y="205" width="278" height="132" rx="12"/>
+    <circle cx="466" cy="231" r="14" fill="#417aa5"/>
+    <text class="number" x="466" y="237">2</text>
+    <text class="heading code" x="492" y="238">Swap</text>
+    <text class="data-label" x="600" y="239">ロック内</text>
+    <text class="data-label code" x="458" y="277">Queue-&gt;Mutex</text>
+    <text class="data-label" x="458" y="311">倍率 3本 / 外力 3本</text>
+  </g>
+  <path class="swap" d="M418 271H438M720 271H740"/>
+  <g id="consuming">
+    <rect class="data-stage" x="742" y="142" width="422" height="254" rx="12"/>
+    <text class="heading code" x="760" y="175">Consuming</text>
+    <text class="data-label code" x="760" y="216">ConsumingForces</text>
+    <text class="data-label code" x="760" y="247">ConsumingGusts</text>
+    <text class="data-label code" x="760" y="278">ConsumingStops</text>
+    <text class="data-label code" x="760" y="309">ConsumingSettingsMultipliers</text>
+    <text class="data-label code" x="760" y="340">ConsumingSettingsMultiplierPushes</text>
+    <text class="data-label code" x="760" y="371">ConsumingSettingsMultiplierStops</text>
+  </g>
+
+  <g id="pending-cap">
+    <rect class="warning" x="36" y="428" width="360" height="292" rx="12"/>
+    <text class="heading" x="54" y="461">受付時の上限</text>
+    <text class="warn-label" x="54" y="503">外力 + 突風：合計 8</text>
+    <text class="warn-label" x="54" y="535">ほかの配列：各 8</text>
+    <text class="warn-label" x="54" y="576">満杯：最古を破棄</text>
+    <text class="warn-label" x="54" y="608">外力・突風：同種優先</text>
+    <text class="warn-label" x="54" y="654"><tspan class="code">Push / Stop</tspan> の重複</text>
+    <text class="warn-label" x="54" y="686">同一ハンドル：上書き</text>
+  </g>
+  <circle cx="446" cy="430" r="14" fill="#39756a"/>
+  <text class="number" x="446" y="436">3</text>
+  <text class="heading" x="472" y="437">Store へ反映</text>
+  <text class="label" x="774" y="437">ロック外</text>
+  <path class="flow" d="M953 396V450H585V474M953 450H969V474"/>
+
+  <rect class="stage" x="420" y="474" width="330" height="122" rx="12"/>
+  <text class="heading code" x="438" y="507">Items</text>
+  <text class="label" x="438" y="541">外力 → 突風 → <tspan class="code">Stop</tspan></text>
+  <text class="label" x="438" y="574">寿命管理</text>
+  <rect class="stage" x="774" y="474" width="390" height="122" rx="12"/>
+  <text class="heading code" x="792" y="507">SettingsMultiplierItems</text>
+  <text class="label code" x="792" y="541">Push → Start → Stop</text>
+  <text class="label" x="792" y="574">リース・時間型の失効</text>
+
+  <path class="flow" d="M585 596V630M969 596V610H648V630"/>
+  <rect class="warning" x="420" y="630" width="454" height="90" rx="12"/>
+  <text class="heading" x="438" y="663">実行中の配列：各 8</text>
+  <text class="warn-label" x="438" y="697">超過分：配列先頭から破棄</text>
+  <path class="flow" d="M874 675H916"/>
+  <rect class="stage" x="916" y="630" width="248" height="90" rx="12"/>
+  <circle cx="942" cy="656" r="14" fill="#39756a"/>
+  <text class="number" x="942" y="662">4</text>
+  <text class="heading code" x="968" y="663">Reset</text>
+  <text class="label" x="934" y="697"><tspan class="code">Consuming</tspan>・容量保持</text>
+  <text class="data-label" x="420" y="763">次回 <tspan class="code">Swap</tspan>：空の Consuming と Pending の容量交換</text>
+</svg>

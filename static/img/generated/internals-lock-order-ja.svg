@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="740" viewBox="0 0 1200 740" role="img" aria-labelledby="diagram-title" font-family="system-ui, sans-serif">
+<title id="diagram-title">レジストリごとのロック取得順</title>
+<defs>
+ <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker>
+ <marker id="branch-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker>
+ <style>
+ .stage{fill:#dcebe7;stroke:#39756a;stroke-width:1.5}
+ .data{fill:#d7e6f3;stroke:#417aa5;stroke-width:1.5}
+ .note{fill:#f5e3db;stroke:#bd6a4d;stroke-width:1.5}
+ .neutral{fill:#f5faf8;stroke:#6b7c78;stroke-width:1.5}
+ .flow{fill:none;stroke:#39756a;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow)}
+ .branch{fill:none;stroke:#bd6a4d;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#branch-arrow)}
+ .code{font-family:Consolas, monospace}
+ </style></defs>
+<rect width="1200" height="740" rx="24" fill="#f5faf8"/>
+<text x="36" y="58" font-size="30" fill="#244e46" font-weight="650"><tspan>レジストリごとのロック取得順</tspan></text>
+<text x="36" y="96" font-size="22" fill="#39756a"><tspan>レジストリ → Entry → バッファ</tspan></text>
+<rect x="36" y="132" width="1128" height="142" rx="12" class="neutral" />
+<text x="60" y="158" font-size="20" fill="#244e46" font-weight="650"><tspan>Shared Collision</tspan></text>
+<rect x="60" y="192" width="410" height="54" rx="12" class="stage" />
+<text x="265" y="226" font-size="18" fill="#244e46" text-anchor="middle"><tspan class="code">RegistryLock</tspan></text>
+<circle cx="74" cy="177" r="14" fill="#39756a"/><text x="74" y="183" text-anchor="middle" font-size="18" font-weight="650" fill="#f5faf8">1</text>
+<rect x="550" y="192" width="240" height="54" rx="12" class="stage" />
+<text x="670" y="226" font-size="18" fill="#244e46" text-anchor="middle"><tspan class="code">SlotsLock</tspan></text>
+<circle cx="564" cy="177" r="14" fill="#39756a"/><text x="564" y="183" text-anchor="middle" font-size="18" font-weight="650" fill="#f5faf8">2</text>
+<rect x="900" y="192" width="240" height="54" rx="12" class="data" />
+<text x="1020" y="226" font-size="18" fill="#244e46" text-anchor="middle"><tspan class="code">BufferLock</tspan></text>
+<circle cx="914" cy="177" r="14" fill="#39756a"/><text x="914" y="183" text-anchor="middle" font-size="18" font-weight="650" fill="#f5faf8">3</text>
+<path d="M470 219H550" class="flow" />
+<path d="M790 219H900" class="flow" />
+<rect x="36" y="294" width="1128" height="156" rx="12" class="neutral" />
+<text x="60" y="326" font-size="20" fill="#244e46" font-weight="650"><tspan>Simple World Collision</tspan></text>
+<rect x="60" y="366" width="410" height="54" rx="12" class="stage" />
+<text x="265" y="400" font-size="18" fill="#244e46" text-anchor="middle"><tspan class="code">SimpleWorldRegistryLock</tspan></text>
+<circle cx="74" cy="351" r="14" fill="#39756a"/><text x="74" y="357" text-anchor="middle" font-size="18" font-weight="650" fill="#f5faf8">1</text>
+<rect x="550" y="366" width="240" height="54" rx="12" class="stage" />
+<text x="670" y="400" font-size="18" fill="#244e46" text-anchor="middle"><tspan class="code">DescLock</tspan></text>
+<circle cx="564" cy="351" r="14" fill="#39756a"/><text x="564" y="357" text-anchor="middle" font-size="18" font-weight="650" fill="#f5faf8">2</text>
+<rect x="900" y="366" width="240" height="54" rx="12" class="data" />
+<text x="1020" y="400" font-size="18" fill="#244e46" text-anchor="middle"><tspan class="code">BufferLock</tspan></text>
+<circle cx="914" cy="351" r="14" fill="#39756a"/><text x="914" y="357" text-anchor="middle" font-size="18" font-weight="650" fill="#f5faf8">3</text>
+<path d="M470 393H550" class="flow" />
+<path d="M790 393H900" class="flow" />
+<text x="960" y="350" font-size="18" fill="#417aa5"><tspan>メンバー Slot</tspan></text>
+<rect x="36" y="470" width="1128" height="178" rx="12" class="neutral" />
+<text x="60" y="502" font-size="20" fill="#244e46" font-weight="650"><tspan>Shared Publisher</tspan></text>
+<rect x="60" y="550" width="410" height="54" rx="12" class="stage" />
+<text x="265" y="584" font-size="18" fill="#244e46" text-anchor="middle"><tspan class="code">SharedPublisherRegistryLock</tspan></text>
+<circle cx="74" cy="535" r="14" fill="#39756a"/><text x="74" y="541" text-anchor="middle" font-size="18" font-weight="650" fill="#f5faf8">1</text>
+<rect x="820" y="514" width="320" height="54" rx="12" class="data" />
+<text x="980" y="548" font-size="18" fill="#244e46" text-anchor="middle"><tspan class="code">StateLock</tspan></text>
+<circle cx="834" cy="499" r="14" fill="#39756a"/><text x="834" y="505" text-anchor="middle" font-size="18" font-weight="650" fill="#f5faf8">2</text>
+<rect x="820" y="586" width="320" height="54" rx="12" class="note" />
+<text x="980" y="620" font-size="18" fill="#244e46" text-anchor="middle"><tspan class="code">GustMutex</tspan></text>
+<circle cx="834" cy="571" r="14" fill="#39756a"/><text x="834" y="577" text-anchor="middle" font-size="18" font-weight="650" fill="#f5faf8">2</text>
+<path d="M470 577H620V541H820" class="flow" />
+<path d="M620 577V613H820" class="branch" />
+<text x="660" y="571" font-size="18" fill="#bd6a4d"><tspan>分岐</tspan></text>
+<rect x="36" y="672" width="1128" height="44" rx="8" class="note" />
+<text x="600" y="700" font-size="18" fill="#945139" text-anchor="middle"><tspan>系統間の同時保持なし  ·  </tspan><tspan class="code">StateLock / GustMutex</tspan><tspan> の同時保持なし</tspan></text>
+</svg>

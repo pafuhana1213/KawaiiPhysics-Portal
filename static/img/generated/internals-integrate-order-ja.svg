@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="diagram-title" font-family="system-ui, sans-serif">
+  <title id="diagram-title">ボーン1本の積分：8手順</title>
+  <defs>
+    <marker id="flow-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker>
+    <marker id="data-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#417aa5"/></marker>
+    <marker id="accent-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker>
+    <marker id="muted-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#6b7c78"/></marker>
+    <marker id="white-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#f5faf8"/></marker>
+  </defs>
+  <rect x="0" y="0" width="1200" height="720" rx="24" fill="#f5faf8"/>
+  <text x="36" y="58" font-size="30" font-weight="700" fill="#244e46">ボーン1本の積分：8手順</text>
+  <text x="36" y="96" font-size="22" font-weight="400" fill="#39756a" font-family="Consolas, monospace">Simulate</text>
+  <rect x="36" y="142" width="1128" height="208" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <text x="54" y="175" font-size="20" font-weight="650" fill="#244e46">速度</text>
+  <text x="120" y="175" font-size="18" font-weight="400" fill="#417aa5" font-family="Consolas, monospace">Velocity</text>
+  <rect x="54" y="194" width="334" height="138" rx="12" fill="#f5faf8" stroke="#417aa5" stroke-width="1.5"/>
+  <circle cx="80" cy="220" r="14" fill="#417aa5"/>
+  <text x="80" y="226" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">1</text>
+  <text x="106" y="227" font-size="20" font-weight="650" fill="#244e46">風の計算</text>
+  <text x="72" y="270" font-size="18" font-weight="400" fill="#244e46" font-family="Consolas, monospace">WindVelocity</text>
+  <text x="72" y="310" font-size="18" font-weight="400" fill="#6b7c78" font-family="Consolas, monospace">bEnableWind</text>
+  <path d="M388 290H434" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#data-arrow)"/>
+  <rect x="434" y="194" width="334" height="138" rx="12" fill="#f5faf8" stroke="#417aa5" stroke-width="1.5"/>
+  <circle cx="460" cy="220" r="14" fill="#417aa5"/>
+  <text x="460" y="226" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">2</text>
+  <text x="486" y="227" font-size="20" font-weight="650" fill="#244e46">速度の再構成</text>
+  <text x="452" y="270" font-size="18" font-weight="400" fill="#244e46" font-family="Consolas, monospace">ComputeVerletStepVelocity</text>
+  <text x="452" y="310" font-size="18" font-weight="400" fill="#6b7c78">再構成・減衰・風・重力</text>
+  <path d="M768 290H814" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#data-arrow)"/>
+  <rect x="814" y="194" width="334" height="138" rx="12" fill="#f5faf8" stroke="#417aa5" stroke-width="1.5"/>
+  <circle cx="840" cy="220" r="14" fill="#417aa5"/>
+  <text x="840" y="226" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">3</text>
+  <text x="866" y="227" font-size="20" font-weight="650" fill="#244e46">外力：速度</text>
+  <text x="832" y="270" font-size="18" font-weight="400" fill="#244e46" font-family="Consolas, monospace">ApplyToVelocity</text>
+  <text x="832" y="310" font-size="18" font-weight="400" fill="#6b7c78">速度への適用</text>
+  <rect x="36" y="398" width="1128" height="232" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <text x="54" y="431" font-size="20" font-weight="650" fill="#244e46">位置</text>
+  <text x="120" y="431" font-size="18" font-weight="400" fill="#39756a" font-family="Consolas, monospace">Location</text>
+  <path d="M981 332V374H250V450" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#flow-arrow)"/>
+  <rect x="54" y="450" width="204" height="162" rx="12" fill="#f5faf8" stroke="#39756a" stroke-width="1.5"/>
+  <circle cx="80" cy="476" r="14" fill="#39756a"/>
+  <text x="80" y="482" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">4</text>
+  <text x="106" y="483" font-size="20" font-weight="650" fill="#244e46">位置積分</text>
+  <text x="72" y="534" font-size="18" font-weight="400" fill="#244e46" font-family="Consolas, monospace">Velocity</text>
+  <path d="M116 544V562" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#flow-arrow)"/>
+  <text x="72" y="590" font-size="18" font-weight="400" fill="#244e46" font-family="Consolas, monospace">Location</text>
+  <path d="M258 558H274" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#flow-arrow)"/>
+  <rect x="274" y="450" width="204" height="162" rx="12" fill="#f5faf8" stroke="#39756a" stroke-width="1.5"/>
+  <circle cx="300" cy="476" r="14" fill="#39756a"/>
+  <text x="300" y="482" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">5</text>
+  <text x="326" y="483" font-size="20" font-weight="650" fill="#244e46">単純外力</text>
+  <text x="292" y="534" font-size="18" font-weight="400" fill="#244e46">位置オフセット</text>
+  <path d="M478 558H494" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#flow-arrow)"/>
+  <rect x="494" y="450" width="204" height="162" rx="12" fill="#f5faf8" stroke="#39756a" stroke-width="1.5"/>
+  <circle cx="520" cy="476" r="14" fill="#39756a"/>
+  <text x="520" y="482" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">6</text>
+  <text x="546" y="483" font-size="20" font-weight="650" fill="#244e46">World 移動</text>
+  <text x="512" y="534" font-size="18" font-weight="400" fill="#244e46">移動・回転</text>
+  <path d="M698 558H714" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#flow-arrow)"/>
+  <rect x="714" y="450" width="204" height="162" rx="12" fill="#f5faf8" stroke="#39756a" stroke-width="1.5"/>
+  <circle cx="740" cy="476" r="14" fill="#39756a"/>
+  <text x="740" y="482" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">7</text>
+  <text x="766" y="483" font-size="20" font-weight="650" fill="#244e46">外力：位置</text>
+  <text x="732" y="534" font-size="18" font-weight="400" fill="#244e46" font-family="Consolas, monospace">Apply</text>
+  <text x="732" y="580" font-size="18" font-weight="400" fill="#6b7c78">位置への適用</text>
+  <path d="M918 558H934" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#flow-arrow)"/>
+  <rect x="934" y="450" width="204" height="162" rx="12" fill="#f5faf8" stroke="#39756a" stroke-width="1.5"/>
+  <circle cx="960" cy="476" r="14" fill="#39756a"/>
+  <text x="960" y="482" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">8</text>
+  <text x="986" y="483" font-size="20" font-weight="650" fill="#244e46">剛性</text>
+  <text x="952" y="534" font-size="18" font-weight="400" fill="#244e46" font-family="Consolas, monospace">Stiffness</text>
+  <text x="952" y="580" font-size="18" font-weight="400" fill="#6b7c78">親＋ポーズ差分</text>
+  <rect x="36" y="650" width="1128" height="48" rx="12" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+  <text x="54" y="677" font-size="18" font-weight="400" fill="#bd6a4d" font-family="Consolas, monospace">bUseLegacyGravity</text>
+  <path d="M270 670H318" fill="none" stroke="#bd6a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#accent-arrow)"/>
+  <text x="340" y="677" font-size="18" font-weight="400" fill="#bd6a4d" font-family="Consolas, monospace">Location</text>
+  <text x="564" y="677" font-size="18" font-weight="400" fill="#bd6a4d">重力の位置加算</text>
+</svg>

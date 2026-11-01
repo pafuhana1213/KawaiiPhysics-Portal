@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="830" viewBox="0 0 1200 830" role="img" aria-labelledby="diagram-title" font-family="system-ui, sans-serif">
+<title id="diagram-title">Data Asset の適用経路</title>
+<defs>
+<marker id="arrow-green" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker>
+<marker id="arrow-blue" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#417aa5"/></marker>
+<marker id="arrow-orange" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker>
+</defs>
+<rect width="1200" height="830" rx="24" fill="#f5faf8"/>
+<!-- Text width budget: full-width = font-size; ASCII = font-size * 0.6. Box padding >= 16 px. -->
+<text x="36" y="58" font-size="30" font-weight="650" fill="#244e46">Data Asset の適用経路</text>
+<text x="36" y="96" font-size="22" fill="#39756a">参照アセットとコピー適用</text>
+<rect x="36" y="142" width="552" height="280" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<circle cx="62" cy="168" r="14" fill="#417aa5"/>
+<text x="62" y="174" font-size="18" font-weight="650" text-anchor="middle" fill="#f5faf8">1</text>
+<text x="88" y="175" font-size="20" font-weight="650" fill="#244e46">Limits Data Asset</text>
+<text x="54" y="211" font-size="18" font-family="Consolas, monospace" fill="#244e46">LimitsDataAsset</text>
+<text x="54" y="252" font-size="18" font-family="Consolas, monospace" fill="#244e46">Initialize_AnyThread</text>
+<text x="330" y="252" font-size="18" fill="#244e46">全ビルド</text>
+<text x="54" y="288" font-size="18" font-family="Consolas, monospace" fill="#244e46">EvaluateSkeletalControl_AnyThread</text>
+<text x="54" y="319" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">WITH_EDITOR </tspan>/ 毎評価</text>
+<path d="M312 328V350" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+<rect x="54" y="350" width="516" height="54" rx="12" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+<text x="72" y="384" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">SphericalLimitsData </tspan>など / <tspan font-family="Consolas, monospace">Transient</tspan></text>
+<rect x="612" y="142" width="552" height="280" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<circle cx="638" cy="168" r="14" fill="#417aa5"/>
+<text x="638" y="174" font-size="18" font-weight="650" text-anchor="middle" fill="#f5faf8">2</text>
+<text x="664" y="175" font-size="20" font-weight="650" fill="#244e46">Bone Constraints Data Asset</text>
+<text x="630" y="211" font-size="18" font-family="Consolas, monospace" fill="#244e46">BoneConstraintsDataAsset</text>
+<text x="630" y="252" font-size="18" font-family="Consolas, monospace" fill="#244e46">Initialize_AnyThread</text>
+<text x="906" y="252" font-size="18" fill="#244e46">全ビルド</text>
+<text x="630" y="288" font-size="18" font-family="Consolas, monospace" fill="#244e46">EvaluateSkeletalControl_AnyThread</text>
+<text x="630" y="319" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">WITH_EDITOR </tspan>/ 毎評価</text>
+<text x="630" y="359" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">BoneConstraintsData </tspan>→ 更新</text>
+<text x="630" y="396" font-size="18" fill="#244e46">ボーン構築時のみ <tspan font-family="Consolas, monospace" font-weight="650">MergedBoneConstraints</tspan> へ反映</text>
+<rect x="36" y="454" width="552" height="340" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="62" cy="480" r="14" fill="#39756a"/>
+<text x="62" y="486" font-size="18" font-weight="650" text-anchor="middle" fill="#f5faf8">3</text>
+<text x="88" y="487" font-size="20" font-weight="650" fill="#244e46">Preset Data Asset</text>
+<text x="54" y="529" font-size="18" font-weight="650" fill="#244e46">エディタ</text>
+<text x="54" y="562" font-size="18" font-family="Consolas, monospace" fill="#244e46">ApplyPresetToGraphNode</text>
+<text x="54" y="595" font-size="18" fill="#244e46">Graph Node / 外力を含む</text>
+<path d="M54 614H570" fill="none" stroke="#6b7c78" stroke-width="1.5"/>
+<text x="54" y="646" font-size="18" font-weight="650" fill="#244e46">ランタイム</text>
+<text x="54" y="679" font-size="18" font-family="Consolas, monospace" fill="#244e46">ApplyPresetDataAsset</text>
+<text x="54" y="712" font-size="18" fill="#244e46">実行ノード / 外力を除外</text>
+<text x="54" y="747" font-size="18" font-family="Consolas, monospace" fill="#244e46">RequestModifyBonesReinit</text>
+<text x="54" y="775" font-size="18" font-family="Consolas, monospace" fill="#244e46">RequestSharedCollisionReinit</text>
+<rect x="612" y="454" width="552" height="340" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="638" cy="480" r="14" fill="#39756a"/>
+<text x="638" y="486" font-size="18" font-weight="650" text-anchor="middle" fill="#f5faf8">4</text>
+<text x="664" y="487" font-size="20" font-weight="650" fill="#244e46">Wind Preset Data Asset</text>
+<text x="630" y="529" font-size="18" font-family="Consolas, monospace" fill="#244e46">ApplyProceduralWindPreset</text>
+<text x="630" y="565" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">RequestDynamicParams </tspan>→ <tspan font-family="Consolas, monospace">PendingParams</tspan></text>
+<text x="630" y="601" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">PreApply </tspan>→ <tspan font-family="Consolas, monospace">ApplyDynamicParams</tspan></text>
+<path d="M630 620H1146" fill="none" stroke="#6b7c78" stroke-width="1.5"/>
+<text x="630" y="653" font-size="20" font-weight="650" fill="#244e46">Shared Publisher</text>
+<text x="630" y="689" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">PreUpdate </tspan>→ <tspan font-family="Consolas, monospace">ApplySharedWindPreset</tspan></text>
+<text x="630" y="725" font-size="18" font-family="Consolas, monospace" font-weight="650" fill="#244e46">SharedWind</text>
+<text x="630" y="771" font-size="18" fill="#244e46">参照・タグ変更 / 再初期化 など</text>
+</svg>

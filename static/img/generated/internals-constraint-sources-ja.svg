@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="736" viewBox="0 0 1200 736" role="img" aria-labelledby="diagram-title" font-family="system-ui, sans-serif">
+<title id="diagram-title">拘束のデータの流れ</title>
+<defs>
+<marker id="arrow-green" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker>
+<marker id="arrow-blue" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#417aa5"/></marker>
+<marker id="arrow-orange" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker>
+<marker id="arrow-gray" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#6b7c78"/></marker>
+</defs>
+<rect width="1200" height="736" rx="24" fill="#f5faf8"/>
+<text x="36" y="58" font-size="30" font-weight="700" fill="#244e46" text-anchor="start">拘束のデータの流れ</text>
+<text x="36" y="96" font-size="22" font-weight="400" fill="#39756a" text-anchor="start" font-family="Consolas, monospace">InitBoneConstraints</text>
+<g id="node-constraints"><rect x="36" y="140" width="340" height="90" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<text x="54" y="176" font-size="18" font-weight="400" fill="#305e80" text-anchor="start" font-family="Consolas, monospace">BoneConstraints</text>
+<text x="54" y="208" font-size="18" font-weight="400" fill="#305e80" text-anchor="start">ノード</text>
+</g>
+<g id="asset"><rect x="36" y="290" width="340" height="90" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<text x="54" y="342" font-size="18" font-weight="400" fill="#305e80" text-anchor="start" font-family="Consolas, monospace">BoneConstraintsDataAsset</text>
+</g>
+<g id="asset-data"><rect x="36" y="490" width="340" height="90" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<text x="54" y="542" font-size="18" font-weight="400" fill="#305e80" text-anchor="start" font-family="Consolas, monospace">BoneConstraintsData</text>
+</g>
+<path d="M54 380V490" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+<text x="76" y="436" font-size="18" font-weight="400" fill="#244e46" text-anchor="start" font-family="Consolas, monospace">ApplyBoneConstraintDataAsset</text>
+<g id="init"><rect x="430" y="140" width="340" height="90" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="456" cy="170" r="14" fill="#39756a"/>
+<text x="456" y="176" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">1</text>
+<text x="482" y="176" font-size="18" font-weight="650" fill="#244e46" text-anchor="start" font-family="Consolas, monospace">InitBoneConstraints</text>
+<text x="448" y="208" font-size="18" font-weight="400" fill="#244e46" text-anchor="start">構築時</text>
+</g>
+<path d="M376 185H430" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+<path d="M376 535H402V207H430" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+<g id="merged"><rect x="820" y="140" width="344" height="130" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<text x="838" y="178" font-size="18" font-weight="400" fill="#305e80" text-anchor="start" font-family="Consolas, monospace">MergedBoneConstraints</text>
+<text x="838" y="216" font-size="18" font-weight="400" fill="#305e80" text-anchor="start">ノード → Data Asset</text>
+<text x="838" y="248" font-size="18" font-weight="400" fill="#305e80" text-anchor="start">→ 自動ダミー拘束</text>
+</g>
+<path d="M770 185H820" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+<g id="adjust"><rect x="820" y="324" width="344" height="90" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="846" cy="354" r="14" fill="#39756a"/>
+<text x="846" y="360" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">2</text>
+<text x="872" y="360" font-size="18" font-weight="650" fill="#244e46" text-anchor="start" font-family="Consolas, monospace">AdjustByBoneConstraints</text>
+<text x="838" y="392" font-size="18" font-weight="400" fill="#244e46" text-anchor="start">毎ステップ</text>
+</g>
+<path d="M992 270V324" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+<g id="bridge-insert"><rect x="430" y="490" width="734" height="90" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="456" cy="536" r="14" fill="#39756a"/>
+<text x="456" y="542" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">2</text>
+<text x="482" y="542" font-size="18" font-weight="650" fill="#244e46" text-anchor="start" font-family="Consolas, monospace">InsertBridgeDummiesForConstraints</text>
+</g>
+<path d="M600 230V490" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+<g id="modify-bones"><rect x="430" y="610" width="734" height="90" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<text x="448" y="646" font-size="18" font-weight="400" fill="#305e80" text-anchor="start" font-family="Consolas, monospace">ModifyBones</text>
+<text x="448" y="678" font-size="18" font-weight="400" fill="#305e80" text-anchor="start">末尾へ Bridge 追加</text>
+</g>
+<path d="M797 580V610" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+</svg>

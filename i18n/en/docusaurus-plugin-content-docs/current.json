@@ -23,6 +23,38 @@
     "message": "API Reference",
     "description": "The label for category APIリファレンス in sidebar docsSidebar"
   },
+  "sidebar.docsSidebar.category.内部設計": {
+    "message": "Internals",
+    "description": "The label for category 内部設計 in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.コア処理": {
+    "message": "Core",
+    "description": "The label for category コア処理 in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.拘束・コリジョン": {
+    "message": "Constraints and Collision",
+    "description": "The label for category 拘束・コリジョン in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.外力と風": {
+    "message": "Forces and Wind",
+    "description": "The label for category 外力と風 in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.共有システム": {
+    "message": "Shared Systems",
+    "description": "The label for category 共有システム in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.実行時制御とデータ": {
+    "message": "Runtime Control and Data",
+    "description": "The label for category 実行時制御とデータ in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.エディタ": {
+    "message": "Editor",
+    "description": "The label for category エディタ in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.調査と開発": {
+    "message": "Investigation and Development",
+    "description": "The label for category 調査と開発 in sidebar docsSidebar"
+  },
   "sidebar.docsSidebar.category.開発中（v1.22予定）": {
     "message": "In Development (v1.22 Preview)",
     "description": "Sidebar category for unreleased features"

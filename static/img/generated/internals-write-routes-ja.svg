@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="735" viewBox="0 0 1200 735" role="img" aria-labelledby="title" font-family="system-ui, sans-serif">
+  <title id="title">ノードへの5つの書き込み経路と同期方法</title>
+  <defs>
+    <style>
+      .heading{font-size:20px;font-weight:650;fill:#244e46}
+      .label{font-size:18px;fill:#244e46}
+      .data-label{font-size:18px;fill:#305e80}
+      .warn-label{font-size:18px;fill:#945139}
+      .code{font-family:Consolas, monospace}
+      .number{font-size:18px;font-weight:650;fill:#f5faf8;text-anchor:middle}
+      .rule{stroke:#6b7c78;stroke-width:1.5}
+    </style>
+  </defs>
+  <rect width="1200" height="735" rx="24" fill="#f5faf8"/>
+  <text x="36" y="58" font-size="30" font-weight="700" fill="#244e46">書き込み経路と同期</text>
+  <text x="36" y="96" font-size="22" fill="#39756a" class="code">UKawaiiPhysicsLibrary</text>
+  <text class="heading" x="54" y="139">経路</text>
+  <text class="heading" x="268" y="139">書き込み先</text>
+  <text class="heading" x="656" y="139">同期</text>
+  <text class="heading" x="936" y="139">反映</text>
+
+  <g id="route-1">
+    <rect x="36" y="158" width="1128" height="88" rx="12" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+    <circle cx="62" cy="184" r="14" fill="#bd6a4d"/>
+    <text class="number" x="62" y="190">1</text>
+    <text class="heading" x="88" y="191">直接</text>
+    <text class="label" x="268" y="191">ノードの <tspan class="code">UPROPERTY</tspan></text>
+    <text class="label code" x="268" y="223">PhysicsSettings / Alpha</text>
+    <text class="warn-label" x="656" y="191">なし</text>
+    <text class="warn-label" x="656" y="223">呼び出し側の契約</text>
+    <text class="label" x="936" y="191">読み手の参照時</text>
+  </g>
+  <g id="route-2">
+    <rect x="36" y="258" width="1128" height="88" rx="12" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+    <circle cx="62" cy="284" r="14" fill="#bd6a4d"/>
+    <text class="number" x="62" y="290">2</text>
+    <text class="heading" x="88" y="291">再初期化要求</text>
+    <text class="label code" x="268" y="291">bModifyBonesNeedsReinit</text>
+    <text class="label code" x="268" y="323">bSharedCollisionNeedsReinit</text>
+    <text class="warn-label" x="656" y="291">なし</text>
+    <text class="warn-label" x="656" y="323"><tspan class="code">bool</tspan> の書き込み</text>
+    <text class="label" x="936" y="293">次の評価</text>
+  </g>
+  <g id="route-3">
+    <rect x="36" y="358" width="1128" height="88" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+    <circle cx="62" cy="384" r="14" fill="#417aa5"/>
+    <text class="number" x="62" y="390">3</text>
+    <text class="heading" x="88" y="391">要求キュー</text>
+    <text class="data-label" x="268" y="391"><tspan class="code">Pending</tspan> 配列 × 6</text>
+    <text class="data-label" x="268" y="423">一時外力・突風・設定倍率</text>
+    <text class="data-label code" x="656" y="391">Queue-&gt;Mutex</text>
+    <text class="data-label" x="936" y="391"><tspan class="code">Swap</tspan> 到達時</text>
+    <text class="data-label" x="936" y="423">評価スレッド</text>
+  </g>
+  <g id="route-4">
+    <rect x="36" y="458" width="1128" height="88" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+    <circle cx="62" cy="484" r="14" fill="#417aa5"/>
+    <text class="number" x="62" y="490">4</text>
+    <text class="heading" x="88" y="492">外力ごとの</text>
+    <text class="heading code" x="88" y="521">Pending</text>
+    <text class="data-label code" x="268" y="491">PendingParams / PendingGust</text>
+    <text class="data-label code" x="268" y="523">PendingGustStop</text>
+    <text class="data-label code" x="656" y="491">RuntimeState-&gt;Mutex</text>
+    <text class="data-label" x="936" y="491">次の <tspan class="code">PreApply</tspan></text>
+  </g>
+  <g id="route-5">
+    <rect x="36" y="558" width="1128" height="88" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+    <circle cx="62" cy="584" r="14" fill="#39756a"/>
+    <text class="number" x="62" y="590">5</text>
+    <text class="heading" x="88" y="591">Entry の</text>
+    <text class="heading code" x="88" y="621">Pending</text>
+    <text class="label" x="268" y="591"><tspan class="code">PendingGusts</tspan> など</text>
+    <text class="label" x="268" y="623">Shared Publisher</text>
+    <text class="label code" x="656" y="591">GustMutex</text>
+    <text class="label" x="936" y="591">次の Publisher 更新</text>
+  </g>
+  <path class="rule" d="M250 174V230M638 174V230M918 174V230M250 274V330M638 274V330M918 274V330M250 374V430M638 374V430M918 374V430M250 474V530M638 474V530M918 474V530M250 574V630M638 574V630M918 574V630"/>
+  <text class="warn-label" x="36" y="686">① ② の契約</text>
+  <text class="label" x="210" y="686">自ノードの Thread Safe 文脈</text>
+  <text class="label" x="210" y="716">非評価中の Game Thread</text>
+</svg>

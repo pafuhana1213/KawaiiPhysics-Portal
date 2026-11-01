@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="810" viewBox="0 0 1200 810" role="img" aria-labelledby="diagram-title" font-family="system-ui, sans-serif">
+  <title id="diagram-title">ランタイムの全体構造</title>
+  <defs>
+    <marker id="arrow-g" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker>
+    <marker id="arrow-b" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#417aa5"/></marker>
+    <marker id="arrow-o" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker>
+    <marker id="arrow-z" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#6b7c78"/></marker>
+    <style>.code { font-family: Consolas, monospace; } text { fill: #244e46; } .heading { font-size: 20px; font-weight: 650; } .label { font-size: 18px; } .number { font-size: 18px; font-weight: 650; fill: #f5faf8; text-anchor: middle; }</style>
+  </defs>
+  <rect width="1200" height="810" rx="24" fill="#f5faf8"/>
+  <text x="36" y="58" font-size="30" font-weight="700" text-anchor="start" style="fill:#244e46" >ランタイムの全体構造</text>
+  <text x="36" y="96" font-size="22" font-weight="400" text-anchor="start" style="fill:#244e46" >要求・形状・風の経路（Library の一部 API は AnimGraph からも呼べる）</text>
+  <rect x="36" y="126" width="1128" height="218" rx="16" fill="#f5faf8" stroke="#39756a" stroke-width="1.5"/>
+  <text x="60" y="159" font-size="20" font-weight="650" text-anchor="start" style="fill:#244e46" >Game Thread</text>
+  <rect x="336" y="404" width="828" height="370" rx="16" fill="#f5faf8" stroke="#417aa5" stroke-width="1.5"/>
+  <text x="360" y="437" font-size="20" font-weight="650" text-anchor="start" style="fill:#305e80" >評価スレッド</text>
+  <text x="900" y="437" font-size="18" font-weight="400" text-anchor="start" style="fill:#305e80" >Worker または Game</text>
+  <rect x="60" y="184" width="440" height="132" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <text x="82" y="216" font-size="18" font-weight="400" class="code" text-anchor="start" style="fill:#244e46" >UKawaiiPhysicsLibrary</text>
+  <text x="82" y="249" font-size="18" font-weight="400" class="code" text-anchor="start" style="fill:#244e46" >AnimNotify</text>
+  <text x="270" y="249" font-size="18" font-weight="400" class="code" text-anchor="start" style="fill:#244e46" >Sequencer</text>
+  <text x="82" y="284" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >一時外力・Gust・設定倍率</text>
+  <rect x="680" y="184" width="460" height="132" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <text x="702" y="218" font-size="18" font-weight="400" class="code" text-anchor="start" style="fill:#305e80" >UKawaiiPhysicsSharedCollisionSubsystem</text>
+  <text x="702" y="254" font-size="20" font-weight="400" text-anchor="start" style="fill:#305e80" >共有データ・形状収集</text>
+  <text x="702" y="287" font-size="18" font-weight="400" class="code" text-anchor="start" style="fill:#305e80" >Tick</text>
+  <rect x="360" y="450" width="480" height="158" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <circle cx="386" cy="476" r="14" fill="#39756a"/><text x="386" y="482" class="number">1</text>
+  <text x="412" y="483" font-size="20" font-weight="650" class="code" text-anchor="start" style="fill:#244e46" >FAnimNode_KawaiiPhysics</text>
+  <text x="382" y="522" font-size="18" font-weight="400" class="code" text-anchor="start" style="fill:#244e46" >ModifyBones</text>
+  <text x="382" y="555" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >形状配列・一時外力・設定倍率</text>
+  <text x="382" y="588" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >シミュレーション・ボーン出力</text>
+  <rect x="680" y="654" width="460" height="88" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <text x="702" y="688" font-size="18" font-weight="400" class="code" text-anchor="start" style="fill:#305e80" >FAnimNode_KawaiiPhysicsSharedPublisher</text>
+  <text x="702" y="722" font-size="20" font-weight="400" text-anchor="start" style="fill:#305e80" >共有風・収集設定</text>
+  <path d="M220 316V374H328V492H360" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+  <text x="238" y="365" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >要求キュー</text>
+  <path d="M800 316V352H700V450" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+  <text x="560" y="336" font-size="18" font-weight="400" text-anchor="start" style="fill:#305e80" >形状・風</text>
+  <path d="M840 518H876V380H1000V316" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+  <text x="824" y="369" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >共有コリジョン</text>
+  <path d="M1100 654V316" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+  <text x="916" y="620" font-size="18" font-weight="400" text-anchor="start" style="fill:#305e80" >風・収集設定</text>
+  <rect x="60" y="452" width="252" height="140" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <text x="82" y="486" font-size="20" font-weight="650" text-anchor="start" style="fill:#305e80" >Data Asset</text>
+  <text x="82" y="530" font-size="18" font-weight="400" text-anchor="start" style="fill:#305e80" >取り込み</text>
+  <path d="M312 542H360" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+  <rect x="60" y="654" width="252" height="88" rx="12" fill="#f5faf8" stroke="#6b7c78" stroke-width="1.5"/>
+  <text x="82" y="688" font-size="20" font-weight="650" text-anchor="start" style="fill:#6b7c78" >レベルのコリジョン</text>
+  <text x="82" y="722" font-size="18" font-weight="400" text-anchor="start" style="fill:#6b7c78" >収集</text>
+  <path d="M60 698H20V110H1128V184" fill="none" stroke="#6b7c78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-z)"/>
+</svg>

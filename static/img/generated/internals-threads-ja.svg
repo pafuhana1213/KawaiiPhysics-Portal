@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="diagram-title" font-family="system-ui, sans-serif">
+  <title id="diagram-title">コールバックとスレッド</title>
+  <defs>
+    <marker id="arrow-g" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker>
+    <marker id="arrow-b" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#417aa5"/></marker>
+    <marker id="arrow-o" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker>
+    <marker id="arrow-z" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#6b7c78"/></marker>
+    <style>.code { font-family: Consolas, monospace; } text { fill: #244e46; } .heading { font-size: 20px; font-weight: 650; } .label { font-size: 18px; } .number { font-size: 18px; font-weight: 650; fill: #f5faf8; text-anchor: middle; }</style>
+  </defs>
+  <rect width="1200" height="820" rx="24" fill="#f5faf8"/>
+  <text x="36" y="58" font-size="30" font-weight="700" text-anchor="start" style="fill:#244e46" >コールバックとスレッド</text>
+  <text x="36" y="96" font-size="22" font-weight="400" text-anchor="start" style="fill:#244e46" >初期化・参照更新 / フレーム更新・評価</text>
+  <rect x="36" y="132" width="1128" height="216" rx="16" fill="#f5faf8" stroke="#39756a" stroke-width="1.5"/>
+  <text x="60" y="165" font-size="20" font-weight="650" text-anchor="start" style="fill:#244e46" >Game Thread</text>
+  <rect x="36" y="402" width="1128" height="380" rx="16" fill="#f5faf8" stroke="#417aa5" stroke-width="1.5"/>
+  <text x="60" y="435" font-size="20" font-weight="650" text-anchor="start" style="fill:#305e80" >評価スレッド</text>
+  <text x="258" y="435" font-size="18" font-weight="400" text-anchor="start" style="fill:#305e80" >Worker または Game</text>
+  <rect x="60" y="190" width="390" height="132" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <circle cx="86" cy="216" r="14" fill="#39756a"/><text x="86" y="222" class="number">1</text>
+  <text x="114" y="223" font-size="18" font-weight="650" class="code" text-anchor="start" style="fill:#244e46" >OnInitializeAnimInstance</text>
+  <text x="80" y="265" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >Subsystem・Actor・Component</text>
+  <text x="80" y="295" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >参照・警告用の名前</text>
+  <rect x="520" y="190" width="620" height="132" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <circle cx="546" cy="216" r="14" fill="#39756a"/><text x="546" y="222" class="number">1</text>
+  <text x="574" y="223" font-size="18" font-weight="650" class="code" text-anchor="start" style="fill:#244e46" >PreUpdate</text>
+  <text x="540" y="265" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >World・時刻・参照キャッシュ</text>
+  <text x="540" y="295" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >時計世代・再初期化要求</text>
+  <rect x="60" y="468" width="390" height="126" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <circle cx="86" cy="494" r="14" fill="#417aa5"/><text x="86" y="500" class="number">2</text>
+  <text x="114" y="501" font-size="18" font-weight="650" class="code" text-anchor="start" style="fill:#305e80" >Initialize_AnyThread</text>
+  <text x="80" y="543" font-size="18" font-weight="400" text-anchor="start" style="fill:#305e80" >実行時状態の破棄</text>
+  <text x="80" y="573" font-size="18" font-weight="400" text-anchor="start" style="fill:#305e80" >Data Asset の取り込み</text>
+  <rect x="60" y="628" width="390" height="126" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <circle cx="86" cy="654" r="14" fill="#417aa5"/><text x="86" y="660" class="number">3</text>
+  <text x="114" y="661" font-size="18" font-weight="650" class="code" text-anchor="start" style="fill:#305e80" >CacheBones_AnyThread</text>
+  <text x="80" y="703" font-size="18" font-weight="400" text-anchor="start" style="fill:#305e80" >基底クラス</text>
+  <text x="80" y="733" font-size="18" font-weight="400" text-anchor="start" style="fill:#305e80" ><tspan class="code">InitializeBoneReferences</tspan></text>
+  <rect x="520" y="468" width="620" height="126" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <circle cx="546" cy="494" r="14" fill="#417aa5"/><text x="546" y="500" class="number">2</text>
+  <text x="574" y="501" font-size="18" font-weight="650" class="code" text-anchor="start" style="fill:#305e80" >UpdateInternal</text>
+  <text x="540" y="543" font-size="18" font-weight="400" text-anchor="start" style="fill:#305e80" >基底クラス</text>
+  <text x="540" y="573" font-size="18" font-weight="400" text-anchor="start" style="fill:#305e80" ><tspan class="code">DeltaTime</tspan> の保存</text>
+  <rect x="520" y="628" width="620" height="126" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+  <circle cx="546" cy="654" r="14" fill="#417aa5"/><text x="546" y="660" class="number">3</text>
+  <text x="574" y="661" font-size="18" font-weight="650" class="code" text-anchor="start" style="fill:#305e80" >EvaluateSkeletalControl_AnyThread</text>
+  <text x="540" y="703" font-size="18" font-weight="400" text-anchor="start" style="fill:#305e80" >形状・ポーズ・シミュレーション</text>
+  <text x="540" y="733" font-size="18" font-weight="400" text-anchor="start" style="fill:#305e80" >共有形状の書き込み・ボーン出力</text>
+  <path d="M255 322V468" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+  <path d="M255 594V628" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+  <path d="M830 322V468" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-g)"/>
+  <path d="M830 594V628" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-b)"/>
+  <text x="70" y="378" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >初期化・参照更新</text>
+  <text x="630" y="378" font-size="18" font-weight="400" text-anchor="start" style="fill:#244e46" >フレーム更新・評価</text>
+</svg>

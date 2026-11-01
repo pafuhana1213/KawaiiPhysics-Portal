@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780" role="img" aria-labelledby="diagram-title" font-family="system-ui, sans-serif">
+<title id="diagram-title">Publisher の2つの配信経路</title>
+<defs><marker id="green-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker><marker id="orange-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker></defs>
+<rect width="1200" height="780" rx="24" fill="#f5faf8"/>
+<text x="36" y="58" font-size="30" fill="#244e46" font-weight="700">Publisher の2つの配信経路</text>
+<text x="36" y="96" font-size="22" fill="#39756a" font-family="Consolas, monospace">FAnimNode_KawaiiPhysicsSharedPublisher</text>
+<rect id="publisher" x="36" y="130" width="1128" height="102" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="62" cy="156" r="14" fill="#39756a"/>
+<text x="62" y="162" font-size="18" fill="#f5faf8" font-weight="650" text-anchor="middle">1</text>
+<text x="88" y="166" font-size="20" fill="#244e46" font-weight="650">Publisher</text>
+<text x="54" y="207" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">PreUpdate</tspan>：Entry 解決</text>
+<text x="574" y="207" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">Update_AnyThread</tspan>：配信</text>
+<text x="36" y="281" font-size="20" fill="#39756a" font-weight="650">風</text>
+<text x="624" y="281" font-size="20" fill="#39756a" font-weight="650">当たり判定</text>
+<rect id="windentry" x="36" y="314" width="540" height="154" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<circle cx="62" cy="340" r="14" fill="#417aa5"/>
+<text x="62" y="346" font-size="18" fill="#f5faf8" font-weight="650" text-anchor="middle">2</text>
+<text x="88" y="350" font-size="20" fill="#244e46" font-weight="650">Publisher Entry</text>
+<text x="54" y="386" font-size="18" fill="#417aa5" font-family="Consolas, monospace">FKawaiiPhysicsSharedPublisherEntry</text>
+<text x="54" y="420" font-size="18" fill="#417aa5">パラメータ・位相・突風・有効フラグ</text>
+<text x="54" y="450" font-size="18" fill="#417aa5" font-family="Consolas, monospace">PublishState · StateLock</text>
+<rect id="swentry" x="624" y="314" width="540" height="128" rx="12" fill="#d7e6f3" stroke="#417aa5" stroke-width="1.5"/>
+<circle cx="650" cy="340" r="14" fill="#417aa5"/>
+<text x="650" y="346" font-size="18" fill="#f5faf8" font-weight="650" text-anchor="middle">3</text>
+<text x="676" y="350" font-size="20" fill="#244e46" font-weight="650">Simple World Entry</text>
+<text x="642" y="386" font-size="18" fill="#417aa5" font-family="Consolas, monospace">FKawaiiPhysicsSimpleWorldCollisionEntry</text>
+<text x="642" y="420" font-size="18" fill="#417aa5" font-family="Consolas, monospace">SetDesc / MarkRead · DescLock</text>
+<path d="M306 232V314" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)"/>
+<path d="M894 232V314" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)"/>
+<rect id="windconsumer" x="36" y="574" width="540" height="152" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="62" cy="600" r="14" fill="#39756a"/>
+<text x="62" y="606" font-size="18" fill="#f5faf8" font-weight="650" text-anchor="middle">4</text>
+<text x="88" y="610" font-size="20" fill="#244e46" font-weight="650">風の消費側</text>
+<text x="54" y="646" font-size="18" fill="#39756a" font-family="Consolas, monospace">FKawaiiPhysics_ExternalForce_ProceduralWind</text>
+<text x="54" y="680" font-size="18" fill="#39756a" font-family="Consolas, monospace">PreApply · ReadWindState</text>
+<text x="54" y="708" font-size="18" fill="#244e46">共有パラメータ・時計・外挿</text>
+<path d="M306 468V574" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)"/>
+<text x="326" y="528" font-size="18" fill="#39756a">serial・値コピー</text>
+<rect id="tick" x="624" y="482" width="540" height="72" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<text x="642" y="518" font-size="20" fill="#244e46" font-weight="650">Subsystem <tspan font-family="Consolas, monospace">Tick</tspan> · Game Thread</text>
+<text x="642" y="537" font-size="18" fill="#39756a">Desc 取得 → 必要時に収集・<tspan font-family="Consolas, monospace">Publish</tspan></text>
+<path d="M894 442V482" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)"/>
+<rect id="reader" x="624" y="594" width="540" height="132" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+<circle cx="650" cy="620" r="14" fill="#39756a"/>
+<text x="650" y="626" font-size="18" fill="#f5faf8" font-weight="650" text-anchor="middle">5</text>
+<text x="676" y="630" font-size="20" fill="#244e46" font-weight="650">Reader</text>
+<text x="642" y="665" font-size="18" fill="#39756a" font-family="Consolas, monospace">FAnimNode_KawaiiPhysics</text>
+<text x="642" y="697" font-size="18" fill="#244e46">Serial → 形状コピー → 空間変換</text>
+<path d="M894 554V594" fill="none" stroke="#39756a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#green-arrow)"/>
+<text x="36" y="755" font-size="18" fill="#6b7c78">キー：ファミリー root Actor・Tag　　レジストリ：経路ごとに独立</text>
+</svg>

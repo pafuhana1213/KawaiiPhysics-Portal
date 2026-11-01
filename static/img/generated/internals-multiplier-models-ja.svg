@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780" role="img" aria-labelledby="title" font-family="system-ui, sans-serif">
+  <title id="title">設定倍率の時間型、Infinite Hold、Push と Stop の畳み込み</title>
+  <defs>
+    <marker id="axis-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#6b7c78"/></marker>
+    <style>
+      .stage{fill:#dcebe7;stroke:#39756a;stroke-width:1.5}
+      .data-stage{fill:#d7e6f3;stroke:#417aa5;stroke-width:1.5}
+      .heading{font-size:20px;font-weight:650;fill:#244e46}
+      .label{font-size:18px;fill:#244e46}
+      .data-label{font-size:18px;fill:#305e80}
+      .warn-label{font-size:18px;fill:#945139}
+      .code{font-family:Consolas, monospace}
+      .number{font-size:18px;font-weight:650;fill:#f5faf8;text-anchor:middle}
+      .axis{fill:none;stroke:#6b7c78;stroke-width:1.5;marker-end:url(#axis-arrow)}
+      .curve{fill:none;stroke:#39756a;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+      .driven{fill:none;stroke:#417aa5;stroke-width:3;stroke-linejoin:round}
+      .fade{fill:none;stroke:#bd6a4d;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+      .guide{fill:none;stroke:#6b7c78;stroke-width:1.5;stroke-dasharray:5 5}
+    </style>
+  </defs>
+  <rect width="1200" height="780" rx="24" fill="#f5faf8"/>
+  <text x="36" y="58" font-size="30" font-weight="700" fill="#244e46">設定倍率の3つの駆動モデル</text>
+  <text x="36" y="96" font-size="22" fill="#39756a">時間と適用率 α</text>
+
+  <g id="timed">
+    <rect class="stage" x="36" y="126" width="360" height="364" rx="12"/>
+    <circle cx="62" cy="152" r="14" fill="#39756a"/>
+    <text class="number" x="62" y="158">1</text>
+    <text class="heading" x="88" y="159">時間型</text>
+    <text class="label code" x="54" y="198">Duration &gt; 0</text>
+    <text class="label" x="54" y="239">α</text>
+    <text class="label" x="66" y="285">1</text>
+    <text class="label" x="66" y="411">0</text>
+    <path class="axis" d="M90 404V259M90 404H369"/>
+    <path class="guide" d="M90 278H356"/>
+    <path class="curve" d="M98 404 156 278H242L338 404H356"/>
+    <text class="label code" x="112" y="442">Rise</text>
+    <text class="label code" x="178" y="442">Hold</text>
+    <text class="label code" x="272" y="442">Decay</text>
+    <text class="label" x="328" y="472">時間</text>
+  </g>
+  <g id="infinite-hold">
+    <rect class="stage" x="420" y="126" width="360" height="364" rx="12"/>
+    <circle cx="446" cy="152" r="14" fill="#39756a"/>
+    <text class="number" x="446" y="158">2</text>
+    <text class="heading" x="472" y="159">Infinite Hold</text>
+    <text class="label code" x="438" y="198">Duration &lt; 0</text>
+    <text class="label" x="438" y="239">α</text>
+    <text class="label" x="450" y="285">1</text>
+    <text class="label" x="450" y="411">0</text>
+    <path class="axis" d="M474 404V259M474 404H753"/>
+    <path class="curve" d="M482 404 552 278H740"/>
+    <text class="label code" x="500" y="442">Rise</text>
+    <text class="label" x="606" y="442"><tspan class="code">Stop</tspan> まで保持</text>
+    <text class="label" x="712" y="472">時間</text>
+  </g>
+  <g id="push">
+    <rect class="data-stage" x="804" y="126" width="360" height="364" rx="12"/>
+    <circle cx="830" cy="152" r="14" fill="#417aa5"/>
+    <text class="number" x="830" y="158">3</text>
+    <text class="heading" x="856" y="159">Push（外部駆動）</text>
+    <text class="data-label code" x="822" y="198">DrivenAlpha</text>
+    <text class="label" x="822" y="239">α</text>
+    <text class="label" x="834" y="285">1</text>
+    <text class="label" x="834" y="411">0</text>
+    <path class="axis" d="M858 404V259M858 404H1137"/>
+    <path class="guide" d="M858 278H1124"/>
+    <path class="driven" d="M866 365H936V303H1006V341H1124"/>
+    <circle cx="866" cy="365" r="4" fill="#417aa5"/>
+    <circle cx="936" cy="303" r="4" fill="#417aa5"/>
+    <circle cx="1006" cy="341" r="4" fill="#417aa5"/>
+    <text class="data-label" x="876" y="442"><tspan class="code">Stop</tspan> / リース失効</text>
+    <text class="label" x="1096" y="472">時間</text>
+  </g>
+
+  <g id="stop-folding">
+    <rect x="36" y="518" width="1128" height="210" rx="12" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+    <text class="heading" x="54" y="551">Stop の畳み込み</text>
+    <text class="warn-label" x="54" y="593">時間型・Infinite Hold</text>
+    <text class="warn-label" x="54" y="626"><tspan class="code">PeakAlpha</tspan> × 現在のエンベロープ</text>
+    <text class="warn-label code" x="54" y="672">Push</text>
+    <text class="warn-label code" x="54" y="705">PeakAlpha = DrivenAlpha</text>
+    <path d="M402 578V708M860 578V708" fill="none" stroke="#bd6a4d" stroke-width="1.5"/>
+    <text class="warn-label code" x="424" y="593">RiseTime = HoldTime = 0</text>
+    <text class="warn-label code" x="424" y="626">DecayTime = BlendOutTime</text>
+    <text class="warn-label code" x="424" y="659">ElapsedTime = 0</text>
+    <text class="warn-label" x="424" y="705">現在の α → 時間型のフェード</text>
+
+    <text class="warn-label code" x="916" y="582">Stop</text>
+    <text class="warn-label" x="1008" y="612">再 <tspan class="code">Stop</tspan></text>
+    <path class="axis" d="M888 686H1140"/>
+    <path class="curve" d="M894 610H950"/>
+    <path class="fade" d="M950 610 1020 640 1130 686"/>
+    <path class="guide" d="M950 589V604M1020 619V634"/>
+    <circle cx="950" cy="610" r="4" fill="#bd6a4d"/>
+    <circle cx="1020" cy="640" r="4" fill="#bd6a4d"/>
+    <text class="warn-label" x="1090" y="710">時間</text>
+  </g>
+  <text class="warn-label" x="36" y="760">即時削除：<tspan class="code">BlendOutTime ≤ KINDA_SMALL_NUMBER</tspan></text>
+</svg>

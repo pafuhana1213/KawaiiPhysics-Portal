@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="830" viewBox="0 0 1200 830" role="img" aria-labelledby="title" font-family="system-ui, sans-serif">
+  <title id="title">テストの層と検証範囲</title>
+  <defs>
+    <marker id="arrow-green" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#39756a"/></marker>
+    <marker id="arrow-blue" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#417aa5"/></marker>
+    <marker id="arrow-orange" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#bd6a4d"/></marker>
+    <marker id="arrow-gray" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0 8 4 0 8Z" fill="#6b7c78"/></marker>
+  </defs>
+  <rect width="1200" height="830" rx="24" fill="#f5faf8"/>
+  <text x="36" y="58" font-size="30" font-weight="700" fill="#244e46">テストの層と検証範囲</text>
+  <text x="36" y="96" font-size="22" fill="#244e46">緑：検証範囲　　橙：対象外・限界</text>
+  <rect x="36" y="142" width="552" height="302" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <circle cx="62" cy="170" r="14" fill="#39756a"/>
+  <text x="62" y="176" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">1</text>
+  <text x="88" y="178" font-size="20" font-weight="650" fill="#244e46">ハーネス</text>
+  <text x="54" y="216" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">BuildVerticalChain</tspan> → <tspan font-family="Consolas, monospace">StepFrame</tspan> / <tspan font-family="Consolas, monospace">StepOnce</tspan></text>
+  <text x="54" y="250" font-size="18" fill="#244e46">積分・拘束・コリジョン・サブステップ</text>
+  <text x="54" y="284" font-size="18" fill="#244e46">本番の計算関数</text>
+  <rect x="54" y="310" width="516" height="112" rx="12" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+  <text x="72" y="344" font-size="18" fill="#945139">対象外：生成・<tspan font-family="Consolas, monospace">Output</tspan>・外力フック</text>
+  <text x="72" y="374" font-size="18" fill="#945139"><tspan font-family="Consolas, monospace">Bridge</tspan>・<tspan font-family="Consolas, monospace">LOD</tspan>・<tspan font-family="Consolas, monospace">World</tspan> <tspan font-family="Consolas, monospace">sweep</tspan>・<tspan font-family="Consolas, monospace">BaseBoneSpace</tspan></text>
+  <text x="72" y="404" font-size="18" fill="#945139">呼び出し順：本番と二重管理</text>
+  <rect x="612" y="142" width="552" height="302" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <circle cx="638" cy="170" r="14" fill="#39756a"/>
+  <text x="638" y="176" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">2</text>
+  <text x="664" y="178" font-size="20" font-weight="650" fill="#244e46">本番ノード評価</text>
+  <text x="630" y="216" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">Initialize_AnyThread</tspan></text>
+  <text x="630" y="248" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">EvaluateSkeletalControl_AnyThread</tspan></text>
+  <text x="630" y="282" font-size="18" fill="#244e46">64 ボーン / 32 フレーム / Push 有・無</text>
+  <text x="630" y="316" font-size="18" fill="#244e46">全ボーン出力・有限値</text>
+  <rect x="630" y="346" width="516" height="76" rx="12" fill="#f5e3db" stroke="#bd6a4d" stroke-width="1.5"/>
+  <text x="648" y="382" font-size="18" fill="#945139">網羅外：複雑な生成条件</text>
+  <path d="M190 444V464H216V486" fill="none" stroke="#417aa5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+  <rect x="36" y="486" width="360" height="306" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <circle cx="62" cy="514" r="14" fill="#39756a"/>
+  <text x="62" y="520" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">3</text>
+  <text x="88" y="522" font-size="20" font-weight="650" fill="#244e46">Golden</text>
+  <text x="54" y="556" font-size="18" fill="#244e46">ハーネスの固定シナリオ</text>
+  <text x="54" y="590" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">Chain</tspan> / <tspan font-family="Consolas, monospace">ChainLegacy</tspan></text>
+  <text x="54" y="622" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">Constraint</tspan> / <tspan font-family="Consolas, monospace">Collision</tspan></text>
+  <text x="54" y="656" font-size="18" fill="#244e46">200 フレーム後の位置</text>
+  <text x="54" y="688" font-size="18" fill="#244e46">ビット一致</text>
+  <text x="54" y="732" font-size="18" fill="#945139">要素数不一致：採取モード</text>
+  <text x="54" y="764" font-size="18" fill="#945139">Warning ＋ 成功</text>
+  <rect x="420" y="486" width="360" height="306" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <circle cx="446" cy="514" r="14" fill="#39756a"/>
+  <text x="446" y="520" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">4</text>
+  <text x="472" y="522" font-size="20" font-weight="650" fill="#244e46">Perf</text>
+  <text x="438" y="556" font-size="18" fill="#244e46">処理時間・構造体サイズ</text>
+  <text x="438" y="590" font-size="18" fill="#244e46">ハーネス・個別ベンチ</text>
+  <text x="438" y="622" font-size="18" fill="#244e46"><tspan font-family="Consolas, monospace">Chain</tspan> / <tspan font-family="Consolas, monospace">Collision</tspan> など</text>
+  <text x="438" y="662" font-size="18" fill="#244e46">変更前後のログ比較</text>
+  <text x="438" y="710" font-size="18" fill="#945139">時間の合否判定なし</text>
+  <text x="438" y="746" font-size="18" fill="#945139">SimpleWorldRead：結果未検査</text>
+  <rect x="804" y="486" width="360" height="306" rx="12" fill="#dcebe7" stroke="#39756a" stroke-width="1.5"/>
+  <circle cx="830" cy="514" r="14" fill="#39756a"/>
+  <text x="830" y="520" font-size="18" font-weight="650" fill="#f5faf8" text-anchor="middle">5</text>
+  <text x="856" y="522" font-size="20" font-weight="650" fill="#244e46">Editor</text>
+  <text x="822" y="556" font-size="18" fill="#244e46">Editor Library・タブ</text>
+  <text x="822" y="590" font-size="18" fill="#244e46">Details・Sequencer</text>
+  <text x="822" y="626" font-size="18" fill="#244e46">グラフノードの実体</text>
+  <text x="822" y="694" font-size="18" fill="#945139">対象外：Edit Mode</text>
+  <text x="822" y="730" font-size="18" fill="#945139">Gizmo・選択：プレビュー確認</text>
+</svg>
