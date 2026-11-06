@@ -75,6 +75,10 @@ Total = (Constant + Sway + Ripple) * StrengthCycle + Random + Gust
 
 Notifyの全期間は`RiseTime + HoldTime + DecayTime`です。途中解除にはハンドル付きAPIを使います。
 
+Blueprintから起こす場合は `StartProceduralWindGustOnComponent` を使います。
+
+<DocVideo src="/video/sample/procedural-wind-gust.mp4" poster="/video/sample/procedural-wind-gust.jpg" alt="真下に垂れた鎖が、3秒ごとの突風で右へ吹かれ、収まると元に戻る録画" caption="開発版サンプル展示6.4の実機録画。BP_KPS_GustPulseが3秒ごとに、StartProceduralWindGustOnComponentで+Y方向の突風を起こしています。ノードのProceduralWindは風力0なので、突風だけが見えます。" />
+
 進行はアニメーション評価に依存します。LODやUROで評価が止まる条件も確認してください。汎用一時外力の寿命・8件の上限・使えない参照型は[一時外力リファレンス](/docs/api/transient-effects#wind-programmer-details)で説明します。
 
 ## Wind Preset Data Asset {#wind-presets}
