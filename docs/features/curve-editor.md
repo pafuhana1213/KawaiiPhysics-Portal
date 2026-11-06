@@ -75,6 +75,10 @@ Radiusは、各ボーンの衝突判定に使う半径です。脚との衝突�
 3. カーブエディタでキーを追加し、位置（X）と倍率（Y）を編集します。
 4. プレビューで動きを確認し、基準値とカーブを調整します。
 
+![Detailsの検索欄にStiffnessと入力した状態。Physics SettingsのStiffnessは0.2で、物理設定 > カーブのボーン長割合によるStiffness Rate補正に、左上の(0, 1)から右下の(1, 0)へ下がる直線のカーブが表示されている](/img/editor/stiffness-curve-details-ja.webp)
+
+*開発版サンプル展示2.6の右の鎖のDetails。日本語UIでは `Stiffness Rate by Bone Length Rate` が **ボーン長割合によるStiffness Rate補正** と表示されます。根元 `(0, 1)` から先端 `(1, 0)` へ倍率を下げています。*
+
 上のグラフは両端のキーを直線で結んだ例です。中間の変化はキーや補間方法で調整できます。
 
 <span id="カーブ-vs-固定値" style={{display: 'block', height: 0, scrollMarginTop: 'calc(var(--ifm-navbar-height) + 1rem)'}} />
