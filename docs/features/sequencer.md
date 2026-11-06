@@ -44,6 +44,10 @@ Actorバインドは子Actorファミリー全体を対象にしません。All�
 
 新規セクションの長さは1秒です。Level Sequence内で効果を入れる区間に合わせて範囲を変更します。
 
+![SequencerでSkeletalMeshComponent0の下にKawaii Physics 設定倍率トラックがあり、ScaleのDamping、Stiffness、WorldDampingLocation、WorldDampingRotation、Radius、LimitAngleとWeightのチャンネルが並んでいる。DampingとStiffnessにキーが打たれている](/img/editor/sequencer-settings-multiplier-track-ja.webp)
+
+*開発版サンプル展示6.6の `LS_6_6_SettingsMultiplier`。日本語UIではトラック名が **Kawaii Physics 設定倍率** と表示されます。DampingとStiffnessの倍率にキーを打ち、6秒ループで変化させています。*
+
 ## 終了と復帰 {#details-lifecycle}
 
 区間外へのスクラブ・停止・削除で効果が解除され、終了時の戻り方には`BlendOutTimeOnEnd`を使います。セクションはRestore Stateを使い、Keep Stateへ変更できません。倍率の時刻評価は物理シミュレーションの巻き戻し・再現性を保証しません。
