@@ -32,7 +32,23 @@ KawaiiPhysicsの問題を調査・解決する方法を説明します。
 
 ### ボーンチェーンの確認
 
-物理が適用されているボーンを視覚的に確認できます。
+物理が適用されているボーンを視覚的に確認できます。AnimGraphでKawaiiPhysicsノードを選ぶと、AnimBPのプレビューにボーン、コリジョン、角度制限などが表示されます。
+
+表示する項目は、Detailsの **デバッグ表示** のボタンで切り替えます。緑のボタンが表示中の項目です。
+
+![Detailsのデバッグ表示。CommonにBone、Length Rate、Limit Angle、CollisionにSphere、Capsule、Box、Plane、Tapered Capsule、AdvancedにSync Bone、Bone Constraint、External Forceのボタンが並んでいる](/img/editor/debug-display-toggles-ja.webp)
+
+*開発版の画面。Tapered Capsuleのボタンはv1.22予定の機能です。*
+
+| ボタン | 表示する内容 |
+|--------|------------|
+| Bone | 物理が適用されているボーン |
+| Length Rate | 各ボーンのRootBoneからの長さの割合（0〜1）。[カーブ](/docs/features/curve-editor#reading-the-curve)の横軸と同じ値 |
+| Limit Angle | 角度制限の範囲 |
+| Sphere / Capsule / Box / Plane / Tapered Capsule | 各形状のコリジョン |
+| Sync Bone | Sync Boneの設定 |
+| Bone Constraint | ボーン拘束のペア |
+| External Force | 外力の向き |
 
 ### GameplayTagによるフィルタリング {#gameplaytag-filtering}
 

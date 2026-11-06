@@ -102,6 +102,10 @@ TObjectPtr<UKawaiiPhysicsBoneConstraintsDataAsset> BoneConstraintsDataAsset;
 | ComplianceType | EXPBDComplianceType | 上書きする場合のCompliance Type（デフォルト: Leather） |
 | bExcludeFromSubdivision | bool | この拘束を BoneConstraint Subdivision の対象から除外する（構造/対角の拘束をオプトアウト、デフォルト: false、v1.21.0で追加） |
 
+![KawaiiPhysicsBoneConstraintsDataAssetを開いた画面。Kawaii Physics Helperカテゴリに ApplyRegex ボタン、その下にBone Constraints Data（64個の配列要素）、正規表現パターンリスト、プレビュー用Skeletonが並んでいる](/img/editor/bone-constraints-data-asset-ja.webp)
+
+*開発版サンプル展示5.2の `DA_5_2_SkirtConstraints`。スカートの拘束ペア64組を保存しています。このアセットでは正規表現パターンリストは空です。*
+
 #### 正規表現による一括設定
 
 `ApplyRegex` ボタンを使用すると、正規表現パターンからボーン制約を自動生成できます。

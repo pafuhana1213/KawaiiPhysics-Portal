@@ -3,6 +3,8 @@ sidebar_position: 10
 title: "Shared Collision（共有コリジョン）"
 ---
 
+import DocVideo from '@site/src/components/DocVideo';
+
 # Shared Collision（共有コリジョン）
 
 :::tip バージョン情報
@@ -20,6 +22,8 @@ Shared Collision を使うと、複数メッシュ間でコリジョンを一元
 ![Shared Collisionの共有イメージ](/img/generated/shared-collision-concept.svg)
 
 *本体メッシュ（Source）が計算したコリジョンを共有サブシステム経由で公開し、衣装メッシュ（Target）が同じGroupTagで読み取って使用する。*
+
+<DocVideo src="/video/sample/shared-collision.mp4" poster="/video/sample/shared-collision.jpg" alt="走るキャラクターの頭上から垂れた鎖が、キャラクターの頭と肩に当たって沿う録画" caption="開発版サンプル展示5.7の実機録画。頭上の鎖は別のメッシュで、bUseSharedCollisionを有効にしています。同じSharedCollisionGroupTagを持つキャラクター側のノード（bSharedCollisionSource）のコリジョンに当たり、頭と肩に沿って垂れます。" />
 
 ## 仕組み（Source / Target）
 
@@ -111,7 +115,7 @@ URO（Update Rate Optimization）や LOD で評価が間引かれると Source �
 
 ## サンプル
 
-サンプルプロジェクトの `Content/KawaiiPhysicsSample/Samples/4-Advanced/4-9/` に、Source / Target を使ったデモが含まれています。
+サンプルプロジェクトの `Content/KawaiiPhysicsSample/Samples/4-Advanced/4-9/` に、Source / Target を使ったデモが含まれています。開発版 `master` のサンプルでは、`Examples/05_Advanced` の展示5.7（上の録画）です。
 
 ## 関連ページ
 
