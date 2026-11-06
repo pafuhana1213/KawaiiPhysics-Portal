@@ -16,7 +16,21 @@ KawaiiPhysics は、プロジェクト全体に適用される設定を **Projec
 1. エディタ上部メニューの **Edit > Project Settings** を開く
 2. 左側のカテゴリ一覧から **Plugins > Kawaii Physics** を選択
 
-<!-- IMAGE_NEEDED: Project Settings > Plugins > Kawaii Physics の設定画面 -->
+![Project Settingsで左の一覧のプラグインからKawaii Physicsを選んだ画面。右側にプラグイン - Kawaii Physicsのページが開き、シミュレーション、Simple World Collision、エディタ スクリプト処理のセクションが並んでいる](/img/editor/project-settings-ja.webp)
+
+*開発版のサンプルプロジェクトで開いた画面（日本語UI）。値はすべて既定値です。*
+
+開発版（v1.22予定）では、このページに次のセクションがあります。このページではシミュレーションとPerformance Warningsを説明します。
+
+![プラグイン - Kawaii Physicsのページを下へスクロールした画面。Simple World Collision、エディタ スクリプト処理、Performance Warnings、Wind Scopeのセクションの項目が並んでいる](/img/editor/project-settings-sections-ja.webp)
+
+| セクション | 内容 |
+|-----------|------|
+| シミュレーション | 固定サブステップ（このページ） |
+| Simple World Collision | 収集範囲、フェードイン、距離による間引き、収集数の上限など（v1.22予定。[Simple World Collision](/docs/features/simple-world-collision)） |
+| エディタ スクリプト処理 | MCPやエディタスクリプトでノードを配置するときのコメントと配置間隔（v1.22予定） |
+| Performance Warnings | ダミーボーン数の警告しきい値（このページ） |
+| Wind Scope | Wind Scopeで使う風プリセット（v1.22予定。[Wind Scope](/docs/features/wind-scope)） |
 
 :::note 設定の保存先
 これらは `config = Engine` 指定の `UDeveloperSettings` です。変更すると、プロジェクトの `Config/DefaultEngine.ini` に以下のセクションで保存されます。バージョン管理や他メンバーとの共有もこのファイル経由で行われます。
