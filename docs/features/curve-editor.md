@@ -6,6 +6,7 @@ title: "カーブエディタ"
 import RootToTip from '@site/static/img/generated/curve-root-to-tip.svg';
 import HairExample from '@site/static/img/generated/curve-hair-example.svg';
 import SkirtExample from '@site/static/img/generated/curve-skirt-example.svg';
+import DocVideo from '@site/src/components/DocVideo';
 
 <span id="カーブエディタ" style={{display: 'block', height: 0, scrollMarginTop: 'calc(var(--ifm-navbar-height) + 1rem)'}} />
 
@@ -52,6 +53,8 @@ Stiffnessは、親ボーンに対する入力ポーズの形に戻ろうとす�
 <HairExample style={{display: 'block', width: '100%', maxWidth: '420px', height: 'auto'}} />
 
 キーの例は根元 `(0, 1.0)`、先端 `(1, 0.1)` です。基準値が `0.5` なら、根元のキーでの計算は `0.5 × 1.0 = 0.5`、先端では `0.5 × 0.1 = 0.05` です。図の点線と白抜きの毛先は入力ポーズ、実線はそこから変位した髪を示します。実際の動きは減衰や外力などにも左右されます。
+
+<DocVideo src="/video/sample/curve-stiffness.mp4" poster="/video/sample/curve-stiffness.jpg" alt="Stiffness 0.2の鎖はまっすぐなまま斜めに揺れ、StiffnessCurveで先端の倍率を下げた鎖は先端側が大きくしなる録画" caption="開発版サンプル展示2.6の実機録画。2本ともStiffnessは0.2です。左はカーブなしで、鎖がまっすぐなまま揺れます。右はStiffnessCurveを根元1、先端0にしており、先端側ほど大きくしなります。" />
 
 <span id="スカート" style={{display: 'block', height: 0, scrollMarginTop: 'calc(var(--ifm-navbar-height) + 1rem)'}} />
 <span id="スカート-裾ほど衝突半径を大きくする" style={{display: 'block', height: 0, scrollMarginTop: 'calc(var(--ifm-navbar-height) + 1rem)'}} />
