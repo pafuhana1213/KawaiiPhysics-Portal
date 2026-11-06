@@ -3,6 +3,8 @@ sidebar_position: 7
 title: "外部力プリセット"
 ---
 
+import DocVideo from '@site/src/components/DocVideo';
+
 # 外部力プリセット
 
 :::tip バージョン情報
@@ -24,8 +26,11 @@ FKawaiiPhysics_ExternalForce (基底)
 ├─ FKawaiiPhysics_ExternalForce_Basic (汎用方向力)
 ├─ FKawaiiPhysics_ExternalForce_Curve (時間変化カーブ力)
 ├─ FKawaiiPhysics_ExternalForce_Gravity (重力)
-└─ FKawaiiPhysics_ExternalForce_Wind (風)
+├─ FKawaiiPhysics_ExternalForce_Wind (風)
+└─ FKawaiiPhysics_ExternalForce_ProceduralWind (手続き的な風、v1.22予定)
 ```
+
+`ProceduralWind` は [Procedural Wind](/docs/features/procedural-wind) を参照してください。
 
 [ソースを見る](https://github.com/pafuhana1213/KawaiiPhysics/tree/master/Plugins/KawaiiPhysics/Source/KawaiiPhysics/Public/ExternalForces)
 
@@ -41,16 +46,22 @@ FKawaiiPhysics_ExternalForce (基底)
 | bDrawDebug | bool | false | デバッグ描画の有効/無効 |
 | ApplyBoneFilter | TArray\<FBoneReference\> | 空 | 外力を適用するボーンを指定（空の場合は全て） |
 | IgnoreBoneFilter | TArray\<FBoneReference\> | 空 | 外力を適用しないボーンを指定 |
-| ExternalForceSpace | EExternalForceSpace | WorldSpace | シミュレーション空間 |
+| ExternalForceSpace | EExternalForceSpace | WorldSpace | 力のベクトル（Basic の `ForceDir` など）を読む座標系 |
 | RandomForceScaleRange | FFloatInterval | (1.0, 1.0) | 力のスケールのランダム化範囲 |
 
-### シミュレーション空間 (EExternalForceSpace)
+### 力の座標系 (EExternalForceSpace) {#external-force-space}
+
+`ExternalForceSpace` は、力のベクトルをどの座標系の値として読むかを決めます。読んだ力は、ノードの `SimulationSpace` に変換してから加えます。ノードのシミュレーション空間を切り替える設定ではありません。
 
 | 値 | 説明 |
 |---|---|
-| ComponentSpace | コンポーネント空間でシミュレート。メッシュ移動は速度に影響しない |
-| WorldSpace | ワールド空間でシミュレート。メッシュ移動で速度が変化 |
-| BoneSpace | 別のボーン空間でシミュレート |
+| ComponentSpace | SkeletalMeshComponentの軸で読む。キャラクターが向きを変えると、力の向きも一緒に回る |
+| WorldSpace | ワールドの軸で読む。キャラクターの向きに関係なく、同じ方向へ押す（既定値） |
+| BoneSpace | 各ボーン自身の軸で読む。基準にするボーンを別に指定する設定はありません |
+
+<DocVideo src="/video/sample/external-force-space.mp4" poster="/video/sample/external-force-space.jpg" alt="回転台の上で走るキャラクター3体のうち、ComponentSpaceの髪は体と一緒に向きが回り、WorldSpaceの髪は常に画面の右へ流れる録画" caption="開発版サンプル展示4.8の実機録画。3体ともBasicのForceDir (0, 1, 0) x 40で、8秒で1回転させています。ComponentSpace（左）は体の前（+Y）へ押すので、髪の向きが体と一緒に回ります。WorldSpace（中央）は常にステージの右へ押します。BoneSpace（右）は各ボーン自身の軸が基準です。" />
+
+Gravity と Wind は常にWorldSpaceで、この設定はありません。
 
 ### ボーンフィルタの使用例
 
@@ -77,14 +88,26 @@ IgnoreBoneFilter.Add(FBoneReference("hair_root"));
 | ForceRateByBoneLengthRate | FRuntimeFloatCurve | - | ボーンの長さの比率による力の補正カーブ |
 | Interval | float | 0.0 | 力を適用する間隔（秒）。0の場合は毎フレーム適用 |
 
+力の大きさは `ForceDir × RandomForceScaleRange から選んだ倍率` です。`ForceDir` に大きさを含めても、`ForceDir` を向きだけにして `RandomForceScaleRange` で強さを決めてもかまいません。
+
 ### 使用例
 
 ```cpp
-// 右方向への一定の力
+// X方向への一定の力（ExternalForceSpace の座標系で読む）
 FKawaiiPhysics_ExternalForce_Basic BasicForce;
 BasicForce.ForceDir = FVector(100, 0, 0);
 BasicForce.Interval = 0.0f; // 毎フレーム適用
 ```
+
+![BasicでForceDir (0, 1, 0) x 30を加えた鎖が、右へ押されて傾いている画面](/img/sample/external-force-basic.webp)
+
+*開発版サンプル展示4.3の実機画面。`ForceDir = (0, 1, 0)`、強さ30で、鎖が押された方向へ傾いています。*
+
+`ForceRateByBoneLengthRate` カーブを使うと、根元から先端まで力の強さを変えられます。横軸はRootBoneからの長さの割合（0〜1）、縦軸は力に掛ける倍率です。
+
+![同じBasicの力を加えた鎖2本のうち、カーブなしの鎖はまっすぐ斜めに傾き、根元0から先端1のカーブを設定した鎖は根元が垂れたまま先端だけが押されている画面](/img/sample/force-rate-by-bone-length.webp)
+
+*開発版サンプル展示4.9の実機画面。2本ともBasicの `(0, 1, 0) x 80` です。左はカーブなし（全ボーン1）、右は根元0から先端1のカーブで、先端側だけが押されます。*
 
 ---
 
@@ -110,6 +133,8 @@ BasicForce.Interval = 0.0f; // 毎フレーム適用
 | Average | 複数ポイントの平均値 |
 | Max | 複数ポイントの最大値 |
 | Min | 複数ポイントの最小値 |
+
+<DocVideo src="/video/sample/external-force-curve.mp4" poster="/video/sample/external-force-curve.jpg" alt="Curveの外力で、鎖が左右に周期的に振れる録画" caption="開発版サンプル展示4.4の実機録画。Y方向の力を4秒周期で0 → 1 → 0 → -1 → 0と変化させ、鎖を左右に振っています。" />
 
 ### 使用例
 

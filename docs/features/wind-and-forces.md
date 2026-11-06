@@ -3,6 +3,8 @@ sidebar_position: 3
 title: "風と外部力"
 ---
 
+import DocVideo from '@site/src/components/DocVideo';
+
 # 風と外部力
 
 KawaiiPhysicsでの風と外部力の設定方法を説明します。
@@ -52,7 +54,11 @@ Wind Directional Source の強度と方向が KawaiiPhysics の物理ボーン�
 
 ### SimpleExternalForce（直接プロパティ）
 
-`Force|External Force` カテゴリの `SimpleExternalForce`（FVector）に値を入れると、その力が継続的に適用されます。`bUseWorldSpaceSimpleExternalForce`（既定 true）でワールド/コンポーネント座標系を切り替えます。
+`Force|External Force` カテゴリの `SimpleExternalForce`（FVector）に値を入れると、毎フレームその方向へボーンを押します。速度を経由せずに位置をずらすため、揺れずに押された形のまま止まります。`bUseWorldSpaceSimpleExternalForce`（既定 true）でワールド/コンポーネント座標系を切り替えます。
+
+![SimpleExternalForceを(0, 15, 0)にした鎖が、右へ押されて傾いたまま止まっている画面](/img/sample/simple-external-force.webp)
+
+*開発版サンプル展示4.2の実機画面。`SimpleExternalForce = (0, 15, 0)` で押された形のまま止まっています。揺れを伴う力を加えたい場合は、外部力プリセットを使います。*
 
 ```cpp
 // AnimNode のプロパティ（C++ からのアクセス例）
@@ -87,6 +93,14 @@ Node->bUseWorldSpaceSimpleExternalForce = true;
 // 下向きの重力
 Node->Gravity = FVector(0, 0, -980.0f);
 ```
+
+<DocVideo src="/video/sample/gravity.mp4" poster="/video/sample/gravity.jpg" alt="同じ走りのキャラクター2体のうち、Gravity 0のツインテールは横に広がって揺れ、Gravity (0, 0, -980)のツインテールは下に垂れて揺れる録画" caption="開発版サンプル展示4.1の実機録画。左のGravity 0（既定値）では、髪の形はStiffnessで保たれ、ツインテールが横に広がります。右の(0, 0, -980)では、ツインテールが下に垂れます。" />
+
+`bUseLegacyGravity` は重力の足し方を切り替えます。既定の `false` は速度に `Gravity * dt` を足すAnimDynamics互換の方式で、`true` は位置に `0.5 * Gravity * dt^2` を足す旧方式です。同じ値でも垂れ方が変わるので、旧バージョンから移行するときは注意してください。
+
+![水平の参照ポーズの鎖2本に同じGravityを加え、bUseLegacyGravityがtrueの鎖は少し垂れ、falseの鎖は大きく垂れている画面](/img/sample/legacy-gravity.webp)
+
+*開発版サンプル展示4.10の実機画面。水平の鎖に `Gravity (0, 0, -980)`、`Stiffness = 0.01` を設定しています。左の `true`（旧方式）より、右の `false`（既定値）の方が大きく垂れます。*
 
 ### カスタム重力
 
