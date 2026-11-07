@@ -21,7 +21,9 @@ v1.21.0で追加。**デフォルトで有効（ON）です。**
 
 プロジェクト全体の設定として、**Project Settings > Plugins > Kawaii Physics** から変更できます（[プロジェクト設定](/docs/advanced/project-settings) も参照）。
 
-<!-- IMAGE_NEEDED: Project Settings > Plugins > Kawaii Physics の設定画面 -->
+![Project Settingsのプラグイン - Kawaii Physicsのページ。シミュレーションセクションに、有効になったUse Fixed Substeppingと、4のMax Substepsが並んでいる](/img/editor/project-settings-simulation-ja.webp)
+
+*Project Settings > Plugins > Kawaii Physics のシミュレーションセクション（既定値）。*
 
 ### Use Fixed Substepping
 
