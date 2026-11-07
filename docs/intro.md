@@ -27,32 +27,20 @@ import YouTubeThumbnail from '@site/src/components/YouTubeThumbnail';
 
 ## 対応バージョン {#supported-versions}
 
-| KawaiiPhysics | 対応UEバージョン |
-|---------------|-----------------|
-| 1.21.x        | 5.3, 5.4, 5.5, 5.6, 5.7, 5.8 |
-| 1.20.x        | 5.3, 5.4, 5.5, 5.6, 5.7 |
-| 1.19.x        | 5.3, 5.4, 5.5, 5.6 |
-| 1.18.x        | 5.3, 5.4, 5.5 |
-| 1.17.x        | 5.3, 5.4, 5.5 |
-| 1.16.x        | 5.2, 5.3, 5.4 |
-| 1.14.x        | 5.0, 5.1, 5.2 |
-| 1.11.1        | 4.27 |
+使用するUEのバージョンに合わせて、次のKawaiiPhysicsを選んでください。
 
-v1.16の対応表は[公開リリースの配布物](https://github.com/pafuhana1213/KawaiiPhysics/releases/tag/20240719-v1.16.0)（UE 5.2 / 5.3 / 5.4）に基づいています。
+| UEバージョン | KawaiiPhysics |
+|-------------|---------------|
+| 5.3〜5.8    | 1.21.x（最新） |
+| 5.2         | 1.16.x |
+| 5.0, 5.1    | 1.14.x |
+| 4.27        | 1.11.1 |
+
+UE 5.2向けのv1.16は、[公開リリースの配布物](https://github.com/pafuhana1213/KawaiiPhysics/releases/tag/20240719-v1.16.0)（UE 5.2 / 5.3 / 5.4）に基づいています。
 
 ## クイックスタート
 
-```cpp
-// Animation Blueprintで KawaiiPhysics ノードを追加
-// Root Bone を設定し、物理を適用したいボーンチェーンを指定
-```
-
-1. Animation Blueprintを開く
-2. AnimGraphに **Kawaii Physics** ノードを追加
-3. **Root Bone** に揺らしたいボーンの親を設定
-4. パラメータを調整してプレビュー
-
-詳しくは [インストール](/docs/getting-started/installation) と [クイックスタート](/docs/getting-started/quick-start) をご覧ください。
+インストールから最初のセットアップまでは [はじめ方](/docs/getting-started) をご覧ください。
 
 ## 採用実績
 

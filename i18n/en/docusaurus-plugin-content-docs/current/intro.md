@@ -38,32 +38,20 @@ description: "KawaiiPhysics - A lightweight bone physics plugin for Unreal Engin
 
 ## Supported Versions
 
-| KawaiiPhysics | Supported UE Versions |
-|---------------|----------------------|
-| 1.21.x        | 5.3, 5.4, 5.5, 5.6, 5.7, 5.8 |
-| 1.20.x        | 5.3, 5.4, 5.5, 5.6, 5.7 |
-| 1.19.x        | 5.3, 5.4, 5.5, 5.6 |
-| 1.18.x        | 5.3, 5.4, 5.5 |
-| 1.17.x        | 5.3, 5.4, 5.5 |
-| 1.16.x        | 5.2, 5.3, 5.4 |
-| 1.14.x        | 5.0, 5.1, 5.2 |
-| 1.11.1        | 4.27 |
+Pick the KawaiiPhysics version that matches your UE version.
 
-The v1.16 row reflects the UE 5.2 / 5.3 / 5.4 binaries in the [published release](https://github.com/pafuhana1213/KawaiiPhysics/releases/tag/20240719-v1.16.0).
+| UE Version | KawaiiPhysics |
+|------------|---------------|
+| 5.3–5.8    | 1.21.x (latest) |
+| 5.2        | 1.16.x |
+| 5.0, 5.1   | 1.14.x |
+| 4.27       | 1.11.1 |
+
+The UE 5.2 row (v1.16) reflects the UE 5.2 / 5.3 / 5.4 binaries in the [published release](https://github.com/pafuhana1213/KawaiiPhysics/releases/tag/20240719-v1.16.0).
 
 ## Quick Start
 
-```cpp
-// Add KawaiiPhysics node in Animation Blueprint
-// Set Root Bone and specify the bone chain you want physics applied to
-```
-
-1. Open Animation Blueprint
-2. Add **Kawaii Physics** node to AnimGraph
-3. Set **Root Bone** to the parent of the bones you want to animate
-4. Adjust parameters and preview
-
-For more details, see [Installation](/docs/getting-started/installation) and [Quick Start](/docs/getting-started/quick-start).
+See [Getting Started](/docs/getting-started) for installation and your first setup.
 
 ## Featured In
 

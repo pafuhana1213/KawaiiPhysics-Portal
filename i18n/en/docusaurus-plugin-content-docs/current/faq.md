@@ -30,20 +30,16 @@ See [Installation](/docs/getting-started/installation) for setup instructions.
 
 ### Q: Which UE versions are supported?
 
-**A:** Each KawaiiPhysics version supports multiple UE versions. The latest is v1.21.x.
+**A:** UE 4.27 and later are supported. Pick the KawaiiPhysics version that matches your UE version.
 
-| KawaiiPhysics | Supported UE Versions |
-|---------------|----------------------|
-| v1.21.x       | 5.3, 5.4, 5.5, 5.6, 5.7, 5.8 |
-| v1.20.x       | 5.3, 5.4, 5.5, 5.6, 5.7 |
-| v1.19.x       | 5.3, 5.4, 5.5, 5.6 |
-| v1.18.x       | 5.3, 5.4, 5.5 |
-| v1.17.x       | 5.3, 5.4, 5.5 |
-| v1.16.x       | 5.2, 5.3, 5.4 |
-| v1.14.x       | 5.0, 5.1, 5.2 |
-| v1.11.1       | 4.27 (final UE4 support) |
+| UE Version | KawaiiPhysics |
+|------------|---------------|
+| 5.3–5.8    | v1.21.x (latest) |
+| 5.2        | v1.16.x |
+| 5.0, 5.1   | v1.14.x |
+| 4.27       | v1.11.1 (final UE4 support) |
 
-The v1.16 row reflects the UE 5.2 / 5.3 / 5.4 binaries in the [published release](https://github.com/pafuhana1213/KawaiiPhysics/releases/tag/20240719-v1.16.0).
+The UE 5.2 row (v1.16) reflects the UE 5.2 / 5.3 / 5.4 binaries in the [published release](https://github.com/pafuhana1213/KawaiiPhysics/releases/tag/20240719-v1.16.0).
 
 ## Setup
 
