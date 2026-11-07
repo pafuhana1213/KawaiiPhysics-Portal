@@ -24,9 +24,15 @@ title: "外部力パラメータ"
 | カテゴリ | Force |
 
 ```cpp
-// 下向きの重力を適用
+// 下向きの重力を適用（cm/s^2）
+Gravity = FVector(0, 0, -980.0f);
+
+// bUseDefaultGravityZProjectSetting = true のときは向きだけを指定し、
+// 大きさはプロジェクト設定の DefaultGravityZ（絶対値）が掛かる
 Gravity = FVector(0, 0, -1.0f);
 ```
+
+録画は [風と外部力](/docs/features/wind-and-forces#重力) を参照してください。
 
 ### bUseLegacyGravity
 
@@ -42,6 +48,8 @@ Gravity = FVector(0, 0, -1.0f);
 |-----|------|
 | true | 従来互換（位置に 0.5 * Gravity * dt^2 を加算） |
 | false | AnimDynamics互換（速度に Gravity * dt を加算してから位置更新） |
+
+同じ値での垂れ方の違いは [風と外部力](/docs/features/wind-and-forces#デフォルト重力) の画像を参照してください。
 
 ### bUseDefaultGravityZProjectSetting
 
@@ -111,7 +119,7 @@ WindScaleはbEnableWindがtrueの場合のみ有効です。
 
 ### SimpleExternalForce
 
-**単純な外力ベクトル** - 任意の方向に力を適用できます。
+**単純な外力ベクトル** - 任意の方向へボーンを押します。速度を経由しない位置オフセットとして加わるため、揺れずに押された形のまま止まります（[画像](/docs/features/wind-and-forces#simpleexternalforce直接プロパティ)）。
 
 | プロパティ | 値 |
 |-----------|-----|

@@ -5,6 +5,7 @@ title: "AnimNotify"
 
 import DocFigure from '@site/src/components/DocFigure';
 import LegacyReference from '@site/src/components/LegacyReference';
+import DocVideo from '@site/src/components/DocVideo';
 
 # AnimNotify
 
@@ -32,6 +33,8 @@ v1.21以前の外力・Alpha Notifyは上記の3種類です。設定倍率・�
 
 - **AnimNotify**: 単一フレームでトリガーされる。瞬間的な衝撃などに使用
 - **AnimNotifyState**: 開始〜終了の区間で動作する。継続的な効果に使用
+
+<DocVideo src="/video/sample/animnotify-external-force.mp4" poster="/video/sample/animnotify-external-force.jpg" alt="走るキャラクター2体のツインテールが外力で跳ね上がり、AnimNotifyの方は一瞬だけ、AnimNotifyStateの方は区間中に持ち上がり続ける録画" caption="開発版サンプル展示4.7の実機録画。左はAnimNotify_KawaiiPhysicsAddExternalForceで、置いたフレームで一瞬だけ押します。右はAnimNotifyState_KawaiiPhysicsAddExternalForceで、区間のあいだ押し続けるため、髪が持ち上がっている時間が長くなります。" />
 
 ![AnimNotifyState External Force](/img/features/animnotify-externalforce.webp)
 
