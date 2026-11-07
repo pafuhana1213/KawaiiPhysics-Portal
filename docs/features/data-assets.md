@@ -29,10 +29,18 @@ LimitsDataAssetには以下のコリジョン Limit を保存できます：
 - Box Limits
 - Planar Limits
 
+![KawaiiPhysicsLimitsDataAssetを開いた画面。Skeletonの下にSpherical Limits、Capsule Limits、Tapered Capsule Limits、Box Limits、Planar Limitsの配列が並んでいる](/img/editor/limits-data-asset-editor-ja.webp)
+
+*開発版サンプル展示3.6の `DA_3_6_SharedLimits`。開発版の画面のため、v1.22予定の Tapered Capsule Limits も表示されています。*
+
 ## 使用方法
 
-1. KawaiiPhysicsノードの **Limits Data Asset** プロパティを設定
+1. KawaiiPhysicsノードの **コリジョンDataAsset**（英語UIでは Collision Data Asset、`LimitsDataAsset`）にData Assetを設定
 2. Data Assetのパラメータが自動的に読み込まれる
+
+![Detailsの検索欄にDataAssetと入力した状態。コリジョンカテゴリのコリジョンDataAssetにDA_3_6_SharedLimitsが設定されている](/img/editor/limits-data-asset-details-ja.webp)
+
+*開発版サンプル展示3.6のDetails。揺れ方の設定が違う2つのABPが、同じ `DA_3_6_SharedLimits` を参照しています。*
 
 ![Bone Hierarchy Picker](/img/features/bone-hierarchy-picker.png)
 

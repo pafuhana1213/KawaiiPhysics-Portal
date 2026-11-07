@@ -84,14 +84,13 @@ TArray<FBoneReference> ExcludeBones;
 
 ## 複数のボーンチェーン
 
-1つのキャラクターに複数のKawaiiPhysicsノードを使用できます。
+1つのキャラクターに複数のKawaiiPhysicsノードを使用できます。AnimGraphでノードを直列につなぎ、部位ごとにRoot Boneを分けます。
 
-```
-AnimGraph
-├── KawaiiPhysics (髪の毛用)
-├── KawaiiPhysics (尻尾用)
-└── KawaiiPhysics (服用)
-```
+![AnimGraphでKawaii Physicsノードを4つ直列につないだ画面。各ノードにRootとTagが表示され、HeadTopとKawaiiPhysics.Hair、PelvisとKawaiiPhysics.Skirt、A_Breast_LとKawaiiPhysics.Breast、A_Tie_TopとKawaiiPhysics.Accessoryになっている](/img/editor/multiple-nodes-graph-ja.webp)
+
+*開発版サンプル展示1.5のAnimGraph。髪、スカート、胸、アクセサリーを別々のノードにしています。*
+
+ノードには `KawaiiPhysicsTag`（Detailsの **タグ** カテゴリ）でGameplayTagを付けられます。タグを付けておくと、[AnimNotify](/docs/features/animnotify#gameplaytagによるフィルタリング) やランタイム制御、プリセットの適用で対象のノードを絞り込めます。
 
 :::tip
 パラメータが異なる部位は、別々のノードで管理すると調整しやすくなります。
@@ -108,8 +107,12 @@ v1.17.0で追加
 ### 設定方法
 
 1. KawaiiPhysicsノードを選択
-2. **Additional Root Bones** 配列に要素を追加
+2. **Additional Root Bones** 配列に要素を追加（日本語UIでは **追加Root Bone**）
 3. 各要素に追加のRootBoneを設定
+
+![Detailsの検索欄にRoot Boneと入力した状態。Root BoneがTwintailA_L、追加Root Boneのインデックス0のRoot BoneがTwintailA_Rになっている](/img/editor/additional-root-bones-details-ja.webp)
+
+*開発版サンプル展示1.4のDetails。左右のツインテールを1つのノードで揺らしています。各要素の **除外Boneを上書き** は、後述の `OverrideExcludeBones` です。*
 
 ### FKawaiiPhysicsRootBoneSetting
 

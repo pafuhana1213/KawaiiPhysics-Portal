@@ -3,8 +3,6 @@ sidebar_position: 3
 title: "コリジョンパラメータ"
 ---
 
-import DocVideo from '@site/src/components/DocVideo';
-
 # コリジョンパラメータ
 
 <!-- AUTO-GENERATED: このページはソースコードから自動生成されます -->
@@ -26,7 +24,7 @@ KawaiiPhysicsでは以下の4種類のコリジョン形状をサポートして
 | Box | ボックスコリジョン |
 | Planar | 平面コリジョン |
 
-<DocVideo src="/video/sample/collision-shapes.mp4" poster="/video/sample/collision-shapes.jpg" alt="鎖が球、カプセル、箱、平面のコリジョンに押される4分割の録画" caption="開発版サンプル展示3.1、3.2、3.4、3.5の実機録画。上段は左からSpherical、Capsule、下段は左からBox、Planarです。" />
+形状ごとの当たり方は [コリジョン設定](/docs/features/collision-setup#コリジョンの種類) の録画で確認できます。テーパードカプセルは[後述](#tapered-capsule)します。
 
 ## FCollisionLimitBase（共通プロパティ）
 
@@ -144,7 +142,7 @@ TObjectPtr<UKawaiiPhysicsLimitsDataAsset> LimitsDataAsset;
 
 ### PhysicsAssetForLimits
 
-Physics Assetからコリジョン設定を読み込むこともできます。
+Physics Assetからコリジョン設定を読み込むこともできます。エディタ上の表示名は **コリジョン用Physics Asset**（英語UIでは Physics Asset for Collision）です。設定例と録画は [コリジョン設定](/docs/features/collision-setup#physicsasset) を参照してください。
 
 ```cpp
 UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Limits")
@@ -155,7 +153,7 @@ TObjectPtr<UPhysicsAsset> PhysicsAssetForLimits;
 
 ### bAllowWorldCollision
 
-**ワールドコリジョン** - レベル上の各コリジョンとの判定を行うフラグ。
+**ワールドコリジョン** - レベル上の各コリジョンとの判定を行うフラグ。エディタ上の表示名は **World Collisionを許可** です。録画は [コリジョン設定](/docs/features/collision-setup#world-collision) を参照してください。
 
 | プロパティ | 値 |
 |-----------|-----|
