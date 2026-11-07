@@ -3,6 +3,8 @@ sidebar_position: 1
 title: "パフォーマンス最適化"
 ---
 
+import DocVideo from '@site/src/components/DocVideo';
+
 # パフォーマンス最適化
 
 KawaiiPhysicsのパフォーマンスを最適化する方法を説明します。
@@ -68,29 +70,25 @@ AnimGraphでKawaiiPhysicsノードを選び、DetailsのLOD Thresholdを1に設�
 
 ### 5. Warm Up機能の活用
 
-Warm Up機能を使用すると、キャラクター生成時に物理演算を事前に安定させることができます。
+Warm Up機能を使用すると、キャラクター生成時に物理演算を事前に安定させることができます。物理を指定フレーム数だけ空回しし、落ち着いた形から表示します。
 
-<div style={{textAlign: 'left', margin: '20px 0'}}>
-  <iframe
-    width="560"
-    height="315"
-    src="https://www.youtube.com/embed/stIOjZQh3Qw"
-    title="Warm Up Feature Demo"
-    frameBorder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowFullScreen>
-  </iframe>
-</div>
+<DocVideo src="/video/sample/warm-up.mp4" poster="/video/sample/warm-up.jpg" alt="リセットの直後、Warm Upなしの鎖は水平の参照ポーズから垂れ下がり、Warm Upありの鎖は最初から真下に垂れている録画" caption="開発版サンプル展示2.8の実機録画。参照ポーズが水平の鎖を、Gravity (0, 0, -980)、Stiffness 0で垂らし、4秒ごとにリセットしています。左のWarm Upなしはリセットのたびに水平から落ちます。右はWarm Up Frames 120で、最初から垂れた形で表示されます。" />
 
-![Warm Up Parameters](/img/features/warmup-params.png)
+[Warm Up機能の紹介動画（YouTube）](https://www.youtube.com/watch?v=stIOjZQh3Qw)
 
 **設定方法:**
 
-1. **Need Warm Up** を `true` に設定
-2. **Warm Up Frame** に空回しするフレーム数を指定（1以上）
+1. AnimGraphでKawaiiPhysicsノードを選び、Detailsの検索欄に `Warm Up` と入力します。
+2. **Warm Upフレーム数**（`WarmUpFrames`）の左のチェックボックスを有効にします。これが `bNeedWarmUp` です。
+3. **Warm Upフレーム数** に空回しするフレーム数を指定します。
+4. `ResetDynamics` のときも空回しする場合は、**Reset Dynamics時にWarm Upを行う**（`bUseWarmUpWhenResetDynamics`、既定で有効）をそのままにします。
+
+![Detailsの検索欄にWarm Upと入力した状態。物理設定カテゴリに、左のチェックボックスが有効なWarm Upフレーム数（120）と、Reset Dynamics時にWarm Upを行う（有効）が並んでいる](/img/editor/warm-up-details-ja.webp)
+
+*展示2.8の右の鎖のDetails。左のチェックボックスは `bNeedWarmUp` で、2行とも同じ設定を表します。*
 
 :::tip
-Warm Up Frameが大きいほど安定しますが、物理計算の回数が増えるため初期化時の負荷が上がります。通常は10〜30フレーム程度で十分です。
+Warm Up Framesが大きいほど落ち着いた形に近づきますが、物理計算の回数が増えるため初期化時の負荷が上がります。必要なフレーム数は、入力ポーズと落ち着いた形の差で変わります。展示2.8は水平の鎖が垂れ下がるまで待つため、120フレームにしています。
 :::
 
 ![AnimNode Functions](/img/features/animnode-functions.png)

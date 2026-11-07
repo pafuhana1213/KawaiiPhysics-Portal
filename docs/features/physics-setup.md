@@ -7,7 +7,7 @@ import DocVideo from '@site/src/components/DocVideo';
 
 # 揺れ方の調整
 
-揺れ方を決める3つの基本パラメータ **Damping / Stiffness / Radius** の調整方法を説明します。まずこの3つで「どれくらい揺れて、どれくらいで止まり、どれくらいの太さでぶつかるか」を決めます。
+揺れ方を決める3つの基本パラメータ **Damping / Stiffness / Radius** の調整方法を説明します。まずこの3つで「どれくらい揺れて、どれくらいで止まり、どれくらいの太さでぶつかるか」を決めます。後半では、キャラクターの移動の反映、角度制限、瞬間移動への対応を扱います。
 
 :::note
 このページは調整の**ガイド**です。各パラメータの全仕様（型・範囲・カーブ補正など）は [物理パラメータ](/docs/parameters/physics) を参照してください。
@@ -53,6 +53,24 @@ import DocVideo from '@site/src/components/DocVideo';
 | 大きくすると | コリジョンに早く反応する（太い） |
 | 小さくすると | すり抜けやすい（細い） |
 
+## WorldDampingLocation — キャラクターの移動をどれだけ揺れに反映するか {#world-damping}
+
+キャラクター（SkeletalMeshComponent）が移動したとき、その動きをどれだけ揺れに反映するかを決めます。名前に Damping とありますが、**大きいほど揺れにくく**なります。`1` でコンポーネントに完全に追従し、`0` で移動をすべて揺れに反映します。
+
+<DocVideo src="/video/sample/world-damping-location.mp4" poster="/video/sample/world-damping-location.jpg" alt="吊り下げ位置が同じ動きで左右に往復し、WorldDampingLocation 1の鎖は真下に垂れたまま、0.8の鎖は少し遅れて傾き、0の鎖は吊り下げ位置より上まで振り上がる録画" caption="開発版サンプル展示2.3の実機録画。3本とも吊り下げ位置を同じ動きで左右に往復させています。左の1は真下に垂れたまま追従し、中央の既定値0.8は少し遅れて揺れ、右の0は吊り下げ位置より上まで振り上がります。" />
+
+| 項目 | 内容 |
+|------|------|
+| デフォルト | 0.8 |
+| 大きくすると | 移動しても揺れにくい（`1` で揺れなし） |
+| 小さくすると | 移動でよく揺れる（`0` で移動をすべて反映） |
+
+回転に対しては `WorldDampingRotation` が同じ働きをします（既定値 0.8）。
+
+移動を軸ごとに反映したいときは `SkelCompMoveScale` を使います。コンポーネント空間の軸ごとに、移動を揺れへ反映する倍率を指定します。`0` にした軸の移動は無視されます。
+
+<DocVideo src="/video/sample/skel-comp-move-scale.mp4" poster="/video/sample/skel-comp-move-scale.jpg" alt="吊り下げ位置が左右に往復し、SkelCompMoveScaleのYが0の鎖は真下に垂れたまま、既定値の鎖は揺れ、Yが5の鎖は大きく振り上がる録画" caption="開発版サンプル展示2.10の実機録画。3本とも吊り下げ位置をY方向に往復させ、Yの倍率だけを変えています。左の(1, 0, 1)は移動を無視して真下に垂れ、中央の既定値(1, 1, 1)は揺れ、右の(1, 5, 1)は大きく振り上がります。" />
+
 ## 角度制限 — 曲がる範囲を決める
 
 揺れが大きすぎるときや、曲がってほしくない方向があるときは、角度制限を使います。`PhysicsSettings` の `LimitAngleMode` で形状を選びます。
@@ -61,6 +79,10 @@ import DocVideo from '@site/src/components/DocVideo';
 |----------------|---------------|------|
 | Cone | 全方向の暴れを抑えたい | `LimitAngle` に上限の角度を指定する |
 | Per Axis | 蝶番のように一方向にだけ揺らしたい、片側にだけ曲げたい | `PerAxisLimitAngle` に軸ごとの範囲を指定する |
+
+`Cone` の `LimitAngle` は、入力ポーズからの曲がりの上限を度で指定します。`0` は制限なしです。
+
+<DocVideo src="/video/sample/limit-angle.mp4" poster="/video/sample/limit-angle.jpg" alt="吊り下げ位置が同じ動きで往復し、LimitAngle 0の鎖は横まで振り上がり、30の鎖は斜めまで、10の鎖はほぼ真下で揺れる録画" caption="開発版サンプル展示2.5の実機録画。揺れを大きくするため、3本ともWorldDampingLocationを0にして吊り下げ位置を往復させています。左の0（制限なし）は横まで振り上がり、中央の30は斜めまで、右の10はほぼ真下で揺れます。" />
 
 :::warning 未正式リリース
 `Per Axis` はまだ正式リリースされていません。KawaiiPhysics v1.22でリリース予定です。開発中のため仕様が変更される場合があります。
@@ -76,6 +98,19 @@ import DocVideo from '@site/src/components/DocVideo';
 4. AnimBP のプレビューで、制限の境界と軸の向きを確認します。曲がる向きが逆のときは、範囲を `Min` と `Max` のもう一方に指定します。
 
 `Per Axis` の `0` は「ロック」で、`LimitAngle` の `0`（制限なし）とは意味が逆です。各項目の詳細は [PerAxisLimitAngle](/docs/parameters/physics#peraxislimitangle) を参照してください。
+
+## TeleportDistanceThreshold — 瞬間移動で揺れないようにする {#teleport}
+
+ワープやリスポーンでキャラクターが瞬間移動すると、その移動量がそのまま揺れに反映され、髪やスカートが大きく暴れます。1フレームの移動量が `TeleportDistanceThreshold` を超えたときは、その移動を揺れに反映しません。
+
+<DocVideo src="/video/sample/teleport-distance.mp4" poster="/video/sample/teleport-distance.jpg" alt="Threshold 300の鎖は瞬間移動で大きく揺れ、50の鎖は揺れない録画" caption="開発版サンプル展示2.7の実機録画。3秒ごとに120cm瞬間移動します。既定値300（左）は移動が反映されて大きく揺れ、50（右）はしきい値を超えた移動が物理に反映されません。" />
+
+| 項目 | 内容 |
+|------|------|
+| デフォルト | 300（cm） |
+| 小さくすると | 小さな瞬間移動も無視する。通常の速い移動まで無視しないよう、1フレームの最大移動量より大きくする |
+
+回転には `TeleportRotationThreshold`（度、既定値 10、`0` で無効）が同じ働きをします。
 
 ## 調整のコツ（レシピ）
 

@@ -66,6 +66,8 @@ struct KAWAIIPHYSICS_API FKawaiiPhysicsSettings
 - `1` = コンポーネントに完全追従（揺れに反映しない）
 - 実際の反映率 = `1 - WorldDampingLocation`
 
+値ごとの揺れ方は [揺れ方の調整](/docs/features/physics-setup#world-damping) の録画で確認できます。
+
 | プロパティ | 値 |
 |-----------|-----|
 | 型 | float |
@@ -121,7 +123,7 @@ struct KAWAIIPHYSICS_API FKawaiiPhysicsSettings
 
 ### LimitAngle
 
-**回転制限角度** - 入力アニメーションの親から子への方向と、シミュレーション中の同じ方向との角度差の上限（度）。正の値を大きくすると許容角度が広がり、`0` で角度制限を無効にします。適切に設定すると、荒ぶり（過度な振動）を抑制できます。`LimitAngleMode` が `Cone` のときに使います。
+**回転制限角度** - 入力アニメーションの親から子への方向と、シミュレーション中の同じ方向との角度差の上限（度）。正の値を大きくすると許容角度が広がり、`0` で角度制限を無効にします。適切に設定すると、荒ぶり（過度な振動）を抑制できます。`LimitAngleMode` が `Cone` のときに使います。値ごとの揺れ方は [揺れ方の調整](/docs/features/physics-setup#角度制限--曲がる範囲を決める) の録画で確認できます。
 
 | プロパティ | 値 |
 |-----------|-----|
@@ -250,14 +252,14 @@ SimulationSpaceがBaseBoneSpaceの場合のみ有効です。
 
 ### TeleportRotationThreshold
 
-**テレポート回転しきい値** - 1フレームにおけるSkeletalMeshComponentの回転量が設定値を超えた場合、その回転量を物理制御に反映しません。
+**テレポート回転しきい値** - 1フレームにおけるSkeletalMeshComponentの回転量（度）が設定値を超えた場合、その回転量を物理制御に反映しません。`0` でこの判定を無効にします。
 
 | プロパティ | 値 |
 |-----------|-----|
 | 型 | float |
 | デフォルト | 10.0 |
 
-<DocVideo src="/video/sample/teleport-distance.mp4" poster="/video/sample/teleport-distance.jpg" alt="Threshold 300の鎖は瞬間移動で大きく揺れ、50の鎖は揺れない録画" caption="開発版サンプル展示2.7の実機録画。3秒ごとに120cm瞬間移動します。既定値300（左）は移動が反映されて大きく揺れ、50（右）はしきい値を超えた移動が物理に反映されません。" />
+瞬間移動したときの揺れ方は [揺れ方の調整](/docs/features/physics-setup#teleport) の録画で確認できます。
 
 ### PlanarConstraint
 
@@ -281,12 +283,14 @@ SimulationSpaceがBaseBoneSpaceの場合のみ有効です。
 
 ### SkelCompMoveScale
 
-**コンポーネント移動スケール** - SkeletalMeshComponentの移動量を物理挙動に反映する際に適用されるスケール。
+**コンポーネント移動スケール** - SkeletalMeshComponentの移動量を物理挙動に反映する際に適用されるスケール。コンポーネント空間の軸ごとに指定し、`0` にした軸の移動は無視します。
 
 | プロパティ | 値 |
 |-----------|-----|
 | 型 | FVector |
 | デフォルト | (1, 1, 1) |
+
+軸ごとの違いは [揺れ方の調整](/docs/features/physics-setup#world-damping) の録画で確認できます。
 
 ## ボーン設定
 
