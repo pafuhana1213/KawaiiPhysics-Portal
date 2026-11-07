@@ -10,7 +10,7 @@ export default function RevealAnchoredDetails(): null {
     let disposed = false;
     const reveal = () => {
       cancelAnimationFrame(frame);
-      if (!/\/docs\/preview(?:\/|$)/.test(window.location.pathname) || !window.location.hash) return;
+      if (!/\/docs\/(?:preview|doc-updates)(?:\/|$)/.test(window.location.pathname) || !window.location.hash) return;
       const hash = window.location.hash;
       let id: string;
       try { id = decodeURIComponent(hash.slice(1)); } catch { return; }

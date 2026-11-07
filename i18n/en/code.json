@@ -330,5 +330,53 @@
   "notFound.docs": {
     "message": "View Docs",
     "description": "404 page docs button"
+  },
+  "docUpdates.kind.new": {
+    "message": "NEW",
+    "description": "Label for a newly added page in the documentation update log"
+  },
+  "docUpdates.kind.updated": {
+    "message": "Updated",
+    "description": "Label for an updated page in the documentation update log"
+  },
+  "docUpdates.count.new": {
+    "message": "{count} new",
+    "description": "Number of new pages in an update"
+  },
+  "docUpdates.count.updated": {
+    "message": "{count} updated",
+    "description": "Number of updated pages in an update"
+  },
+  "docUpdates.more": {
+    "message": "{count} more pages",
+    "description": "Toggle that shows the remaining pages of an update"
+  },
+  "docUpdates.month": {
+    "message": "{month}/{year}",
+    "description": "Month heading in the documentation update log"
+  },
+  "docUpdates.monthMeta": {
+    "message": "{entries} topics ({added} new, {updated} updated)",
+    "description": "Summary of a month in the documentation update log"
+  },
+  "docUpdates.legend.new": {
+    "message": "New page",
+    "description": "Legend for the NEW label"
+  },
+  "docUpdates.legend.updated": {
+    "message": "Updated page",
+    "description": "Legend for the Updated label"
+  },
+  "docUpdates.legend.sidebar": {
+    "message": "In the sidebar, pages added within the last {newDays} days show NEW, and pages updated within the last {updatedDays} days show a dot. A collapsed category shows the mark when it contains such a page.",
+    "description": "Explains the sidebar badges"
+  },
+  "homepage.docUpdates.title": {
+    "message": "Documentation Updates",
+    "description": "Homepage section title for recent documentation updates"
+  },
+  "homepage.docUpdates.more": {
+    "message": "All documentation updates",
+    "description": "Homepage link to the documentation update log"
   }
 }

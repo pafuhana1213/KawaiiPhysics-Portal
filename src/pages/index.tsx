@@ -9,6 +9,7 @@ import {translate} from '@docusaurus/Translate';
 
 import styles from './index.module.css';
 import {adoptionData} from '../data/adoptionData';
+import {countItems, docUpdates} from '../data/docUpdates';
 import type {GameTitle} from '../data/adoptionData';
 import VideoModal from '../components/VideoModal';
 import YouTubePlayButton from '../components/YouTubePlayButton';
@@ -184,6 +185,47 @@ function HomepageFeatures() {
   );
 }
 
+// 最新のドキュメント更新（src/data/docUpdates.ts の先頭3件）
+function RecentDocUpdatesSection() {
+  const recent = docUpdates.slice(0, 3);
+  return (
+    <section className={styles.docUpdatesSection}>
+      <div className="container">
+        <Heading as="h2" className={styles.sectionTitle}>
+          {translate({id: 'homepage.docUpdates.title', message: 'ドキュメントの更新'})}
+        </Heading>
+        <div className={styles.docUpdatesGrid}>
+          {recent.map((entry) => {
+            const {added, updated} = countItems(entry);
+            return (
+              <Link key={entry.id} to={`/docs/doc-updates#${entry.id}`} className={styles.docUpdateCard}>
+                <div className={styles.docUpdateMeta}>
+                  <time dateTime={entry.date}>{entry.date}</time>
+                  {added > 0 && (
+                    <span className={styles.docUpdateNew}>
+                      {translate({id: 'docUpdates.count.new', message: '新規 {count}'}, {count: added})}
+                    </span>
+                  )}
+                  {updated > 0 && (
+                    <span>{translate({id: 'docUpdates.count.updated', message: '更新 {count}'}, {count: updated})}</span>
+                  )}
+                </div>
+                <div className={styles.docUpdateTitle}>{entry.title}</div>
+                {entry.summary && <p className={styles.docUpdateSummary}>{entry.summary}</p>}
+              </Link>
+            );
+          })}
+        </div>
+        <div className={styles.adoptionMore}>
+          <Link to="/docs/doc-updates" className={styles.moreLink}>
+            {translate({id: 'homepage.docUpdates.more', message: 'すべての更新履歴'})} &rarr;
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // Pick the 5 most recent adoption titles (newest first, auto-updates with data)
 const highlightedTitles: {game: GameTitle; year: number}[] = adoptionData
   .flatMap((yearData) => yearData.titles.map((game) => ({game, year: yearData.year})))
@@ -303,6 +345,7 @@ export default function Home(): ReactNode {
         <HomepageFeatures />
         <AdoptionHighlightSection />
         <VersionInfoSection />
+        <RecentDocUpdatesSection />
       </main>
     </Layout>
   );

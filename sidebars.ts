@@ -1,8 +1,8 @@
 import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
+import {getRecentDocBadges, type DocUpdateKind} from './src/data/docUpdates';
 
 // 段階的に深まる構成: 概要 → はじめ方 → 設定ガイド → 高度な機能 → 最適化・運用 → パラメータ → API → 内部設計
-const sidebars: SidebarsConfig = {
-  docsSidebar: [
+const docsSidebar = [
     // 1. 概要
     'intro',
 
@@ -190,9 +190,60 @@ const sidebars: SidebarsConfig = {
 
     'faq',
     'changelog',
+    'doc-updates',
 
     'preview/overview',
-  ],
+];
+
+// ---------------------------------------------------------------------------
+// 更新バッジ: src/data/docUpdates.ts の履歴から、最近追加・更新したページに className を付ける。
+// 判定はビルド時点の日付で行う。見た目は src/css/custom.css の「サイドバーの更新バッジ」。
+// ---------------------------------------------------------------------------
+
+type SidebarEntry =
+  | string
+  | {type: string; id?: string; className?: string; link?: {type: string; id?: string}; items?: SidebarEntry[]};
+
+const badgeClass: Record<DocUpdateKind, string> = {new: 'kp-badge-new', updated: 'kp-badge-updated'};
+
+function withClass(className: string | undefined, extra: string): string {
+  return className ? `${className} ${extra}` : extra;
+}
+
+function applyBadges(
+  items: SidebarEntry[],
+  badges: Map<string, DocUpdateKind>,
+): {items: SidebarEntry[]; found: Set<DocUpdateKind>} {
+  const found = new Set<DocUpdateKind>();
+  const result = items.map((item): SidebarEntry => {
+    if (typeof item === 'string' || item.type === 'doc') {
+      const base = typeof item === 'string' ? {type: 'doc', id: item} : item;
+      const kind = badges.get(base.id!);
+      if (!kind) return item;
+      found.add(kind);
+      return {...base, className: withClass(base.className, badgeClass[kind])};
+    }
+    if (item.type === 'category' && item.items) {
+      const child = applyBadges(item.items, badges);
+      let className = item.className;
+      const ownKind = item.link?.type === 'doc' ? badges.get(item.link.id!) : undefined;
+      if (ownKind) {
+        found.add(ownKind);
+        className = withClass(className, badgeClass[ownKind]);
+      }
+      // 折りたたんだカテゴリにも、中に新しいページがあることを示す
+      if (child.found.has('new')) className = withClass(className, 'kp-contains-new');
+      else if (child.found.has('updated')) className = withClass(className, 'kp-contains-updated');
+      child.found.forEach((kind) => found.add(kind));
+      return {...item, className, items: child.items};
+    }
+    return item;
+  });
+  return {items: result, found};
+}
+
+const sidebars: SidebarsConfig = {
+  docsSidebar: applyBadges(docsSidebar, getRecentDocBadges()).items as SidebarsConfig[string],
 };
 
 export default sidebars;

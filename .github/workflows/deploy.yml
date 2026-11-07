@@ -7,6 +7,10 @@ on:
 
   workflow_dispatch:
 
+  # サイドバーの NEW / 更新バッジは公開時の日付で判定するため、毎週作り直して期限切れのバッジを消す
+  schedule:
+    - cron: '0 15 * * 0'  # 毎週月曜 0:00 JST
+
 permissions:
   contents: read
   pages: write
