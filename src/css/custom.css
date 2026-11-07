@@ -107,3 +107,51 @@
   from { opacity: 0; transform: translate(-50%, 8px); }
   to { opacity: 1; transform: translate(-50%, 0); }
 }
+
+/* ===== サイドバーの更新バッジ（sidebars.ts が src/data/docUpdates.ts から className を付ける） =====
+   バッジはリンクの ::before に置き、flex の order で文字の後ろへ回す。
+   カテゴリの開閉アイコンが ::after を使うため、::before を使う。 */
+.kp-badge-new > .menu__link::before,
+.kp-badge-new > .menu__list-item-collapsible > .menu__link::before,
+.kp-contains-new:not(.kp-badge-new):not(.kp-badge-updated).menu__list-item--collapsed
+  > .menu__list-item-collapsible > .menu__link::before {
+  content: 'NEW';
+  order: 1;
+  flex: none;
+  margin-left: 0.4rem;
+  padding: 0 0.4rem;
+  border-radius: 999px;
+  background: var(--ifm-color-primary);
+  color: #10231e;
+  font-size: 0.62rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+}
+
+.kp-badge-updated > .menu__link::before,
+.kp-badge-updated > .menu__list-item-collapsible > .menu__link::before,
+.kp-contains-updated:not(.kp-badge-new):not(.kp-badge-updated).menu__list-item--collapsed
+  > .menu__list-item-collapsible > .menu__link::before {
+  content: '';
+  order: 1;
+  flex: none;
+  width: 0.4rem;
+  height: 0.4rem;
+  margin-left: 0.5rem;
+  border-radius: 50%;
+  background: var(--ifm-color-primary);
+}
+
+/* 開閉アイコン（::after）をバッジの後ろに置く */
+.menu__list-item[class*='kp-'] > .menu__list-item-collapsible > .menu__link::after {
+  order: 2;
+}
+
+/* ドキュメントへのリンクでは、バッジを右端に寄せてカテゴリの表示とそろえる */
+.menu__list-item[class*='kp-badge-'] > .menu__link::before {
+  margin-left: auto;
+}
+.menu__list-item[class*='kp-badge-'] > .menu__link {
+  gap: 0.4rem;
+}

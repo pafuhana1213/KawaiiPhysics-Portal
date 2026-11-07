@@ -18,7 +18,7 @@ npm run build  # Production build - MUST pass before commit
 
 ## Workflow
 
-1. ソース解析 → 2. ドキュメント更新 → 3. `npm run build` → 4. コミット
+1. ソース解析 → 2. ドキュメント更新 → 3. `src/data/docUpdates.ts` に更新履歴を追加 → 4. `npm run build` → 5. コミット
 
 ## Skills
 
@@ -45,6 +45,7 @@ npm run build  # Production build - MUST pass before commit
 @.claude/rules/docusaurus.md
 @.claude/rules/ue-docs.md
 @.claude/rules/media.md
+@.claude/rules/doc-updates.md
 
 ## Source Mapping
 

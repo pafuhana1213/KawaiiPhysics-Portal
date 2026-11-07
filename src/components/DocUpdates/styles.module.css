@@ -1,0 +1,208 @@
+.log {
+  margin-top: 1rem;
+}
+
+/* ===== 凡例 ===== */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.6rem;
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+}
+
+.legend > .kind:not(:first-child) {
+  margin-left: 0.8rem;
+}
+
+.legendNote {
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+/* ===== 種類ラベル ===== */
+.kind {
+  flex: none;
+  display: inline-block;
+  min-width: 3.2em;
+  padding: 0.1em 0.5em;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.kindNew {
+  background: var(--ifm-color-primary);
+  color: #10231e;
+}
+
+.kindUpdated {
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: var(--ifm-color-emphasis-800);
+}
+
+/* ===== 月 ===== */
+.month {
+  margin-top: 2.25rem;
+}
+
+.monthTitle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+}
+
+.monthMeta {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.monthCollapsed {
+  margin-top: 1rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--ifm-toc-border-color);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.monthSummary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 1rem;
+  cursor: pointer;
+}
+
+.monthSummaryTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.monthCollapsed .entry:first-child {
+  margin-top: 1rem;
+}
+
+/* ===== エントリ ===== */
+.entry {
+  margin-top: 1.75rem;
+}
+
+.entryMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+}
+
+.date {
+  font-variant-numeric: tabular-nums;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.counts {
+  display: inline-flex;
+  gap: 0.5rem;
+}
+
+.countNew {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+.countUpdated {
+  color: var(--ifm-color-emphasis-700);
+}
+
+.entryTitle {
+  margin: 0.2rem 0 0.4rem;
+  font-size: 1.15rem;
+}
+
+.summary {
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+}
+
+/* ===== ページ一覧 ===== */
+.items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding: 0.3rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.item:first-child {
+  border-top: none;
+}
+
+.itemBody {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 0.75rem;
+  min-width: 0;
+}
+
+.itemLink {
+  font-weight: 600;
+}
+
+.itemNote {
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.more {
+  margin-top: 0.3rem;
+  font-size: 0.9rem;
+}
+
+.more > summary {
+  cursor: pointer;
+  color: var(--ifm-color-primary);
+}
+
+.more .items {
+  margin-top: 0.3rem;
+}
+
+/* ===== 折りたたみ（@docusaurus/theme-common の Details を上書き） ===== */
+.month.monthCollapsed {
+  --docusaurus-details-decoration-color: var(--ifm-color-emphasis-600);
+}
+
+.month.monthCollapsed > summary::before {
+  top: 0.6rem;
+}
+
+.month.monthCollapsed [class*='collapsibleContent'] {
+  margin-top: 0.6rem;
+  padding-top: 0;
+  border-top: 1px solid var(--ifm-toc-border-color);
+}
+
+.entry .more {
+  --docusaurus-details-decoration-color: var(--ifm-color-primary);
+}
+
+.entry .more [class*='collapsibleContent'] {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
