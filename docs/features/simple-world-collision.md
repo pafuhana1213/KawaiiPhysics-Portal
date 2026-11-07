@@ -46,6 +46,8 @@ Simple World Collisionは、近くの物が持つSimple Collisionを集めて、
 | Ground Collision | true | 地面情報を薄いBoxとして取り込む |
 | Skeletal Mesh Collision | None | 周囲のSkeletalMeshに対する形状の扱い |
 
+<DocVideo src="/video/sample/simple-world-collision-gather-radius.mp4" poster="/video/sample/simple-world-collision-gather-radius.jpg" alt="揺れる鎖2本のうち、収集範囲が自動の鎖はオレンジの箱で止まり、Gather Radius 30の鎖は箱をすり抜ける録画" caption="開発版サンプル展示7.4の実機録画。左は収集範囲が自動（メッシュの大きさから算出）で、鎖が箱に当たって止まります。右は Override Gather Radius を有効にしてGather Radiusを30cmにしており、箱が範囲外になるので鎖がすり抜けます。" />
+
 `Object Types` に属していても、所有SkeletalMeshComponentのObjectTypeを **Block** するコンポーネントだけが収集されます。`Override SkelComp Collision Params` が有効な場合は、そのObjectTypeが使われます。OverlapやIgnoreの対象は収集されません。収集済みコンポーネントの位置は毎フレーム更新されます。
 
 ## 収集条件と制約 {#common-pitfalls}
@@ -54,11 +56,16 @@ Simple World Collisionは、近くの物が持つSimple Collisionを集めて、
 
 ### Convex Hullと地面 {#details-convex-hullと地面}
 
+<DocVideo src="/video/sample/simple-world-collision-shapes.mp4" poster="/video/sample/simple-world-collision-shapes.jpg" alt="揺れる3本の鎖が、それぞれ球、円柱、円錐の障害物に当たって押し戻される録画" caption="開発版サンプル展示7.2の実機録画。StaticMeshのSimple Collisionをそのまま使います。左から球、円柱（Convex）、円錐（Convex）で、鎖がそれぞれの形に沿って押し戻されます。" />
+
 `Convex Shape` は `Convex Hull`、`Bounding Box`、`Bounding Sphere`、`None` から選びます。既定のConvex Hullは実形状の平面セットを使用します。ハル情報が取れない場合や、Project Settingsの `Max Convex Planes`（既定64）を超える場合はBounding Boxへフォールバックします。
 
 LandscapeやComplex Collisionだけのメッシュは通常の形状収集の対象外です。ただし `Ground Collision` は別経路で、所有Actorの地面情報を使用し、なければ下方向のトレースで地面を求めます。このため、すべての処理がトレースなしになるわけではありません。
 
-周囲のSkeletalMeshに当てる場合は `Skeletal Mesh Collision` を `Bounding Box` または `Physics Asset` にします。Physics Assetモードのポーズ情報は1フレーム遅れる場合があり、アニメーション由来のボーンスケールは形状サイズへ反映されません。
+周囲のSkeletalMeshに当てる場合は `Skeletal Mesh Collision` を `Bounding Box` または `Physics Asset` にします。
+
+<DocVideo src="/video/sample/simple-world-collision-skeletal-mesh.mp4" poster="/video/sample/simple-world-collision-skeletal-mesh.jpg" alt="キャラクター3体の肩の上から垂れた鎖のうち、Noneの鎖は体をすり抜け、BoundingBoxの鎖は体から離れた箱の位置で止まり、PhysicsAssetの鎖は体に沿う録画" caption="開発版サンプル展示7.3の実機録画。鎖はキャラクターの肩の上から垂らしています。None（左）は当たらずに体をすり抜けます。BoundingBox（中央）はキャラクター全体を1つの箱で近似するので、鎖が体から離れた位置で止まります。PhysicsAsset（右）はボディごとに当たり、鎖が体に沿います。" />
+Physics Assetモードのポーズ情報は1フレーム遅れる場合があり、アニメーション由来のボーンスケールは形状サイズへ反映されません。
 
 ## IKawaiiPhysicsGroundProvider {#ground-provider}
 

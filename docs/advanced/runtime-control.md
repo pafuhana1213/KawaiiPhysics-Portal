@@ -3,6 +3,8 @@ sidebar_position: 4
 title: "ランタイム制御"
 ---
 
+import DocVideo from '@site/src/components/DocVideo';
+
 # ランタイム制御
 
 ゲーム実行中にKawaiiPhysicsを動的に制御する方法を説明します。
@@ -130,6 +132,12 @@ static bool RemoveExternalForcesFromComponent(USkeletalMeshComponent* MeshComp, 
                                               UPARAM(ref) FGameplayTagContainer& FilterTags,
                                               bool bFilterExactMatch = false);
 ```
+
+<DocVideo src="/video/sample/external-force-volume.mp4" poster="/video/sample/external-force-volume.jpg" alt="台に乗って左右に動くキャラクターが、ピンクの枠に入ると髪が上へ吹き上がり、枠から出ると元に戻る録画" caption="開発版サンプル展示6.9の実機録画。BP_KPS_ForceVolumeは、枠に入ったアクタのSkeletalMeshに上向きの外力（Basic x 100）を追加し、出たら除去します。展示は開発版の新しい名前 AddExternalForcesOnComponent / RemoveExternalForcesOnComponent を使っています。" />
+
+:::note v1.22での名前の変更
+開発版（v1.22予定）では、`AddExternalForcesToComponent` と `RemoveExternalForcesFromComponent` は非推奨になり、`AddExternalForcesOnComponent` と `RemoveExternalForcesOnComponent` に置き換わります。
+:::
 
 :::tip
 爆発やダメージの衝撃は、`FKawaiiPhysics_ExternalForce_Basic` プリセット（力の向き・大きさを持つ）を `bIsOneShot = true` で追加すると表現できます。継続的な力は OneShot にせず、不要になったら `RemoveExternalForcesFromComponent` で除去します。
