@@ -28,6 +28,14 @@ import DocFigure from '@site/src/components/DocFigure';
 4. 調べる行の `View Diff` を押します。
 5. プリセットと違う値を読みます。
 
+![プリセットDataAsset KPP_Hair_Softを開いた画面。ターゲットカテゴリにFind Target NodesとApply to Project (Dry Run)のボタン、Target TagsにKawaiiPhysics.Hair.Softがある](/img/editor/preset-asset-editor-ja.webp)
+
+*開発版サンプルの `Presets/KPP_Hair_Soft`。`TargetTags` に一致するノードが監査の対象です。*
+
+![Dry Runの結果画面。1 nodes, 1 differと表示され、ABP_5_6_Preset_HairSoftの行のMatchesが1、DiffPropertiesがPhysicsSettingsで、右端にView Diffボタンがある](/img/editor/node-audit-dry-run-ja.webp)
+
+*展示5.6のノードのDampingだけを変えてDry Runを実行した画面。Matchesは一致なら ✓、不一致なら差分プロパティ数を表示します。`View Diff` から、一致したプリセットとの値付きの比較へ進めます。*
+
 Dry Runから開く`Kawaii Node Audit`では、対象と差分を確認できます。対象ノードの場所だけ知りたい場合は`Find Target Nodes`を使えますが、こちらは差分列・差分フィルタ・適用操作を表示しません。
 
 対象はプリセットの`TargetTags`で決まり、空なら対象なしです。タグの一致条件は[プリセット](/docs/features/settings-presets#details-find-targets)を参照してください。

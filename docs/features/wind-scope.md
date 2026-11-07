@@ -41,10 +41,16 @@ Constant、Sway、Ripple、Strength Cycle、Random、Gust、Totalを扱います
 ## Wind Scopeの起動 {#open}
 
 1. Animation Blueprintで対象のKawaii Physicsノードを選びます。
-2. Detailsの `Wind Scope` を開きます。
-3. `Force` で表示したい風を選びます。
-4. `Window` で数周期が見える時間幅にします。
-5. `Pause` で波形の表示を止めます。
+2. Detailsの `Wind Scope` を開きます。ボタンは **フォース > 外力** カテゴリの先頭にあります。
+3. `Force`（日本語UIでは **外力**）で表示したい風を選びます。
+4. `Window`（**表示幅**）で数周期が見える時間幅にします。
+5. `Pause`（**一時停止**）で波形の表示を止めます。
+
+![KawaiiPhysicsノードのDetailsで、フォース > 外力カテゴリの先頭にWind Scopeボタンがある](/img/editor/wind-scope-button-ja.webp)
+
+![Wind Scopeウィンドウ。上部にプリセット、テスト突風、コピー、貼り付けと、外力 #0 ProceduralWind、ライブの表示がある。波形はTotalと一斉揺れの成分が重なった正弦波で、下部に表示幅8.0と一時停止がある](/img/editor/wind-scope-ja.webp)
+
+*開発版サンプル展示8.1（SwayForceだけを有効にした風）のWind Scope。Live（日本語UIでは **ライブ**）表示で、一斉揺れ（Sway）の成分だけが波形になっています。*
 
 ### 起動と共有元の解決 {#details-詳細を調べる}
 
