@@ -33,6 +33,10 @@ DetailsのApply Presetは対象のRoot Bone／Exclude Bones／Additional Root Bo
 
 ## Export Preset / Apply Preset {#保存適用比較}
 
+![KawaiiPhysicsノードのDetails上部。カテゴリフィルタの下のKawaii Physicsツールに、コリジョンをエクスポート、Export BoneConstraints、Export Preset、Apply Preset、Check Preset Diffのボタンが並んでいる](/img/editor/details-tools-ja.webp)
+
+*KawaiiPhysicsノードのDetails上部（開発版）。プリセットの操作は **Kawaii Physics ツール** のボタンから行います。*
+
 1. 元のKawaii Physicsノードを選びます。
 2. Detailsの `Export Preset` で設定を保存します。
 3. 適用先のノードを選びます。
@@ -45,15 +49,19 @@ Skeletonの不一致は警告されますが、適用は停止しません。
 
 プリセットと違う値があっても、その差が間違いとは限りません。ある部位だけ硬くした値は意図した差かもしれず、プリセットを更新した後に残った古い値は更新漏れかもしれません。Preset Diffは値の違いを示し、どちらに揃えるかを判断する材料になります。意図や更新漏れを自動判定する機能ではありません。
 
-`Node Value` と `Preset Value` を見比べて、必要な値だけを選びます。たとえばDampingがノードで0.35、プリセットで0.10の場合に、Dampingだけを適用すると他の調整を残せます。
+`Node Value` と `Preset Value` を見比べて、必要な行だけを選びます。差分はプロパティ単位の行で表示されます。`Damping` や `Stiffness` は `Physics Settings` の1行にまとまっているので、この行を適用すると構造体のメンバーがすべてプリセットの値になります。
+
+![Kawaii Preset Diffウィンドウ。KPP_Hair_Softと比べて1 properties differと表示され、Physics Settingsの行のNode ValueがDamping=0.35、Preset ValueがDamping=0.10になっている。下にApply Selected、Apply Preset to Node、Update Preset from Nodeのボタンがある](/img/editor/preset-diff-ja.webp)
+
+*開発版サンプル展示5.6のノードで、Dampingだけを0.35に変えて `KPP_Hair_Soft`（Damping 0.10）と比べた画面。差分は `Physics Settings` の1行です。*
 
 1. 比較したいKawaii Physicsノードを選びます。
 2. Detailsの `Check Preset Diff` を開きます。
 3. 選択欄で比較するプリセットを選びます。
-4. Dampingの行だけをチェックします。
+4. `Physics Settings` の行をチェックします。
 5. `Apply Selected` を押します。
 
-適用するとノードのDampingが0.10になり、選ばなかった項目は保持されます。
+適用するとノードの `Physics Settings` がプリセットの値（Dampingは0.10）になり、選ばなかった行は保持されます。`Physics Settings` の中でDampingだけを残したい、またはDampingだけを変えたい場合は、適用後にDetailsで値を直します。
 
 ### Check Preset Diff {#details-preset-diff}
 
