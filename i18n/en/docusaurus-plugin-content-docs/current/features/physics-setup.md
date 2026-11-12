@@ -17,7 +17,7 @@ This page is a tuning **guide**. For the full specification of each parameter (t
 
 Gradually converges the bone's motion. **Higher = settles faster; lower = keeps swaying longer.**
 
-<DocVideo src="/video/sample/damping.mp4" poster="/video/sample/damping.jpg" alt="Characters run with Damping 0.02, 0.1 and 0.5; only the hair at 0.02 flies up above the head" caption="Recorded from development sample exhibit 2.1. Only Damping differs in the same running motion: the hair flies up at 0.02 on the left and settles quickly at 0.5 on the right." />
+<DocVideo src="/video/sample/damping.mp4" poster="/video/sample/damping.jpg" alt="Characters run with Damping 0.02, 0.1 and 0.5; only the twin tails at 0.02 bounce widely to the sides" caption="Recorded from development sample exhibit 2.1. Only Damping differs in the same running motion: the twin tails bounce widely at 0.02 on the left and settle quickly at 0.5 on the right." />
 
 | Item | Detail |
 |------|--------|

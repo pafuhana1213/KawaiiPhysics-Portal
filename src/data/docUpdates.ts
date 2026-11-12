@@ -43,6 +43,16 @@ export const UPDATED_BADGE_DAYS = 14;
 
 export const docUpdates: DocUpdateEntry[] = [
   {
+    id: 'sample-footage-twintails',
+    date: '2026-11-12',
+    title: '公式サンプルの変更に合わせて録画を撮り直し',
+    summary:
+      'DummyBoneLength の展示（1.2）が3本の鎖の比較になったため、録画を差し替えました。GrayChan の髪の展示ではツインテールだけを揺らすようになったため、Damping、Stiffness、重力、外部力などの録画も撮り直しています。',
+    items: [
+      {doc: 'features/bone-chain', kind: 'updated', note: 'DummyBoneLength 0 / 5 / 50 の鎖を比べる動画'},
+    ],
+  },
+  {
     id: 'doc-updates-page',
     date: '2026-11-07',
     title: 'ドキュメント更新履歴を追加',

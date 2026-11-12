@@ -39,7 +39,7 @@ spine_03 (Root Bone - no physics)
 
 The **end bone** of a chain has no child bone, so it lacks a reference for its rotation and its physics tends to be unstable. Setting `DummyBoneLength` to a value greater than 0 adds one **invisible dummy bone** at the tip, giving the end bone a "child" and stabilizing its rotation and sway. It is an important parameter that directly affects how things sway.
 
-<DocVideo src="/video/sample/dummy-bone-length.mp4" poster="/video/sample/dummy-bone-length.jpg" alt="With DummyBoneLength 0 the chain tip kinks; with 25 the chain sways smoothly to its tip" caption="Comparison recorded on the chain from development sample exhibit 2.3, changing only DummyBoneLength. At 0 (left) the end bone kinks on its own; at 25 (right) the chain sways as one piece to its tip." />
+<DocVideo src="/video/sample/dummy-bone-length.mp4" poster="/video/sample/dummy-bone-length.jpg" alt="Three chains swing left and right with the same motion; at DummyBoneLength 0 the bottom link keeps pointing straight down, at 5 it swings widely, and at 50 it follows gently" caption="Recorded from development sample exhibit 1.2. The three chains move left and right with the same motion, and only DummyBoneLength differs. Watch the bottom link: at 0 (left) it keeps pointing straight down, at 5 (center) it swings widely, and at 50 (right) it follows gently. The rest of each chain moves the same way." />
 
 | Property | Value |
 |----------|-------|

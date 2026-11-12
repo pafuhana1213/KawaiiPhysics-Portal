@@ -336,7 +336,7 @@ SimulationSpaceがBaseBoneSpaceの場合のみ有効です。
 | デフォルト | 0.0 |
 | 範囲 | 0.0 以上 |
 
-<DocVideo src="/video/sample/dummy-bone-length.mp4" poster="/video/sample/dummy-bone-length.jpg" alt="DummyBoneLengthが0の鎖は先端だけ折れ曲がり、25の鎖は先端まで滑らかにつながって揺れる録画" caption="開発版サンプル展示2.3の鎖でDummyBoneLengthだけを変えた比較録画。0（左）では末端ボーンだけが折れ曲がり、25（右）では末端まで一続きに揺れます。" />
+<DocVideo src="/video/sample/dummy-bone-length.mp4" poster="/video/sample/dummy-bone-length.jpg" alt="同じ動きで左右に振られる3本の鎖のうち、DummyBoneLength 0の鎖は一番下のリンクが真下を向いたまま、5の鎖は一番下のリンクが大きく振れ、50の鎖はゆったり付いていく録画" caption="開発版サンプル展示1.2の実機録画。3本の鎖を同じ動きで左右に往復させ、DummyBoneLengthだけを変えています。一番下のリンクを見てください。左の0では真下を向いたまま、中央の5では大きく振れ、右の50ではゆったり付いていきます。鎖本体の動きは3本とも同じです。" />
 
 ### BoneForwardAxis
 
