@@ -65,6 +65,8 @@ Publisherは **Updateで配信** します。Blend weightが0の枝や非アク�
 
 Publisherの `Shared Wind` は、風方向から `Random Force Period` までの13項目に加えて、風の位相クロックと実行中の突風 `ActiveGust` を配信します。消費側のPhase Offset・Seed・Time Scale・Enabled・ボーンフィルタ・空間設定は、その消費側の値を保持します。共有パラメータを消費側だけで変更しても共有中はPublisher値が使われます。
 
+共有中の風の位相は、Publisherと揃えるためワールドのゲーム時刻で進みます。消費側ノードの [TimeScale](/docs/parameters/physics#timescale)（v1.22予定）を変えても、風の位相の進み方は変わりません。風の力を骨へ加える処理は、ほかの外力と同じくノードの物理の時間で進みます。
+
 `Wind Preset Data Asset` と `Wind Preset Tag` を設定すると、初期化・再初期化時に選んだプリセットをShared Windへ適用します。Publisher側の適用に成功すると、プリセットの11項目に加えてShared Windの`Enabled=true`、`TimeScale=1`も設定します。ここで設定するEnabled／TimeScaleはPublisher自身のShared Windの値で、消費側の同名プロパティを書き換える操作ではありません。ただし、共有中の風の有効状態と位相クロックにはPublisher側の値が使われます。この2値を保持する通常のランタイム風プリセットAPIとは範囲が異なります。詳細は[風プリセット](/docs/features/procedural-wind#wind-presets)を参照してください。
 
 | 消費側のSource | Publisher不在時の衝突 | Publisher不在時の風 |

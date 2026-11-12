@@ -31,6 +31,16 @@ Details Apply Preset preserves target Root Bone / Exclude Bones / Additional Roo
 
 `FKawaiiPhysicsPresetApplyOptions` provides explicit `bApplyBoneAssignment` and `bApplyTag` overwrites, both defaulting to false. Preset Diff compares with default options. Do not equate normal Details operations with explicit API options. See [UKawaiiPhysicsEditorLibrary](/docs/api/editor-library) for scripted application and property editing.
 
+### Values switched at runtime (RuntimeOnly) {#runtime-only}
+
+Runtime state that cinematics or gameplay switch is not a sway tuning value, so presets do not include it. This class is called `RuntimeOnly`; currently [TimeScale](/docs/parameters/physics#timescale) belongs to it.
+
+- Export Preset does not copy it, and Apply Preset does not apply it, whatever the apply options.
+- Check Preset Diff does not compare it.
+- The preset asset's Details panel does not show it.
+
+The node property API (`SetNodeFloatProperty` and so on) can still read and write it. It is also part of the graph node settings in [KawaiiPhysicsToolset](/docs/api/mcp) (`describe_graph_node_settings`, `diff_graph_node_settings`, `apply_graph_node_settings`).
+
 ## Export Preset / Apply Preset {#save-apply-and-compare}
 
 1. Select the source Kawaii Physics node.

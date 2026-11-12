@@ -75,7 +75,7 @@ When an event needs stronger wind, editing ordinary wind values also means manag
 
 Check for stronger wind at that point followed by a fade. The Notify's total time is `RiseTime + HoldTime + DecayTime`. For gameplay events that need early cancellation, a programmer can manage stopping with a handle-based API.
 
-Progress depends on animation evaluation. Check conditions where LOD or URO stops evaluation. The [transient-force reference](/docs/api/transient-effects#wind-programmer-details) covers lifetimes, the 8-entry limit, and unsupported reference types.
+Progress depends on animation evaluation and also follows the node's [TimeScale](/docs/parameters/physics#timescale). Check conditions where LOD or URO stops evaluation. The [transient-force reference](/docs/api/transient-effects#wind-programmer-details) covers lifetimes, the 8-entry limit, and unsupported reference types.
 
 ## Wind Preset Data Asset {#wind-presets}
 

@@ -65,6 +65,8 @@ For mutual collision within the family, enable `Gather Family Members`, include 
 
 The publisher's `Shared Wind` distributes 13 fields from wind direction through `Random Force Period`, plus phase clocks and the active gust, `ActiveGust`. Phase Offset, Seed, Time Scale, Enabled, bone filters, and force space remain consumer settings. Changing only the consumer's shared parameters does not override the publisher during sharing.
 
+While shared, the wind phase advances with the world's game time so that it stays aligned with the publisher. Changing the consumer node's [TimeScale](/docs/parameters/physics#timescale) (planned for v1.22) does not change how the phase advances. Applying the wind force to the bones advances in the node's physics time, like other external forces.
+
 With `Wind Preset Data Asset` and `Wind Preset Tag` set, initialization and reinitialization apply the selected preset to Shared Wind. Successful publisher application also sets Shared Wind's `Enabled=true` and `TimeScale=1`, alongside the eleven preset fields. This differs from the ordinary runtime wind preset API, which preserves those two values. See [wind presets](/docs/features/procedural-wind#wind-presets) for details. These are properties of the publisher's own Shared Wind; applying the preset does not rewrite the consumer's properties with the same names. While sharing, however, the published enabled state and phase clock use the publisher's values.
 
 | Consumer Source | Collision without a Publisher | Wind without a Publisher |

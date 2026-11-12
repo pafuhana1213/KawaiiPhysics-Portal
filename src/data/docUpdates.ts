@@ -43,6 +43,20 @@ export const UPDATED_BADGE_DAYS = 14;
 
 export const docUpdates: DocUpdateEntry[] = [
   {
+    id: 'timescale',
+    date: '2026-11-12',
+    title: '物理の時間の倍率（TimeScale）を追加（v1.22予定）',
+    summary:
+      'ノードの物理の時間だけを遅く・速くする TimeScale を、リファレンスとランタイム制御のページに追加しました。展示2.12の録画を載せています。あわせて、テレポートのしきい値が1フレームの移動量で判定されることと、一時外力や物理設定の倍率が TimeScale に従って進むことを追記しました。',
+    items: [
+      {doc: 'parameters/physics', kind: 'updated', note: 'TimeScale の項目と展示2.12の動画。テレポートのしきい値の判定基準', hash: 'timescale'},
+      {doc: 'advanced/runtime-control', kind: 'updated', note: 'ピン、ノードプロパティ API、Sequencer で TimeScale を切り替える方法', hash: 'timescale'},
+      {doc: 'features/settings-presets', kind: 'updated', note: 'プリセットの対象外になる RuntimeOnly の項目', hash: 'runtime-only'},
+      {doc: 'api/transient-effects', kind: 'updated', note: '一時外力の寿命、突風の Duration、物理設定の倍率が TimeScale に従って進むこと'},
+      {doc: 'api/animnode-kawaiiphysics', kind: 'updated', note: 'TimeScale と GetEffectiveTimeScale'},
+    ],
+  },
+  {
     id: 'sample-footage-twintails',
     date: '2026-11-12',
     title: '公式サンプルの変更に合わせて録画を撮り直し',

@@ -72,11 +72,56 @@ Main parameter functions (selection):
 
 For all functions, see [UKawaiiPhysicsLibrary](/docs/api/kawaiiphysics-library).
 
+## Slowing Down or Speeding Up Physics Time (TimeScale) {#timescale}
+
+:::warning Not officially released
+This feature has not been officially released yet. It is planned for KawaiiPhysics v1.22. Specifications may change during development.
+:::
+
+When only the animation is slowed down, for example for a slow-motion effect, set the node's [TimeScale](/docs/parameters/physics#timescale) to the same rate and the sway matches the animation. To switch it with cinematics or gameplay, use one of the following.
+
+| Method | Good for |
+|------|----------------|
+| Connect an AnimBP variable to the pin | A value the AnimBP decides every frame (for example, a rate derived from a slow-motion flag) |
+| Node property API | Switching a specific node from a gameplay event |
+| Sequencer | Keying it to match a cutscene's slow motion |
+
+### Passing it through the pin
+
+The `TimeScale` pin is hidden by default. Show the `TimeScale` pin from the node's Details and connect an AnimBP variable. Out-of-range values from the pin are clamped to 0.01-10.
+
+### Writing it through the node property API
+
+There is no dedicated `TimeScale` setter. Use the name-based `SetNodeFloatProperty` / `GetNodeFloatProperty`.
+
+```cpp
+EKawaiiPhysicsAccessResult Result;
+KawaiiPhysics = UKawaiiPhysicsLibrary::SetNodeFloatProperty(Result, KawaiiPhysics, TEXT("TimeScale"), 0.25f);
+```
+
+`Get` returns the value as set. The value actually used is clamped to 0.01-10. For the conditions of property access, see [UKawaiiPhysicsLibrary — node properties and presets](/docs/api/runtime-properties#details-property-access).
+
+### Changing it from Sequencer
+
+Create a float variable in the actor's Blueprint, enable **Expose to Cinematics**, and key it in Sequencer. In the AnimBP, read that variable and connect it to the `TimeScale` pin.
+
+The [Kawaii Physics Settings Multiplier](/docs/features/sequencer) track multiplies physics settings such as Damping; it does not change `TimeScale`.
+
+:::tip Compared with the actor's CustomTimeDilation
+`CustomTimeDilation` also slows down the AnimBP playback, so an animation you have already slowed down becomes even slower. Use `TimeScale` when you want to keep the animation speed and only match the sway. See the table in [TimeScale](/docs/parameters/physics#timescale).
+:::
+
+:::note To stop the physics
+`TimeScale` cannot be `0`. To remove the physics effect, use [Alpha](#alpha) below. Alpha `0` returns to the animation pose; it does not freeze the current swayed shape.
+:::
+
+`TimeScale` is excluded from preset copy and apply. Applying a [preset](/docs/features/settings-presets#runtime-only) does not overwrite a value switched at runtime.
+
 ## Enable/Disable Toggle
 
 There is no per-node enable/disable property. Use one of the following.
 
-### Control via Alpha (Recommended)
+### Control via Alpha (Recommended) {#alpha}
 
 `SetAlphaToComponent` sets the blend ratio (input Alpha) of all KawaiiPhysics nodes in the component at once. `0.0` means physics OFF (original animation) and `1.0` means physics ON.
 

@@ -3,6 +3,8 @@ sidebar_position: 2
 title: "Physics Parameters"
 ---
 
+import DocVideo from '@site/src/components/DocVideo';
+
 # Physics Parameters
 
 <!-- AUTO-GENERATED: This page is auto-generated from source code -->
@@ -151,6 +153,73 @@ Only enabled when SimulationSpace is BaseBoneSpace.
 | Default | 60 |
 | Category | Physics Settings |
 
+### TimeScale {#timescale}
+
+:::warning Not officially released
+This feature has not been officially released yet. It is planned for KawaiiPhysics v1.22. Specifications may change during development.
+:::
+
+**Physics time multiplier** - Slows down or speeds up only this node's physics, separately from world or actor time. `0.5` runs at half speed and `2` at double speed.
+
+| Property | Value |
+|----------|-------|
+| Type | float |
+| Default | 1.0 |
+| Range | 0.01 - 10 (slider 0.01 - 2) |
+| Pin | Hidden by default (can be shown from Details) |
+| Blueprint | BlueprintReadWrite |
+| Category | Physics Settings |
+
+#### When to use it
+
+When only the animation is slowed down (a slow-motion version of the animation, or a sequence's `RateScale`), KawaiiPhysics still sways in real time, so only the sway looks fast. Set `TimeScale` to the animation's speed and the sway runs at the same speed.
+
+<DocVideo src="/video/sample/time-scale.mp4" poster="/video/sample/time-scale.jpg" alt="Both characters play the run animation at 0.25x; the twin tails at TimeScale 1 flutter at real-time speed, and at 0.25 they sway as slowly as the animation" caption="Recorded from development sample exhibit 2.12. Both characters play the run animation at 0.25x (A_KPS_Run_RateScale_0_25, RateScale 0.25). On the left, TimeScale 1 (default), only the twin tails move at real-time speed; on the right, at 0.25, the sway matches the animation." />
+
+You can also match them with the actor's `CustomTimeDilation`, but it slows down the AnimBP playback as well, so an animation you have already slowed down becomes even slower.
+
+| Method (run animation playing at 0.25x) | Animation speed | Sway speed |
+|------|------|------|
+| Nothing | 0.25x | 1x (only the sway is fast) |
+| Set the actor's `CustomTimeDilation` to 0.25 | 0.0625x (slower still) | 0.25x |
+| Set the node's `TimeScale` to 0.25 | 0.25x | 0.25x |
+
+#### What it affects
+
+`TimeScale` is applied once to the frame's dt, so everything that uses dt advances at the same speed.
+
+- Substep time accumulation, gravity and integration
+- External forces ([External Force Presets](/docs/features/external-force-presets) and ProceduralWind, including gusts with `bRealTimeEnvelope`)
+- Transient external force lifetimes, gust `Duration`, and temporary physics settings multipliers ([transient effects API](/docs/api/transient-effects))
+
+The exception is the shared ProceduralWind distributed by a [Shared Publisher](/docs/features/shared-publisher). Its phase advances with the world's game time so that it stays aligned with the Publisher.
+
+World and actor time, animation playback speed, and the time of other systems such as Cloth or RBAN do not change.
+
+:::note Not the same as the external forces' TimeScale
+`FKawaiiPhysics_ExternalForce_Curve` and ProceduralWind also have a `TimeScale` field. Those only change how that force's curve or wind advances. The node's `TimeScale` applies to the time of the node's whole physics, including those forces.
+:::
+
+#### Why it cannot be 0
+
+The lower limit is `0.01`; `0` (stopped) is not allowed. Out-of-range values from a pin or Blueprint are also clamped to 0.01-10, and NaN or infinity is treated as `1`.
+
+Stopping the physics time does not stop the animation pose or the component. While stopped, the swaying parts would not follow the head or body, and the moment the physics resumed, all the motion from the stopped period would turn into sway at once.
+
+To remove the physics effect, use `Alpha`. Note that `Alpha` `0` removes the sway and returns to the animation pose; it does not freeze the current swayed shape.
+
+#### Fixed substepping
+
+With [Fixed Substepping](/docs/advanced/fixed-substepping) enabled (the default), changing `TimeScale` gives the same motion played back slower (or faster). In legacy mode, with it disabled, there is still one step per frame and only dt changes, so the result is not the same.
+
+A `TimeScale` above 1 increases the steps needed per frame. Time beyond `MaxSubsteps` steps per frame is dropped, and the physics runs slower than requested. Development builds log a warning once per node in that case. For double speed or more, raise `MaxSubsteps` or lower `TimeScale`.
+
+#### How to change it
+
+Connect the pin to an AnimBP variable, or write it through the node property API (`SetNodeFloatProperty` and so on). See [Runtime Control](/docs/advanced/runtime-control#timescale) for switching it with gameplay or cinematics.
+
+`TimeScale` is runtime state rather than a sway tuning value, so it is excluded from [preset](/docs/features/settings-presets#runtime-only) copy, apply and diff.
+
 ### TeleportDistanceThreshold
 
 **Teleport Distance Threshold** - If the SkeletalMeshComponent movement per frame exceeds this value, that movement won't be reflected in physics control.
@@ -168,6 +237,12 @@ Only enabled when SimulationSpace is BaseBoneSpace.
 |----------|-------|
 | Type | float |
 | Default | 10.0 |
+
+:::note Movement used for the check (planned for v1.22)
+Both thresholds are compared with the component's movement and rotation since the previous frame. Even when some frames run no physics step (a small `TimeScale`, or a frame rate above `TargetFramerate`), the movement accumulated over those frames is not used for the check.
+
+With fixed substepping in v1.21, the accumulated movement was compared, so an ordinary turn could be treated as a teleport.
+:::
 
 ### PlanarConstraint
 
