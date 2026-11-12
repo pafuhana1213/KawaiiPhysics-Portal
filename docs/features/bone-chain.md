@@ -39,7 +39,7 @@ spine_03 (Root Bone - 物理なし)
 
 チェーンの**末端ボーン**は、子ボーンを持たないため回転の基準が定まらず、物理制御が不安定になりがちです。`DummyBoneLength` に 0 より大きい値を設定すると、末端に**見えないダミーボーン**を1本追加し、末端ボーンに「子」を与えて回転・揺れを安定させます。揺れ方に直結する重要なパラメータです。
 
-<DocVideo src="/video/sample/dummy-bone-length.mp4" poster="/video/sample/dummy-bone-length.jpg" alt="DummyBoneLengthが0の鎖は先端だけ折れ曲がり、25の鎖は先端まで滑らかにつながって揺れる録画" caption="開発版サンプル展示2.3の鎖でDummyBoneLengthだけを変えた比較録画。0（左）では末端ボーンだけが折れ曲がり、25（右）では末端まで一続きに揺れます。" />
+<DocVideo src="/video/sample/dummy-bone-length.mp4" poster="/video/sample/dummy-bone-length.jpg" alt="同じ動きで左右に振られる3本の鎖のうち、DummyBoneLength 0の鎖は一番下のリンクが真下を向いたまま、5の鎖は一番下のリンクが大きく振れ、50の鎖はゆったり付いていく録画" caption="開発版サンプル展示1.2の実機録画。3本の鎖を同じ動きで左右に往復させ、DummyBoneLengthだけを変えています。一番下のリンクを見てください。左の0では真下を向いたまま、中央の5では大きく振れ、右の50ではゆったり付いていきます。鎖本体の動きは3本とも同じです。" />
 
 | プロパティ | 値 |
 |-----------|-----|
@@ -86,7 +86,7 @@ TArray<FBoneReference> ExcludeBones;
 
 1つのキャラクターに複数のKawaiiPhysicsノードを使用できます。AnimGraphでノードを直列につなぎ、部位ごとにRoot Boneを分けます。
 
-![AnimGraphでKawaii Physicsノードを4つ直列につないだ画面。各ノードにRootとTagが表示され、HeadTopとKawaiiPhysics.Hair、PelvisとKawaiiPhysics.Skirt、A_Breast_LとKawaiiPhysics.Breast、A_Tie_TopとKawaiiPhysics.Accessoryになっている](/img/editor/multiple-nodes-graph-ja.webp)
+![AnimGraphでKawaii Physicsノードを4つ直列につないだ画面。各ノードにRootとTagが表示され、TwintailA_LとKawaiiPhysics.Hair、PelvisとKawaiiPhysics.Skirt、A_Breast_LとKawaiiPhysics.Breast、A_Tie_TopとKawaiiPhysics.Accessoryになっている](/img/editor/multiple-nodes-graph-ja.webp)
 
 *開発版サンプル展示1.5のAnimGraph。髪、スカート、胸、アクセサリーを別々のノードにしています。*
 

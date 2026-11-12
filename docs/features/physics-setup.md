@@ -17,7 +17,7 @@ import DocVideo from '@site/src/components/DocVideo';
 
 ボーンの動きを徐々に収束させます。**大きいほど早く止まり、小さいほど長く揺れ続けます**。
 
-<DocVideo src="/video/sample/damping.mp4" poster="/video/sample/damping.jpg" alt="Damping 0.02、0.1、0.5のキャラクターが同じ動きで走り、0.02の髪だけが頭上まで大きく跳ねる録画" caption="開発版サンプル展示2.1の実機録画。同じ走りモーションでDampingだけを変えています。左の0.02は髪が大きく跳ね、右の0.5は揺れがすぐに収まります。" />
+<DocVideo src="/video/sample/damping.mp4" poster="/video/sample/damping.jpg" alt="Damping 0.02、0.1、0.5のキャラクターが同じ動きで走り、0.02のツインテールだけが左右に大きく跳ねる録画" caption="開発版サンプル展示2.1の実機録画。同じ走りモーションでDampingだけを変えています。左の0.02は髪が大きく跳ね、右の0.5は揺れがすぐに収まります。" />
 
 | 項目 | 内容 |
 |------|------|
