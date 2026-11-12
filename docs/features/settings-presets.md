@@ -31,6 +31,16 @@ DetailsのApply Presetは対象のRoot Bone／Exclude Bones／Additional Root Bo
 
 `FKawaiiPhysicsPresetApplyOptions` の `bApplyBoneAssignment` と `bApplyTag` は明示的な上書き用で、既定falseです。Preset Diffは既定オプションで比較します。Detailsの通常操作とAPIオプションを同一範囲として扱いません。[UKawaiiPhysicsEditorLibrary](/docs/api/editor-library)はスクリプト適用・属性編集を扱います。
 
+### 実行時に切り替える値（RuntimeOnly） {#runtime-only}
+
+演出やゲームプレイで切り替える実行時の状態は、揺れの調整値ではないため、プリセットに含めません。この分類を `RuntimeOnly` と呼び、現在は [TimeScale](/docs/parameters/physics#timescale) が該当します。
+
+- Export Preset でコピーされず、Apply Preset でも適用されません。適用オプションを変えても同じです。
+- Check Preset Diff の比較対象にもなりません。
+- プリセットアセットの Details には表示されません。
+
+ノードプロパティ API（`SetNodeFloatProperty` など）からは読み書きできます。[KawaiiPhysicsToolset](/docs/api/mcp) のグラフノード設定（`describe_graph_node_settings`、`diff_graph_node_settings`、`apply_graph_node_settings`）にも含まれます。
+
 ## Export Preset / Apply Preset {#保存適用比較}
 
 ![KawaiiPhysicsノードのDetails上部。カテゴリフィルタの下のKawaii Physicsツールに、コリジョンをエクスポート、Export BoneConstraints、Export Preset、Apply Preset、Check Preset Diffのボタンが並んでいる](/img/editor/details-tools-ja.webp)

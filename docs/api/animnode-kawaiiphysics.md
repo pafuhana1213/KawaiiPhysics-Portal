@@ -47,8 +47,9 @@ struct KAWAIIPHYSICS_API FAnimNode_KawaiiPhysics : public FAnimNode_SkeletalCont
 | SimulationSpace | [EKawaiiPhysicsSimulationSpace](#ekawaiiphysicssimulationspace) | ComponentSpace | シミュレーション空間 |
 | SimulationBaseBone | FBoneReference | - | `BaseBoneSpace` 選択時の基準ボーン |
 | TargetFramerate | int32 | 60 | 物理ステップのターゲットフレームレート（ClampMin=1） |
-| TeleportDistanceThreshold | float | 300.0 | この距離以上の移動でテレポート扱いにする |
-| TeleportRotationThreshold | float | 10.0 | この角度以上の回転でテレポート扱いにする |
+| TimeScale | float | 1.0 | （v1.22予定）このノードの物理の時間の倍率。ClampMin=0.01, ClampMax=10（UI は 0.01〜2）、PinHiddenByDefault、BlueprintReadWrite。詳細は [TimeScale](/docs/parameters/physics#timescale) |
+| TeleportDistanceThreshold | float | 300.0 | 直前のフレームからの Component の移動量がこの距離を超えたらテレポート扱いにする |
+| TeleportRotationThreshold | float | 10.0 | 直前のフレームからの Component の回転量がこの角度を超えたらテレポート扱いにする |
 | PlanarConstraint | [EPlanarConstraint](#eplanarconstraint) | None | 各ボーンを平面上に拘束する |
 | SkelCompMoveScale | FVector | (1, 1, 1) | コンポーネント移動を物理へ反映する際のスケール |
 | WarmUpFrames | int32 | 0 | ウォームアップフレーム数（bNeedWarmUp有効時） |
@@ -178,7 +179,15 @@ virtual void CacheBones_AnyThread(const FAnimationCacheBonesContext& Context) ov
 virtual void UpdateInternal(const FAnimationUpdateContext& Context) override;
 ```
 
-フレームごとの更新処理。
+フレームごとの更新処理。v1.22予定の版では、ここで `DeltaTime = Context.GetDeltaTime() * GetEffectiveTimeScale()` とし、以降の dt を使う処理はすべてこの値を参照します。
+
+### GetEffectiveTimeScale
+
+```cpp
+float GetEffectiveTimeScale() const;
+```
+
+（v1.22予定）dt に掛ける `TimeScale` を返します。ピン経由の値は `ClampMin` / `ClampMax` を通らないため、ここで 0.01〜10 に丸め、NaN や無限大は `1` として扱います。
 
 ### EvaluateSkeletalControl_AnyThread
 

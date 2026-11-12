@@ -74,11 +74,56 @@ KawaiiPhysics = UKawaiiPhysicsLibrary::SetPhysicsSettings(KawaiiPhysics, Setting
 
 全関数は [UKawaiiPhysicsLibrary](/docs/api/kawaiiphysics-library) を参照してください。
 
+## 物理の時間を遅く・速くする（TimeScale） {#timescale}
+
+:::warning 未正式リリース
+この機能はまだ正式リリースされていません。KawaiiPhysics v1.22でリリース予定です。開発中のため仕様が変更される場合があります。
+:::
+
+スロー演出などでアニメーションだけを遅くするときは、ノードの [TimeScale](/docs/parameters/physics#timescale) を同じ倍率にすると、揺れの速さもアニメーションに揃います。演出やゲームプレイで切り替えるには、次のどれかを使います。
+
+| 方法 | 向いている場面 |
+|------|----------------|
+| ピンに AnimBP の変数をつなぐ | AnimBP の中で毎フレーム決める値（スロー状態のフラグから倍率を決めるなど） |
+| ノードプロパティ API | ゲームイベントから特定のノードだけを切り替える |
+| Sequencer | カットシーンのスローに合わせてキーを打つ |
+
+### ピンで渡す
+
+`TimeScale` のピンは既定で非表示です。ノードの Details で `TimeScale` のピン表示を有効にし、AnimBP の変数をつなぎます。ピンから範囲外の値が来ても、0.01〜10 に丸めて使います。
+
+### ノードプロパティ API で書き換える
+
+`TimeScale` 専用の Setter はありません。名前を指定する `SetNodeFloatProperty` / `GetNodeFloatProperty` を使います。
+
+```cpp
+EKawaiiPhysicsAccessResult Result;
+KawaiiPhysics = UKawaiiPhysicsLibrary::SetNodeFloatProperty(Result, KawaiiPhysics, TEXT("TimeScale"), 0.25f);
+```
+
+`Get` は設定した値をそのまま返します。実際に使われる値は 0.01〜10 に丸めたものです。属性アクセスの条件は [UKawaiiPhysicsLibrary — ノード属性とプリセット](/docs/api/runtime-properties#details-property-access) を参照してください。
+
+### Sequencer で変える
+
+Actor の Blueprint に float 変数を作って **Expose to Cinematics** を有効にし、Sequencer でキーを打ちます。AnimBP ではその変数を読み、`TimeScale` のピンへつなぎます。
+
+[Kawaii Physics Settings Multiplier](/docs/features/sequencer) トラックは Damping などの物理設定に倍率を掛けるもので、`TimeScale` は変えません。
+
+:::tip Actor の CustomTimeDilation との違い
+`CustomTimeDilation` は AnimBP の再生も遅くするため、既に遅くしたアニメーションがさらに遅くなります。アニメーションの速さはそのままで揺れだけを合わせたいときは `TimeScale` を使います。比較は [TimeScale](/docs/parameters/physics#timescale) の表を参照してください。
+:::
+
+:::note 物理を止めたいとき
+`TimeScale` は `0` にできません。物理の効果を消すときは、下の [Alpha](#alpha) を使います。Alpha `0` はアニメーションのポーズに戻すもので、今の揺れた形のまま止めるわけではありません。
+:::
+
+`TimeScale` はプリセットのコピー・適用の対象外です。[プリセット](/docs/features/settings-presets#runtime-only)を適用しても、実行中に切り替えた値は上書きされません。
+
 ## 有効/無効の切り替え
 
 ノード単位の enable/disable プロパティはありません。次のいずれかで制御します。
 
-### Alpha による制御（推奨）
+### Alpha による制御（推奨） {#alpha}
 
 `SetAlphaToComponent` でコンポーネント内の KawaiiPhysics ノードのブレンド率（入力 Alpha）をまとめて設定します。`0.0` で物理 OFF（元アニメーション）、`1.0` で物理 ON です。
 

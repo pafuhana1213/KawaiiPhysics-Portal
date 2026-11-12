@@ -241,6 +241,73 @@ SimulationSpaceがBaseBoneSpaceの場合のみ有効です。
 | デフォルト | 60 |
 | カテゴリ | Physics Settings |
 
+### TimeScale {#timescale}
+
+:::warning 未正式リリース
+この機能はまだ正式リリースされていません。KawaiiPhysics v1.22でリリース予定です。開発中のため仕様が変更される場合があります。
+:::
+
+**物理の時間の倍率** - このノードの物理の時間だけを、ワールドや Actor の時間とは別に遅く・速くします。`0.5` で半分の速さ、`2` で倍速です。
+
+| プロパティ | 値 |
+|-----------|-----|
+| 型 | float |
+| デフォルト | 1.0 |
+| 範囲 | 0.01 - 10（スライダーは 0.01 - 2） |
+| ピン | 既定で非表示（Details で表示できます） |
+| Blueprint | BlueprintReadWrite |
+| カテゴリ | Physics Settings |
+
+#### 使いどころ
+
+アニメーションだけを遅くした演出（スロー版のアニメーションや、シーケンスの `RateScale`）では、KawaiiPhysics は実時間で揺れるため、揺れだけが速く見えます。`TimeScale` をアニメーションの速さに合わせると、揺れも同じ速さになります。
+
+<DocVideo src="/video/sample/time-scale.mp4" poster="/video/sample/time-scale.jpg" alt="2体とも走りアニメーションを0.25倍速で再生し、TimeScale 1のツインテールは実時間の速さで細かく揺れ、0.25のツインテールはアニメーションと同じゆっくりした速さで揺れる録画" caption="開発版サンプル展示2.12の実機録画。2体とも走りアニメーションを0.25倍速（RateScale 0.25の A_KPS_Run_RateScale_0_25）で再生しています。左のTimeScale 1（既定値）はツインテールだけが実時間の速さで揺れ、右の0.25は揺れもアニメーションと同じ速さになります。" />
+
+Actor の `CustomTimeDilation` で合わせる方法もありますが、AnimBP の再生も一緒に遅くなるため、既に遅くしたアニメーションがさらに遅くなります。
+
+| 方法（走りアニメを 0.25 倍速で再生している場合） | アニメーションの速さ | 揺れの速さ |
+|------|------|------|
+| 何もしない | 0.25 倍 | 1 倍（揺れだけ速い） |
+| Actor の `CustomTimeDilation` を 0.25 にする | 0.0625 倍（さらに遅くなる） | 0.25 倍 |
+| ノードの `TimeScale` を 0.25 にする | 0.25 倍 | 0.25 倍 |
+
+#### 効く範囲
+
+フレームの dt に一度だけ `TimeScale` を掛けるため、dt を使う処理はすべて同じ速さで進みます。
+
+- サブステップの時間の蓄積、重力と積分
+- 外力（[外部力プリセット](/docs/features/external-force-presets)、ProceduralWind。`bRealTimeEnvelope` の突風も含む）
+- 一時外力の寿命、突風の `Duration`、物理設定の一時倍率（[一時効果のAPI](/docs/api/transient-effects)）
+
+例外は [Shared Publisher](/docs/features/shared-publisher) から配る Shared の ProceduralWind です。風の位相を Publisher と揃えるため、位相はワールドのゲーム時刻で進みます。
+
+ワールドや Actor の時間、アニメーションの再生速度、Cloth や RBAN など、ほかのシステムの時間は変わりません。
+
+:::note 外力の TimeScale とは別の値です
+`FKawaiiPhysics_ExternalForce_Curve` や ProceduralWind にも `TimeScale` という項目がありますが、これらはその外力のカーブや風の進み方だけを変える値です。ノードの `TimeScale` は、それらを含むノードの物理全体の時間に掛かります。
+:::
+
+#### 0 にできない理由
+
+範囲の下限は `0.01` で、`0`（停止）は使えません。ピンや Blueprint から範囲外の値が来た場合も 0.01〜10 に丸め、NaN や無限大は `1` として扱います。
+
+物理の時間を止めても、アニメーションのポーズや Component は動き続けます。そのため停止中は揺れものが頭や体の動きに付いてこず、再開した瞬間に、止めていた間の動きがまとめて揺れになります。
+
+物理の効果を消したい場合は、`Alpha` を使ってください。ただし `Alpha` を `0` にすると、揺れの効果を消してアニメーションのポーズに戻ります。今の揺れた形のまま止まるわけではありません。
+
+#### 固定サブステップとの関係
+
+[Fixed Substepping](/docs/advanced/fixed-substepping) が有効なとき（既定）は、`TimeScale` を変えても「同じ動きをゆっくり（速く）再生した」結果になります。無効にした legacy モードでは、1フレーム1ステップのまま dt だけが変わるため、そうはなりません。
+
+`TimeScale` が 1 より大きいと、1フレームに必要なステップ数が増えます。この数が `MaxSubsteps` を超えた分の時間は捨てられ、物理は指定より遅く進みます。開発ビルドでは、この場合にノードごとに1回だけ警告ログを出します。倍速以上にするときは、`MaxSubsteps` を上げるか、`TimeScale` を下げてください。
+
+#### 変更の方法
+
+ピンをつないで AnimBP の変数から渡すか、ノードプロパティ API（`SetNodeFloatProperty` など）で書き換えます。演出に合わせて切り替える手順は [ランタイム制御](/docs/advanced/runtime-control#timescale) を参照してください。
+
+`TimeScale` は揺れの調整値ではなく実行時の状態なので、[プリセット](/docs/features/settings-presets#runtime-only)のコピー・適用・差分比較の対象外です。
+
 ### TeleportDistanceThreshold
 
 **テレポート距離しきい値** - 1フレームにおけるSkeletalMeshComponentの移動量が設定値を超えた場合、その移動量を物理制御に反映しません。
@@ -258,6 +325,12 @@ SimulationSpaceがBaseBoneSpaceの場合のみ有効です。
 |-----------|-----|
 | 型 | float |
 | デフォルト | 10.0 |
+
+:::note 判定に使う移動量（v1.22予定）
+2つのしきい値は、直前のフレームからの Component の移動量・回転量と比べます。物理のステップが走らないフレームがあっても（`TimeScale` が小さいときや、フレームレートが `TargetFramerate` より高いとき）、その間に溜まった移動量では判定しません。
+
+v1.21 の固定サブステップでは、溜まった移動量と比べていたため、ふつうの旋回でもテレポートと判定されることがありました。
+:::
 
 瞬間移動したときの揺れ方は [揺れ方の調整](/docs/features/physics-setup#teleport) の録画で確認できます。
 

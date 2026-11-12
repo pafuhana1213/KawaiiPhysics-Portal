@@ -23,6 +23,8 @@ Startの `OutHandle` を保存し、同じ対象とハンドルでStopします�
 
 DurationはBlend In／Outを含む合計です。正なら台形、0はno-op、負ならStopまで保持します。Blend In＋OutがDurationを超えると比例圧縮します。負のDurationではStart側のBlend Outは無視し、Stop側の値を解除に使います。
 
+Duration と Blend In／Out は、ノードの物理の時間（アニメーションの DeltaTime × ノードの [TimeScale](/docs/parameters/physics#timescale)）で進みます。URO／LODで評価が止まったり、`TimeScale` が1未満だったりすると、実時間としては長く伸びます。
+
 Stopは現在の適用率から0へ線形フェードします。Blend Out0は即時解除。まだ未評価の同一ハンドルへのStopは、解除フェード時間を上書きします。
 
 ## C++継続更新とスレッド条件 {#settings-cpp-driven}
@@ -54,7 +56,9 @@ AnimGraphのBlueprintThreadSafe文脈でComponentを収集する場合は呼び�
 
 `RiseTime + DecayTime` が `Duration` を超える場合は両時間を比例圧縮します。Durationには正値を指定してください。0以下では突風強度が0になりますが、APIが要求を受け付けてハンドルを返す場合はあります。要求受付の成功と、効果が見えることは別です。
 
-`bRealTimeEnvelope` の既定値はtrueで、一時突風の `TimeScale` を1にして進行します。falseでは継承した風のTime Scaleの影響を受けます。どちらもアニメーション評価に依存するため、URO／LODで評価が止まると実時間としての期間が延びます。
+突風の `Duration` と、汎用一時外力の `LifetimeSeconds` は、ノードの物理の時間で進みます。ノードの [TimeScale](/docs/parameters/physics#timescale) が0.5なら、実時間では2倍の長さになります。
+
+`bRealTimeEnvelope` の既定値はtrueで、ProceduralWind の `TimeScale`（風の時間の倍率）を無視して進行します。ノードの `TimeScale` には従います。falseでは継承した風のTime Scaleの影響も受けます。どちらもアニメーション評価に依存するため、URO／LODで評価が止まると実時間としての期間が延びます。
 
 停止時の `BlendOutTime` はwind時間で、Procedural Windを現在値から線形フェードさせます。0は即時除去です。汎用一時外力には同じフェード処理がなく、寿命を短縮します。
 

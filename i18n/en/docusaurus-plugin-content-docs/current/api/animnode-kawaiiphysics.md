@@ -47,8 +47,9 @@ struct KAWAIIPHYSICS_API FAnimNode_KawaiiPhysics : public FAnimNode_SkeletalCont
 | SimulationSpace | [EKawaiiPhysicsSimulationSpace](#ekawaiiphysicssimulationspace) | ComponentSpace | Simulation space |
 | SimulationBaseBone | FBoneReference | - | Reference bone when `BaseBoneSpace` is selected |
 | TargetFramerate | int32 | 60 | Target framerate for physics stepping (ClampMin=1) |
-| TeleportDistanceThreshold | float | 300.0 | Movement beyond this distance is treated as a teleport |
-| TeleportRotationThreshold | float | 10.0 | Rotation beyond this angle is treated as a teleport |
+| TimeScale | float | 1.0 | (Planned for v1.22) Multiplier for this node's physics time. ClampMin=0.01, ClampMax=10 (UI 0.01-2), PinHiddenByDefault, BlueprintReadWrite. See [TimeScale](/docs/parameters/physics#timescale) |
+| TeleportDistanceThreshold | float | 300.0 | Component movement since the previous frame beyond this distance is treated as a teleport |
+| TeleportRotationThreshold | float | 10.0 | Component rotation since the previous frame beyond this angle is treated as a teleport |
 | PlanarConstraint | [EPlanarConstraint](#eplanarconstraint) | None | Constrains each bone onto a plane |
 | SkelCompMoveScale | FVector | (1, 1, 1) | Scale applied to component movement before reflecting in physics |
 | WarmUpFrames | int32 | 0 | Warm-up frame count (when bNeedWarmUp is enabled) |
@@ -178,7 +179,15 @@ Bone reference caching.
 virtual void UpdateInternal(const FAnimationUpdateContext& Context) override;
 ```
 
-Per-frame update processing.
+Per-frame update processing. In the version planned for v1.22, it sets `DeltaTime = Context.GetDeltaTime() * GetEffectiveTimeScale()`, and everything after it that uses dt reads this value.
+
+### GetEffectiveTimeScale
+
+```cpp
+float GetEffectiveTimeScale() const;
+```
+
+(Planned for v1.22) Returns the `TimeScale` applied to dt. Pin values bypass `ClampMin` / `ClampMax`, so this clamps to 0.01-10 and treats NaN or infinity as `1`.
 
 ### EvaluateSkeletalControl_AnyThread
 

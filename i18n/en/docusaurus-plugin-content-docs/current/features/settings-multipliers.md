@@ -44,7 +44,7 @@ Use [NotifyState](/docs/features/animnotify#new-notifies-state) for an action in
 - Timed and driven entries share a maximum of eight per node. The oldest is evicted above the cap.
 - Node reinitialization and Blueprint recompilation discard entries. Stopping a stale handle is a no-op.
 - `IsTransientHandleSet` checks only that an ID is set, not effect survival.
-- Timed effects advance by animation DeltaTime. URO/LOD evaluation pauses extend real-time duration.
+- Timed effects advance in the node's physics time (animation DeltaTime x the node's [TimeScale](/docs/parameters/physics#timescale)). URO/LOD evaluation pauses, or a TimeScale below 1, extend real-time duration.
 
 ## Blueprint and C++ Control {#programmer-details}
 

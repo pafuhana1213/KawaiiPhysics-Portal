@@ -23,6 +23,8 @@ Save Start's `OutHandle` and Stop the same target/handle. Component forms collec
 
 Duration includes both fades. Positive means a trapezoid, zero is a no-op, and negative holds until Stop. If Blend In + Out exceeds Duration, the fades scale proportionally. Negative Duration ignores Start's Blend Out and uses Stop's value for release.
 
+Duration and Blend In / Out advance in the node's physics time (animation DeltaTime x the node's [TimeScale](/docs/parameters/physics#timescale)). If URO / LOD stops evaluation or `TimeScale` is below 1, they last longer in real time.
+
 Stop fades linearly from the current applied ratio to 0. Blend Out 0 releases immediately. Stopping the same still-pending handle replaces its release fade time.
 
 ## C++ Updates and Threading {#settings-cpp-driven}
@@ -54,7 +56,9 @@ Use the handle-based APIs in `UKawaiiPhysicsLibrary` to add a short burst for a 
 
 When `RiseTime + DecayTime` exceeds `Duration`, both are scaled down proportionally. Specify a positive Duration. At zero or below, gust strength is zero, but the API may still accept the request and return a handle. Request acceptance does not establish a visible effect.
 
-`bRealTimeEnvelope` defaults to true and sets the transient gust's `TimeScale` to 1. With false, the inherited wind's Time Scale affects progress. Both depend on animation evaluation: URO / LOD suspension can extend the elapsed real duration.
+A gust's `Duration` and a generic transient force's `LifetimeSeconds` advance in the node's physics time. With the node's [TimeScale](/docs/parameters/physics#timescale) at 0.5, they last twice as long in real time.
+
+`bRealTimeEnvelope` defaults to true and ignores the ProceduralWind `TimeScale` (the wind's own time multiplier); it still follows the node's `TimeScale`. With false, the inherited wind's Time Scale also affects progress. Both depend on animation evaluation: URO / LOD suspension can extend the elapsed real duration.
 
 Stopping with `BlendOutTime` fades Procedural Wind linearly from its current value in wind time. A value of 0 removes it immediately. Generic transient forces do not use this fade; their lifetime is shortened instead.
 

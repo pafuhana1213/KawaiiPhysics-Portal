@@ -44,7 +44,7 @@ import LegacyReference from '@site/src/components/LegacyReference';
 - 時間型と外部駆動型を合わせ、ノードあたり最大8件。超過時は最古を破棄します。
 - ノード再初期化・Blueprint再コンパイルで失われます。失効ハンドルへのStopはno-opです。
 - `IsTransientHandleSet` はIDが設定済みかだけを返し、生存確認ではありません。
-- 時間型はアニメーションDeltaTimeで進行し、URO／LOD停止中は実時間の継続が延びます。
+- 時間型はノードの物理の時間（アニメーションDeltaTime × ノードの [TimeScale](/docs/parameters/physics#timescale)）で進行します。URO／LOD停止中や、TimeScaleが1未満のときは、実時間の継続が延びます。
 
 ## Blueprint・C++からの制御 {#programmer-details}
 

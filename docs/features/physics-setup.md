@@ -112,6 +112,10 @@ import DocVideo from '@site/src/components/DocVideo';
 
 回転には `TeleportRotationThreshold`（度、既定値 10、`0` で無効）が同じ働きをします。
 
+:::note v1.22予定での変更
+判定には、直前のフレームからの移動量を使います。[TimeScale](/docs/parameters/physics#timescale) を小さくしたときや、フレームレートが `TargetFramerate` より高いときに物理のステップが走らないフレームがあっても、その間に溜まった移動量では判定しません。v1.21 の固定サブステップでは溜まった移動量と比べていたため、ふつうの旋回でもテレポートと判定されることがありました。
+:::
+
 ## 調整のコツ（レシピ）
 
 まず Damping と Stiffness の組み合わせで全体の質感を決め、必要に応じてコリジョンを足します。下表はあくまで出発点の目安です。
